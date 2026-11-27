@@ -314,6 +314,9 @@ def build():
         f = f[:i] + sp + f[i:] if i >= 0 else f + sp
         parts.append(f"<!-- {n} · {TITLES[n - 1].upper()} -->\n" + f)
     slides = "\n".join(parts)
+    # __SVG:path__ inlines an SVG file, so its SMIL runs on the page clock and can be replayed with setCurrentTime
+    slides = re.sub(r"__SVG:([^_][^\s\"')]*?)__",
+                    lambda mm: re.sub(r"^<\?xml[^>]*>\s*", "", (R / mm.group(1)).read_text(encoding="utf8")), slides)
     slides = re.sub(r"__ASSET:([^_][^\s\"')]*?)__", asset, slides)
     nm = nums()
     slides = re.sub(r"__NUM:(\w+)__", lambda x: nm[x.group(1)], slides)

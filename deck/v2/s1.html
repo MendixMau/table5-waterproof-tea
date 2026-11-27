@@ -1,5 +1,6 @@
 <div class="slide full" id="s1" data-title="Company">
-  <video class="s1-film" data-auto muted playsinline preload="auto" poster="__ASSET:deck/v2/s1-start.jpg__" src="__ASSET:FILM__"></video>
+  <video class="s1-film" muted playsinline preload="auto" poster="__ASSET:deck/v2/s1-start.jpg__" src="__ASSET:FILM__"></video>
+  <img class="s1-title" src="__ASSET:brand/motion/title-1200-years.svg__" alt="The Art of Tea. 1,200 years of temperature."/>
   <img class="s1-end" src="__ASSET:deck/v2/s1-end.jpg__" alt=""/>
   <div class="s1-era" aria-hidden="true">
     <div class="s1-yr" data-from="0" data-to="3.8"><b>760</b><span>China · Lu Yu reads the boil</span></div>
@@ -13,6 +14,7 @@
   <div class="s1-noun">A tea bag that opens only at its perfect temperature.</div>
   <div class="s1-team">Table 5 · Sell the unsellable</div>
   <aside class="notes"><ul>
+    <li>Opens on the brand title card brand/motion/title-1200-years.svg (truth/storyline.md, "The Art of Tea: 1,200 years of temperature"; 760s, Britain 100 °C, China 80 to 95 °C, Japan 80 °C from facts.md), 4 s, then the film.</li>
     <li>Film: video/osme-film.mp4 (video thread, v03, 18.4 s, silent). It carries Lu Yu's three boils, the 1908 bag and the lockup; the year marker bottom right is synced to it.</li>
     <li>Lu Yu, Cha Jing, 760 to 762 CE; three boils in Okakura, The Book of Tea (1906), ch. II (truth/history-cultures.md §2).</li>
     <li>Tea bag c. 1908 (facts.md). Tagline "Every tea has its temperature." (brand, facts.md).</li>
@@ -21,6 +23,8 @@
     #s1{background:#0B0B0D}
     #s1 .s1-film,#s1 .s1-end{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
     #s1 .s1-end{opacity:0;transition:opacity .6s var(--ease)}
+    #s1 .s1-title{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:4;background:#0B0B0D;transition:opacity .8s var(--ease)}
+    #s1.film .s1-title,html.still #s1 .s1-title{opacity:0;pointer-events:none}
     #s1.ended .s1-end,html.still #s1 .s1-end{opacity:1}
     #s1 .s1-era{position:absolute;right:84px;bottom:12vh;z-index:3;width:640px;height:170px;text-align:right}
     #s1 .s1-yr{position:absolute;right:0;bottom:0;opacity:0;filter:blur(14px) sepia(1);transform:translateY(16px);
@@ -41,7 +45,7 @@
   </style>
   <script>
   (function(){
-    let raf=0;
+    let raf=0,cue=0;
     function sync(el){
       const v=el.querySelector('.s1-film'),yrs=[...el.querySelectorAll('.s1-yr')];
       cancelAnimationFrame(raf);
@@ -54,12 +58,15 @@
     }
     window.ENTER[1]=el=>{
       const v=el.querySelector('.s1-film');
-      el.classList.remove('ended');
+      el.classList.remove('ended','film');
       v.onended=()=>el.classList.add('ended');
-      if(document.documentElement.classList.contains('still')){el.classList.add('ended');return;}
-      sync(el);
+      if(document.documentElement.classList.contains('still')){el.classList.add('ended','film');return;}
+      // brand title card "1,200 years of temperature" (all in by 3.5 s), then the film
+      const t=el.querySelector('.s1-title');t.src=t.src.split('#')[0]+'#'+Date.now();
+      try{v.pause();v.currentTime=0;}catch(e){}
+      clearTimeout(cue);cue=setTimeout(()=>{if(!el.classList.contains('active'))return;el.classList.add('film');try{v.play()}catch(e){}sync(el);},4200);
     };
-    window.LEAVE[1]=el=>{cancelAnimationFrame(raf);el.classList.remove('ended');};
+    window.LEAVE[1]=el=>{cancelAnimationFrame(raf);clearTimeout(cue);el.classList.remove('ended','film');try{el.querySelector('.s1-film').pause()}catch(e){}};
   })();
   </script>
 </div>

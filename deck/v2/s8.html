@@ -54,8 +54,7 @@
     </div>
   </div>
   <div class="rv s8-close" data-s="1">
-    <img src="__ASSET:brand/identity/logo-lockup.svg__" alt="OSME"/>
-    <div class="s8-tagline">Every tea has its temperature.</div>
+    <div class="s8-reveal" role="img" aria-label="OSME. Every tea has its temperature.">__SVG:brand/motion/logo-reveal.svg__</div>
     <div class="s8-join"><div class="s8-qr">QR</div><div><b>Scan the QR, join the waitlist.</b><span>Be among the first to steep it.</span></div></div>
   </div>
   <aside class="notes"><ul>
@@ -63,7 +62,7 @@
     <li>Use of funds (truth/business-case.md): membrane R&amp;D and IP 35%, certification 15%, brand and launch 30%, origin partnerships and first inventory 15%, ops 5% (truth/business-case.md §7, exact).</li>
     <li>Series A trigger: 20 k subscribers or a $5 m revenue run-rate. Valuation check: Carta Q3 2025 median seed pre-money $16 m; a pre-revenue brand with R&amp;D risk prices below it (ASSUMPTION).</li>
     <li>Milestones: membrane R&amp;D and IP 18 months (truth/business-case.md one-off costs); food-safe at 70 to 90 °C (facts.md R&amp;D framing); first Ritual boxes (facts.md, the ask); Series A trigger 20 k subscribers (truth/business-case.md).</li>
-    <li>Click once more to close on the logo, the tagline and the ask of the room: scan the QR, join the waitlist (docs/keepers.html#join). The QR is a placeholder until the site URL is live.</li>
+    <li>Click once more to close on the logo reveal (brand/motion/logo-reveal.svg, with the tagline) and the ask of the room: scan the QR, join the waitlist (docs/keepers.html#join). The QR is a placeholder until the site URL is live.</li>
   </ul></aside>
   <style>
     #s8 .s8-loop{opacity:.55}
@@ -91,7 +90,7 @@
     #s8.closing .s8-steps{opacity:0;filter:blur(10px)}
     #s8 .s8-steps{transition:opacity .9s var(--ease),filter .9s var(--ease)}
     #s8 .s8-close{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px}
-    #s8 .s8-close img{height:220px}
+    #s8 .s8-reveal{height:440px;margin:-40px 0 -30px}#s8 .s8-reveal svg{height:100%;width:auto;display:block}
     #s8 .s8-tagline{font-size:44px;letter-spacing:.04em;color:var(--text)}
     #s8 .s8-join{display:flex;align-items:center;gap:30px;margin-top:26px;text-align:left}
     #s8 .s8-qr{width:150px;height:150px;border:2px dashed rgba(242,163,58,.7);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:28px;letter-spacing:.2em;color:var(--amber)}
@@ -99,6 +98,11 @@
     #s8 .s8-join span{display:block;font-size:28px;color:rgba(243,238,230,.72);margin-top:8px}
   </style>
   <script>
-  window.STEP[8]=(el,s)=>el.classList.toggle('closing',s>=1);
+  window.STEP[8]=(el,s)=>{
+    const was=el.classList.contains('closing');el.classList.toggle('closing',s>=1);
+    // replay the logo reveal (SMIL inside an img) each time the close lands
+    const sv=el.querySelector('.s8-reveal svg');
+    if(sv&&s>=1&&!was){try{sv.setCurrentTime(document.documentElement.classList.contains('still')?10:0);sv.unpauseAnimations()}catch(e){}}
+  };
   </script>
 </div>

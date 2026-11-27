@@ -476,7 +476,7 @@ def ritual(vbs):
 
 def story(vbs):
     cult = ""
-    for c in ("Japan", "China", "Britain"):
+    for c in ("Britain", "China", "Japan"):  # hot to cool, same order as the culture motif and the deck
         rows = "".join(f'<a class="tea-row" href="tea-{t["id"]}.html"><i class="liquor" style="background:{t["liquor"]}"></i><div><b>{t["name"]}</b><span>{t["origin"]} · {t["kind"].lower()}</span></div><div class="window">{deg(t["open"])}<small>seals below {deg(t["seal"])}</small></div></a>' for t in TEAS if t["country"] == c)
         cult += f'<article class="culture"><header><div class="country">{c}</div><div class="ritual">{CULTURE[c]}</div></header>{rows}</article>'
     body = f'''
@@ -493,7 +493,7 @@ def story(vbs):
   </div>
 </div></section>
 <section class="tight"><div class="wrap">
-  <img class="motif" src="../brand/assets/culture-motif.svg" alt="Japan, China and Britain: three tea cultures">
+  <img class="motif" src="../brand/assets/culture-motif.svg" alt="Britain, China and Japan: three tea cultures">
   <div class="cultures">{cult}</div>
 </div></section>
 <section class="tight"><div class="wrap">

@@ -16,7 +16,8 @@ Spoken lines are plain text. Headers are bold, stage cues sit in square brackets
 
 **0:00 to 0:25 · Slide 1 · Company · Speaker A**
 Cue to next slide: "opens only at its perfect temperature." (A clicks)
-[The 18 s film plays silent behind A: Lu Yu's three boils, the 1908 bag, the lockup. The year marker runs 760, 1908, Today. Speak calmly; the film ends on the one-liner as A says it.]
+[Brand title card "The Art of Tea. 1,200 years of temperature." for 4 s, then the 18 s film plays silent behind A: Lu Yu's three boils, the 1908 bag, the lockup. The year marker runs 760, 1908, Today. Speak calmly; the film ends on the one-liner as A says it.]
+The art of tea: twelve hundred years of temperature.
 In the year seven sixty, in China, Lu Yu read the heat of water at a glance.
 Fish eyes. A string of pearls. Rolling waves.
 His Classic of Tea made tea an art.
@@ -33,8 +34,8 @@ Boiling water on green tea, a forgotten bag: bitter.
 
 **0:45 to 1:25 · Slide 3 · Solution, live demo · Speaker B**
 Cue to next slide: "food-safe at seventy to ninety degrees." (B presses PageDown)
-[B drives the laptop. Sencha is preselected. B presses Space to pour boiling water. OSME bag in the big cup, the 1908 bag on the right. Leave the pauses: the jury watches the dial and the cups.]
-Let me show you. Sencha in boiling water, cooling sped up.
+[3 s intro: the hero cup, alive, and "Sealed. Open. Sealed." Then B drives the laptop. Sencha is preselected. B presses Space to pour boiling water. OSME bag in the big cup, the 1908 bag on the right. Leave the pauses: the jury watches the dial and the cups.]
+Sealed. Open. Sealed. Let me show you. Sencha in boiling water, cooling sped up.
 On the right, an ordinary bag brews at once.
 In the middle, OSME. Sealed. It waits.
 [Pause until the dial reaches 80.]
@@ -48,7 +49,7 @@ The principle exists: lab membranes already open and close with temperature. Our
 **1:25 to 1:50 · Slide 4 · Customer · Speaker C**
 Cue to next slide: "already brew loose leaf." (C clicks)
 [The amber wisp draws from each quote into the bag.]
-The curious specialty drinker, twenty-five to forty-five, already pays for good leaves.
+Everyone can be a tea person. We start with the curious specialty drinker, twenty-five to forty-five, who already pays for good leaves.
 One wrote: "I spend way too much on tea to just throw them away after one steep."
 Another: "My leaves start not tasting as fresh when I reuse them from the day before."
 Sixteen percent of UK black tea drinkers already brew loose leaf.

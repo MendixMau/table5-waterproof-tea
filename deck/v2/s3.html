@@ -6,7 +6,8 @@
     <div class="s3-chip" data-k="three"><img src="__ASSET:brand/assets/icon-three-infusions.svg__" alt=""/><span>Up to <b class="mid">__NUM:infusions__</b> infusions, one bag</span></div>
   </div>
   <div class="s3-intro" aria-hidden="true">
-    <img src="__ASSET:brand/assets/hero.png__" alt=""/>
+    <img src="__ASSET:brand/motion/hero-alive.svg__" alt=""/>
+    <div class="s3-sos"><span class="amber">Sealed.</span> <span class="mid">Open.</span> <span class="jade">Sealed.</span></div>
     <div class="s3-live"><span class="s3-dot"></span>Live demo · Sencha</div>
   </div>
   <aside class="notes"><ul>
@@ -20,8 +21,13 @@
     #s3 .s3-app{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:1;background:#0B0B0D}
     #s3 .s3-intro{position:absolute;inset:0;z-index:5;pointer-events:none;background:#0d0d0f;opacity:0}
     #s3 .s3-intro img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-    #s3.play .s3-intro{animation:s3-intro 2.6s var(--ease) both}
-    #s3.play .s3-intro img{animation:s3-push 2.6s var(--ease) both}
+    #s3.play .s3-intro{animation:s3-intro 3.4s var(--ease) both}
+    #s3.play .s3-intro img{animation:s3-push 3.4s var(--ease) both}
+    #s3 .s3-sos{position:absolute;left:72px;top:15vh;font-size:84px;font-weight:500;letter-spacing:-.01em;line-height:1.1}
+    #s3 .s3-sos span{display:inline-block;opacity:0}
+    #s3.play .s3-sos span{animation:steep .8s var(--ease) both}
+    #s3.play .s3-sos span:nth-child(2){animation-delay:.45s}#s3.play .s3-sos span:nth-child(3){animation-delay:.9s}
+    #s3 .s3-sos .amber{color:var(--amber)}#s3 .s3-sos .mid{color:var(--mid)}#s3 .s3-sos .jade{color:var(--jade)}
     @keyframes s3-intro{0%{opacity:1}72%{opacity:1}100%{opacity:0}}
     @keyframes s3-push{from{transform:scale(1.06)}to{transform:scale(1)}}
     #s3 .s3-live{position:absolute;left:72px;top:7vh;font-size:20px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:14px}
