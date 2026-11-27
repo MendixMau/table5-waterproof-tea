@@ -4,7 +4,7 @@
 Everyone drives at least once.
 
 <!-- LIVE:START -->
-## Live status · 13:06 · 0 h 23 to hand-in
+## Live status · 13:11 · 0 h 18 to hand-in
 
 **Now:** "Freeze 13:15, hand in 13:30. Start at docs/handin.html on the live site: all five hand-ins on one page."
 
