@@ -534,13 +534,15 @@ footer.site .top{display:flex;justify-content:space-between;gap:40px;flex-wrap:w
 
 /* membrane explainer still */
 .membrane{margin:40px 0 0}
-.membrane a{position:relative;display:block;border:1px solid var(--line,#2A2A30);border-radius:22px;overflow:hidden}
+.membrane>a{position:relative;display:block;border:1px solid var(--line,#2A2A30);border-radius:22px;overflow:hidden}
 .membrane img{display:block;width:100%;height:auto}
 .membrane .play{position:absolute;right:18px;top:18px;background:#F2A33A;color:#0B0B0D;font-weight:600;padding:10px 18px;border-radius:999px;font-size:15px}
 .membrane figcaption{margin-top:12px}
 @media (max-width:600px){.membrane .play{top:8px;right:8px;padding:6px 11px;font-size:12px}}
 .ho-img:not(:has(img)){aspect-ratio:auto;height:72px;background:linear-gradient(90deg,rgba(242,163,58,.08),rgba(61,186,155,.06))}
 @media (max-width:600px){.membrane .play{display:none}.membrane figcaption .btn{display:inline-flex;margin-top:12px}.hv-caption{bottom:-30px}.hero .hero-visual{margin-bottom:40px}}
+.see3d{color:var(--brand-amber,#F2A33A);text-decoration:underline;text-underline-offset:3px;margin-left:6px;white-space:nowrap}
+@media (max-width:600px){.see3d{display:block;margin:12px 0 0;white-space:normal}}
 
 </style>
 </head>
@@ -560,11 +562,11 @@ footer.site .top{display:flex;justify-content:space-between;gap:40px;flex-wrap:w
 <p>Slide 1 is the film with its own voice (video/osme-film-v04-vo.mp4, 26.5 s): nobody speaks. Spoken lines are plain text. Headers are bold, stage cues sit in square brackets and are not spoken. 10 s spare to 3:00.</p>
 <p>Rehearsal voice: the lines can be read by Kokoro (video/tools/tts.py, the voice used in the film) to time a run; the team speaks them live on stage.</p>
 <h3>Speakers</h3>
-<div class="tscroll"><table><thead><tr><th>Speaker</th><th>Slides</th><th>Job</th><th>Words</th><th>Seconds</th></tr></thead><tbody><tr><td>(film)</td><td>1</td><td>The art of tea, 1908, the bag, "Everyone can be a tea person."</td><td>0</td><td>27</td></tr><tr><td>A (name TBD by the team)</td><td>2</td><td>The why, the problem</td><td>46</td><td>18</td></tr><tr><td>B (name TBD by the team)</td><td>3, plus the laptop for the whole pitch</td><td>How it works, live demo, the honest line</td><td>75</td><td>42</td></tr><tr><td>C (name TBD by the team)</td><td>4 to 6</td><td>Customer, market walk, business</td><td>116</td><td>50</td></tr><tr><td>D (name TBD by the team)</td><td>7 to 8</td><td>Competition, the ask</td><td>85</td><td>33</td></tr></tbody></table></div>
+<div class="tscroll"><table><thead><tr><th>Speaker</th><th>Slides</th><th>Job</th><th>Words</th><th>Seconds</th></tr></thead><tbody><tr><td>(film)</td><td>1</td><td>The 1908 hook, China, Japan, the bag, "Oz-may! The art of tea!"</td><td>0</td><td>27</td></tr><tr><td>A (name TBD by the team)</td><td>2</td><td>The why, the problem</td><td>46</td><td>18</td></tr><tr><td>B (name TBD by the team)</td><td>3, plus the laptop for the whole pitch</td><td>How it works, live demo, the honest line</td><td>75</td><td>42</td></tr><tr><td>C (name TBD by the team)</td><td>4 to 6</td><td>Customer, market walk, business</td><td>116</td><td>50</td></tr><tr><td>D (name TBD by the team)</td><td>7 to 8</td><td>Competition, the ask</td><td>85</td><td>33</td></tr></tbody></table></div>
 <h3>Script</h3>
 <p><b>0:00 to 0:27 · Slide 1 · Company: the film · nobody speaks</b></p>
 <p>Cue to next slide: the film ends on the logo. (A clicks)</p>
-<p><span class="cue">[The film plays full screen with its voice: the art of tea, 760 China, Japan, Britain, the 1908 bag, the people sharing tea, "Everyone can be a tea person.", the logo. If the screen shows "Press Space to play the film", press Space once. Team stands still and watches the film with the room.]</span></p>
+<p><span class="cue">[The film plays full screen with its voice: the 1908 hook, China, Japan, the tea bag, OSME opening and sealing, ending "Oz-may! The art of tea!" on the logo. If the screen shows "Press Space to play the film", press Space once. Team stands still and watches the film with the room.]</span></p>
 <p><b>0:27 to 0:45 · Slide 2 · Problem · Speaker A</b></p>
 <p>Cue to next slide: "comes from a bag." (A clicks)</p>
 <p><span class="cue">[The 1908 bag drops in, the clock runs, "One cup.", "Scent gone.", "Bitter.", then 96%. About 6 s, no clicks. Do not repeat the film's history or its 1908 card.]</span></p>
@@ -583,7 +585,7 @@ footer.site .top{display:flex;justify-content:space-between;gap:40px;flex-wrap:w
 <p>The principle exists: lab membranes already open and close with temperature. Our R&amp;D makes it food-safe at seventy to ninety degrees.</p>
 <p><b>1:27 to 1:42 · Slide 4 · Customer · Speaker C</b></p>
 <p>Cue to next slide: "after one steep." (C clicks)</p>
-<p><span class="cue">[Title "Everyone can be a tea person." is the film's last line: a callback, not spoken. The amber wisp draws from each quote into the bag.]</span></p>
+<p><span class="cue">[Title "Everyone can be a tea person." stays on screen, not spoken. The amber wisp draws from each quote into the bag.]</span></p>
 <p>We start with the curious specialty drinker, twenty-five to forty-five, who already pays for good leaves.</p>
 <p>One wrote: "I spend way too much on tea to just throw them away after one steep."</p>
 <p><b>1:42 to 2:03 · Slide 5 · Market · Speaker C</b></p>

@@ -35,3 +35,6 @@
 
 ## 12:35 pacing re-cut (lead 12:31)
 Master = renders/osme-film-fv2_v11 via tools/fv2e.sh 14 11, also copied to osme-film.mp4. Cues vo-in/cues-fv2e.txt. Not re-judged.
+
+## 12:43 presentation-lead brief
+Master = renders/osme-film-fv2_v12a via tools/fv2f.sh 14 12a endA. End-line takes b/c rendered. Cues vo-in/cues-fv2f.txt.

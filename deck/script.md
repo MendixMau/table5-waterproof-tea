@@ -8,7 +8,7 @@ Rehearsal voice: the lines can be read by Kokoro (video/tools/tts.py, the voice 
 
 | Speaker | Slides | Job | Words | Seconds |
 |---|---|---|---|---|
-| (film) | 1 | The art of tea, 1908, the bag, "Everyone can be a tea person." | 0 | 27 |
+| (film) | 1 | The 1908 hook, China, Japan, the bag, "Oz-may! The art of tea!" | 0 | 27 |
 | A (name TBD by the team) | 2 | The why, the problem | 46 | 18 |
 | B (name TBD by the team) | 3, plus the laptop for the whole pitch | How it works, live demo, the honest line | 75 | 42 |
 | C (name TBD by the team) | 4 to 6 | Customer, market walk, business | 116 | 50 |
@@ -18,7 +18,7 @@ Rehearsal voice: the lines can be read by Kokoro (video/tools/tts.py, the voice 
 
 **0:00 to 0:27 · Slide 1 · Company: the film · nobody speaks**
 Cue to next slide: the film ends on the logo. (A clicks)
-[The film plays full screen with its voice: the art of tea, 760 China, Japan, Britain, the 1908 bag, the people sharing tea, "Everyone can be a tea person.", the logo. If the screen shows "Press Space to play the film", press Space once. Team stands still and watches the film with the room.]
+[The film plays full screen with its voice: the 1908 hook, China, Japan, the tea bag, OSME opening and sealing, ending "Oz-may! The art of tea!" on the logo. If the screen shows "Press Space to play the film", press Space once. Team stands still and watches the film with the room.]
 
 **0:27 to 0:45 · Slide 2 · Problem · Speaker A**
 Cue to next slide: "comes from a bag." (A clicks)
@@ -40,7 +40,7 @@ The principle exists: lab membranes already open and close with temperature. Our
 
 **1:27 to 1:42 · Slide 4 · Customer · Speaker C**
 Cue to next slide: "after one steep." (C clicks)
-[Title "Everyone can be a tea person." is the film's last line: a callback, not spoken. The amber wisp draws from each quote into the bag.]
+[Title "Everyone can be a tea person." stays on screen, not spoken. The amber wisp draws from each quote into the bag.]
 We start with the curious specialty drinker, twenty-five to forty-five, who already pays for good leaves.
 One wrote: "I spend way too much on tea to just throw them away after one steep."
 

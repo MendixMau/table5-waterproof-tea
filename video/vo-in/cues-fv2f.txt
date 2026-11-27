@@ -1,0 +1,11 @@
+# Voice cues, presentation-lead brief 12:4x (tools/fv2f.sh, 26.6 s). Kokoro af_heart speed 0.9, 1 s gaps, Britain dropped.
+vo-h1.wav  @ 0.30   Since nineteen-oh-eight, every tea gets the boil.   (over the title card)
+vo-c1.wav  @ 3.97   In China, tea masters judged the water by eye.
+vo-j1.wav  @ 7.66   In Japan, the kettle's pine wind says the water is ready.
+vo-t1.wav  @ 12.13  Then the tea bag traded art for ease.
+vo-o5.wav  @ 15.10  Oz-may waits. At its temperature, it opens.
+vo-o6.wav  @ 18.69  As the water cools, it closes, and keeps the scent.
+vo-endX.wav @ 23.10 Oz-may! The art of tea!   (lockup + "Every tea has its temperature." as text)
+  endA: af_heart speed 1.0, exclamation marks           -> renders/osme-film-fv2_v12a.mp4 (= master)
+  endB: af_bella speed 1.0 (livelier voice)             -> renders/osme-film-fv2_v12b.mp4
+  endC: endA + 1 semitone up, presence and compression  -> renders/osme-film-fv2_v12c.mp4

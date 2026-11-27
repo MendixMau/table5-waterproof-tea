@@ -294,10 +294,12 @@ footer.site .top{display:flex;justify-content:space-between;gap:40px;flex-wrap:w
 
 /* membrane explainer still */
 .membrane{margin:40px 0 0}
-.membrane a{position:relative;display:block;border:1px solid var(--line,#2A2A30);border-radius:22px;overflow:hidden}
+.membrane>a{position:relative;display:block;border:1px solid var(--line,#2A2A30);border-radius:22px;overflow:hidden}
 .membrane img{display:block;width:100%;height:auto}
 .membrane .play{position:absolute;right:18px;top:18px;background:#F2A33A;color:#0B0B0D;font-weight:600;padding:10px 18px;border-radius:999px;font-size:15px}
 .membrane figcaption{margin-top:12px}
 @media (max-width:600px){.membrane .play{top:8px;right:8px;padding:6px 11px;font-size:12px}}
 .ho-img:not(:has(img)){aspect-ratio:auto;height:72px;background:linear-gradient(90deg,rgba(242,163,58,.08),rgba(61,186,155,.06))}
 @media (max-width:600px){.membrane .play{display:none}.membrane figcaption .btn{display:inline-flex;margin-top:12px}.hv-caption{bottom:-30px}.hero .hero-visual{margin-bottom:40px}}
+.see3d{color:var(--brand-amber,#F2A33A);text-decoration:underline;text-underline-offset:3px;margin-left:6px;white-space:nowrap}
+@media (max-width:600px){.see3d{display:block;margin:12px 0 0;white-space:normal}}

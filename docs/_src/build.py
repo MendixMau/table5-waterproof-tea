@@ -345,7 +345,7 @@ def home(vbs):
   <figure class="exploded"><div class="ex-scroll"><img src="../shared/product/exploded-view-animated.svg" alt="What is inside an OSME bag: tag and string, seal, outer filter, the temperature membrane and the leaf. The Sencha membrane is sealed above 80 °C, open from 80 to 70 °C, sealed below 70 °C." width="1600" height="1000"></div>
   <figcaption class="muted small">What is inside: five layers, one of them reads the water. <span class="swipe">Swipe to see all of it.</span></figcaption></figure>
   <figure class="membrane"><a href="membrane.html" aria-label="Play how the membrane works"><img src="../shared/product/membrane-how.png" alt="How the membrane works, Sencha: a hot gate shuts the pores above 80 °C, a cool gate shuts them below 70 °C. Tea passes only from 80 to 70 °C."><span class="play">Play the explainer</span></a>
-  <figcaption class="muted small">Two thin gates in series: one shuts when hot, one shuts when cool. Tea passes only while both are open. <a class="btn sm phone-only" href="membrane.html">Play the explainer</a></figcaption></figure>
+  <figcaption class="muted small">Two thin gates in series: one shuts when hot, one shuts when cool. Tea passes only while both are open. <a class="btn sm phone-only" href="membrane.html">Play the explainer</a> <a class="see3d" href="capsule-3d.html">See it in 3D: v2, the OSME Capsule, in 3D</a></figcaption></figure>
   <div class="phone-only">{honest()}</div>
 </div></section>
 
@@ -385,7 +385,7 @@ def home(vbs):
   <div><span class="badge">Coming next</span><div class="eyebrow" style="margin-top:14px">Roadmap</div>
   <h2>v2: the OSME Capsule.</h2>
   <p class="lead">Reusable, same temperature seal, loose leaf. Roadmap only; no price; not in the live demo.</p></div>
-  <div class="cap-cta"><p class="muted">Keepers hear about it first.</p><a class="btn primary" href="#join">Join the waitlist</a></div>
+  <div class="cap-cta"><p class="muted">Keepers hear about it first.</p><a class="btn primary" href="#join">Join the waitlist</a><a class="btn" href="capsule-3d.html">v2: the OSME Capsule, in 3D</a></div>
 </div></div></section>
 
 <section class="movement"><div class="wrap">{waitlist_block()}</div></section>
