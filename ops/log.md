@@ -107,3 +107,13 @@
 10:39 | product-judge-3 | DONE | /tmp/t5-product/judge3-1039.md: runs flawlessly (open 8.0s, seal 25.0s, no errors, keys robust); C4 Cr4 D5 Hero4 Proj4; fix orange flame wisp, cup 1.3x, gauge/1908 temp mismatch
 10:41 | video-lead | PROGRESS | loop final v03: video/osme-loop.mp4 (9 s, 1.9 MB, seamless at crf 10) + video/osme-loop-poster.jpg; judge film v02: hook 3 clarity 4 story 3 craft 3 brand 4 -> v03
 10:41 | business-lead | PREVIEW | gallery/business-v02.png | judge pending | validator pending | ladder sourced (9 opened prices), year-3 zoom bar, subscriber benchmarks
+10:42 | product-lead | PREVIEW | gallery/product-v05.png | judge round 3 (Clarity 4, Credibility 4, Demo 5, hero 4, readability 4) fixes: no orange flame in the wisp, one temperature on screen, fresher Sencha, bigger type
+10:42 | product-lead | DONE | product/index.html passes validator x2 and judge x3 (all >=4); README updated; previews gallery/product-v01..v05.png
+10:42 | business-lead | PREVIEW | gallery/business-v03.png | judge 3.0/5 (r1) | validator pending | grey cost stack, membrane working, LTV:CAC row, TAM/SAM to scale
+10:42 | product-lead | PREVIEW | gallery/product-v05.png | judge 4/5 | validator PASS (0) | logo v4.1, scent wisp from bag, presenter mode, clicker-proof keys
+10:44 | business-lead | PROGRESS | truth/business-case.md v2 + deck/business.html (4 slides, self-contained) ready; validator v2 and judge r2 running
+10:44 | business-validator-v2 | START fresh validation of business v2
+10:45 | business-validator-v2 | DONE judge/business-validation.md v2: 36 PASS, 6 FIX, 2 ASK; math all within 1%, 17 sources re-opened; FIX: slide-4 clipped $1.5 m + orphan m, slide-2 assumption label, Eightx citation, CAC churn replacement, SOM $8.3 m vs $8.5 m
+10:46 | business-lead | PREVIEW | gallery/business-v04.png | judge 3.75/5 (r2: 4,4,3,4) | validator pending | one-cup worst case, price slide one message, gift channel + funding line
+10:46 | site-lead | PREVIEW | gallery/site-v03.png | multi-page shop: Home, Shop (6 teas), 6 tea pages, Ritual, Our story, Keepers; cart drawer ending in 'Pre-order: join the waitlist'; pluggable WAITLIST (local save until service picked); Jost; all 12 pages embed --check OK, 0 console errors, no overflow at 390
+10:46 | business-lead | PREVIEW | gallery/business-v05.png | judge 3.75/5 (r2) | validator PASS 36 FIX 6 ASK 2, fixes applied | nbsp labels, assumption tags, funding check with churn

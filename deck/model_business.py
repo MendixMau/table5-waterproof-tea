@@ -32,7 +32,7 @@ COST = {
     "Thermo membrane bag":    (0.45, 0.10, "A"),
     "Tag and string":         (0.03, 0.01, "A"),
     "Packing (hand / co-pack)": (0.30, 0.05, "A"),
-    "Tin or box, per bag":    (0.25, 0.10, "A"),
+    "Tin or box, per bag":    (0.25, 0.11, "A"),  # S: tin $1.70 (<288) / $1.31 (5-10 k) per tin of 12
 }
 ONE_OFF = {  # USD, inside the $2.5 m ask
     "Membrane R&D and IP (18 months)": 875_000,

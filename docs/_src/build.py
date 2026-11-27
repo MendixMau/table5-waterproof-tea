@@ -135,7 +135,7 @@ def nav(active, vbs):
 <a class="btn primary sm" href="keepers.html#join">Join the waitlist</a>
 <button class="menu-btn" type="button" aria-label="Menu" data-menu><span></span><span></span></button></div>
 </div>
-<div class="mobile-menu" data-mobile-menu><ul>{links}</ul></div></nav>'''
+<div class="mobile-menu" data-mobile-menu><ul>{links}<li class="cta"><a class="btn primary" href="keepers.html#join">Join the waitlist</a></li></ul></div></nav>'''
 
 def cart_drawer():
     return '''<div class="drawer-bg" data-close-cart></div>

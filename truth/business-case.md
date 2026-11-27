@@ -1,85 +1,113 @@
-# OSME business case (business agent)
-Status: DONE (draft for business-validator). USD throughout. Every number is SOURCED (URL opened) or labelled ASSUMPTION.
-Market inputs reused from truth/customers-market.md (truth-customers).
+# OSME business case v2 (business-lead, 27 Nov 2026, 10:45)
+Status: v2 for the business validator. USD throughout (£1 = $1.27, €1 = $1.08: ASSUMPTION rates). Every number is SOURCED (URL opened 27 Nov 2026 unless dated) or labelled ASSUMPTION. Model: deck/model_business.py (run it to recompute everything below). Slides: deck/business.html.
 
-## 1. Market: TAM / SAM / SOM
+## What changed since v1
+- **Price is $1.50 a bag everywhere** (facts.md, team 10:23). v1 used $2.00 singles, so its blended $1.38 a bag and $9.0 m year 3 are stale. **Year 3 is now $8.5 m** (1.3% of the $640 m SAM).
+- **New: per-cup price ladder** with 9 opened prices (§2). OSME at $0.50 a cup is half a Sips By cup and under half a Tea Forte pyramid.
+- **New: cost stack per bag, year 1 vs year 3** (§3): $1.27 pilot, $0.42 at scale (v1: $0.36 to $0.85 range, midpoint $0.605). Membrane material is sourced at under 1 cent a bag; the rest of the membrane line is an ASSUMPTION for coating and yield.
+- **Gross margin a bag at scale: $1.08 (72%) direct, $0.33 (44%) retail** (v1 said 62%, validator 59.7%).
+- **New: Ritual contribution after post and card fees: $9.78 a month; CAC payback 7.7 months; LTV:CAC 1.9x** at $1.50 (v1 said 2.8x on gross margin only, before fulfilment).
+- **New: price sensitivity** $1.50 / $2.00 / $2.50 (§6). **Recommendation: $2.00 a bag** ($0.67 a cup); the team decides.
+- **New: public subscriber counts** as a plausibility check (§5).
+
+## 1. Market: TAM / SAM (unchanged from v1)
 | Layer | Working | Value |
 |---|---|---|
-| Global tea | Fortune Business Insights, 2025 (via customers-market.md) | $18.77 bn |
-| TAM: bagged tea worldwide | $18.77 bn x 38% bag share of packaging (same source) | **$7.1 bn** |
-| SAM: premium and specialty bagged tea, Japan + China + UK + US | $7.1 bn x 45% (ASSUMPTION: four first markets' share of bagged-tea value) x 20% (ASSUMPTION: premium/specialty share) | **$640 m** |
-| SOM: year-3 share | $640 m x 1.4% (ASSUMPTION, realistic for a year-3 D2C brand) | **$9 m** = year-3 revenue below |
+| Global tea | Fortune Business Insights 2025, via truth/customers-market.md | $18.77 bn |
+| TAM: bagged tea | $18.77 bn x 38% bag share (same source) | **$7.1 bn** |
+| SAM: premium bagged tea, Japan + China + UK + US | $7.1 bn x 45% (ASSUMPTION: four markets) x 20% (ASSUMPTION: premium share) | **$640 m** |
 
-Context lines for the jury (sourced via customers-market.md): UK drinks ~100 m cups a day, 97.5% from a bag (UKTIA); tea market grows 6.1% a year to $32 bn by 2034.
-Caveat: APAC is 45% of global tea revenue (Fortune), but that is region, not our four countries. The 45% is an ASSUMPTION, not that figure.
-
-## 2. B2C price
-| Offer | Price | Per bag | Per cup (3 infusions, ASSUMPTION) |
+## 2. Price per cup: today's tea vs OSME
+| Tea | Pack price | Per cup | Source |
 |---|---|---|---|
-| Single bag (gift, tasting) | $1.50 | $1.50 | $0.50 |
-| 12-bag tin (one tea, one origin) | $18 | $1.50 | **$0.50** |
-| "Ritual" subscription: 16 bags/month, 3-4 origins, free shipping, skip or pause any month | $24/month | $1.50 | $0.50 |
+| Supermarket bag, PG Tips | £6.25 / 240 bags (Morrisons) | **$0.03** | SOURCED https://www.trolley.co.uk/product/pg-tips-240-black-tea-plant-based-biodegradable-tea-bags/ZLW941 |
+| Supermarket bag, Lipton | $4.99 / 100 (Target) | $0.05 (notes only) | SOURCED https://www.target.com/p/-/A-13010225 |
+| Premium bag, Twinings English Breakfast | $16.99 / 100 | **$0.17** | SOURCED https://www.twiningsusa.com/products.json |
+| Premium bag, Pukka | £5.00 / 20 (Tesco) | **$0.32** | SOURCED https://www.trolley.co.uk/product/pukka-peppermint-licorice-tea-bags/MFK612 |
+| Capsule, Nestlé Special.T | €0.35 a pod + €129 machine (2010 launch) | **$0.38** + machine | SOURCED https://newatlas.com/nestle-specialt-tea-machine/16883/ (dated; current stand-in: Lipton Nespresso pod €3.60/10 = $0.39, https://www.maxicoffee.com/en-eu/nespresso-original-compatible-capsules-green-marrakech-mint-lipton-p-215363.html) |
+| **OSME** | **$1.50 a bag, up to 3 infusions** | **$0.50** | facts.md; 3 infusions = ASSUMPTION (lab target) |
+| Loose leaf, Hibiki-an Gyokuro Premium | $37 / 100 g | **$0.62** ($1.85 a 5 g serving, 3 infusions: ASSUMPTION) | SOURCED https://www.hibiki-an.com/product_info.php/products_id/28 |
+| Loose leaf, Adagio English Breakfast | $12 / 2 oz (~25 cups) | $0.48 (notes only) | SOURCED https://www.adagio.com/black/english_breakfast.html |
+| Subscription, Sips By | $15 a month, ~15 cups | **$1.00** | SOURCED https://reviewed.com/cooking/features/sips-by-review-a-subscription-box-for-the-tea-lover |
+| Pyramid, Tea Forte | $26 / 20 infusers | **$1.30** (one cup) | SOURCED https://teaforte.com/products.json?limit=250 |
+| Cafe cup, Starbucks UK English Breakfast Grande | £2.85 | **$3.62** | SOURCED https://fastfoodsmenu.com/starbucks-menu-prices-uk/ (6 Nov 2026). Pret £3.45 on Deliveroo NOT OPENED, not used. |
 
-Anchors (all from customers-market.md, URLs opened there):
-- Sips By tea subscription: $13.75-16/month, about $1 per cup.
-- Nestle Special.T capsules: EUR 0.35 per pod plus a EUR 129 machine.
-- Search-reported, page NOT opened (403): Harney & Sons tin of 20 sachets $14 (=$0.70/cup, one cup each); Tea Forte pyramid infusers about $1.75-2.10 each. Validator: confirm or drop.
+Per-cup basis: OSME counts 3 infusions a bag (lab target); Tea Forte, Sips By and bags count one cup each as sold. Worst case, OSME brews one cup: $1.50, shown as a dashed bar on slide 1.
+Read: at $1.50 a bag, the first cup costs as much as a Tea Forte pyramid; by the third cup it is $0.50, the price of good loose leaf, with no machine, timer or thermometer.
 
-Why premium holds: one OSME bag gives about three cups (ASSUMPTION, to be proven in the lab), so $1.50 a bag is $0.50 a cup. That is below a Sips By cup and in the range of premium sachets, while the shelf price signals craft. No machine to buy (unlike Special.T). The tin is the art object; the cup price is the rational close.
+## 3. Manufacturing cost per bag
+| Line | Year 1 pilot | Year 3 scale | Label and working |
+|---|---|---|---|
+| Tea, 3 g single origin | $0.24 | $0.15 | ASSUMPTION: $80/kg pilot lots, $50/kg at scale. Check: a sencha wholesale listing shows ~$39/kg (Faire, NOT OPENED, 403) |
+| Thermo membrane bag | $0.45 | $0.10 | Material SOURCED under 1 cent: food-grade hydroxypropyl cellulose $2.70 to $91 a kg (https://dir.tridge.com/prices/hydroxypropyl-cellulose) x 2 g/m² (ASSUMPTION) x 84 cm² bag (2 faces 6 x 7 cm, ASSUMPTION) = 0.017 g, under $0.002; filter paper 18 gsm INR 580 to 597 a kg (~$7, ASSUMPTION $1 = INR 85) = ~$0.12 a m², ~$0.001 a bag (listing, SOURCED https://m.indiamart.com/impcat/tea-bag-paper.html). Coating, curing and lost yield: ASSUMPTION ($0.45 hand-coated pilot, $0.10 at scale). Lab PNIPAM would cost ~$1+ a bag (Sigma list price, NOT OPENED), which is why the route is food-grade cellulose. |
+| Tag and string | $0.03 | $0.01 | ASSUMPTION (empty bags with tag ~$0.005 on IndiaMART, NOT OPENED) |
+| Packing (hand / co-pack) | $0.30 | $0.05 | ASSUMPTION; co-packers publish MOQs (3,000 to 10,000 bags a blend), not prices (https://m.indiamart.com/impcat/tea-packaging-services.html) |
+| Tin or box, per bag | $0.25 | $0.11 | SOURCED tin $1.70 each under 288, $1.31 at 5,000 to 10,000 (https://www.specialtybottle.com/metal-tin-containers/tea/tsq4); $1.31 / 12 = $0.11. Year 1 adds sleeve and gift card (ASSUMPTION) |
+| **Total** | **$1.27** | **$0.42** | 0.24+0.45+0.03+0.30+0.25 = 1.27; 0.15+0.10+0.01+0.05+0.11 = 0.42 |
 
-## 3. Production and unit economics
-### The membrane (be honest: this is the R&D)
-- Science that exists: thermo-responsive polymers change state reversibly at a set temperature. PNIPAM switches from hydrated (swollen) to dehydrated (collapsed) at about 32 C, and the switch point shifts 5-10 C or more with molar mass, concentration and end groups (Wikipedia, Poly(N-isopropylacrylamide), opened): https://en.wikipedia.org/wiki/Poly(N-isopropylacrylamide)
-- Grafted onto a porous film, collapsed chains open the pores above the switch temperature and swollen chains close them below it ("thermo-gated membranes"; search-reported in several papers, PMC/RSC pages blocked our fetch, validator to confirm).
-- What is R&D, not fact: (1) moving the switch to 70-90 C per tea, (2) a food-contact-approved polymer (PNIPAM is not a food material; route = food-grade cellulose or wax based alternatives), (3) many open/close cycles without leaching. Budget: 12-18 months lab work, ASSUMPTION.
-- Certification: food-contact approval in the EU, US and Japan before launch (ASSUMPTION: 6-9 months, $150-300k).
+Fulfilment per Ritual box (not in COGS, in §4): $6.50 = pick and pack ~$0.25 a pick (ShipBob, https://revenuegeeks.com/shipbob-pricing/) + mailer + postage (ASSUMPTION ~$6). Card fee 2.9% + $0.30 (Stripe US, via https://www.merchantmaverick.com/reviews/stripe-review/ and https://checkoutpage.com/blog/stripe-processing-fees; stripe.com served Thai prices).
 
-### COGS per bag (ASSUMPTION ranges, year-3 scale)
-| Item | Low | High |
+One-off costs (inside the $2.5 m ask):
+| Item | USD | Label |
 |---|---|---|
-| Tea, 3 g premium single origin | $0.06 | $0.15 |
-| Thermo-membrane bag | $0.15 | $0.40 |
-| Co-packing (contract packer) | $0.05 | $0.10 |
-| Tin and packaging, per bag | $0.10 | $0.20 |
-| **Total** | **$0.36** | **$0.85** |
-Midpoint $0.57 vs $1.50 price = **62% gross margin** D2C. Retail at 50% of shelf ($0.75/bag) = 24%, so retail is for reach, D2C for margin. Year 1 hand-made pilot bags: ASSUMPTION $1.20 COGS.
+| Membrane R&D and IP, 18 months | $875 k | ASSUMPTION (35% of the ask, v1 use of funds) |
+| Food-contact certification EU, US, Japan | $375 k | ASSUMPTION (15% of the ask). Lab tests are cheap: EU overall migration test €165 to €430 a sample + €97 an order (https://measurlabs.com/products/overall-migration-simulant-c); the budget is for toxicology, dossiers and repeat cycles |
+| Pilot coating line and tooling | $200 k | ASSUMPTION (inside "first inventory", v1 use of funds) |
 
-### D2C metrics (benchmarks opened)
-- CAC: food and beverage DTC $53-100, headline $75 (Eightx, 2026) https://eightx.co/blog/average-cac-ecommerce-vertical . Plan: $75.
-- Retention: coffee subscriptions lose 5-10% a month, healthy 4-7%; pause/skip lifts retention ~22% (Eightx, 2026) https://eightx.co/blog/coffee-subscription-churn-rate-benchmark . Plan: 7%/month.
-- AOV: food and beverage one-time $60-100, subscription $70-120 (Eightx, 2026) https://eightx.co/blog/average-ecommerce-aov-subscription-vs-onetime-2026 . Plan: one-time AOV $40 (two tins plus a single), ASSUMPTION, below benchmark because we are one product.
-- LTV (Eightx formula ARPU / churn): $24 / 7% = $343 revenue, x 62% = **$213 gross-margin LTV**. LTV:CAC = 2.8x (Eightx: 3x ideal, scaling brands 1.5-2.5x).
+## 4. Margin per bag and the Ritual subscriber (at $1.50)
+| | Working | Result |
+|---|---|---|
+| Gross margin a bag, direct, year 3 | $1.50 − $0.42 | **$1.08 (72%)** |
+| Gross margin a bag, retail, year 3 | retailer pays 50% of shelf (ASSUMPTION; keystone pricing, Faire snippet NOT OPENED): $0.75 − $0.42 | **$0.33 (44%)** |
+| Gross margin a bag, year 1 pilot | $1.50 − $1.27 | $0.23 (15%) |
+| Ritual box a month | 16 bags x $1.50 | $24.00 |
+| − bags | 16 x $0.42 | − $6.72 |
+| − fulfilment | ASSUMPTION | − $6.50 |
+| − card fee | 2.9% x $24 + $0.30 | − $1.00 |
+| **Contribution a subscriber a month** | | **$9.78 (41%)** |
+| CAC | Eightx food and beverage DTC $53 to $100, headline $75 (https://eightx.co/blog/average-cac-ecommerce-vertical) | $75 |
+| CAC payback | $75 / $9.78 | **7.7 months** |
+| Lifetime contribution | $9.78 / 7% monthly churn (Eightx: healthy 4 to 7%, https://eightx.co/blog/coffee-subscription-churn-rate-benchmark) | $140 |
+| LTV : CAC | $140 / $75 | **1.9x** (Eightx CAC page: "the ideal LTV to CAC ratio is 3 to 1", "most scaling brands sit at 1.5 to 2.5x", https://eightx.co/blog/average-cac-ecommerce-vertical) |
 
-## 4. 3-year plan (year 1 = 2027)
-| | Year 1: lab | Year 2: launch | Year 3: grow |
+## 5. From $640 m to year 3 (at $1.50)
+Bottom-up (all volumes ASSUMPTION):
+| Stream | Working | Revenue |
+|---|---|---|
+| Ritual subscription | 13,000 average subscribers (6 k start, 20 k end of year 3) x $24 x 12 | $3.74 m |
+| Tins and gifts, D2C | 180,000 tins x $18 (12 bags) | $3.24 m |
+| Premium retail | 2,000,000 bags x $0.75 (50% of $1.50 shelf) | $1.50 m |
+| **Year 3** | 6.66 m bags | **$8.48 m ≈ $8.5 m** |
+Top-down check: $8.48 m / $640 m SAM = **1.3%** (v1: 1.4%).
+Funding check (ASSUMPTION): Ritual grows from 4 k subscribers (end of year 2) to 20 k (end of year 3). Gross adds in year 3 = 16 k net + churn 7% x 13 k average x 12 = ~10.9 k, so ~26.9 k adds x $75 = **~$2.0 m CAC in year 3**. Year-3 contribution before marketing covers it: Ritual 13 k x 12 x $9.78 = $1.53 m + tins 180 k x ($18 − 12 x $0.42) = $2.33 m (before post) + retail 2 m x $0.33 = $0.66 m = ~$4.5 m. The $2.5 m ask funds R&D, certification, pilot line and launch, not year-3 acquisition; the Series A trigger (20 k subscribers) covers the rest.
+
+Plausibility, public subscription counts:
+| Company | Count | Source |
+|---|---|---|
+| Sips By (tea) | 350,000 "members", 2020 (not stated as paying) | SOURCED https://www.worldteanews.com/Insights/tea-subscription-service-boosts-specialty-tea-growth |
+| Trade Coffee (US) | ~75,000 subscribers, 2020 | SOURCED https://www.geekwire.com/2020/madrona-leads-9m-investment-coffee-startup-trade-connects-home-brewers-roasters/ |
+| Pact Coffee (UK) | ~60,000, 2021 | SOURCED https://techround.co.uk/startups/pact-coffee-changing-morning-fix/ |
+| **OSME, end of year 3** | **20,000** | ASSUMPTION: a third of Trade or Pact after 4-5 years |
+Churn reality check: tea subscriptions range from 5-month lives (Simple Loose Leaf) to 30 months (Plum Deluxe) (https://freshcup.com/coffee-subscriptions/); our 7% a month = ~14 months.
+
+## 6. Price sensitivity: $1.50 vs $2.00 vs $2.50 a bag (year-3 cost $0.42)
+| | $1.50 (today) | **$2.00 (recommended)** | $2.50 |
 |---|---|---|---|
-| Bags sold | 60 k (pilot, pre-orders) | 1.2 m | 6.5 m |
-| Avg net price / bag | $1.60 | $1.42 | $1.38 (30% retail) |
-| Revenue | $0.1 m | $1.7 m | **$9.0 m** |
-| Gross margin | 20% | 50% | 62% D2C, ~51% blended (0.7x62% + 0.3x24%) |
-| Ritual subscribers (end) | 1 k waitlist | 4 k | 20 k |
-Milestones: Q2 Y1 lab prototype opens/closes at 80 C; Q4 Y1 first tea-origin partnerships (Uji sencha Japan, Fujian China, Assam/Darjeeling for the British blend); Q2 Y2 food-contact certification; Q3 Y2 D2C launch UK + US (pre-order list from the film and #ThreeBubbles community); Q1 Y3 Japan via partner, China via cross-border e-commerce, first premium retail shelf. Check: 6.5 m x $1.38 = $9.0 m; 1.2 m x $1.42 = $1.7 m.
+| Per cup (3 infusions) | $0.50 | **$0.67** | $0.83 |
+| Gross margin a bag, direct | $1.08 · 72% | **$1.58 · 79%** | $2.08 · 83% |
+| Gross margin a bag, retail | $0.33 · 44% | **$0.58 · 58%** | $0.83 · 66% |
+| Ritual box (16 bags) | $24 | **$32** | $40 |
+| Contribution a month | $9.78 | **$17.55** | $25.32 |
+| CAC payback | 7.7 months | **4.3 months** | 3.0 months |
+| LTV : CAC | 1.9x | **3.3x** | 4.8x |
+| Year 3 at the same volumes (ASSUMPTION) | $8.5 m | $11.3 m | $14.1 m |
+Ladder check: $0.67 a cup is still below Sips By ($1.00) and half of Tea Forte ($1.30); $0.83 a cup nears Sips By and the Ritual box hits $40 a month, above Sips By's $15.
+**Recommendation: $2.00 a bag** (tin $24, Ritual $32 a month). It clears the 3x LTV:CAC investors expect, halves payback, and keeps the cup under every premium rival on the ladder. At $2.00 the same $8.5 m year 3 needs 25% fewer bags. The team decides; until then every slide says $1.50.
 
-## 5. The raise (YC style)
-- One-liner: OSME is the tea bag that knows its tea's temperature: it opens to brew, closes as the water cools, and brews again.
-- Problem: the tea bag (~1908) traded the art for convenience: over-steeped, bitter, one cup, and the scent is gone (complaints in customers-market.md).
-- Why now: thermo-responsive materials are lab-proven; premium D2C subscriptions are a known playbook; tea grows 6% a year.
-- Insight: the art of tea is temperature and time. Put both in the bag and everyone can be a tea person.
-- Traction plan: waitlist + pre-orders in Y1, 4 k subscribers by end Y2, 20 k by end Y3.
-- **The ask: $2.5 m seed on a post-money SAFE at a $12.5 m post-money cap ($10 m pre-money), 20% dilution, 24 months runway.**
-- Use of funds: membrane R&D and IP 35%; food-safety certification 15%; brand, film and launch 30%; origin partnerships and first inventory 15%; ops 5%.
-- Valuation reasoning: Carta median seed pre-money was $16 m in Q3 2025 (opened) https://carta.com/data/state-of-private-markets-q3-2025-full-report , skewed to software and AI. A pre-revenue consumer brand with material R&D risk prices below the median: $10 m pre. YC's standard deal values the first $125k at 7% (=$1.79 m post-money) plus $375k on an uncapped MFN SAFE (opened) https://www.ycombinator.com/deal ; we would sit between that entry point and the Carta median.
-- Series A trigger: 20 k subscribers or $5 m revenue run-rate.
+## 7. The raise (unchanged from v1, see v1 working in git history)
+$2.5 m on a SAFE at a $10 m pre-money valuation ($12.5 m post-money cap, 20% dilution, 24 months runway). Use of funds: membrane R&D and IP 35%, certification 15%, brand and launch 30%, origin partnerships and first inventory 15%, ops 5%. Series A trigger: 20 k subscribers or $5 m revenue run-rate.
 
-## 6. The 4 numbers the pitch says out loud
-1. **$7 billion**: what the world spends on tea bags every year.
-2. **3 cups, 1 bag**: one OSME bag brews about three times.
-3. **50 cents a cup**: premium tea at half the price of a subscription cup (Sips By ~$1); 62% D2C gross margin.
-4. **$2.5 million** at a $10 million pre-money valuation, to take the bag from lab to launch.
-
-## Questions for the team
-1. Is "about 3 infusions per bag" the locked product claim? Price per cup and margin depend on it (product agent).
-2. Keep the $10 m pre-money, or show the jury the cleaner "YC entry + $2.5 m" framing only?
-3. Do we name retail (30% of Y3) on the business slide, or keep the slide pure D2C + Ritual?
-4. Price comparables Harney and Tea Forte could not be opened (403); use only Sips By and Special.T on the slide unless validator confirms.
-5. Is the SAM split (45% four markets, 20% premium) acceptable as stated assumptions, or does truth-customers have a specialty-tea figure to replace it?
+## Questions for the team (also in ops/questions.md)
+1. Price: stay at $1.50 or move to $2.00 a bag (§6)? Everything shows $1.50 until the team decides.
+2. facts.md Market: year-3 SOM $9 m (gate1.html shows $8.3 m, validator v1 mix) → **$8.5 m** at $1.50 from the v2 bottom-up. The lead locks one figure.
+3. Is 3 infusions a bag the locked claim? The per-cup ladder depends on it.
