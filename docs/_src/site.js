@@ -140,3 +140,17 @@ document.querySelectorAll("form[data-waitlist]").forEach(function (f) {
 });
 
 renderCart();
+
+/* v2 Capsule 3D frame (srcdoc, same origin): grow it to the page inside, so nothing is cut off on a phone */
+document.querySelectorAll(".cap3d iframe").forEach(function (f) {
+  var base = 0;
+  function fit() {
+    try {
+      f.style.height = ""; base = f.getBoundingClientRect().height;
+      var h = f.contentDocument.documentElement.scrollHeight;
+      if (h > base) f.style.height = (h + 2) + "px";
+    } catch (e) {}
+  }
+  f.addEventListener("load", function () { fit(); setTimeout(fit, 800); });
+  var t; addEventListener("resize", function () { clearTimeout(t); t = setTimeout(fit, 200); });
+});

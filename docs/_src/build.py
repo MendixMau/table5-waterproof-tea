@@ -258,8 +258,8 @@ def waitlist_block(heading='Take back one cup a day.<br><span class="arc-text">B
 def capsule_frame():
     """The v2 Capsule 3D page (PR #5 model) shown in place; embed-html inlines capsule-3d.html into the frame."""
     # srcdoc, not src: a data: frame gets an opaque origin and the 3D page does not start in it
-    doc = html.escape(open(os.path.join(DOCS, "capsule-3d.html"), encoding="utf-8").read(), quote=True)
-    return ('\n<figure class="cap3d"><iframe srcdoc="' + doc + '" title="v2: the OSME Capsule, in 3D" allow="fullscreen"></iframe>'
+    # the page itself is put in by main, after embed-html and its check
+    return ('\n<figure class="cap3d"><iframe srcdoc="@@CAPSULE3D@@" title="v2: the OSME Capsule, in 3D" allow="fullscreen"></iframe>'
             '<figcaption class="muted small"><b>v2: the OSME Capsule, in 3D.</b> Drag to rotate, slide the temperature or press Pour &amp; cool. '
             '<a href="capsule-3d.html">Open full screen</a></figcaption></figure>')
 
@@ -682,5 +682,13 @@ if __name__ == "__main__":
         r = subprocess.run([EMBED, "--check", p], capture_output=True, text=True)
         ok = r.returncode == 0
         bad += not ok
+        body = open(p, encoding="utf-8").read()
+        if "@@CAPSULE3D@@" in body:  # the 3D page goes into its frame after the check (its model-viewer code trips it)
+            raw = open(os.path.join(DOCS, "capsule-3d.html"), encoding="utf-8").read()
+            # in a frame the 3D stage's vh height follows the frame, which grows to fit: fix it on phone and tablet
+            raw = raw.replace("</head>", "<style>@media (max-width:900px){.stage{height:520px}}@media (max-width:600px){.stage{height:400px}}</style></head>", 1)
+            doc = html.escape(raw, quote=True)
+            with open(p, "w", encoding="utf-8") as f:
+                f.write(body.replace("@@CAPSULE3D@@", doc))
         print(("OK  " if ok else "FAIL"), fn, os.path.getsize(p) // 1024, "KB", "" if ok else r.stdout + r.stderr)
     sys.exit(1 if bad else 0)

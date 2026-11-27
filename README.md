@@ -4,7 +4,7 @@
 Everyone drives at least once.
 
 <!-- LIVE:START -->
-## Live status · 13:01 · 0 h 28 to hand-in
+## Live status · 13:06 · 0 h 23 to hand-in
 
 **Now:** "Freeze 13:15, hand in 13:30. Start at docs/handin.html on the live site: all five hand-ins on one page."
 
@@ -15,7 +15,7 @@ Everyone drives at least once.
 | 📈 | Business case | 🟢 done · judge 4.5/5 · 12:22 | <img src="gallery/business-v11.png" width="260"> |
 | 🍵 | Product demo | 🟡 working · judge 4/5 · 12:35 | <img src="gallery/product-membrane-v05.png" width="260"> |
 | 🎤 | Pitch deck | 🟢 done · judge 24/30 · 12:59 | <img src="gallery/deck-v12-s5.png" width="260"> |
-| 🌐 | Site | 🟡 working · 12:57 | <img src="gallery/site-v05-deck.png" width="260"> |
+| 🌐 | Site | 🟡 working · 13:04 | <img src="gallery/site-v05-deck.png" width="260"> |
 | 🎬 | Video | 🟢 done · 12:43 | <img src="gallery/pr1-review.png" width="260"> |
 
 **Waiting on the team:** Speakers A to D?

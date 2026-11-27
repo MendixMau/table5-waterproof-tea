@@ -312,7 +312,7 @@ footer.site .top{display:flex;justify-content:space-between;gap:40px;flex-wrap:w
 
 /* v2 Capsule 3D in place: How it works and keepers.html#join */
 .cap3d{margin:22px 0 30px}
-.cap3d iframe{display:block;width:100%;height:770px;border:1px solid var(--brand-line,#2A2A30);border-radius:22px;background:#0B0B0D}
+.cap3d iframe{display:block;width:100%;height:840px;border:1px solid var(--brand-line,#2A2A30);border-radius:22px;background:#0B0B0D}
 .cap3d figcaption{margin-top:10px}
 .cap3d figcaption a{color:#F2A33A;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
 .join + .cap3d{margin-top:36px}
