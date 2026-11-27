@@ -5,7 +5,7 @@ Locked at the 10:40 gate. Change here first; every slide, site and product reads
 | Field | Value |
 |---|---|
 | Angle | The Art of Tea: each bag is waterproof until the water reaches its tea's ideal temperature, opens to brew, and closes again as the water cools. Self-stopping steep, reusable for several infusions, aroma sealed in between cups. |
-| Name | _TBD_ (shortlist: Thea, Hora) |
+| Name | Osme (Greek osmē, "scent"). Clash check 09:52: no tea or beverage brand found; a Miami perfumery uses "Osme", and an "OSMÉ PARIS" perfume trademark application is dead. |
 | One-liner | _TBD_ |
 | Primary customer | We are a global tea brand and tea-tech disruptor: a movement, not a tea lounge or an app. Primary audience: people worldwide who love tea and its rituals. |
 | Second customer | _TBD_ |
