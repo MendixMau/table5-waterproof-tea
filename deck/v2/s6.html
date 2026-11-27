@@ -17,7 +17,7 @@
 #s6 .lrow.osme .lprice{font-size:56px;font-weight:600;background:linear-gradient(90deg,#F2A33A,#3DBA9B);-webkit-background-clip:text;background-clip:text;color:transparent}
 @keyframes s6-glow{from{box-shadow:0 0 18px 2px rgba(242,163,58,.45)}to{box-shadow:0 0 40px 8px rgba(61,186,155,.55)}}
 #s6 .lrow.clip .bar{border-radius:6px 0 0 6px;-webkit-mask:linear-gradient(90deg,#000 88%,transparent 88%,transparent 90.5%,#000 90.5%,#000 93%,transparent 93%,transparent 95.5%,#000 95.5%);mask:linear-gradient(90deg,#000 88%,transparent 88%,transparent 90.5%,#000 90.5%,#000 93%,transparent 93%,transparent 95.5%,#000 95.5%)}
-#s6 .lcap{font-size:26px;color:var(--muted);margin:18px 0 0 120px}
+#s6 .lcap{font-size:28px;color:rgba(243,238,230,.8);margin:22px 0 0 120px}#s6 .lcap b{color:var(--text);font-weight:500}
 #s6 .side{flex:0 0 640px;display:flex;flex-direction:column;align-items:center;position:relative}
 #s6 .packs{position:relative;width:640px;height:500px}
 #s6 .packs .tin{position:absolute;bottom:24px;filter:drop-shadow(0 24px 30px rgba(0,0,0,.6))}
@@ -35,7 +35,7 @@
 <div class="slide" id="s6" data-title="Business">
   <div class="head steep">
     <div class="label">Business · the price of a cup</div>
-    <div class="h1">One $__NUM:price__ bag brews up to __NUM:infusions__ cups: <em>$__NUM:cup__ a cup</em>, half a Sips By cup and under half a Tea Forte pyramid.</div>
+    <div class="h1">One $__NUM:price__ bag brews up to __NUM:infusions__ cups: <em>$__NUM:cup__ a cup</em>, about half a Tea Forte pyramid.</div>
   </div>
   <div class="body">
     <div class="ladder" id="s6-ladder" aria-label="Price per cup ladder"></div>
@@ -81,10 +81,11 @@
     <ul>
       <li>Price per cup, USD (truth/business-case.md §2, opened 27 Nov 2026): Supermarket bag PG Tips $0.03 (£6.25 / 240, Morrisons via trolley.co.uk) · Subscription Sips By $1.00 ($15 a month, ~15 cups, reviewed.com) · Pyramid Tea Forte $1.30 ($26 / 20 infusers, teaforte.com) · Cafe cup Starbucks UK Grande $3.62 (£2.85, fastfoodsmenu.com). Bars come from deck/model_business.py LADDER.</li>
       <li>Not on stage, same source: Premium bag Twinings $0.17 · Premium bag Pukka $0.32 · Capsule Special.T $0.38 + €129 machine · Loose leaf Hibiki-an gyokuro $0.62.</li>
-      <li>OSME $__NUM:cup__ a cup = $__NUM:price__ a bag (facts.md) / __NUM:infusions__ infusions (ASSUMPTION, lab target). Worst case one cup: $__NUM:price__, the price of a Tea Forte pyramid.</li>
+      <li>OSME $__NUM:cup__ a cup = $__NUM:price__ a bag (facts.md) / __NUM:infusions__ infusions (ASSUMPTION, lab target). Worst case one cup: $__NUM:price__, above a Tea Forte pyramid ($1.30).</li>
       <li>The cafe bar is cut (break marks): the scale is linear up to $1.40 so the rest stay readable.</li>
       <li>Margin __NUM:margin_pct__% = $__NUM:margin__ a bag = $__NUM:price__ minus $__NUM:cost3__ cost per bag at year-3 scale (truth/business-case.md §3 and §4; deck/model_business.py). Year 1 pilot cost $__NUM:cost1__ a bag.</li>
       <li>Sencha tin "opens at 80 °C": facts.md, tea windows (Sencha opens 80 °C, seals 70 °C).</li>
+      <li>Chart: USD per cup; OSME counts __NUM:infusions__ infusions a bag (lab target). Route to market (truth/business-case.md §5): tins of 12 at $__NUM:tin__ (12 x $__NUM:price__) and the Ritual box, 16 bags a month at $__NUM:ritual__ (16 x $__NUM:price__); price $__NUM:price__ a bag (team 12:15, truth/business-case.md §6 recommendation).</li>
       <li>Tins: Sencha, Tieguanyin and English Breakfast, tinted as on the shop (docs/_src/build.py). Tin of 12 $__NUM:tin__, Ritual $__NUM:ritual__ a month.</li>
     </ul>
   </aside>
@@ -116,7 +117,7 @@
       const go=()=>{row.classList.add('in');bar.style.width=w+'%';if(osme)row.classList.add('glow');};
       if(still)go();else timers.push(setTimeout(go,80+i*260));
     });
-    const cap=document.createElement('div');cap.className='lcap';cap.textContent='USD per cup. OSME counts __NUM:infusions__ infusions a bag (lab target).';box.appendChild(cap);
+    const cap=document.createElement('div');cap.className='lcap';cap.innerHTML='Sold two ways: <b>tins of 12, $__NUM:tin__</b>, and the monthly <b>Ritual box, $__NUM:ritual__</b>.';box.appendChild(cap);
   }
   window.ENTER[6]=build;
   window.LEAVE[6]=()=>{timers.forEach(clearTimeout);timers.length=0;};

@@ -11,12 +11,12 @@
 var WAITLIST = { kind: "", endpoint: "", emailField: "", cartField: "", countUrl: "" };
 
 var TEA_NAMES = { gyokuro: "Gyokuro", sencha: "Sencha", longjing: "Longjing", tieguanyin: "Tieguanyin", puerh: "Pu-erh", "english-breakfast": "English Breakfast", ritual: "The Ritual" };
-var PRICES = { tin: 18, bag: 1.5, ritual: 24 };
+var PRICES = { tin: §TIN_N§, bag: §BAG_N§, ritual: §RITUAL_N§ }; /* set in build.py */
 var KIND_LABEL = { tin: "Tin of 12 bags", bag: "Single bag", ritual: "Subscription · 16 bags from 3-4 origins a month" };
 var CART_KEY = "osme-cart-v1", WL_KEY = "osme-waitlist-v1";
 
 function store(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem(k) || "null"); localStorage.setItem(k, JSON.stringify(v)); } catch (e) { return null; } }
-function fmt(n) { return "$" + (n % 1 ? n.toFixed(2) : String(n)); }
+function fmt(n) { return "$" + (n % 1 || n < 10 ? n.toFixed(2) : String(n)); }
 function cart() { return store(CART_KEY) || []; }
 function saveCart(c) { store(CART_KEY, c); renderCart(); }
 
@@ -48,7 +48,7 @@ function renderCart() {
   var t = document.querySelector("[data-cart-total]");
   if (t) t.textContent = (total ? fmt(total) : (monthly ? "" : "$0")) + (total && monthly ? " + " : "") + (monthly ? fmt(monthly) + "/month" : "");
   var pc = document.querySelector("[data-cart-percup]");
-  if (pc) pc.textContent = bags ? (bags + " bags · up to " + bags * 3 + " cups · about $0.50 a cup") : "";
+  if (pc) pc.textContent = bags ? (bags + " bags · up to " + bags * 3 + " cups · about §CUP§ a cup") : "";
   var pre = document.querySelector("[data-preorder]");
   if (pre) pre.style.display = c.length ? "" : "none";
 }

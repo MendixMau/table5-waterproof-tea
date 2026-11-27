@@ -12,36 +12,36 @@
 #s2.play .s2-m{animation:s2-steep 1s var(--ease) var(--t) both}
 @keyframes s2-steep{0%{opacity:0;filter:blur(12px) sepia(1) saturate(2.2);transform:translateY(26px)}
   60%{opacity:1;filter:blur(2px) sepia(.3)}100%{opacity:1;filter:none;transform:none}}
-#s2 .s2-row{transform-box:view-box;transform-origin:960px 250px}
-#s2.play .s2-row{animation:s2-recede 1s var(--ease) 4.5s both}
+#s2 .s2-row{display:none}
+#s2.play .s2-row{animation:s2-recede 1s var(--ease) 0.9s both}
 @keyframes s2-recede{to{transform:translateY(-30px) scale(.62);opacity:0;filter:blur(6px)}}
 /* beat 2 and 3: the two cups */
-#s2.play .s2-b{animation:s2-in .8s var(--ease) var(--t,4.8s) both}
+#s2.play .s2-b{animation:s2-in .8s var(--ease) var(--t,1.2s) both}
 @keyframes s2-in{0%{opacity:0;transform:translateY(34px);filter:blur(10px)}100%{opacity:1;transform:none;filter:none}}
 #s2 .s2-drop{transform-box:view-box}
-#s2.play .s2-drop{animation:s2-drop .6s cubic-bezier(.5,0,.9,.5) 5.2s both}
+#s2.play .s2-drop{animation:s2-drop .6s cubic-bezier(.5,0,.9,.5) 1.6s both}
 @keyframes s2-drop{0%{transform:translateY(-230px);opacity:0}25%{opacity:1}82%{transform:translateY(6px)}100%{transform:none;opacity:1}}
-#s2.play .s2-liq1{animation:s2-darken 3.8s linear 5.5s both}
+#s2.play .s2-liq1{animation:s2-darken 3.8s linear 1.9s both}
 @keyframes s2-darken{0%{fill:#8FB3BF;fill-opacity:.12}18%{fill:#D9B44A;fill-opacity:.6}55%{fill:#9A5A1E;fill-opacity:.8}100%{fill:#3E1D0B;fill-opacity:.94}}
-#s2.play .s2-stain{animation:s2-stain 3.6s linear 5.6s both}
+#s2.play .s2-stain{animation:s2-stain 3.6s linear 2s both}
 @keyframes s2-stain{from{opacity:0}to{opacity:.75}}
-#s2.play .s2-ripple{animation:s2-ripple 1s ease-out 5.75s both}
+#s2.play .s2-ripple{animation:s2-ripple 1s ease-out 2.15s both}
 @keyframes s2-ripple{0%{opacity:.8;transform:scale(.2)}100%{opacity:0;transform:scale(1.15)}}
 #s2 .s2-ripple,#s2 .s2-collapse,#s2 .s2-float{transform-box:fill-box;transform-origin:50% 100%}
-#s2.play .s2-collapse{animation:s2-collapse 1.4s cubic-bezier(.6,0,.8,.4) 7.7s both}
+#s2.play .s2-collapse{animation:s2-collapse 1.4s cubic-bezier(.6,0,.8,.4) 4.1s both}
 @keyframes s2-collapse{0%{transform:none;opacity:1}40%{transform:scaleY(.7) skewX(-10deg);opacity:.8}100%{transform:scaleY(.08) skewX(-22deg);opacity:0;stroke:#5A2E12}}
-#s2.play .s2-float{animation:s2-float 3.2s ease-in-out 6.4s infinite alternate}
+#s2.play .s2-float{animation:s2-float 3.2s ease-in-out 2.8s infinite alternate}
 @keyframes s2-float{from{transform:none}to{transform:translateY(-6px) skewX(4deg)}}
-#s2.play .s2-sealedge{animation:s2-seal .6s ease 7s both}
+#s2.play .s2-sealedge{animation:s2-seal .6s ease 3.4s both}
 @keyframes s2-seal{from{stroke:#F3EEE6;stroke-opacity:.35}to{stroke:#3DBA9B;stroke-opacity:.95}}
-#s2.play .s2-glow{animation:s2-glow 1.8s ease-out 7s both}
+#s2.play .s2-glow{animation:s2-glow 1.8s ease-out 3.4s both}
 @keyframes s2-glow{0%{opacity:0}30%{opacity:.85}100%{opacity:.35}}
 html.still #s2 .s2-float{animation:none}
 </style>
 
 <div class="head steep">
   <div class="label">The problem</div>
-  <div class="h1">Twelve centuries of ritual, then 1908.</div>
+  <div class="h1">The tea bag made tea easy, <em>and forgot the art.</em></div>
 </div>
 
 <svg class="s2-stage" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid meet" aria-label="From Lu Yu to the 1908 tea bag">
@@ -136,7 +136,7 @@ html.still #s2 .s2-float{animation:none}
 
   <g transform="translate(0 -70)">
   <!-- BEAT 2 · 1908: a paper bag drops into a cup; the clock runs, the liquid turns bitter, the scent collapses -->
-  <g class="s2-b" style="--t:4.8s">
+  <g class="s2-b" style="--t:1.2s">
     <g transform="translate(395 432.5) scale(1.5)">
       <g clip-path="url(#s2-clipB)">
         <rect class="s2-liq1" x="40" y="86" width="220" height="190" fill="#8FB3BF" fill-opacity=".12"/>
@@ -153,18 +153,24 @@ html.still #s2 .s2-float{animation:none}
           <rect x="-4" y="-38" width="8" height="4" fill="#9A9AA0"/>
         </g>
       </g>
-      <g class="s2-collapse"><path d="M31 34 C31 30 41.5 30.5 41.5 25.5 C41.5 20.5 34 20 31 19.8 C28 19.6 21 19 21 13.6 C21 8.8 26.5 7.6 31 7.6" class="draw" pathLength="1" style="--d:.9s;--dl:5.9s" transform="translate(-12 -46) scale(3.4)" fill="none" stroke="url(#s2-g3)" stroke-width="1" stroke-linecap="round"/></g>
+      <g class="s2-collapse"><path d="M31 34 C31 30 41.5 30.5 41.5 25.5 C41.5 20.5 34 20 31 19.8 C28 19.6 21 19 21 13.6 C21 8.8 26.5 7.6 31 7.6" class="draw" pathLength="1" style="--d:.9s;--dl:2.3s" transform="translate(-12 -46) scale(3.4)" fill="none" stroke="url(#s2-g3)" stroke-width="1" stroke-linecap="round"/></g>
       <path d="M62 70 L80 262 Q82 276 98 276 L202 276 Q218 276 220 262 L238 70" fill="url(#s2-sheen)" stroke="#F3EEE6" stroke-opacity=".4" stroke-width="2"/>
       <ellipse cx="150" cy="70" rx="88" ry="7" fill="none" stroke="#F3EEE6" stroke-opacity=".32" stroke-width="1.5"/>
       <ellipse cx="150" cy="285" rx="80" ry="5" fill="#000" opacity=".55"/>
     </g>
     <text id="s2-timer" x="620" y="978" text-anchor="middle" style="font-size:96px;font-weight:500;font-variant-numeric:tabular-nums" fill="#F3EEE6">0:00</text>
-    <text class="s2-b" x="620" y="1036" text-anchor="middle" style="--t:8.4s;font-size:40px;font-weight:500" fill="#E07A3C">Bitter.</text>
+    <text class="s2-b" x="620" y="1036" text-anchor="middle" style="--t:4.8s;font-size:40px;font-weight:500" fill="#E07A3C">Bitter.</text>
   </g>
 
+  <!-- the problem, named as it happens: boiling water (drop), one cup, scent gone (collapse) -->
+  <g class="s2-prob">
+    <text class="s2-b" x="1260" y="420" text-anchor="middle" style="--t:1.6s;font-size:44px;font-weight:500" fill="#F3EEE6">Boiling water.</text>
+    <text class="s2-b" x="1260" y="482" text-anchor="middle" style="--t:3s;font-size:44px;font-weight:500" fill="#F3EEE6">One cup.</text>
+    <text class="s2-b" x="1260" y="544" text-anchor="middle" style="--t:4.1s;font-size:44px;font-weight:500" fill="#E07A3C">Scent gone.</text>
+  </g>
   <!-- BEAT 4 · the one number -->
-  <g class="s2-b" style="--t:7.4s">
-    <text x="1260" y="750" text-anchor="middle" style="font-size:230px;font-weight:500;letter-spacing:-.02em" fill="#F2A33A" data-count="96" data-suffix="%" data-dl="7.4" data-dur="1.5">96%</text>
+  <g class="s2-b" style="--t:3.8s">
+    <text x="1260" y="750" text-anchor="middle" style="font-size:230px;font-weight:500;letter-spacing:-.02em" fill="#F2A33A" data-count="96" data-suffix="%" data-dl="3.8" data-dur="1.5">96%</text>
     <text class="s2-cap" x="1260" y="822" text-anchor="middle" style="font-size:34px;fill:#F3EEE6;opacity:.85">of UK tea is brewed</text>
     <text class="s2-cap" x="1260" y="868" text-anchor="middle" style="font-size:34px;fill:#F3EEE6;opacity:.85">from a bag</text>
     <text class="s2-cap" x="1260" y="918" text-anchor="middle" style="font-size:28px">QMUL, 2016</text>
@@ -176,7 +182,7 @@ html.still #s2 .s2-float{animation:none}
 window.ENTER=window.ENTER||{};
 window.ENTER[2]=function(el){
   var t=el.querySelector('#s2-timer');if(!t)return;cancelAnimationFrame(t._r);
-  var T0=5.6,T1=9.2,END=340;
+  var T0=2,T1=5.6,END=340;
   function show(s){t.textContent=Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0');
     t.setAttribute('fill',s>=300?'#E07A3C':s>=180?'#F2A33A':'#F3EEE6');}
   if(document.documentElement.classList.contains('still')){show(END);return;}
@@ -184,7 +190,7 @@ window.ENTER[2]=function(el){
   var fz=location.search.match(/s2t=([\d.]+)/);
   if(fz){var ft=+fz[1];setTimeout(function(){el.getAnimations({subtree:true}).forEach(function(a){a.pause();a.currentTime=ft*1000;});
     show(Math.min(1,Math.max(0,(ft-T0)/(T1-T0)))*END);
-    var c=el.querySelector('[data-count]'),k=Math.min(1,Math.max(0,(ft-7.4)/1.5));cancelAnimationFrame(c._raf);c.textContent=Math.round(96*(1-Math.pow(1-k,3)))+'%';},300);return;}
+    var c=el.querySelector('[data-count]'),k=Math.min(1,Math.max(0,(ft-3.8)/1.5));cancelAnimationFrame(c._raf);c.textContent=Math.round(96*(1-Math.pow(1-k,3)))+'%';},300);return;}
   var st=performance.now();show(0);
   (function k(n){var e=(n-st)/1000,p=Math.min(1,Math.max(0,(e-T0)/(T1-T0)));show(p*END);
     if(p<1&&el.classList.contains('active'))t._r=requestAnimationFrame(k);})(st);
@@ -192,10 +198,8 @@ window.ENTER[2]=function(el){
 </script>
 
 <aside class="notes"><ul>
-  <li>One continuous animation, about 9 s, no clicks: the scent thread travels China, Japan, Britain and arrives at the 1908 bag; the culture row fades; the bag drops into a cup, the clock runs to 5:40, the tea turns bitter and its scent collapses; then 96%. OSME is not shown here: slide 3 (live demo) is its first reveal.</li>
-  <li>China 760: Lu Yu wrote the Cha Jing (Classic of Tea) between 760 and 762 CE; the three boils in Okakura, The Book of Tea (1906), ch. II (truth/history-cultures.md §2).</li>
-  <li>Japan 1500s: chanoyu, as shaped by Takeno Jōō and Sen no Rikyū (1522 to 1591) (truth/history-cultures.md §1 and quote 5).</li>
-  <li>Britain c. 1840: afternoon tea, Anna Maria, Duchess of Bedford (truth/history-cultures.md §1).</li>
+  <li>One continuous animation, about 6 s, no clicks: the 1908 bag drops into boiling water, the clock runs to 5:40, the liquid turns bitter, the scent collapses; the words land as it happens (boiling water, one cup, scent gone, bitter), then the 96%. The history (Lu Yu, the cultures, 1908) is told by the film on slide 1, so it is not repeated here (lead 12:15).</li>
+  <li>Title: truth/storyline.md, "The tea bag made tea easy and forgot the art."</li>
   <li>1908: Thomas Sullivan marketed silk tea bags "in about 1908" (truth/history-cultures.md §4).</li>
   <li>The timer (0:00 to 5:40) illustrates a forgotten bag; it is not a data point.</li>
   <li>96%: on screen "96% of UK tea is brewed from a bag" (facts.md wording); QMUL 2016: "Over 96 per cent of tea in Britain is now made with teabags" (truth/history-cultures.md §4; facts.md proof points). UKTIA says 97.5%; we use 96%.</li>

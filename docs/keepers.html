@@ -500,6 +500,31 @@ footer.site .top{display:flex;justify-content:space-between;gap:40px;flex-wrap:w
   .cart-btn,.menu-btn{width:38px;height:38px}
 }
 
+/* hand-in */
+.ho-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:22px}
+.ho-tile{grid-column:span 2;background:var(--brand-surface);border:1px solid var(--brand-line);border-radius:var(--radius-l);overflow:hidden;display:flex;flex-direction:column}
+.ho-tile:nth-child(4),.ho-tile:nth-child(5){grid-column:span 3}
+.ho-img{position:relative;display:block;aspect-ratio:16/9;background:#0F0F12;border-bottom:1px solid var(--brand-line);overflow:hidden}
+.ho-img img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .4s}
+.ho-tile:hover .ho-img img{transform:scale(1.03)}
+.ho-n{position:absolute;left:16px;top:14px;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:rgba(11,11,13,.85);border:1px solid var(--brand-primary);color:var(--brand-primary);font-family:var(--font-display);font-size:18px}
+.ho-body{padding:22px 24px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.ho-brief{font-family:var(--font-display);font-size:19px;line-height:1.3;color:var(--brand-text)}
+.ho-ours{color:var(--brand-muted);font-size:15px}
+.ho-cta{margin-top:auto;padding-top:8px;display:flex;gap:8px;flex-wrap:wrap}
+.script{max-width:860px}
+.script h2{font-size:30px;margin:40px 0 14px}.script h3{font-size:20px;margin:28px 0 10px}
+.script p{margin:6px 0;color:#DDD7CD}.script b{color:var(--brand-text)}
+.script .cue{color:var(--brand-muted);font-style:italic;font-size:.92em}
+.script ul{margin:8px 0 8px 22px;color:#CFC9BF}
+.tscroll{overflow-x:auto;margin:14px 0}
+.script table{border-collapse:collapse;font-size:14.5px;min-width:560px}
+.script th,.script td{border-bottom:1px solid var(--brand-line);padding:8px 12px;text-align:left;vertical-align:top}
+.script th{font-family:var(--font-display);font-weight:500;letter-spacing:.08em;color:var(--brand-muted);font-size:12px;text-transform:uppercase}
+.script code{font-size:.9em;color:var(--brand-accent)}
+@media (max-width:980px){.ho-grid{grid-template-columns:1fr 1fr}.ho-tile,.ho-tile:nth-child(4),.ho-tile:nth-child(5){grid-column:span 1}}
+@media (max-width:600px){.ho-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -565,7 +590,7 @@ footer.site .top{display:flex;justify-content:space-between;gap:40px;flex-wrap:w
   <p class="muted" style="margin-top:14px;max-width:340px">Every tea has its temperature. A tea bag that opens only at its perfect temperature.</p></div>
   <div class="fcols">
     <div><h4>Shop</h4><a href="shop.html">All teas</a><a href="ritual.html">The Ritual</a><a href="tea-sencha.html">Sencha</a><a href="demo.html">Live demo</a></div>
-    <div><h4>OSME</h4><a href="story.html">Our story</a><a href="keepers.html">Keepers</a><a href="keepers.html#join">Waitlist</a><a href="index.html#how">How it works</a></div>
+    <div><h4>OSME</h4><a href="story.html">Our story</a><a href="keepers.html">Keepers</a><a href="keepers.html#join">Waitlist</a><a href="index.html#how">How it works</a><a href="handin.html">Hand-in · Table 5</a></div>
   </div>
 </div>
 <h4>Sources</h4><ol class="sources"><li>Lu Yu’s three boils, in Okakura Kakuzō, <em>The Book of Tea</em> (1906), ch. II. <a href="https://en.wikisource.org/wiki/The_Book_of_Tea/Chapter_II" target="_blank" rel="noopener">wikisource.org</a></li><li>The Classic of Tea, written in the 760s. <a href="https://en.wikipedia.org/wiki/The_Classic_of_Tea" target="_blank" rel="noopener">wikipedia.org</a></li><li>Thomas Sullivan’s tea bags, about 1908. <a href="https://en.wikipedia.org/wiki/Tea_bag" target="_blank" rel="noopener">wikipedia.org</a></li><li>96% of UK tea is brewed from a bag. QMUL, 2016. <a href="https://www.qmul.ac.uk/news/latest-news/2016/hss/why-britain-is-losing-its-taste-for-tea--and-how-hipsters-could-revive-it.html" target="_blank" rel="noopener">qmul.ac.uk</a></li><li>About 100 million cups a day in the UK. UK Tea &amp; Infusions Association. <a href="https://www.tea.co.uk/tea-faqs" target="_blank" rel="noopener">tea.co.uk</a></li><li>Sencha at 80 °C. <a href="https://en.wikipedia.org/wiki/Sencha" target="_blank" rel="noopener">wikipedia.org</a></li><li>Chanoyu and ichi-go ichi-e. <a href="https://en.wikipedia.org/wiki/Japanese_tea_ceremony" target="_blank" rel="noopener">wikipedia.org</a></li><li>Gongfu cha. <a href="https://en.wikipedia.org/wiki/Gongfu_tea_ceremony" target="_blank" rel="noopener">wikipedia.org</a></li><li>Afternoon tea, about 1840. <a href="https://en.wikipedia.org/wiki/Tea_in_the_United_Kingdom" target="_blank" rel="noopener">wikipedia.org</a></li><li>Temperature-gated membranes (PNIPAm) open and close with heat over repeated cycles. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9920928/" target="_blank" rel="noopener">pmc.ncbi.nlm.nih.gov</a></li><li>32% of Gen Z daily tea drinkers choose green tea. YouGov. <a href="https://yougov.com/en-gb/articles/52458-is-britain-still-a-tea-drinking-nation" target="_blank" rel="noopener">yougov.com</a></li><li>7 in 10 would welcome a premium tea gift box. Mintel UK. <a href="https://www.mintel.com/insights/food-and-drink/flavoured-teas-could-brew-success-for-brands-this-festive-season/" target="_blank" rel="noopener">mintel.com</a></li><li>Tea drinkers’ own words: TeaChat and Straight Dope. <a href="https://www.teachat.com/viewtopic.php?p=212298" target="_blank" rel="noopener">teachat.com</a></li><li>Tea windows per tea: OSME brewing profiles (design targets), the same as the live demo.</li></ol>
@@ -606,12 +631,12 @@ var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: re
 var WAITLIST = { kind: "", endpoint: "", emailField: "", cartField: "", countUrl: "" };
 
 var TEA_NAMES = { gyokuro: "Gyokuro", sencha: "Sencha", longjing: "Longjing", tieguanyin: "Tieguanyin", puerh: "Pu-erh", "english-breakfast": "English Breakfast", ritual: "The Ritual" };
-var PRICES = { tin: 18, bag: 1.5, ritual: 24 };
+var PRICES = { tin: 18, bag: 1.5, ritual: 24 }; /* set in build.py */
 var KIND_LABEL = { tin: "Tin of 12 bags", bag: "Single bag", ritual: "Subscription · 16 bags from 3-4 origins a month" };
 var CART_KEY = "osme-cart-v1", WL_KEY = "osme-waitlist-v1";
 
 function store(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem(k) || "null"); localStorage.setItem(k, JSON.stringify(v)); } catch (e) { return null; } }
-function fmt(n) { return "$" + (n % 1 ? n.toFixed(2) : String(n)); }
+function fmt(n) { return "$" + (n % 1 || n < 10 ? n.toFixed(2) : String(n)); }
 function cart() { return store(CART_KEY) || []; }
 function saveCart(c) { store(CART_KEY, c); renderCart(); }
 

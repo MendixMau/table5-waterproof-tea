@@ -20,10 +20,15 @@ LADDER = [
 ]
 
 INFUSIONS = 3            # A: up to 3 infusions a bag (facts.md, provisional)
-PRICE = 1.50             # facts.md: $1.50 a bag everywhere
-TIN_BAGS, TIN_PRICE = 12, 18.0
-RITUAL_BAGS, RITUAL_PRICE = 16, 24.0
+PRICE = 2.00             # team 12:15 (Maurits approved pitch v3): $2.00 a bag; truth/business-case.md §6
+TIN_BAGS = 12
+TIN_PRICE = PRICE * TIN_BAGS         # $24 at $2.00
+RITUAL_BAGS = 16
+RITUAL_PRICE = PRICE * RITUAL_BAGS   # $32 a month at $2.00
 WHOLESALE = 0.50         # A: retailer pays 50% of shelf price
+LADDER = [(f"OSME · 3 cups a bag", PRICE / INFUSIONS, f"${PRICE:.2f} a bag", t) if n.startswith("OSME") else (n, c, d, t)
+          for n, c, d, t in LADDER]
+LADDER.sort(key=lambda r: r[1])   # OSME sits by its per-cup price
 
 # ---------- 2. cost stack per bag (USD) ----------
 # component: (year 1 pilot, year 3 scale, label)
@@ -48,9 +53,10 @@ CHURN = 0.07             # S range 4-7% healthy (Eightx); plan 7%
 
 # ---------- 4. year-3 walk ----------
 SAM = 640e6
-RITUAL_AVG = 12_000      # A: average Ritual subscribers in year 3 (4 k end of year 2, 20 k end of year 3)
-TINS = 185_000           # A: 12-bag tins and gift tins sold D2C in year 3
-RETAIL_BAGS = 2_000_000  # A: bags sold through premium retail
+END_Y2, END_Y3 = 3_000, 15_000   # A: Ritual subscribers at end of year 2 and year 3
+RITUAL_AVG = 9_000       # A: average Ritual subscribers in year 3; 25% fewer buyers at $2.00 than at $1.50 (decided 12:10)
+TINS = 139_000           # A: 12-bag tins and gift tins sold D2C in year 3
+RETAIL_BAGS = 1_500_000  # A: bags sold through premium retail
 
 
 def cogs(year):

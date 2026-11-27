@@ -1,6 +1,31 @@
 # OSME · Customers and market (truth-customers)
 Status: DONE (10:02). All URLs below were opened and checked unless marked "unverified".
 
+## Hand-in: our customer
+(business-customer-builder, 12:20. Quotes re-opened with WebFetch at 12:18 and found verbatim on the page.)
+
+**Our customer: The curious specialty drinker.** Anyone who loves a good cup, and anyone who would love to. Route: gifts and the Ritual subscription.
+
+**Where we found them** (forums, reviews, retailer tests; Reddit was not reachable):
+| Source | Verbatim quote | Re-checked 12:18 |
+|---|---|---|
+| TeaChat, hopeofdawn | "I spend way too much on tea to just throw them away after one steep!" https://www.teachat.com/viewtopic.php?p=212298 | yes |
+| TeaChat, silversun (same thread) | "my leaves start not tasting as fresh when I reuse them from the day before." (page: "I've noticed that my leaves ...") | yes |
+| Straight Dope, leroy_the_mule | "some tea tastes bitter the second time around with the bag." https://boards.straightdope.com/t/do-you-re-use-tea-bags/85495 (page: "I have noticed that some tea ...") | yes |
+| Hacker News, weland | "it does occasionally happen that I drop the bag or the leaves in, start debugging" ... "FUCK I'VE BEEN STEEPING THIS FOR 20 MINUTES THIS IS GOING TO MELT MY TONGUE." https://news.ycombinator.com/item?id=7725580 (page has a comma after "debugging", not a full stop) | yes |
+| The Tea Spot, retailer test | "Pour boiling water over green tea and you'll scorch the leaves, releasing harsh tannins that overpower the natural sweetness." Boiling version "noticeably more bitter". https://www.theteaspot.com/blogs/steep-it-loose/green-tea-done-right | yes |
+
+**How many of them exist** (people first, then money):
+- US: "On any given day, over 159 million Americans are drinking tea" (Tea Association of the USA fact sheet, via US Census Bureau, January 2024; re-opened 12:19) https://www.census.gov/newsroom/stories/hot-tea-month.html
+- UK: 16% already brew black tea loose leaf (UKTIA 2024) https://www.teaandcoffee.net/?p=34292
+- UK, younger: 32% of Gen Z daily tea drinkers choose green tea (YouGov) https://yougov.com/en-gb/articles/52458-is-britain-still-a-tea-drinking-nation
+- They already pay for discovery: "The Sips by Steep Society counts 350,000 members" (founder Staci Brinkman, World Tea News; members, not stated as paying; re-opened 12:19) https://www.worldteanews.com/Insights/tea-subscription-service-boosts-specialty-tea-growth
+- Tea subscriptions USD 530 m (2025), CAGR 9.1% (Fact.MR) https://www.factmr.com/report/tea-subscription-market
+
+**What we validate next:** 30 customer interviews in month one (forum regulars, gift buyers, Sips By members) and a waitlist target on the site, with gift-box pre-orders as the buying signal.
+
+---
+
 ## 1. Consumer complaints (real quotes)
 - Forgotten bag: "FUCK I'VE BEEN STEEPING THIS FOR 20 MINUTES THIS IS GOING TO MELT MY TONGUE." (weland, Hacker News) https://news.ycombinator.com/item?id=7725580
 - Forgotten bag: "it does occasionally happen that I drop the bag or the leaves in, start debugging." (weland, same thread)

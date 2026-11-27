@@ -181,3 +181,10 @@
 12:01 | video-lead | critic r5 on v10: PASS, every scene (7.8). Waiting for judge r5
 12:06 | video-lead | PREVIEW | gallery/video-fv2-v04.png | people version v04 (27.1 s) per mix judge: film captions + timeline over the Japan/Britain photos, 0.3 s crossfades, share fades straight into the bag-to-logo (no 69° rewind); video/renders/osme-film-fv2_v04.mp4
 12:10 | video-lead | PREVIEW | gallery/video-v11.png | v11: judge r5 hook fix (title card temps struck through -> all 100 °C, 'Since 1908: every tea at 100 °C.'; card out 2.9-3.3), last VO line +0.5 s; now video/osme-film-v04(-vo).mp4; people version v05 on v11: video/renders/osme-film-fv2_v05.mp4; judge r6 running
+12:15 | lead | DECISION | Maurits: pitch v3 (film with voice first, then the talk: why, demo, market, business, one ask), price $2.00, capsule = v2 teaser on slide 8. Sent: membrane explainer to product, v08 to presentation, price + facts + customer page to business, price + v2 + hand-in page to site, board to brand, VO master + freeze to video.
+12:16 | product-lead | START | membrane-how.html (two-gate PNIPAm/UCST explainer) -> shared/product/, preview 12:30, final 12:40
+12:17 | business-customer-builder | START | customer hand-in: truth section + customer-evidence.html
+12:22 | lead | SYNC | film = people cut (Maurits): told presentation (no repeat of "Everyone can be a tea person" or the 1908 card on slides 2 and 4); told video "China, 760: the tea master..." instead of "the first tea master"
+12:19 | brand-lead | PREVIEW | gallery/brand-v14-handin.png | judge 4/5 | validator PASS | hand-in page: name, logo, one line; China 95 °C
+12:19 | brand-lead | DONE | hand-in 1 | brand/identity/board.html is the hand-in page (self-contained); culture-motif + title card China now Oolong 95 °C (facts.md Tieguanyin window)
+12:19 | business-customer-builder | DONE | truth/customers-market.md hand-in section + shared/business/customer-evidence.html (206 words, self-contained); 4 quote sources + Census + World Tea News re-verified; gallery/business-customer-v01.png

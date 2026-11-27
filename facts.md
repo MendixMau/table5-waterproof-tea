@@ -10,10 +10,11 @@ Locked at the 10:40 gate. Change here first; every slide, site and product reads
 | Primary customer | We are a global tea brand and tea-tech disruptor: a movement, not a tea lounge or an app. Primary audience: people worldwide who love tea and its rituals. |
 | Business model | B2C: direct to consumers (D2C web shop, subscription, premium retail). No hospitality or B2B channel in the pitch. |
 | Second customer | Gift givers: premium tea as a present (Mintel: 7 in 10 would welcome a premium tea gift box). Same B2C shop. Provisional. |
-| Price | $1.50 a bag everywhere. Single bag $1.50; Ritual subscription $24/month = 16 bags from 3-4 origins, free shipping, skip or pause any month (team, 10:23). 12-bag tin $18 (provisional). Up to 3 infusions, so about $0.50 a cup (provisional). |
+| Price | $2.00 a bag everywhere (Maurits, decided 12:10). Single bag $2.00; Ritual subscription $32/month = 16 bags from 3-4 origins, free shipping, skip or pause any month. 12-bag tin $24. Up to 3 infusions, so about $0.67 a cup. LTV:CAC 3.3x (truth/business-case.md §6). |
 | Market size (with working) | TAM $7.1 bn a year spent on tea bags ($18.8 bn tea market × 38% bags). SAM $640 m (first markets, assumption). Year-3 SOM about $8.3 m at $1.50 a bag everywhere (the old $9 m assumed $2.00 singles); the business thread is re-running the walk. Working in truth/business-case.md. Don't mix in the $39 bn specialty figure. Provisional until Gate 1. |
 | Top 3 competitors | Tea Forte pyramid infusers ($1.30 each), Sips By subscription (about $1 a cup), Nestlé Special.T capsules (€0.35 a pod + €129 machine). Sources in truth/customers-market.md §4. |
 | The ask | $2.5 m on a SAFE at a $10 m pre-money valuation: food-safe membrane proof + first Ritual boxes. Provisional until Gate 1. |
+| v2 | v2: the OSME Capsule. Reusable, same temperature seal, loose leaf. Roadmap only; no price; not in the live demo. |
 | Teas | The great teas of the world and their history: Japan, China, Britain first |
 | Visual direction | C "Midnight Brew": dark matte black, a glowing temperature arc from amber to jade, Lu Yu's bubble stages (fish eyes, string of pearls, rolling waves) as a 3-dot mark |
 | Colours | Midnight #0B0B0D · surface #17171B · amber #F2A33A (heat, it opens) · jade #3DBA9B (cooled, it closes) · paper white #F3EEE6 · arc amber → #D9C46B → jade. Source: brand/identity/tokens.css. |

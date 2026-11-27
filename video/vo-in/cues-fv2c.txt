@@ -1,0 +1,9 @@
+# Voice cues, people version for slide 1 (tools/fv2c.sh, 26.5 s). Title card 0-2.4 s plays in silence (the hook reads on screen).
+vo-01c.wav @ 2.40   In China, tea masters judged the water by eye.
+vo-02c.wav @ 5.05   In Japan, the kettle's pine wind says the water is ready.
+vo-03b.wav @ 8.25   In Britain, afternoon tea became a ritual.
+vo-04c.wav @ 10.75  Then the tea bag traded art for ease, and every tea got the boil.
+vo-05.wav  @ 14.30  Oz-may waits. At its temperature, it opens.
+vo-06.wav  @ 17.00  As the water cools, it closes, and keeps the scent.
+vo-07b.wav @ 20.50  Everyone can be a tea person.
+vo-08.wav  @ 23.20  Oz-may. Every tea has its temperature.

@@ -1,0 +1,15 @@
+# Hand-in 2 "Customer" builder (business thread, 12:17)
+Question the jury asks: "Who would buy this? Show where you found them."
+Read first: ops/agents/_common.md, facts.md (Primary customer, Customer (provisional), Proof points: use their wording exactly), truth/customers-market.md, truth/business-case.md §1 "How many of them".
+
+## Deliverable 1: truth/customers-market.md ready to hand in
+Add a section at the TOP, "## Hand-in: our customer" (keep everything below; do not delete research):
+- ONE named segment: "The curious specialty drinker" (facts.md: anyone who loves a good cup, and anyone who would love to; route = gifts and the Ritual subscription).
+- Where we found them: at least 3 sources with links (Hacker News, TeaChat, Straight Dope, The Tea Spot; all in §1), each with a verbatim quote (copy exactly from §1; re-open at least 3 of the URLs with WebFetch / the web-fetch agent and confirm the quote is on the page; if one no longer matches, drop it).
+- How many of them exist: "On any given day, over 159 million Americans are drinking tea" (Tea Association via US Census, Jan 2024, https://www.census.gov/newsroom/stories/hot-tea-month.html); UK 16% brew black tea loose leaf (UKTIA 2024, https://www.teaandcoffee.net/?p=34292); 32% of UK Gen Z daily tea drinkers choose green tea (YouGov); Sips By's specialty tea club counts 350,000 members (World Tea News, https://www.worldteanews.com/Insights/tea-subscription-service-boosts-specialty-tea-growth); tea subscriptions $530 m (Fact.MR). Only numbers that are in truth/ with a URL.
+- One line: what we would validate next (e.g., 30 interviews in the first month, waitlist sign-ups).
+## Deliverable 2: shared/business/customer-evidence.html
+One self-contained page in the Midnight Brew look: brand/identity/tokens.css values (midnight #0B0B0D, surface #17171B, amber #F2A33A, jade #3DBA9B, paper #F3EEE6, arc gradient), Jost (embed deck/assets-src/jost-latin.woff2 as a data URI), logo brand/identity/logo-lockup.svg. AT MOST 250 VISIBLE WORDS (count with a script on the rendered text: strip tags, count words; report the count). Visuals over text: a big headline naming the segment, a "how many" number band (159 m · 16% · 350 k), 3-4 quote cards each with source name + link, one line "where we found them" (forums, reviews, retailer tests), one line what we validate next. Readable on a laptop and a phone (responsive). Links open the source.
+- Finish with: ~/Library/CloudStorage/OneDrive-SiemensAG/AI-Presales-Workspace/personal-library/bin/embed-html shared/business/customer-evidence.html then embed-html --check (must say self-contained). No em or en dashes (grep).
+- Render with headless Chrome at 1440x900 full page and at 390x844 (every Chrome launch: --headless=new --use-mock-keychain --password-store=basic --user-data-dir=/tmp/osme-cust-chrome-N); look at the PNGs, iterate once; save gallery/business-customer-v01.png (desktop) .
+- Log: `HH:MM | business-customer-builder | START/PROGRESS/DONE | ...` to ops/log.md (append). No git, no facts.md edits. Done by 12:33.

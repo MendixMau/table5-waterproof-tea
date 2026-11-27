@@ -4,7 +4,7 @@
 Run: python3 docs/_src/build.py   (from anywhere). Sources: docs/_src/*, brand/identity, brand/assets, video/.
 Numbers come from facts.md: prices, tea windows, proof points. Change them there first, then here.
 """
-import html, os, re, subprocess, sys, urllib.parse
+import html, os, re, shutil, subprocess, sys, urllib.parse
 
 SRC = os.path.dirname(os.path.abspath(__file__))
 DOCS = os.path.dirname(SRC)
@@ -17,7 +17,13 @@ def rd(*p):
         return f.read()
 
 # ---------------------------------------------------------------- facts (facts.md)
-PRICE_BAG, PRICE_TIN, PRICE_RITUAL = 1.50, 18, 24
+# PRICES: the one place. Every page and the cart read these (tokens §BAG§ §CUP§ §TIN§ §RITUAL§ and §*_N§ for JS).
+PRICE_BAG, PRICE_TIN, PRICE_RITUAL, PRICE_CUP = 1.50, 18, 24, 0.50
+
+def prices(text):
+    for k, v in (("BAG", PRICE_BAG), ("TIN", PRICE_TIN), ("RITUAL", PRICE_RITUAL), ("CUP", PRICE_CUP)):
+        text = text.replace(f"§{k}_N§", repr(v)).replace(f"§{k}§", money(v))
+    return text
 TEAS = [
     dict(id="gyokuro", notes="Sweet · deep · umami", name="Gyokuro", country="Japan", origin="Uji", kind="Shade-grown green", open=60, seal=50, liquor="#B8C86A",
          line="Shade-grown and sweet. Cool water, small cup, slow sip.",
@@ -66,7 +72,7 @@ SOURCES = [
 ]
 
 def money(v):
-    return f"${v:.2f}" if isinstance(v, float) and v % 1 else f"${int(v)}"
+    return f"${v:.2f}" if isinstance(v, float) else f"${int(v)}"
 
 def deg(t):
     return f"{t}&nbsp;°C"
@@ -168,7 +174,7 @@ def footer(vbs, sources=True):
   <p class="muted" style="margin-top:14px;max-width:340px">Every tea has its temperature. A tea bag that opens only at its perfect temperature.</p></div>
   <div class="fcols">
     <div><h4>Shop</h4><a href="shop.html">All teas</a><a href="ritual.html">The Ritual</a><a href="tea-sencha.html">Sencha</a><a href="demo.html">Live demo</a></div>
-    <div><h4>OSME</h4><a href="story.html">Our story</a><a href="keepers.html">Keepers</a><a href="keepers.html#join">Waitlist</a><a href="index.html#how">How it works</a></div>
+    <div><h4>OSME</h4><a href="story.html">Our story</a><a href="keepers.html">Keepers</a><a href="keepers.html#join">Waitlist</a><a href="index.html#how">How it works</a><a href="handin.html">Hand-in · Table 5</a></div>
   </div>
 </div>
 {src}
@@ -211,6 +217,8 @@ var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: re
 </body>
 </html>
 '''
+    doc = prices(doc)
+    assert not re.search(r"§[A-Z]+(_N)?§", doc), "price token left in " + fname
     with open(os.path.join(DOCS, fname), "w", encoding="utf-8") as f:
         f.write(doc)
     return fname
@@ -266,7 +274,7 @@ def honest():
 FAQ = [
     ("How does the bag know the temperature?", "The principle exists: lab membranes already open and close with temperature. Our R&amp;D makes it food-safe at 70–90&nbsp;°C. Each tea’s bag is tuned to its own window."),
     ("Do I need a special kettle or mug?", "No. Pour from any kettle into any mug. The bag waits for its window, brews, and seals again as the water cools. No thermometer, no timer."),
-    ("How many cups from one bag?", "Up to 3 infusions, about $0.50 a cup. Between cups the bag stays sealed, so the leaf keeps its scent."),
+    ("How many cups from one bag?", "Up to 3 infusions, about §CUP§ a cup. Between cups the bag stays sealed, so the leaf keeps its scent."),
     ("When does it ship?", "Pre-orders ship after our food-safe proof. Joining the waitlist costs nothing today; we write before your first box is ready. The Ritual ships free, and you can skip or pause any month."),
 ]
 
@@ -277,7 +285,7 @@ def faq():
 def benefits():
     icons = [("icon-self-stopping.svg", "Stops itself", "Opens in its window, closes as the water cools. Never stewed, never bitter."),
              ("icon-scent-sealed.svg", "Scent kept", "Sealed between cups, so the leaf keeps its scent for the next infusion."),
-             ("icon-three-infusions.svg", "Up to 3 cups", "One bag brews up to 3 times: about $0.50 a cup.")]
+             ("icon-three-infusions.svg", "Up to 3 cups", "One bag brews up to 3 times: about §CUP§ a cup.")]
     return '<div class="benefits">' + "".join(f'<div class="ben"><img src="../brand/assets/{i}" alt="" width="56" height="56"><div><b>{h}</b><p>{p}</p></div></div>' for i, h, p in icons) + "</div>"
 
 # ---------------------------------------------------------------- pages
@@ -293,7 +301,7 @@ def home(vbs):
     <p class="sub">It stays sealed while the water is too hot, opens to brew, and closes again as the water cools. The steep stops itself, the scent stays in, and the same bag brews again.</p>
     <div class="facts-row">
       <span class="chip"><span class="k">For</span> curious tea drinkers who pay for good leaf and hate a bitter cup</span>
-      <span class="chip"><span class="k">Price</span> <b>$1.50</b> a bag · about <b>$0.50</b> a cup · Ritual <b>$24</b>/month</span>
+      <span class="chip"><span class="k">Price</span> <b>§BAG§</b> a bag · about <b>§CUP§</b> a cup · Ritual <b>§RITUAL§</b>/month</span>
     </div>
     <div class="cta-row"><a class="btn primary" href="shop.html">Shop the teas</a><a class="btn" href="#how">See how it opens</a></div>
   </div>
@@ -352,7 +360,7 @@ def home(vbs):
     <div>
       <span class="badge">Become a Keeper</span>
       <div class="eyebrow" style="color:var(--brand-primary)">The Ritual subscription</div>
-      <div class="amt-xl">$24<small> / month</small></div>
+      <div class="amt-xl">§RITUAL§<small> / month</small></div>
       <p class="lead">16 bags from 3-4 origins at your door every month. Free shipping, skip or pause any month. Ritual members are Keepers.</p>
       <div class="cta-row" style="margin-top:22px"><button class="btn primary" type="button" data-add="ritual:ritual">Add the Ritual</button><a class="btn" href="ritual.html">What’s in the box</a></div>
     </div>
@@ -381,16 +389,16 @@ def shop(vbs):
 <header class="page-head"><div class="wrap">
   <div class="eyebrow">Shop</div>
   <h1 class="h1">Every tea has its temperature.</h1>
-  <p class="lead">Six teas from Japan, China and Britain. A tin holds 12 bags of one tea, one origin, for {money(PRICE_TIN)}; a single bag is {money(PRICE_BAG)}. Each bag brews up to 3 times, about $0.50 a cup.</p>
+  <p class="lead">Six teas from Japan, China and Britain. A tin holds 12 bags of one tea, one origin, for {money(PRICE_TIN)}; a single bag is {money(PRICE_BAG)}. Each bag brews up to 3 times, about §CUP§ a cup.</p>
   <div class="filters" role="group" aria-label="Filter by culture"><button class="chip-btn on" data-filter="all">All</button><button class="chip-btn" data-filter="Japan">Japan</button><button class="chip-btn" data-filter="China">China</button><button class="chip-btn" data-filter="Britain">Britain</button></div>
 </div></header>
 <section class="tight"><div class="wrap">
-  <a class="ritual-strip" href="ritual.html"><span class="badge">Become a Keeper</span><b>The Ritual · $24/month</b><span>16 bags from 3-4 origins every month · free shipping · skip or pause any month</span><span class="go">→</span></a>
+  <a class="ritual-strip" href="ritual.html"><span class="badge">Become a Keeper</span><b>The Ritual · §RITUAL§/month</b><span>16 bags from 3-4 origins every month · free shipping · skip or pause any month</span><span class="go">→</span></a>
   <div class="tea-grid six" data-tea-grid>{cards}</div>
   {benefits()}
 </div></section>
 '''
-    return page("shop.html", "Shop · OSME", "Six OSME teas from Japan, China and Britain. Tin of 12 $18, single bag $1.50, Ritual $24/month.", "shop.html", body, vbs)
+    return page("shop.html", "Shop · OSME", "Six OSME teas from Japan, China and Britain. Tin of 12 §TIN§, single bag §BAG§, Ritual §RITUAL§/month.", "shop.html", body, vbs)
 
 def tea_page(t, vbs):
     others = "".join(tea_card(o) for o in TEAS if o["id"] != t["id"])[:]
@@ -416,11 +424,11 @@ def tea_page(t, vbs):
       <div class="options" role="radiogroup" aria-label="Choose">
         <label class="opt"><input type="radio" name="opt" value="tin" checked><span><b>The tin</b><small>12 bags · made to be given</small></span><em>{money(PRICE_TIN)}</em></label>
         <label class="opt"><input type="radio" name="opt" value="bag"><span><b>Single bag</b><small>up to 3 infusions</small></span><em>{money(PRICE_BAG)}</em></label>
-        <label class="opt"><input type="radio" name="opt" value="ritual"><span><b>In the Ritual box</b><small>16 bags from 3-4 origins a month</small></span><em>$24/mo</em></label>
+        <label class="opt"><input type="radio" name="opt" value="ritual"><span><b>In the Ritual box</b><small>16 bags from 3-4 origins a month</small></span><em>§RITUAL§/mo</em></label>
       </div>
       <div class="buy-row"><div class="qty"><button type="button" data-q="-1" aria-label="Less">−</button><span data-qv>1</span><button type="button" data-q="1" aria-label="More">+</button></div>
       <button class="btn primary grow" type="button" data-add-opt="{t['id']}">Add to cart</button></div>
-      <p class="muted small">Pre-order. Ships after our food-safe proof. About $0.50 a cup.</p>
+      <p class="muted small">Pre-order. Ships after our food-safe proof. About §CUP§ a cup.</p>
       {sencha_note}
     </div>
   </div>
@@ -436,7 +444,7 @@ def tea_page(t, vbs):
 <section class="tight"><div class="wrap"><div class="sec-head"><div><div class="eyebrow">More teas</div><h2>Each with its own window.</h2></div><a class="btn" href="shop.html">All teas</a></div>
 <div class="tea-grid scroll">{others}</div></div></section>
 '''
-    return page(f"tea-{t['id']}.html", f"{t['name']} · OSME", f"OSME {t['name']}: opens at {t['open']} °C, seals below {t['seal']} °C. Tin of 12 $18, single bag $1.50.", "shop.html", body, vbs)
+    return page(f"tea-{t['id']}.html", f"{t['name']} · OSME", f"OSME {t['name']}: opens at {t['open']} °C, seals below {t['seal']} °C. Tin of 12 §TIN§, single bag §BAG§.", "shop.html", body, vbs)
 
 def ritual(vbs):
     # 16 bags from 3-4 origins: example box this month
@@ -449,9 +457,9 @@ def ritual(vbs):
     <span class="badge">Become a Keeper</span>
     <div class="eyebrow" style="color:var(--brand-primary);margin-top:12px">The Ritual subscription</div>
     <h1 class="h1">One box a month.<br><span class="arc-text">One cup a day, made with love.</span></h1>
-    <div class="amt-xl">$24<small> / month</small></div>
-    <ul class="ticks"><li>16 bags from 3-4 origins</li><li>Up to 3 infusions per bag: about $0.50 a cup</li><li>Free shipping, skip or pause any month</li><li>Ritual members are Keepers</li></ul>
-    <div class="cta-row" style="margin-top:26px"><button class="btn primary" type="button" data-add="ritual:ritual">Add the Ritual · $24/month</button></div>
+    <div class="amt-xl">§RITUAL§<small> / month</small></div>
+    <ul class="ticks"><li>16 bags from 3-4 origins</li><li>Up to 3 infusions per bag: about §CUP§ a cup</li><li>Free shipping, skip or pause any month</li><li>Ritual members are Keepers</li></ul>
+    <div class="cta-row" style="margin-top:26px"><button class="btn primary" type="button" data-add="ritual:ritual">Add the Ritual · §RITUAL§/month</button></div>
   </div>
   <div class="box-vis">
     <div class="eyebrow">An example box</div>
@@ -472,7 +480,7 @@ def ritual(vbs):
 <section class="tight"><div class="wrap">{faq()}</div></section>
 <section class="movement"><div class="wrap">{waitlist_block('The first boxes go to<br><span class="arc-text">the waitlist first.</span>', 'Join now and we write when your first Ritual box is ready.')}</div></section>
 '''
-    return page("ritual.html", "The Ritual · OSME", "The OSME Ritual: $24 a month for 16 bags from 3-4 origins, free shipping, skip or pause any month.", "ritual.html", body, vbs)
+    return page("ritual.html", "The Ritual · OSME", "The OSME Ritual: §RITUAL§ a month for 16 bags from 3-4 origins, free shipping, skip or pause any month.", "ritual.html", body, vbs)
 
 def story(vbs):
     cult = ""
@@ -545,6 +553,85 @@ def keepers(vbs):
 '''
     return page("keepers.html", "Keepers · OSME", "Join the OSME movement: art, love, scent. #ThreeBubbles, one cup a day. Become a Keeper.", "keepers.html", body, vbs)
 
+# ---------------------------------------------------------------- hand-in: the brief's five things, one click each
+def md_html(md):
+    """Small Markdown to HTML for the pitch script: headings, bold, italics, tables, lists, [cues]."""
+    out, table, lst = [], [], [False]
+    def inline(t):
+        t = html.escape(t, quote=False)
+        t = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", t)
+        t = re.sub(r"(?<![\w*])\*(?!\s)(.+?)\*", r"<em>\1</em>", t)
+        t = re.sub(r"`(.+?)`", r"<code>\1</code>", t)
+        return re.sub(r"\[(.+?)\]", r'<span class="cue">[\1]</span>', t)
+    def flush():
+        if table:
+            rows = [r for r in table if not re.match(r"^\|[\s:|-]+\|$", r)]
+            cells = lambda r: [c.strip() for c in r.strip("|").split("|")]
+            head = "".join(f"<th>{inline(c)}</th>" for c in cells(rows[0]))
+            body = "".join("<tr>" + "".join(f"<td>{inline(c)}</td>" for c in cells(r)) + "</tr>" for r in rows[1:])
+            out.append(f'<div class="tscroll"><table><thead><tr>{head}</tr></thead><tbody>{body}</tbody></table></div>')
+            table.clear()
+        if lst[0]:
+            out.append("</ul>"); lst[0] = False
+    for line in md.splitlines():
+        if line.startswith("|"):
+            table.append(line.strip()); continue
+        if re.match(r"^\s*[-*] ", line):
+            if table: flush()
+            if not lst[0]: out.append("<ul>"); lst[0] = True
+            out.append("<li>" + inline(re.sub(r"^\s*[-*] ", "", line)) + "</li>"); continue
+        flush()
+        m = re.match(r"^(#{1,4}) (.*)", line)
+        if m:
+            n = len(m.group(1)) + 1; out.append(f"<h{n}>{inline(m.group(2))}</h{n}>")
+        elif line.strip():
+            out.append(f"<p>{inline(line)}</p>")
+    flush()
+    return "\n".join(out)
+
+def script_page(vbs):
+    body = ('<header class="page-head"><div class="wrap"><div class="eyebrow">Hand-in · 5 Pitch</div>'
+            '<h1 class="h1">The pitch script.</h1><p class="lead">Three minutes, four speakers. Stage cues in brackets are not spoken. '
+            '<a href="pitch.html">Open the deck</a></p></div></header>'
+            f'<section class="tight"><div class="wrap script">{md_html(rd(ROOT, "deck/script.md"))}</div></section>')
+    return page("script.html", "Pitch script · OSME", "The OSME pitch script: three minutes, four speakers.", "", body, vbs)
+
+def copy_in(src, dst):
+    """Copy a teammate's self-contained page into docs/ when it exists; True if it did."""
+    s = os.path.join(ROOT, src)
+    if not os.path.exists(s):
+        return False
+    shutil.copyfile(s, os.path.join(DOCS, dst))
+    return True
+
+HANDIN = [  # number, name, the brief's words (brief/README.md), what we made, link, button, thumb key
+    ("1", "Brand", "A name, a logo and one line that says what it is.", "OSME, said “oz-MAY”, Greek for scent. “A tea bag that opens only at its perfect temperature.”", "brand.html", "Open the brand board", "brand"),
+    ("2", "Customer", "Who would buy this? Show where you found them.", "Curious tea drinkers who pay for good leaf and hate a bitter cup, and gift givers. Sourced numbers and tea drinkers’ own words.", "customer.html", "Open the customer evidence", "customer"),
+    ("3", "Product", "Something that works today, on one laptop.", "The live demo: an OSME Sencha bag next to the 1908 bag, six teas, three cultures. Press F for full screen.", "demo.html", "Open the live demo", "product"),
+    ("4", "Site", "One site that holds it all: what it does, who it is for, the price.", "A multi-page shop: six teas, a page per tea, the Ritual, our story, Keepers, a cart and a waitlist.", "index.html", "Open the site", "site"),
+    ("5", "Pitch", "Three minutes, with a full pitch deck and the product running.", "Eight slides: company, problem, solution, customer evidence, market, business, competition, the ask.", "pitch.html", "Open the deck", "pitch"),
+]
+
+def handin(vbs, have):
+    cards = ""
+    for n, name, brief, ours, href, cta, key in HANDIN:
+        if key == "customer" and not have["customer"]:
+            href = "index.html#who"  # until business's page lands in shared/business/
+        if key == "pitch" and not have["pitch"]:
+            href = "script.html"
+        tp = os.path.join(SRC, "thumbs", key + ".jpg")
+        thumb = f'<img src="_src/thumbs/{key}.jpg" alt="">' if os.path.exists(tp) else ""
+        extra = ' <a class="btn sm" href="script.html">The script</a>' if key == "pitch" else ""
+        cards += (f'<article class="ho-tile"><a class="ho-img" href="{href}" aria-label="{name}">{thumb}<span class="ho-n">{n}</span></a>'
+                  f'<div class="ho-body"><div class="eyebrow">{n} · {name}</div><p class="ho-brief">“{brief}”</p><p class="ho-ours">{ours}</p>'
+                  f'<div class="ho-cta"><a class="btn sm primary" href="{href}">{cta}</a>{extra}</div></div></article>')
+    body = ('<header class="page-head"><div class="wrap">'
+            '<div class="eyebrow">Table 5 · Sell the unsellable · Hand-in</div>'
+            '<h1 class="h1">OSME. <span class="arc-text">Every tea has its temperature.</span></h1>'
+            '<p class="lead">A tea bag that opens only at its perfect temperature. The brief’s five things, each one click away.</p>'
+            f'</div></header><section class="tight"><div class="wrap"><div class="ho-grid">{cards}</div></div></section>')
+    return page("handin.html", "Hand-in · OSME · Table 5", "Table 5 hand-in: OSME brand, customer, product, site and pitch, one click each.", "", body, vbs)
+
 # ---------------------------------------------------------------- main
 def web_loop():
     """Light copy of the film loop for the page band, made fresh from video/osme-loop.mp4 every build."""
@@ -555,7 +642,11 @@ def web_loop():
 if __name__ == "__main__":
     web_loop()
     LOGO_DEFS, VBS = logo_symbols()
-    out = [home(VBS), shop(VBS), ritual(VBS), story(VBS), keepers(VBS)] + [tea_page(t, VBS) for t in TEAS]
+    have = {"customer": copy_in("shared/business/customer-evidence.html", "customer.html"),
+            "brand": copy_in("brand/identity/board.html", "brand.html"),
+            "pitch": copy_in("deck/pitch.html", "pitch.html")}
+    out = [home(VBS), shop(VBS), ritual(VBS), story(VBS), keepers(VBS), handin(VBS, have), script_page(VBS)] + [tea_page(t, VBS) for t in TEAS]
+    out += [f for f, k in (("brand.html", "brand"), ("customer.html", "customer"), ("pitch.html", "pitch")) if have[k]]
     # live demo: the product thread's page, copied as is
     with open(os.path.join(ROOT, "product/index.html"), encoding="utf-8") as f:
         demo = f.read()

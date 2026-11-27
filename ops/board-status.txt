@@ -1,5 +1,5 @@
 # The lead edits this; ops/bin/board.py reads it every 30 s.
 gate=2
-now=Pitch prep: pitch v1 by 11:45 for the first read-through. Judge passes at 12:00 and 12:45; freeze at 13:15.
+now=Pitch v3: the film with voice, then about 2:20 of talk. v08 at 12:40, timed run-through 12:45, freeze 13:15, hand in 13:30.
 pin.video=pr1-review.png
-decide=Price: $1.50 (LTV:CAC 1.9x) or $2.00 (3.3x, $0.67 a cup)? · Ask of the room: join the waitlist? · Dwi's PR: take plume, 3-state strip, exploded view? · Speakers A-D? · Waitlist: service + inbox?
+decide=Speakers A to D?
