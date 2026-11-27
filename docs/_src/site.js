@@ -116,7 +116,7 @@ function keeperCount() {
   if (!els.length || !WAITLIST.countUrl) return;
   fetch(WAITLIST.countUrl, { cache: "no-store" }).then(function (r) { return r.text(); }).then(function (txt) {
     var n = WAITLIST.kind === "api" ? (JSON.parse(txt).count || 0) : txt.trim().split(/\r?\n/).length - 1;
-    if (n > 0) els.forEach(function (el) { el.hidden = false; el.innerHTML = "<b>" + n.toLocaleString("en-US") + "</b> Keepers on the waitlist"; });
+    if (n > 0) els.forEach(function (el) { el.hidden = false; el.innerHTML = "<b>" + n.toLocaleString("en-US") + "</b> " + (n === 1 ? "Keeper" : "Keepers") + " on the waitlist"; });
   }).catch(function () {});
 }
 keeperCount();

@@ -4,16 +4,16 @@
 Everyone drives at least once.
 
 <!-- LIVE:START -->
-## Live status · 11:23 · 2 h 06 to hand-in
+## Live status · 11:28 · 2 h 01 to hand-in
 
 **Now:** Pitch prep: pitch v1 by 11:45 for the first read-through. Judge passes at 12:00 and 12:45; freeze at 13:15.
 
 | | Topic | Status | Latest preview |
 |---|---|---|---|
-| 🎨 | Brand & logo | 🟡 working · judge 4/5 · 11:21 | <img src="gallery/brand-v12-motion.png" width="260"> |
+| 🎨 | Brand & logo | 🟡 working · judge 4/5 · 11:26 | <img src="gallery/brand-v13-title.png" width="260"> |
 | 🚦 | Gate 1 deck | 🟡 working · judge 4/5 · 10:53 | <img src="gallery/gate1-v09.png" width="260"> |
 | 📈 | Business case | 🟡 working · judge 4.5/5 · 11:06 | <img src="gallery/business-v10.png" width="260"> |
-| 🍵 | Product demo | 🟡 working · judge 4/5 · 11:17 | <img src="gallery/product-exploded-v01.png" width="260"> |
+| 🍵 | Product demo | 🟡 working · judge 4/5 · 11:28 | <img src="gallery/product-exploded-v03.png" width="260"> |
 | 🎤 | Pitch deck | 🟡 working · judge 3/5 · 11:23 | <img src="gallery/deck-v04-strips.png" width="260"> |
 | 🌐 | Site | 🟡 working · 11:22 | <img src="gallery/site-v04.png" width="260"> |
 | 🎬 | Video | 🟡 working · 11:17 | <img src="gallery/pr1-review.png" width="260"> |

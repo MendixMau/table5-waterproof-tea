@@ -777,6 +777,8 @@ var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: re
 
 /* WAITLIST: the one setting to change when the team picks a service.
    kind: ""           -> no service yet: saved on this device, success shown.
+         "api"        -> our own API (site-api/ on Vercel): endpoint "https://<project>.vercel.app/api/waitlist",
+                         countUrl "https://<project>.vercel.app/api/count". If the API is down, the email is saved on this device.
          "formspree"  -> endpoint "https://formspree.io/f/<id>"
          "formsubmit" -> endpoint "https://formsubmit.co/ajax/<email-or-token>"
          "google"     -> endpoint "https://docs.google.com/forms/d/e/<id>/formResponse", emailField "entry.<n>", cartField "entry.<n>"
@@ -866,11 +868,15 @@ document.addEventListener("keydown", function (e) { if (e.key === "Escape") { cl
 /* ---------- waitlist ---------- */
 function cartSummary() { return cart().map(function (it) { return (TEA_NAMES[it.id] || it.id) + " " + it.kind + " x" + it.qty; }).join("; "); }
 
+function saveLocal(payload) { var list = store(WL_KEY) || []; list.push(payload); store(WL_KEY, list); return { local: true }; }
+
 function sendWaitlist(email, source) {
   var payload = { email: email, cart: cartSummary(), source: source, page: location.pathname.split("/").pop() || "index.html", at: new Date().toISOString() };
-  if (!WAITLIST.kind || !WAITLIST.endpoint) {
-    var list = store(WL_KEY) || []; list.push(payload); store(WL_KEY, list);
-    return Promise.resolve({ local: true });
+  if (!WAITLIST.kind || !WAITLIST.endpoint) return Promise.resolve(saveLocal(payload));
+  if (WAITLIST.kind === "api") {
+    return fetch(WAITLIST.endpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) })
+      .then(function (r) { if (r.status === 400) throw new Error("email"); if (!r.ok) throw new Error("status " + r.status); return r.json(); })
+      .catch(function (e) { if (e.message === "email") throw e; return saveLocal(payload); });
   }
   if (WAITLIST.kind === "google") {
     var body = new URLSearchParams(); body.append(WAITLIST.emailField, email); if (WAITLIST.cartField) body.append(WAITLIST.cartField, payload.cart);
@@ -883,9 +889,9 @@ function sendWaitlist(email, source) {
 function keeperCount() {
   var els = document.querySelectorAll("[data-keeper-count]");
   if (!els.length || !WAITLIST.countUrl) return;
-  fetch(WAITLIST.countUrl, { cache: "no-store" }).then(function (r) { return r.text(); }).then(function (csv) {
-    var n = csv.trim().split(/\r?\n/).length - 1;
-    if (n > 0) els.forEach(function (el) { el.hidden = false; el.innerHTML = "<b>" + n.toLocaleString("en-US") + "</b> Keepers on the waitlist"; });
+  fetch(WAITLIST.countUrl, { cache: "no-store" }).then(function (r) { return r.text(); }).then(function (txt) {
+    var n = WAITLIST.kind === "api" ? (JSON.parse(txt).count || 0) : txt.trim().split(/\r?\n/).length - 1;
+    if (n > 0) els.forEach(function (el) { el.hidden = false; el.innerHTML = "<b>" + n.toLocaleString("en-US") + "</b> " + (n === 1 ? "Keeper" : "Keepers") + " on the waitlist"; });
   }).catch(function () {});
 }
 keeperCount();

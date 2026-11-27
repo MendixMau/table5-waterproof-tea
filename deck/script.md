@@ -9,8 +9,8 @@ Spoken lines are plain text. Headers are bold, stage cues sit in square brackets
 |---|---|---|---|---|
 | A (name TBD by the team) | 1 to 2 | Company, problem | 92 | 45 |
 | B (name TBD by the team) | 3, plus the laptop for the whole pitch | Live demo | 70 | 40 |
-| C (name TBD by the team) | 4 to 6 | Customer, market, business | 122 | 55 |
-| D (name TBD by the team) | 7 to 8 | Competition, the ask | 85 | 40 |
+| C (name TBD by the team) | 4 to 6 | Customer, market, business | 116 | 55 |
+| D (name TBD by the team) | 7 to 8 | Competition, the ask | 92 | 40 |
 
 ## Script
 
@@ -49,15 +49,15 @@ The principle exists: lab membranes already open and close with temperature. Our
 Cue to next slide: "already brew loose leaf." (C clicks)
 [The amber wisp draws from each quote into the bag.]
 The curious specialty drinker, twenty-five to forty-five, already pays for good leaves.
-One wrote: "I've been steeping this for twenty minutes. This is going to melt my tongue."
-Another: "I spend way too much on tea to just throw them away after one steep."
+One wrote: "I spend way too much on tea to just throw them away after one steep."
+Another: "My leaves start not tasting as fresh when I reuse them from the day before."
 Sixteen percent of UK black tea drinkers already brew loose leaf.
 
 **1:50 to 2:05 · Slide 5 · Market · Speaker C**
-Cue to next slide: "one point three percent of it." (C clicks)
+Cue to next slide: "two hundred thousand buyers." (C clicks)
 Tea bags: a seven point one billion dollar market.
-We start with premium in four first markets: six hundred and forty million.
-Year three: eight point three million, one point three percent of it.
+We start with premium in four markets: six hundred and forty million.
+Year three: eight point three million, from about two hundred thousand buyers.
 
 **2:05 to 2:20 · Slide 6 · Business · Speaker C**
 Cue to next slide: "seventy-two percent gross margin." (C clicks)
@@ -65,18 +65,18 @@ One bag is a dollar fifty, in every pack, and brews up to three cups: fifty cent
 At year-three scale we keep a dollar eight a bag: seventy-two percent gross margin.
 
 **2:20 to 2:35 · Slide 7 · Competition · Speaker D**
-Cue to next slide: "into one bag, no machine." (D clicks)
+Cue to next slide: "the raise pays for that." (D clicks)
 Every way of tea gets something right.
-Loose leaf keeps the art; Tea Forte and Sips By, fine leaves; Special.T, ease, with a machine.
 Only OSME brings art and ease into one bag, no machine.
+Where we lose today: the first cup costs more, and the membrane still needs certification. The raise pays for that.
 
 **2:35 to 3:00 · Slide 8 · The ask · Speaker D**
-Cue to next slide: "Series A." (D clicks once more: logo and "Every tea has its temperature.")
-[Use of funds stays on screen, not spoken: 35 / 15 / 30 / 20.]
+Cue to next slide: "Series A." (D clicks once more: logo, "Every tea has its temperature." and the waitlist QR)
+[Use of funds stays on screen, not spoken: 35 / 15 / 30 / 15 / 5.]
 We ask two and a half million dollars on a SAFE, at a ten million dollar pre-money valuation.
 Eighteen months to a food-safe membrane at seventy to ninety degrees. Then the first Ritual boxes ship, and at twenty thousand subscribers, Series A.
 [D clicks: logo and tagline.]
-Every tea has its temperature. We are OSME.
+Every tea has its temperature. We are OSME. Scan the code and join the waitlist.
 
 ## Numbers and sources
 
@@ -91,11 +91,11 @@ Every tea has its temperature. We are OSME.
 | Eighty degrees (Sencha opens) | 3 | facts.md tea windows; product/index.html Sencha hi 80 |
 | A second cup, and a third (up to 3 infusions) | 3, 6 | facts.md "Price"; deck/model_business.py INFUSIONS = 3 |
 | Twenty-five to forty-five (segment age) | 4 | truth/customers-market.md §2 (segment A) |
-| Twenty minutes (quote) | 4 | truth/customers-market.md §1 (weland, Hacker News, edited) |
+| Two quotes (unedited) | 4 | truth/customers-market.md §1 (hopeofdawn and silversun, TeaChat) |
 | Sixteen percent of UK black tea drinkers brew loose leaf | 4 | truth/customers-market.md §2 (UKTIA 2024) |
 | Seven point one billion dollars (TAM, $18.77 bn x 38%) | 5 | facts.md "Market"; truth/business-case.md §1 |
 | Four first markets, six hundred and forty million (SAM) | 5 | facts.md "Market"; truth/business-case.md §1 |
-| Eight point three million dollars year three, one point three percent of SAM | 5 | truth/business-case.md §5; deck/model_business.py walk at PRICE 1.50 |
+| Eight point three million dollars year three, about two hundred thousand buyers (205 k; 0.13% of 159 m US daily tea drinkers on screen) | 5 | truth/business-case.md §5 and lines 21 to 23; deck/model_business.py walk at PRICE 1.50 |
 | A dollar fifty a bag | 6 | facts.md "Price"; deck/model_business.py PRICE |
 | Fifty cents a cup | 6 | facts.md "Price"; truth/business-case.md §2 |
 | A dollar eight a bag, seventy-two percent gross margin, at year-three scale ($1.50 minus $0.42) | 6 | truth/business-case.md §3, §4; deck/model_business.py cogs(3) |
@@ -108,7 +108,7 @@ Every tea has its temperature. We are OSME.
 1. Price: every line says a dollar fifty (facts.md). If the team moves to $2.00 (truth/business-case.md §6), slide 6 becomes "two dollars ... about sixty-seven cents a cup ... a dollar fifty-eight a bag: seventy-nine percent", and slide 5 year three becomes eleven million at the same volumes. No other spoken line changes.
 2. Clicker: the cues assume each speaker clicks their own slides, and B presses PageDown after the demo. If B drives the laptop for every slide, the cues become nods to B.
 3. Demo layout: the script says the OSME bag is "in the middle" and the ordinary bag "on the right", as on the built slide 3. Check once on the stage screen.
-4. Slide 4 quotes are spoken verbatim from the slide (quote 1 edited, as on the slide notes). Fine to read them aloud?
+4. Slide 4 quotes are spoken verbatim from the slide; both are unedited TeaChat posts. Fine to read them aloud?
 5. "Tea-tech disruptor" is not in v2: it is on none of the built slides. Add it on slide 8 only if the team wants it (plus 3 words).
-6. Close: D says "Every tea has its temperature. We are OSME." over the logo. Drop "We are OSME" if the team prefers the tagline alone (minus 3 words).
+6. Close: D says "Every tea has its temperature. We are OSME. Scan the code and join the waitlist." over the logo. Drop "We are OSME" if the team prefers the tagline alone (minus 3 words).
 7. Slide 4 brief options not used on stage: "32% of Gen Z daily tea drinkers choose green tea" (YouGov) and "7 in 10 would welcome a premium tea gift box" (Mintel) are kept for Q&A, because the built slide shows UKTIA 16%.

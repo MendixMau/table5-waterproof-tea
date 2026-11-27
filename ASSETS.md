@@ -17,8 +17,10 @@
 | Arc sweep, the signature transition | `brand/motion/arc-sweep.svg` | brand | Every slide entry, film transitions |
 | Logo reveal (the S rises out of the bag) | `brand/motion/logo-reveal.svg` | brand | Deck slides 1 and 8, film ending |
 | Count-ups for big numbers | `brand/motion/count-up.js` | brand | Every big number |
-| Steep-reveal entrance | `brand/motion/steep-reveal.css` | brand | Text entrances |
+| Steep-reveal entrance | `brand/motion/steep-reveal.css` | brand | Text entrances (decks: `data-steep="wait"` on every slide) |
 | Three bubbles rising (Lu Yu) | `brand/motion/three-bubbles.svg` | brand | Deck slide 1, film 0–3 s |
+| Title card "1,200 years of temperature": Lu Yu's bubbles, the arc, Britain · China · Japan (animated, all in by 3.5 s, then holds; static SVG + PNG) | `brand/motion/title-1200-years.svg`, `brand/assets/title-1200-years-static.svg` (+ `.png`) | brand | Deck slide 1, film 0–3 s (beats 1–2) |
+| Play and pause all motion in a slide: `osmePlay(slide)`, `osmePause(slide)` | `brand/motion/osme-play.js` | brand | Deck slide changes |
 | All motion pieces in one page | `brand/motion/demo.html` | brand | Browse them |
 | Culture motif: Britain, China, Japan | `brand/assets/culture-motif.svg` | brand | Deck slide 2, film history beats, site story |
 | Icons: self-stopping, scent sealed, three infusions | `brand/assets/icon-*.svg` | brand | Deck slide 3, site |
@@ -37,5 +39,5 @@
 | Lu Yu's three bubbles row: fish eyes, string of pearls, rolling waves | `shared/site/bubbles-row.html` (+ `.png`) | site | Deck slide 1, film 0–3 s |
 | How to use the shared/site slides: 1920x1080, scale to any window or iframe; rebuild with `python3 docs/_src/shared.py` (same components as the site) | `docs/_src/shared.py` | site | Rebuild after a logo or number change |
 | Business charts: price ladder, market circles | `deck/build_business.py` builds `deck/business.html` | business | Deck slides 5 and 6 |
-| "What's inside" exploded view | Coming in `shared/product/` | product | Deck backup slide, site "How it works" |
+| "What's inside" exploded view: 5 layers (tag, seal, filter, membrane, leaf) + Sencha membrane inset (sealed / open / sealed), 1600×1000, Jost embedded | `shared/product/exploded-view.svg` (static), `shared/product/exploded-view-animated.svg` (12 s loop: 100 → 80 °C opens → below 70 °C seals; works as `<img>`) | product | Deck backup slide, site "How it works". Regenerate: `python3 shared/product/_src/gen-exploded.py .` |
 | Dwi's Osme Control concept. Reference only: it is a manual capsule, not our product | `refs/dwi-osme-control/` | none | Ideas only: the plume close-up, the exploded view |

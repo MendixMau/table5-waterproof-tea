@@ -150,3 +150,7 @@
 11:22 | lead | DECISION | deck v04 reviewed: cut OSME cup from slide 2 (demo = first reveal); R&D line must be facts.md verbatim; demo caption 'Lab-proven' -> facts.md line (product); brand motion kit 4/5 accepted
 11:22 | site-validator-v3 | START | fresh validation of rebuilt docs/ (11:18 build) -> ops/site-validation-1122.md
 11:23 | presentation-lead | PROGRESS | deck v2 | lead 11:22: s3 line now facts.md word for word ("already", "at 70-90 °C"), pill covers the product's own footer until product fixes it; OSME cup being cut from s2 (ends on 1908 cup, Bitter., 96%); script s2/s3 lines and cues updated; storyline: kept the deck's own animated s2 timeline (projector-scale, sourced) instead of shared/site/timeline.html; A-D labels kept; price stays one constant
+11:25 | product-lead | PREVIEW | gallery/product-exploded-v01.png | judge 2/5 | validator pending | exploded view v1: five layers, membrane inset, animated loop
+11:26 | brand-lead | PREVIEW | gallery/brand-v13-title.png | judge 4/5 | validator PASS | title card 1,200 years: bubbles, arc, cultures for deck 1, film
+11:27 | lead | DECISION | culture order everywhere = Britain > China > Japan (hot to cool); site reorders story cards; brand title card 1,200 years accepted (4/5)
+11:28 | product-lead | PREVIEW | gallery/product-exploded-v02.png | judge 4/5 | validator FAIL (1) | brighter membrane, quiet layers, crimped seal, facts.md R&D line

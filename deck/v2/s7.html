@@ -43,6 +43,10 @@
 #s7 .osme .tx .nm{font-size:56px;font-weight:600;letter-spacing:.08em;background:linear-gradient(90deg,#F2A33A,#D9C46B 50%,#3DBA9B);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1}
 #s7 .osme .tx .ds{font-size:30px;color:var(--text);margin-top:8px}
 #s7 .osme .tx .ds span{color:var(--jade)}
+#s7 .lose{position:absolute;left:4%;top:60%;width:640px;font-size:28px;line-height:1.3;color:rgba(243,238,230,.82);padding:18px 26px;border-left:3px solid var(--amber);background:rgba(23,23,27,.7);opacity:0}
+#s7 .lose b{display:block;font-size:20px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:8px}
+#s7.play .lose{animation:s7-rise .8s var(--ease) 3.2s both}
+html.still #s7 .lose{opacity:1}
 </style>
 <div class="slide" id="s7" data-title="Competition">
   <div class="head steep">
@@ -79,6 +83,7 @@
         <img class="mk" src="__ASSET:brand/identity/logo-symbol.svg__" alt="OSME"/>
         <div class="tx"><div class="nm">OSME</div><div class="ds">art and ease in one bag, <span>no machine</span></div></div>
       </div>
+      <div class="lose"><b>Where we lose today</b>The first cup costs more than a supermarket bag, and the membrane still needs food-contact certification. The raise pays for it.</div>
     </div>
   </div>
   <aside class="notes">
@@ -87,6 +92,7 @@
       <li>Tea Forte $1.30 a pyramid infuser ($26 / 20, teaforte.com products.json) · Sips By about $1 a cup ($15 a month, ~15 cups; reviewed.com and mysubscriptionaddiction.com) · Nestlé Special.T €0.35 a pod + €129 machine (New Atlas, 2010 launch). Source list: facts.md "Top 3 competitors", truth/customers-market.md §4 and §5, truth/business-case.md §2.</li>
       <li>Supermarket bag (PG Tips $0.03 a cup, truth/business-case.md §2) and loose leaf and gongfu are reference points, not rivals.</li>
       <li>OSME $__NUM:cup__ a cup ($__NUM:price__ a bag, up to __NUM:infusions__ infusions, lab target). Lesson from Teforia (shut 2017, TechCrunch): hardware that needs explaining struggles; OSME's intelligence sits in the bag.</li>
+      <li>Where we lose: OSME $__NUM:cup__ a cup against a supermarket bag at $0.03 (truth/business-case.md §2); the membrane needs food-contact certification, 15% of the raise (truth/business-case.md §7).</li>
     </ul>
   </aside>
 </div>

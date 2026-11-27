@@ -19,3 +19,8 @@ Generator: `python3 docs/_src/build.py` builds index, shop, tea-<id> x6, ritual,
 Waitlist: set WAITLIST in docs/_src/site.js (kind formspree|formsubmit|google, endpoint, emailField/cartField for google, countUrl for a published-sheet Keeper count), rebuild.
 Tests: /tmp/site-shots/multi.js (shots, overflow, console errors), cart.js (cart + pre-order + menu), msheet.js (gallery sheet).
 Preview: gallery/site-v03.png. Fresh validator + judge (v2 briefs) running.
+
+## State 11:25
+- v04 judge fixes in; gallery/site-v04.png (shop pages) + gallery/site-v04-shared.png (shared/site/ pieces, built by docs/_src/shared.py, in ASSETS.md).
+- Backend: HOLD (lead + Maurits: no deploy). site-api/ written locally: api/waitlist.js, count.js, export.js over the Upstash REST API, no keys, no deps. `node site-api/test/local.mjs` passes; browser end-to-end against a local server passes (count 1 -> 2, falls back to the browser save when the API is down). Deploy steps: site-api/README.md (~10 min). The site has kind "api" support; WAITLIST stays kind "" until go.
+- Validator v3 on the current docs running.

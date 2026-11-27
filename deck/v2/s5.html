@@ -21,6 +21,7 @@
 #s5 .s5-row{position:absolute;left:0}
 #s5 .s5-row .v{font-size:clamp(84px,5.9vw,116px);font-weight:500;line-height:.95;letter-spacing:-.025em;font-variant-numeric:tabular-nums;white-space:nowrap}
 #s5 .s5-row .k{font-size:clamp(28px,1.6vw,31px);color:rgba(243,238,230,.8);margin-top:8px;white-space:nowrap}
+#s5 .s5-row .k2{font-size:28px;color:rgba(243,238,230,.66);margin-top:6px;white-space:nowrap}
 #s5 .s5-row .k b{font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:1em;margin-right:14px}
 #s5 .r1{top:calc(30.5% - 70px)}#s5 .r2{top:calc(55.5% - 70px)}#s5 .r3{top:calc(80% - 70px)}
 #s5 .r1 .v,#s5 .r1 b{color:var(--amber)}#s5 .r2 .v,#s5 .r2 b{color:var(--mid)}
@@ -71,7 +72,7 @@
     <div class="s5-row r2" style="--dl:.9s"><div class="v" data-count="__NUM:sam__" data-prefix="$" data-suffix=" m" data-dl="1.0">$__NUM:sam__ m</div>
       <div class="k"><b>SAM</b>premium bags, 4 first markets</div></div>
     <div class="s5-row r3" style="--dl:1.5s"><div class="v" data-count="__NUM:y3__" data-dec="1" data-prefix="$" data-suffix=" m" data-dl="1.7">$__NUM:y3__ m</div>
-      <div class="k"><b>Year 3</b>__NUM:share__% of SAM</div></div>
+      <div class="k"><b>Year 3</b>about 205 k buyers</div><div class="k2">0.13% of the 159 m Americans who drink tea every day</div></div>
   </div>
 
   <aside class="notes">
@@ -79,8 +80,8 @@
       <li>TAM $__NUM:tam__ bn: money spent on tea bags worldwide in a year. Global tea market $18.77 bn (Fortune Business Insights 2025, https://www.fortunebusinessinsights.com/tea-market-112189) x 38% tea bag share (same source). truth/business-case.md §1, facts.md "Market size".</li>
       <li>SAM $__NUM:sam__ m: premium bagged tea in our four first markets, Japan, China, UK and US. $7.1 bn x 45% for the four markets (ASSUMPTION) x 20% premium share (ASSUMPTION). truth/business-case.md §1.</li>
       <li>Year 3 $__NUM:y3__ m = __NUM:share__% of SAM, bottom-up at $__NUM:price__ a bag: Ritual subscriptions $__NUM:rit_m__ m (12 k average subscribers x $24 x 12) + tins and gifts $__NUM:tins_m__ m (185 k x $18) + premium retail $__NUM:ret_m__ m (2 m bags x $0.75). deck/model_business.py, truth/business-case.md §5. Never $9 m: that assumed $2.00 singles.</li>
+      <li>People: over 159 million Americans drink tea on any given day (US Census Bureau, Jan 2024, via the Tea Association of the USA; truth/business-case.md line 21). Year 3 is about 205 k buyers: 20 k Ritual subscribers + 185 k tin buyers (ASSUMPTION one tin per buyer), 0.13% of US daily tea drinkers (truth/business-case.md line 23). Britain drinks about 100 m cups a day (UKTIA).</li>
       <li>Rings are not to scale (to scale, the SAM is 9% of the TAM and year 3 would be a dot). The $38.89 bn specialty tea figure uses another scope and stays off this slide (facts.md).</li>
-      <li>Script check: deck/script.md slide 5 still says "nine million dollars"; say "eight point three million".</li>
     </ul>
   </aside>
 </div>
