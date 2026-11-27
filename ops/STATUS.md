@@ -6,7 +6,7 @@
 | truth-history | Truth | ops/agents/truth-history.md | truth/history-cultures.md | running |
 | business | Business | ops/agents/business.md | truth/business-case.md | running |
 | business-validator | Business | ops/agents/business-validator.md | judge/business-validation.md | waits for business |
-| strategist | Story | ops/agents/strategist.md | brand/strategy.md | running |
+| strategist | Story | ops/agents/strategist.md | brand/strategy.md | ✅ done, 5 questions open |
 | storyteller | Story | ops/agents/storyteller.md | deck/story.md | running |
 | identity | Design | ops/agents/identity.md | brand/identity/ | running |
 | product | Make | ops/agents/product.md | product/index.html | running |
