@@ -1,0 +1,54 @@
+<svg id="heroCup" viewBox="0 0 460 480" role="img">
+        <defs>
+          <linearGradient id="hArc" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#F2A33A"/><stop offset=".48" stop-color="#D9C46B"/><stop offset="1" stop-color="#3DBA9B"/></linearGradient>
+          <radialGradient id="hGlow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#D9C46B" stop-opacity=".55"/><stop offset="1" stop-color="#D9C46B" stop-opacity="0"/></radialGradient>
+          <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".10"/><stop offset=".18" stop-color="#fff" stop-opacity=".03"/><stop offset=".85" stop-color="#fff" stop-opacity=".02"/><stop offset="1" stop-color="#fff" stop-opacity=".08"/></linearGradient>
+          <linearGradient id="bagFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A2A30"/><stop offset="1" stop-color="#1E1E23"/></linearGradient>
+          <clipPath id="cupClip"><path d="M120 196 L340 196 L326 410 Q324 430 304 430 L156 430 Q136 430 134 410 Z"/></clipPath>
+          <filter id="blur8"><feGaussianBlur stdDeviation="8"/></filter>
+          <filter id="blur3"><feGaussianBlur stdDeviation="3"/></filter>
+        </defs>
+        <!-- temperature arc gauge: 100&nbsp;°C (left) to 60&nbsp;°C (right) -->
+        <path d="M70 200 A160 160 0 0 1 390 200" fill="none" stroke="#2A2A30" stroke-width="6" stroke-linecap="round"/>
+        <path id="hWindow" d="" fill="none" stroke="url(#hArc)" stroke-width="6" stroke-linecap="round" opacity=".9"/>
+        <g id="hTicks" font-family="Futura, Avenir Next, sans-serif" font-size="12" fill="#8E8A83" text-anchor="middle"></g>
+        <circle id="hNeedle" r="9" fill="#F3EEE6" stroke="#0B0B0D" stroke-width="4"/>
+        <!-- readout -->
+        <text id="hTemp" x="230" y="118" text-anchor="middle" font-family="Futura, Avenir Next, sans-serif" font-size="58" fill="#F3EEE6">96°</text>
+        <text id="hState" x="230" y="146" text-anchor="middle" font-family="Futura, Avenir Next, sans-serif" font-size="13" letter-spacing="3.2" fill="#F2A33A">SEALED · TOO HOT</text>
+        <!-- cup -->
+        <g clip-path="url(#cupClip)">
+          <rect x="100" y="196" width="260" height="240" fill="#141518"/>
+          <rect id="hLiquor" x="100" y="226" width="260" height="210" fill="#C9C25E" opacity="0"/>
+          <circle id="hBloom" cx="230" cy="330" r="10" fill="url(#hGlow)" opacity="0"/>
+          <rect x="100" y="222" width="260" height="6" fill="#fff" opacity=".05"/>
+        </g>
+        <path d="M120 196 L340 196 L326 410 Q324 430 304 430 L156 430 Q136 430 134 410 Z" fill="url(#glass)" stroke="#3A3A42" stroke-width="2"/>
+        <path d="M339 240 Q384 244 380 296 Q376 342 330 346" fill="none" stroke="#3A3A42" stroke-width="10" stroke-linecap="round"/>
+        <!-- string + tag (the logo's scent S) -->
+        <defs><linearGradient id="hStr" gradientUnits="userSpaceOnUse" x1="0" y1="266" x2="0" y2="160"><stop offset="0" stop-color="#F2A33A"/><stop offset=".48" stop-color="#D9C46B"/><stop offset="1" stop-color="#3DBA9B"/></linearGradient></defs>
+        <path d="M230 266 C230 254 262 252 262 238 C262 224 238 224 228 222 C216 220 204 214 206 202 C208 188 230 182 250 180 L292 176" fill="none" stroke="url(#hStr)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <g transform="translate(288 160)">
+          <rect width="34" height="34" rx="6" fill="#3DBA9B"/>
+          <circle cx="22" cy="10" r="3.4" fill="#141518"/>
+        </g>
+        <!-- bag -->
+        <g id="hBag" transform="translate(230 330)">
+          <path id="hBagShape" d="M-32 -64 L32 -64 L48 -48 L48 54 Q48 62 40 62 L-40 62 Q-48 62 -48 54 L-48 -48 Z" fill="url(#bagFill)" stroke="#F2A33A" stroke-width="2.4"/>
+          <path id="hSeam" d="M-38 -40 L38 -40 M-42 0 L42 0 M-46 36 L46 36" stroke="#F2A33A" stroke-width="1.4" stroke-dasharray="0" opacity=".55"/>
+          <g id="hLeaves" opacity=".85">
+            <ellipse cx="-16" cy="-18" rx="11" ry="4" fill="#6F7A2E" transform="rotate(-24 -16 -18)"/>
+            <ellipse cx="14" cy="-8" rx="12" ry="4" fill="#7E8A35" transform="rotate(18 14 -8)"/>
+            <ellipse cx="-8" cy="16" rx="13" ry="4" fill="#5E6927" transform="rotate(8 -8 16)"/>
+            <ellipse cx="20" cy="22" rx="10" ry="3.6" fill="#7A8633" transform="rotate(-30 20 22)"/>
+          </g>
+        </g>
+        <!-- steam / scent -->
+        <g id="hSteam" fill="none" stroke="#F3EEE6" stroke-width="2" stroke-linecap="round" opacity=".22" filter="url(#blur3)">
+          <path d="M196 190 q-10 -12 0 -24"/>
+          <path d="M230 188 q10 -12 0 -24"/>
+          <path d="M264 190 q-10 -12 0 -24"/>
+        </g>
+        <!-- saucer -->
+        <ellipse cx="230" cy="440" rx="150" ry="14" fill="#17171B" stroke="#2A2A30" stroke-width="1.5"/>
+      </svg>

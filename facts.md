@@ -29,3 +29,5 @@ Locked at the 10:40 gate. Change here first; every slide, site and product reads
 | Tone | Tradition meets the future: back to the roots, embracing technology. Patience, ritual. Futuristic and premium, never the default app look. |
 | Tea windows (opens / seals, °C) | Gyokuro 60/50 · Sencha 80/70 · Longjing 85/75 · Tieguanyin 95/85 · Pu-erh 100/95 · English Breakfast 100/90 (backup only: it opens at the boil, so it never waits). Sencha is the live demo tea (lead, 10:28). |
 | Proof points (sourced, truth/) | 96% of UK tea is brewed from a bag (QMUL 2016; UKTIA says 97.5%, we use 96%) · about 100 million cups a day in the UK (UKTIA) · 32% of UK Gen Z drink green tea · 7 in 10 would welcome a premium tea gift box (Mintel) · 11.6 bn microplastic particles from one plastic tea bag (McGill 2019). Every on-screen number must match this wording. |
+| Logo (Gate 1, 10:33) | Keep the S (the scent string). Too chunky when small, works big on the site. No bubbles in the logo. Two routes by 10:50: B finer with a small-size version, or A's bag with the S. |
+| Site (Gate 1, 10:33) | A real multi-page shop on GitHub Pages with a working waitlist. |

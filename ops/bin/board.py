@@ -16,6 +16,7 @@ CACHE.mkdir(exist_ok=True)
 TOPICS = [
     ("brand", "Brand & logo", "🎨", "brand", "brand-", None),
     ("gate1", "Gate 1 deck", "🚦", "presentation", "gate1-", lambda s: "gate1" in s.lower()),
+    ("business", "Business case", "📈", "business", "business-", None),
     ("product", "Product demo", "🍵", "product", "product-", None),
     ("deck", "Pitch deck", "🎤", "presentation", "deck-", lambda s: "gate1" not in s.lower()),
     ("site", "Site", "🌐", "site", "site-", None),

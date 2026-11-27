@@ -4,20 +4,21 @@
 Everyone drives at least once.
 
 <!-- LIVE:START -->
-## Live status · 10:31 · 2 h 58 to hand-in
+## Live status · 10:36 · 2 h 53 to hand-in
 
-**Now:** Gate 1 at 10:40: you review brand, logo and market. Site, video and pitch wait for it.
+**Now:** Gate 1 feedback is in: the S logo gets finer, the business case explains price, cost and 640 → 9, and the site goes real with a waitlist.
 
 | | Topic | Status | Latest preview |
 |---|---|---|---|
-| 🎨 | Brand & logo | 🟡 working · judge 21/25 · 10:27 | <img src="gallery/brand-gate1.png" width="260"> |
-| 🚦 | Gate 1 deck | 🟡 working · judge 3.5/5 · 10:30 | <img src="gallery/gate1-v03.png" width="260"> |
-| 🍵 | Product demo | 🟡 working · 10:30 | <img src="gallery/product-v03.png" width="260"> |
+| 🎨 | Brand & logo | 🟡 working · judge 21/25 · 10:36 | <img src="gallery/brand-gate1.png" width="260"> |
+| 🚦 | Gate 1 deck | 🟡 working · judge 4/5 · 10:36 | <img src="gallery/gate1-v06.png" width="260"> |
+| 📈 | Business case | 🟡 working · 10:36 | soon |
+| 🍵 | Product demo | 🟡 working · 10:36 | <img src="gallery/product-v04.png" width="260"> |
 | 🎤 | Pitch deck | ⚪ on hold · 10:18 | <img src="gallery/deck-v03.png" width="260"> |
-| 🌐 | Site | ⚪ on hold · 10:20 | <img src="gallery/site-v02.png" width="260"> |
+| 🌐 | Site | 🟡 working · 10:36 | <img src="gallery/site-v02.png" width="260"> |
 | 🎬 | Video | 🟡 working · 10:25 | <img src="gallery/video-v02.png" width="260"> |
 
-**Waiting on the team:** Logo: B "Scent S"? · Price: tin $18, Ritual $24 · Ask $2.5m at $10m pre · Site: multi-page shop + real waitlist?
+**Waiting on the team:** Logo: B finer, or A's bag + S? · Bubbles: logo only, or everywhere? · Waitlist: Google Form, Formspree or FormSubmit? · Price: stay $1.50 or go premium?
 <!-- LIVE:END -->
 
 ## Five things to hand in by 13:30

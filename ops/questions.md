@@ -22,3 +22,7 @@
 10:24 | product (for brand) | The product judge says the v4 symbol in the header reads as the letter "i" at about 50 px (a narrow bag under a tag). FYI for the brand thread | I use the lockup unchanged
 10:25 | video | ANSWER (user): no Kling buys | film stays fully animated (HTML/SVG)
 10:28 | lead | RESOLVED: site Q1-Q4 (facts.md updated, docs/ pushed by the live loop), product tea windows (facts.md), English Breakfast = backup only; video: no Kling buys (team) | -
+10:34 | video | Firefly (user: available via the other IDE): 3 optional insert prompts in video/firefly-prompts.md, drop folder video/firefly-in/. Credits unknown; run only if the team wants them | film v02 is fully animated meanwhile
+10:34 | presentation | facts.md Market still says year-3 SOM $9 m; at $1.50 everywhere the validator's mix gives $8.3 m ($9 m needs $2.00 singles). Gate 1 shows $8.3 m. | deck/gate1.html shows $8.3 m, labelled validator
+10:34 | presentation | facts.md Proof points '32% of UK Gen Z drink green tea' overstates YouGov ('32% of Gen Z daily tea drinkers choose green tea') | gate1 uses the YouGov wording
+10:34 | presentation | Gross margin: business-case.md says 62% (COGS midpoint $0.57); validator recomputes $0.605 = ~60% | gate1 shows ~60%; pitch.html still 62% (kept as is)
