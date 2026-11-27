@@ -540,6 +540,7 @@ footer.site .top{display:flex;justify-content:space-between;gap:40px;flex-wrap:w
 .membrane figcaption{margin-top:12px}
 @media (max-width:600px){.membrane .play{top:8px;right:8px;padding:6px 11px;font-size:12px}}
 .ho-img:not(:has(img)){aspect-ratio:auto;height:72px;background:linear-gradient(90deg,rgba(242,163,58,.08),rgba(61,186,155,.06))}
+@media (max-width:600px){.membrane .play{display:none}.membrane figcaption .btn{display:inline-flex;margin-top:12px}.hv-caption{bottom:-30px}.hero .hero-visual{margin-bottom:40px}}
 
 </style>
 </head>
@@ -819,7 +820,7 @@ function renderCart() {
   var t = document.querySelector("[data-cart-total]");
   if (t) t.textContent = (total ? fmt(total) : (monthly ? "" : "$0")) + (total && monthly ? " + " : "") + (monthly ? fmt(monthly) + "/month" : "");
   var pc = document.querySelector("[data-cart-percup]");
-  if (pc) pc.textContent = bags ? (bags + " bags · up to " + bags * 3 + " cups · about $0.67 a cup") : "";
+  if (pc) pc.textContent = bags ? (bags + (bags === 1 ? " bag" : " bags") + " · up to " + bags * 3 + " cups · about $0.67 a cup") : "";
   var pre = document.querySelector("[data-preorder]");
   if (pre) pre.style.display = c.length ? "" : "none";
 }

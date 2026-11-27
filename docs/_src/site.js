@@ -48,7 +48,7 @@ function renderCart() {
   var t = document.querySelector("[data-cart-total]");
   if (t) t.textContent = (total ? fmt(total) : (monthly ? "" : "$0")) + (total && monthly ? " + " : "") + (monthly ? fmt(monthly) + "/month" : "");
   var pc = document.querySelector("[data-cart-percup]");
-  if (pc) pc.textContent = bags ? (bags + " bags · up to " + bags * 3 + " cups · about §CUP§ a cup") : "";
+  if (pc) pc.textContent = bags ? (bags + (bags === 1 ? " bag" : " bags") + " · up to " + bags * 3 + " cups · about §CUP§ a cup") : "";
   var pre = document.querySelector("[data-preorder]");
   if (pre) pre.style.display = c.length ? "" : "none";
 }

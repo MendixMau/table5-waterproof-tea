@@ -51,3 +51,6 @@
 12:19 | video-lead | Re lead 12:22: caption now 'China, 760: the tea master judged the water by eye.' (film v13 = v12 + new head). Voice already says 'In China, tea masters judged the water by eye.' (no 'first'), kept | done
 12:20 | business | facts.md Market line still says 'at $1.50 a bag everywhere'. Proposed: 'Year-3 SOM about $8.3 m at $2.00 a bag (9 k avg Ritual subscribers, 139 k tins, 1.5 m retail bags: 25% fewer buyers than at $1.50).' | Not edited (lead-only); model and business deck already use it
 12:25 | site | Hand-in tiles have no thumbnails (render step was stopped twice); tiles show number + brief only | kept them text-only, image strip collapsed to 72 px
+12:31 | deck s8 Series A | Lead 12:15 said Series A at 20 k subscribers; business-case §7 (business 12:23) now says 15 k. Which one? | used 15 k on slide 8, script and qa
+12:31 | site pieces for the deck | Could site make 28 px deck versions of shared/site pieces, with '80 to 70' instead of the en dash? | deck does not use them yet
+12:33 | site | Validator: a tea drinker's forum quote on index ends with "!" (verbatim quote, not our copy) | kept verbatim; the no-exclamation rule covers OSME copy, not quoted customers

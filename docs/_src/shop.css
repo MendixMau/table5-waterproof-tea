@@ -300,3 +300,4 @@ footer.site .top{display:flex;justify-content:space-between;gap:40px;flex-wrap:w
 .membrane figcaption{margin-top:12px}
 @media (max-width:600px){.membrane .play{top:8px;right:8px;padding:6px 11px;font-size:12px}}
 .ho-img:not(:has(img)){aspect-ratio:auto;height:72px;background:linear-gradient(90deg,rgba(242,163,58,.08),rgba(61,186,155,.06))}
+@media (max-width:600px){.membrane .play{display:none}.membrane figcaption .btn{display:inline-flex;margin-top:12px}.hv-caption{bottom:-30px}.hero .hero-visual{margin-bottom:40px}}

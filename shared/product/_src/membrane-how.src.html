@@ -14,7 +14,8 @@
     UCST gate (grafted poly(sulfobetaine), permeability drops above its UCST; battery separator, not tea):
       https://pubs.rsc.org/en/Content/ArticleLanding/2014/TA/C4TA04852K
   The lab switch points (PNIPAm 32 °C) are not ours; tuning them to 70-90 °C, food-safe, is the R&D.
-  Keys: Space / click = replay. Hash: #t=6 freezes at 6 s (stills), #loop loops.
+  Timeline: sealed to 2.2 s (above 80 °C), open 2.2 to 5.6 s (80 to 70 °C), sealed from 5.6 s, holds to 12 s.
+  Keys: Space / click = replay. Hash: #t=4 freezes at 4 s (open, for stills), #loop loops.
 -->
 <style>
 @font-face { font-family: "Jost"; src: url(data:font/woff2;base64,{{JOST}}) format("woff2"); font-weight: 300 700; }
@@ -36,12 +37,12 @@ svg text { font-family:"Jost","Futura","Century Gothic","Avenir Next",sans-serif
     <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3"/></filter>
   </defs>
   <rect width="1920" height="1080" fill="#0B0B0D"/>
-  <ellipse cx="470" cy="470" rx="420" ry="420" fill="url(#pool)"/>
+  <ellipse cx="455" cy="470" rx="420" ry="420" fill="url(#pool)"/>
 
   <!-- dial -->
-  <g id="dial" transform="translate(470 470)"></g>
-  <text id="num" x="470" y="500" text-anchor="middle" style="font-size:150px;font-weight:400;fill:#F3EEE6">100<tspan id="unit" style="font-size:56px" dx="8" dy="-62">°C</tspan></text>
-  <text id="say" x="470" y="850" text-anchor="middle" style="font-size:46px;font-weight:500;letter-spacing:.04em">Too hot. Sealed.</text>
+  <g id="dial" transform="translate(455 470)"></g>
+  <text id="num" x="455" y="500" text-anchor="middle" style="font-size:150px;font-weight:400;fill:#F3EEE6">100<tspan id="unit" style="font-size:56px" dx="8" dy="-62">°C</tspan></text>
+  <text id="say" x="455" y="850" text-anchor="middle" style="font-size:46px;font-weight:500;letter-spacing:.04em">Too hot. Sealed.</text>
 
   <!-- membrane close-up -->
   <g id="lens" transform="translate(800 110)">
@@ -69,7 +70,7 @@ svg text { font-family:"Jost","Futura","Century Gothic","Avenir Next",sans-serif
 (function () {
   var NS = "http://www.w3.org/2000/svg";
   var AMBER = [242,163,58], JADE = [61,186,155];
-  var DUR = 12, C_OPEN = 2.2, C_CLOSE = 5.6, C_END = 8, EASE = 0.5;
+  var DUR = 12, C_OPEN = 2.2, C_CLOSE = 5.6, C_END = 8, EASE = 0.4;
   function el(tag, attrs, parent) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
   function clamp(x) { return x < 0 ? 0 : x > 1 ? 1 : x; }
   function smooth(x) { x = clamp(x); return x * x * (3 - 2 * x); }
@@ -176,8 +177,9 @@ svg text { font-family:"Jost","Futura","Century Gothic","Avenir Next",sans-serif
   var cup = document.getElementById("cup");
 
   function render(t) {
-    var openH = smooth((t - T_OPEN) / EASE);        // hot gate: collapses (opens) at 80
-    var sealC = smooth((t - T_CLOSE) / EASE);       // cool gate: swells (seals) below 70
+    // each gate finishes its switch exactly when the readout crosses its threshold
+    var openH = smooth((t - T_OPEN) / EASE + 1);    // hot gate: collapses (opens) by 80
+    var sealC = smooth((t - T_CLOSE) / EASE + 1);   // cool gate: swells (seals) by 69
     var sw = { hot: 1 - openH, cool: sealC };
     var v = shown(t);
     document.getElementById("num").firstChild.nodeValue = v;
@@ -189,7 +191,9 @@ svg text { font-family:"Jost","Futura","Century Gothic","Avenir Next",sans-serif
     say.style.fill = open ? "#F2A33A" : "#3DBA9B";
     needleDot.setAttribute("fill", open ? "#F2A33A" : "#0B0B0D");
     ["hot", "cool"].forEach(function (k) {
-      var L = layerEls[k], s = sw[k], col = mix(AMBER, JADE, s);
+      // colour follows the readout exactly (jade = shut, amber = open); the chains move into place just before
+      var shut = k === "hot" ? v > 80 : v < 70;
+      var L = layerEls[k], s = sw[k], col = shut ? "#3DBA9B" : "#F2A33A";
       L.frame.setAttribute("stroke", col);
       L.lab.style.fill = col;
       L.poreFill.forEach(function (p) { p.setAttribute("opacity", (0.16 * s).toFixed(3)); });
@@ -202,7 +206,7 @@ svg text { font-family:"Jost","Futura","Century Gothic","Avenir Next",sans-serif
       var alive = born >= T_OPEN + 0.25 && born < T_CLOSE - 0.1 && t < T_CLOSE + 0.5;
       var f = age / PERIOD, y = 225 + f * 520, x = q.c + Math.sin(f * 5 + q.wob) * (f > .53 ? q.wob * f : 4);
       // until the particle has crossed the membrane it needs both gates open
-      if (alive && f < .53 && gateOpen < .5) alive = false;
+      if (alive && f < .53 && (gateOpen < .5 || t >= T_CLOSE - EASE / 2)) alive = false;
       q.el.setAttribute("cx", x.toFixed(1)); q.el.setAttribute("cy", y.toFixed(1));
       q.el.setAttribute("opacity", alive ? (0.9 * Math.min(1, f * 6) * (1 - Math.max(0, f - .8) * 5)).toFixed(2) : 0);
     });
