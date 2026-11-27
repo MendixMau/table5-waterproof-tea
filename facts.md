@@ -4,7 +4,7 @@ Locked at the 10:40 gate. Change here first; every slide, site and product reads
 
 | Field | Value |
 |---|---|
-| Angle | _TBD_ |
+| Angle | The Art of Tea: each bag is waterproof until the water reaches its tea's ideal temperature, opens to brew, and closes again as the water cools. Self-stopping steep, reusable for several infusions, aroma sealed in between cups. |
 | Name | _TBD_ |
 | One-liner | _TBD_ |
 | Primary customer | _TBD_ |
