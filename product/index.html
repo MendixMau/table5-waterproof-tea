@@ -27,7 +27,7 @@
 }
 * { box-sizing: border-box; }
 /* Presenter scale: everything is in rem, and rem follows the screen, so a projector gets big type. */
-html { font-size: max(12px, min(1.12vw, 1.95vh)); }
+html { font-size: max(13px, min(1.2vw, 2.08vh)); }
 html, body { margin: 0; height: 100%; }
 body {
   background: radial-gradient(ellipse 70% 55% at 62% 42%, #16161B 0%, var(--brand-bg) 72%);
@@ -209,7 +209,7 @@ body.present.awake footer, body.present footer:hover { opacity: 1; }
           <filter id="blurW" x="-100%" y="-20%" width="300%" height="140%"><feGaussianBlur stdDeviation="4"/></filter>
           <linearGradient id="bagFill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F1EADF"/><stop offset="1" stop-color="#C8BFB1"/></linearGradient>
           <linearGradient id="glassSheen" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".10"/><stop offset=".22" stop-color="#fff" stop-opacity="0"/><stop offset=".82" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".07"/></linearGradient>
-          <linearGradient id="wispGrad" gradientUnits="userSpaceOnUse" x1="0" y1="142" x2="0" y2="-32"><stop offset="0" stop-color="#F2A33A" stop-opacity="0"/><stop offset=".12" stop-color="#F2A33A" stop-opacity=".9"/><stop offset=".45" stop-color="#D9C46B" stop-opacity=".85"/><stop offset=".8" stop-color="#3DBA9B" stop-opacity=".45"/><stop offset="1" stop-color="#3DBA9B" stop-opacity="0"/></linearGradient>
+          <linearGradient id="wispGrad" gradientUnits="userSpaceOnUse" x1="0" y1="142" x2="0" y2="-32"><stop offset="0" stop-color="#D6E4B0" stop-opacity="0"/><stop offset=".28" stop-color="#D6E4B0" stop-opacity=".3"/><stop offset=".4" stop-color="#EBCB86" stop-opacity=".85"/><stop offset=".65" stop-color="#D9C46B" stop-opacity=".75"/><stop offset=".88" stop-color="#3DBA9B" stop-opacity=".4"/><stop offset="1" stop-color="#3DBA9B" stop-opacity="0"/></linearGradient>
           <linearGradient id="stringGrad" gradientUnits="userSpaceOnUse" x1="0" y1="150" x2="0" y2="64"><stop offset="0" stop-color="#F2A33A"/><stop offset=".48" stop-color="#D9C46B"/><stop offset="1" stop-color="#3DBA9B"/></linearGradient>
           <pattern id="pores" width="7" height="7" patternUnits="userSpaceOnUse"><circle id="pore" cx="3.5" cy="3.5" r=".4" fill="#3a2a14"/></pattern>
         </defs>
@@ -335,7 +335,7 @@ body.present.awake footer, body.present footer:hover { opacity: 1; }
   // steep = minutes for a full-strength cup; liquor and leaf colours for the drawing.
   var TEAS = [
     { id: "gyokuro",    name: "Gyokuro",           culture: "Japan · Uji",           lo: 50, hi: 60,  steep: 2.0, liquor: "#B8C86A", leaf: "#5E7A2E", green: true,  ritual: "Shade-grown and sweet. <em>Cool water, small cup, slow sip.</em>" },
-    { id: "sencha",     name: "Sencha",            culture: "Japan · Shizuoka",      lo: 70, hi: 80,  steep: 1.5, liquor: "#C9C25E", leaf: "#6F8A35", green: true,  ritual: "Japan's everyday green. <em>Pour to the last drop; it carries the best of the cup.</em>" },
+    { id: "sencha",     name: "Sencha",            culture: "Japan · Shizuoka",      lo: 70, hi: 80,  steep: 1.5, liquor: "#C8D468", leaf: "#6F8A35", green: true,  ritual: "Japan's everyday green. <em>Pour to the last drop; it carries the best of the cup.</em>" },
     { id: "longjing",   name: "Longjing",          culture: "China · Hangzhou",      lo: 75, hi: 85,  steep: 2.0, liquor: "#D6C77A", leaf: "#7E8C43", green: true,  ritual: "Dragon Well. <em>Watch the flat leaves stand up and dance.</em>" },
     { id: "tieguanyin", name: "Tieguanyin",        culture: "China · Fujian", lo: 85, hi: 95,  steep: 1.0, liquor: "#D9A845", leaf: "#4F5A2A", green: false, ritual: "The Iron Goddess. <em>Many short cups; each one opens the leaf a little more.</em>" },
     { id: "puerh",      name: "Pu-erh",            culture: "China · Yunnan",        lo: 95, hi: 100, steep: 0.7, liquor: "#6B2E12", leaf: "#3A2414", green: false, ritual: "Aged leaf, deep and earthy. <em>Short, hot, again and again.</em>" },
@@ -372,7 +372,7 @@ body.present.awake footer, body.present footer:hover { opacity: 1; }
     var h = "";
     for (var t = 40; t <= 100; t += 10) {
       var a = pt(t, R - 14), b = pt(t, R - 22), l = pt(t, R - 36);
-      h += '<text x="' + l[0].toFixed(1) + '" y="' + (l[1] + 4).toFixed(1) + '" text-anchor="middle" fill="#8E8A83" font-size="15" font-family="Avenir Next, Arial, sans-serif">' + t + '</text>';
+      h += '<text x="' + l[0].toFixed(1) + '" y="' + (l[1] + 4).toFixed(1) + '" text-anchor="middle" fill="#B5B0A8" font-size="17" font-family="Avenir Next, Arial, sans-serif">' + t + '</text>';
     }
     $("ticks").innerHTML = h;
   })();
@@ -443,7 +443,7 @@ body.present.awake footer, body.present footer:hover { opacity: 1; }
     S.openAmt += ((open ? 1 : 0) - S.openAmt) * (dtReal ? 1 - Math.exp(-dtReal * (open ? 1.5 : 2.4)) : 1);
     S.slow = Math.max(0, S.slow - (dtReal || 0));
     S.sealT += dtReal || 0;
-    S.wisp += ((open ? 1 : 0) - S.wisp) * (1 - Math.exp(-(dtReal || 1) * (open ? 1.6 : 2.2)));
+    S.wisp += ((open ? 1 : 0) - S.wisp) * (1 - Math.exp(-(dtReal || 1) * (open ? 1.6 : (sealed ? 10 : 2.2))));
     S.sealFlash = Math.max(0, S.sealFlash - (dtReal || 0) * 0.35);
     S.pulse = Math.max(0, S.pulse - (dtReal || 0) / 1.5);
     var pu = $("pulseA"); pu.setAttribute("transform", "scale(" + (1.25 + 1.8 * (1 - S.pulse)).toFixed(3) + ")"); pu.setAttribute("opacity", (0.9 * S.pulse).toFixed(2)); pu.setAttribute("stroke", S.pulseCol); pu.setAttribute("stroke-width", (1 + 3 * S.pulse).toFixed(1));
@@ -464,7 +464,8 @@ body.present.awake footer, body.present footer:hover { opacity: 1; }
     $("arcDone").setAttribute("d", arc(100, Math.min(99.95, shown), R));
     $("arcDone").setAttribute("opacity", idle ? 0 : .95);
     $("tempText").setAttribute("opacity", idle ? .3 : 1);
-    $("tempNum").textContent = idle ? "100" : (sealed ? Math.floor(t) : S.bag === "waiting" ? Math.ceil(t) : Math.round(t));
+    var shownT = sealed ? Math.floor(t) : S.bag === "waiting" ? Math.ceil(t) : Math.round(t);
+    $("tempNum").textContent = idle ? "100" : shownT;
     $("window").innerHTML = "<b>" + tea.name + "</b><i>opens " + tea.hi + "\u202F°C</i> · <u>seals below " + tea.lo + "\u202F°C</u>";
     var info = idle ? "Choose a tea, then pour" : "Cup time " + fmt(S.realMin) + " · time-lapse " + S.speed + "x" + (open ? ", slowed while it brews" : "");
     $("clock").textContent = info;
@@ -484,7 +485,7 @@ body.present.awake footer, body.present footer:hover { opacity: 1; }
     var strength = S.openMin > 0 ? (1 - Math.exp(-2.2 * S.openMin / tea.steep)) : 0;
     strength *= Math.max(.7, 1 - (S.infusion - 1) * .1);
     var liqA = mix(water, tea.liquor, strength);
-    var wA = $("waterA"); wA.setAttribute("y", topY); wA.setAttribute("height", 276 - topY); wA.setAttribute("fill", liqA); wA.setAttribute("fill-opacity", (.05 + .72 * strength).toFixed(3));
+    var wA = $("waterA"); wA.setAttribute("y", topY); wA.setAttribute("height", 276 - topY); wA.setAttribute("fill", liqA); wA.setAttribute("fill-opacity", (.05 + .8 * strength).toFixed(3));
     var sA = $("surfA"); sA.setAttribute("cy", topY); sA.setAttribute("rx", level ? halfWidth(topY) : 0); sA.setAttribute("fill", mix("#F3EEE6", tea.liquor, strength * .7)); sA.setAttribute("fill-opacity", (.12 + .3 * strength).toFixed(2));
     Array.prototype.forEach.call($("cloudA").children, function (c) { c.setAttribute("fill", tea.liquor); });
     $("cloudA").setAttribute("opacity", (S.openAmt * (.85 - .35 * strength)).toFixed(2));
@@ -509,7 +510,7 @@ body.present.awake footer, body.present footer:hover { opacity: 1; }
     var stA = $("statusA"), msg, cls = "";
     if (idle) msg = "Ready.<small>Press Space to pour freshly boiled water.</small>";
     else if (S.bag === "waiting") { msg = "Waiting. Too hot for " + tea.name + ".<small>Sealed until the water cools to " + tea.hi + "\u202F°C.</small>"; cls = "s-wait"; }
-    else if (open) { msg = "Open. Brewing at " + Math.round(t) + "\u202F°C.<small>The scent rises. Brewing " + fmt(S.openMin) + "</small>"; cls = "s-open"; }
+    else if (open) { msg = "Open. Brewing at " + shownT + "\u202F°C.<small>The scent rises. Brewing " + fmt(S.openMin) + "</small>"; cls = "s-open"; }
     else { msg = "Sealed. The scent is kept for your next cup.<small>Brewed " + fmt(S.openMin) + ", stopped by itself below " + tea.lo + "\u202F°C.</small>"; cls = "s-sealed"; }
     if (stA.innerHTML !== msg) stA.innerHTML = msg;
     stA.className = "status " + cls;
@@ -526,7 +527,7 @@ body.present.awake footer, body.present footer:hover { opacity: 1; }
     $("stainB").setAttribute("opacity", Math.min(.7, s2 * .14).toFixed(2));
     var stB = $("statusB"), m2, c2 = "";
     if (idle) m2 = "Ready.<small>The bag goes in, the clock starts.</small>";
-    else if (tea.green && t > tea.hi + 1 && s2 < 3) m2 = "Scalding at " + Math.round(t) + "\u202F°C.<small>Too hot for " + tea.name + ". The bitterness comes out first.</small>";
+    else if (tea.green && t > tea.hi + 1 && s2 < 3) m2 = "Scalding at " + shownT + "\u202F°C.<small>Too hot for " + tea.name + ". The bitterness comes out first.</small>";
     else if (s2 < .7) m2 = "Brewing at once.<small>Nobody is watching the clock.</small>";
     else if (s2 < 1.3) m2 = "Just right, for a moment.<small>Take the bag out now. Now.</small>";
     else if (s2 < 3) m2 = "Stewing.<small>Still in the cup, " + fmt(S.realMin) + " in.</small>";

@@ -99,3 +99,11 @@
 10:36 | product-judge-3 | START | round-3 final judge of product/index.html
 10:36 | site-lead | START | RESUME: multi-page shop (Home, Shop, 6 tea pages, Ritual, Our story, Keepers), cart drawer, pluggable waitlist; generator docs/_src/build.py
 10:36 | business-lead | START | v2: price ladder, cost stack, margin per bag, 640->9 walk, price sensitivity; 3 research agents out
+10:36 | lead | PROGRESS | gate1 v06 opened for the team; facts: year 3 $8.3 m, YouGov wording; business thread starts from judge/business-validation.md
+10:37 | brand-lead | PREVIEW | gallery/brand-v09-options.png | judge R1 22/30, R2 20/30 | validator pending | judge fixes applied: hanging tag, tagless small file
+10:38 | video-lead | PREVIEW | gallery/video-v03.png | film v02 (20 s): logo v4 bag in a glass cup (brand hero), Sencha 100->80 opens, tea bleeds, 70 seals, one-liner on screen, bigger type; critic + judge round 2
+10:38 | presentation-lead | PREVIEW | gallery/gate1-v07.png | layout only: s1 lockup and lines larger (lower band filled); s2 logo card and score rows larger; s3 hero cropped at build so the full arc and cup show; s4-s6 unchanged from v06 | judge 4/5 | validator FAIL (5)
+10:38 | business-lead | PREVIEW | gallery/business-v01.png | judge pending | validator pending | rough 4 slides: ladder, cost stack, margin vs price, 640 to $8.5 m
+10:39 | product-judge-3 | DONE | /tmp/t5-product/judge3-1039.md: runs flawlessly (open 8.0s, seal 25.0s, no errors, keys robust); C4 Cr4 D5 Hero4 Proj4; fix orange flame wisp, cup 1.3x, gauge/1908 temp mismatch
+10:41 | video-lead | PROGRESS | loop final v03: video/osme-loop.mp4 (9 s, 1.9 MB, seamless at crf 10) + video/osme-loop-poster.jpg; judge film v02: hook 3 clarity 4 story 3 craft 3 brand 4 -> v03
+10:41 | business-lead | PREVIEW | gallery/business-v02.png | judge pending | validator pending | ladder sourced (9 opened prices), year-3 zoom bar, subscriber benchmarks

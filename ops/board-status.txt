@@ -1,6 +1,6 @@
 # The lead edits this; ops/bin/board.py reads it every 30 s.
 gate=1
 deck=hold
-pin.brand=brand-gate1.png
-now=Gate 1 feedback is in: the S logo gets finer, the business case explains price, cost and 640 → 9, and the site goes real with a waitlist.
+pin.brand=brand-v09-options.png
+now=Gate 1 deck is open: name, logo, logo in use, customer, market, decisions. Logo routes and business v2 land by 11:05.
 decide=Logo: B finer, or A's bag + S? · Bubbles: logo only, or everywhere? · Waitlist: Google Form, Formspree or FormSubmit? · Price: stay $1.50 or go premium?

@@ -31,7 +31,15 @@ def crop_option(x):
 SYM = bp.logo("logo-symbol.svg")
 LOCK = bp.LOCKUP
 OPT_A, OPT_C = crop_option(52), crop_option(1207)
-HERO = img(A / "hero.png")
+def crop_hero():
+    """Frame the hero around the cup and its full arc for the portrait panel."""
+    out = pathlib.Path(tempfile.gettempdir()) / "osme-hero-crop.png"
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(A / "hero.png"),
+                    "-vf", "crop=iw*0.55:ih:iw*0.395:0", str(out)], check=True)
+    return img(out)
+
+
+HERO = crop_hero()
 TIN = img(A / "pack-tin.png")
 BAG = img(A / "pack-single-bag.png")
 SOCIAL = img(A / "social-threebubbles-1080.png")
@@ -39,6 +47,7 @@ ICONS = [img(A / f"icon-{n}.svg") for n in ("self-stopping", "three-infusions", 
 
 FONTX = bp.b64(D / "assets-src" / "jost-latin-ext.woff2", "font/woff2")
 CSS = bp.CSS + r"""
+#s1 .tagline{font-size:clamp(22px,1.7vw,32px)}#s1 .cap{font-size:clamp(17px,1vw,20px)}
 #s3 .kit{margin-top:2.4vh}#s2 .body{justify-content:flex-start;padding-top:4vh}#s4 .card.q{min-height:30vh;padding:3.5vh 2vw}#s4 .q .qt{font-size:clamp(24px,1.7vw,32px)}#s4 .tile{padding:2.6vh 1.6vw}#s5 .tiles{margin-top:6vh}#s5 .tile{padding:3.4vh 1.4vw;min-height:20vh}#s5 .mbar{margin-bottom:1.2vh}
 .src{font-size:clamp(15px,.9vw,17px)}
 @font-face{font-family:"Jost";src:url(__FONTX__) format("woff2");font-weight:300 700;unicode-range:U+0100-02BA,U+1E00-1EFF}
@@ -47,12 +56,12 @@ CSS = bp.CSS + r"""
 .prov{display:inline-block;font-size:15px;letter-spacing:.16em;text-transform:uppercase;padding:3px 9px;border-radius:999px;border:1px dashed rgba(242,163,58,.6);color:var(--amber);vertical-align:middle;margin-left:10px}
 .nm-word{font-size:clamp(90px,9vw,180px);font-weight:500;letter-spacing:.2em;line-height:1}
 .logo-b{display:grid;grid-template-columns:1.25fr 1fr;gap:4vw;align-items:center}
-.logo-b .hero-sym{background:#111114;border:1px solid var(--line);border-radius:20px;display:flex;align-items:center;justify-content:center;height:min(52vh,560px)}
+.logo-b .hero-sym{background:#111114;border:1px solid var(--line);border-radius:20px;display:flex;align-items:center;justify-content:center;height:min(66vh,720px)}
 .logo-b .hero-sym img{height:70%}
-.opt{display:grid;grid-template-columns:150px 1fr;gap:20px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
+.opt{display:grid;grid-template-columns:190px 1fr;gap:24px;align-items:center;padding:2.4vh 0;border-bottom:1px solid var(--line)}
 .opt:last-child{border-bottom:0}
-.opt img{width:150px;border-radius:10px;background:#17171B}
-.opt .sc{font-size:clamp(32px,2.4vw,46px);font-weight:500}
+.opt img{width:190px;border-radius:10px;background:#17171B}
+.opt .sc{font-size:clamp(40px,3vw,58px);font-weight:500}
 .kit{display:grid;grid-template-columns:2.2fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:16px;height:min(72vh,800px)}
 .kit .t{border-radius:16px;overflow:hidden;background:#111114;border:1px solid var(--line);position:relative;display:flex;align-items:center;justify-content:center}
 .kit .t img{width:100%;height:100%;object-fit:cover}
@@ -87,10 +96,10 @@ SLIDES = r"""
 <!-- 1 · NAME -->
 <div class="slide bg-mesh cover" id="s1" data-steps="0" data-title="Name">
   <div class="g1chip ok">Confirm · keep the name</div>
-  <div style="display:flex;flex-direction:column;align-items:center;gap:3vh" class="a">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:4.2vh;margin-top:4vh" class="a">
     <div class="label" style="margin:0">Gate 1 · the name</div>
-    <img src="__LOCK__" alt="OSME" style="height:clamp(120px,14vh,170px)"/>
-    <div class="cover-title" style="font-size:clamp(26px,2.4vw,46px)">From Greek <em>osmē</em>, “scent”. Said <em>oz-MAY</em>.</div>
+    <img src="__LOCK__" alt="OSME" style="height:clamp(170px,22vh,250px)"/>
+    <div class="cover-title" style="font-size:clamp(32px,3vw,58px)">From Greek <em>osmē</em>, “scent”. Said <em>oz-MAY</em>.</div>
     <div class="arcline"></div>
     <div style="display:flex;gap:6vw;justify-content:center;text-align:center">
       <div><div class="label" style="color:var(--muted)">One line</div><div class="tagline">A tea bag that opens only at its perfect temperature.</div></div>
@@ -127,7 +136,7 @@ SLIDES = r"""
     <div class="h1">Midnight Brew on hero, tin, bag and <em>#ThreeBubbles</em> post.</div></div>
   <div class="body">
     <div class="kit">
-      <div class="t" style="grid-row:span 2"><img src="__HERO__" alt="" style="object-position:84% 50%"/><span class="lb">Hero</span></div>
+      <div class="t" style="grid-row:span 2;background:linear-gradient(#0d0d0f,#101013)"><img src="__HERO__" alt="" style="object-fit:contain"/><span class="lb">Hero</span></div>
       <div class="t"><img src="__TIN__" alt="" style="transform:scale(1.35)"/><span class="lb">12-bag tin</span></div>
       <div class="t"><img src="__BAG__" alt="" style="transform:scale(1.35)"/><span class="lb">Single bag</span></div>
       <div class="t fit"><img src="__SOCIAL__" alt=""/><span class="lb">#ThreeBubbles</span></div>

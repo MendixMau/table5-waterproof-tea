@@ -26,3 +26,4 @@
 10:34 | presentation | facts.md Market still says year-3 SOM $9 m; at $1.50 everywhere the validator's mix gives $8.3 m ($9 m needs $2.00 singles). Gate 1 shows $8.3 m. | deck/gate1.html shows $8.3 m, labelled validator
 10:34 | presentation | facts.md Proof points '32% of UK Gen Z drink green tea' overstates YouGov ('32% of Gen Z daily tea drinkers choose green tea') | gate1 uses the YouGov wording
 10:34 | presentation | Gross margin: business-case.md says 62% (COGS midpoint $0.57); validator recomputes $0.605 = ~60% | gate1 shows ~60%; pitch.html still 62% (kept as is)
+10:37 | brand | Logo route for the final: 1 'B refined' (string = S of scent, judge 22/30, recommended) or 2 'Hybrid' (A's bag + side tag + separate S, 20/30)? See gallery/brand-v09-options.png | Meanwhile: current v4.1 files stay live; I switch to the picked route under the same file names, plus logo-symbol-small.svg for 16-32 px
