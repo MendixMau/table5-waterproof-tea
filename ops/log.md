@@ -129,3 +129,7 @@
 10:56 | brand-lead | PREVIEW | gallery/brand-v10-logo-final.png | judge 22/30 | validator pending | final logo: finer S, hanging tag, small file
 10:56 | video-lead | PREVIEW | gallery/video-v04.png | film v03 (18.4 s): line + bubbles from frame 0, 1908 bag beat, cup 1.35x, push-in, halves part + tea plumes, jade seal ring, bag flies into the lockup (no dead frames); video/osme-film.mp4 = v03 (provisional); critic + judge round 3
 10:57 | lead | PROGRESS | deck feedback (too bland) sent to presentation: motion system, reuse film/loop/hero/motif/tins/demo, projector-first; lead review: 1-5 keyframes, no video, demo framed
+11:05 | lead | REVIEW | gallery/pr1-review.png | Dwi PR #1 (Osme Control 20 s explainer): manual lift/push capsule = different mechanic and look, crops blown up 3-4x with baked labels; proposal: take plume close-up, 3-state strip, exploded view (redrawn), not the footage; awaiting team go
+11:05 | brand-lead | PREVIEW | gallery/brand-v11-assets.png | judge 4/5 | validator PASS (7/7) | asset-kit judge fixes: scent icon, social, packs, culture, pattern
+11:06 | business-lead | PREVIEW | gallery/business-v10.png | judge 4.5/5 (r3) | validator v2 PASS | investor review: market in people (159 m US daily tea drinkers), 205 k buyers
+11:07 | lead | PROGRESS | brand kit v11 accepted (4.0/5, 7/7); brand -> motion kit brand/motion/ (arc-sweep, count-up by 11:20; logo-reveal, steep-reveal, three-bubbles, hero-alive by 11:35) for deck/site/film; presentation told: transparent packs + motion kit coming

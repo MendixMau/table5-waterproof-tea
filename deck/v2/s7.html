@@ -1,0 +1,86 @@
+<style>
+#s7 .head,#s7 .body{width:min(1720px,90vw)}
+#s7 .h1{max-width:32em}
+#s7 .body{align-items:center}
+#s7 .plot{position:relative;width:1480px;height:700px;margin-left:80px}
+#s7 .axes{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+#s7 .quad{position:absolute;left:50%;top:0;width:50%;height:50%;border-radius:0 18px 0 0;
+  background:radial-gradient(ellipse at 85% 18%,rgba(61,186,155,.20),rgba(242,163,58,.08) 45%,transparent 75%);opacity:0}
+#s7.play .quad{animation:s7-fade 1.4s var(--ease) 3.5s both}
+#s7 .ax{position:absolute;font-size:28px;color:rgba(243,238,230,.78);letter-spacing:.02em;white-space:nowrap}
+#s7 .ax b{font-weight:500;color:var(--text)}
+#s7 .ax.x{right:0;bottom:-52px}
+#s7 .ax.x0{left:0;bottom:-52px;color:var(--muted)}
+#s7 .ax.y{left:-64px;top:0;transform-origin:left top;transform:rotate(-90deg) translateX(-100%)}
+#s7 .ax.y0{left:-64px;bottom:0;transform-origin:left bottom;transform:rotate(-90deg) translateY(100%);color:var(--muted)}
+#s7 .pt{position:absolute;display:flex;align-items:center;gap:18px;transform:translate(-14px,-50%)}
+#s7 .pt.l{flex-direction:row-reverse;transform:translate(calc(-100% + 14px),-50%);text-align:right}
+#s7 .pt i{flex:0 0 28px;width:28px;height:28px;border-radius:50%;background:#2A2A30;border:3px solid var(--mid);box-shadow:0 0 0 0 rgba(217,196,107,.5)}
+#s7 .pt .nm{font-size:32px;font-weight:500;line-height:1.1;white-space:nowrap}
+#s7 .pt .ds{font-size:28px;color:var(--muted);line-height:1.25;white-space:nowrap}
+#s7 .pt .ds span{color:rgba(243,238,230,.85)}
+#s7 .pt{opacity:0}
+#s7.play .pt{animation:s7-in .8s var(--ease) var(--dl) both}
+#s7.play .pt i{animation:s7-ring 1.2s ease-out var(--dl) both}
+@keyframes s7-in{0%{opacity:0;filter:blur(10px) sepia(1);margin-top:-26px}100%{opacity:1;filter:none;margin-top:0}}
+@keyframes s7-ring{0%{box-shadow:0 0 0 0 rgba(217,196,107,.7)}100%{box-shadow:0 0 0 26px rgba(217,196,107,0)}}
+@keyframes s7-fade{from{opacity:0}to{opacity:1}}
+#s7 .osme{position:absolute;left:87%;top:16%;width:0;height:0}
+#s7 .osme .mk{position:absolute;left:-62px;top:-62px;width:124px;height:124px;opacity:0;filter:drop-shadow(0 0 22px rgba(242,163,58,.55))}
+#s7.play .osme .mk{animation:s7-land 1s cubic-bezier(.2,1.4,.4,1) 3.4s both}
+@keyframes s7-land{0%{opacity:0;transform:translateY(-120px) scale(.6)}100%{opacity:1;transform:none}}
+#s7 .osme .ring{position:absolute;left:-118px;top:-118px;width:236px;height:236px;overflow:visible}
+#s7 .osme .halo{position:absolute;left:-200px;top:-200px;width:400px;height:400px;border-radius:50%;
+  background:radial-gradient(circle,rgba(242,163,58,.32),rgba(61,186,155,.16) 45%,transparent 70%);opacity:0}
+#s7.play .osme .halo{animation:s7-halo 3s ease-in-out 3.8s both}
+@keyframes s7-halo{0%{opacity:0;transform:scale(.5)}40%{opacity:1;transform:scale(1.05)}100%{opacity:.75;transform:scale(1)}}
+#s7 .osme .tx{position:absolute;right:150px;top:-58px;text-align:right;white-space:nowrap;opacity:0}
+#s7.play .osme .tx{animation:s7-in .9s var(--ease) 4.3s both}
+#s7 .osme .tx .nm{font-size:56px;font-weight:600;letter-spacing:.08em;background:linear-gradient(90deg,#F2A33A,#D9C46B 50%,#3DBA9B);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1}
+#s7 .osme .tx .ds{font-size:30px;color:var(--text);margin-top:8px}
+#s7 .osme .tx .ds span{color:var(--jade)}
+</style>
+<div class="slide" id="s7" data-title="Competition">
+  <div class="head steep">
+    <div class="label">Competition · where OSME stands</div>
+    <div class="h1">Every way of tea gets something right. <em>Only OSME</em> brings the art and the ease into one bag.</div>
+  </div>
+  <div class="body">
+    <div class="plot">
+      <div class="quad"></div>
+      <svg class="axes" viewBox="0 0 1480 700" preserveAspectRatio="none" aria-hidden="true">
+        <defs><linearGradient id="s7-ax" x1="0" x2="1"><stop offset="0" stop-color="#F2A33A" stop-opacity=".5"/><stop offset="1" stop-color="#3DBA9B" stop-opacity=".9"/></linearGradient></defs>
+        <path class="draw" pathLength="1" d="M 0 700 H 1480" stroke="url(#s7-ax)" stroke-width="3" fill="none" style="--d:1s"/>
+        <path class="draw" pathLength="1" d="M 0 700 V 0" stroke="#F2A33A" stroke-opacity=".7" stroke-width="3" fill="none" style="--d:1s"/>
+        <path class="draw" pathLength="1" d="M 740 690 V 0" stroke="#F3EEE6" stroke-opacity=".14" stroke-width="2" stroke-dasharray="1" fill="none" style="--d:.9s;--dl:.4s"/>
+        <path class="draw" pathLength="1" d="M 10 350 H 1480" stroke="#F3EEE6" stroke-opacity=".14" stroke-width="2" fill="none" style="--d:.9s;--dl:.4s"/>
+      </svg>
+      <div class="ax y"><b>Ritual quality</b> ↑ the art of tea</div>
+      <div class="ax y0">quick</div>
+      <div class="ax x0">needs time and skill</div>
+      <div class="ax x"><b>Everyday ease</b> → any kettle, any mug</div>
+
+      <div class="pt" style="left:7%;top:12%;--dl:.9s"><i></i><div><div class="nm">Loose leaf and gongfu</div><div class="ds"><span>the full art</span>, for those with time</div></div></div>
+      <div class="pt" style="left:24%;top:36%;--dl:1.5s"><i></i><div><div class="nm">Sips By</div><div class="ds"><span>about $1 a cup</span>, a new tea every month</div></div></div>
+      <div class="pt" style="left:58%;top:44%;--dl:2.1s"><i></i><div><div class="nm">Tea Forte</div><div class="ds"><span>$1.30 a pyramid</span>, whole leaf, a gift look</div></div></div>
+      <div class="pt" style="left:63%;top:70%;--dl:2.7s"><i></i><div><div class="nm">Nestlé Special.T</div><div class="ds"><span>€0.35 a pod + €129 machine</span>, push-button</div></div></div>
+      <div class="pt l" style="left:96%;top:90%;--dl:3.1s"><i></i><div><div class="nm">Supermarket bag</div><div class="ds"><span>fast</span>, everywhere</div></div></div>
+
+      <div class="osme">
+        <div class="halo"></div>
+        <svg class="ring" viewBox="0 0 236 236" aria-hidden="true"><defs><linearGradient id="s7-arc" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#F2A33A"/><stop offset=".48" stop-color="#D9C46B"/><stop offset="1" stop-color="#3DBA9B"/></linearGradient></defs>
+          <path class="draw" pathLength="1" d="M 30 190 A 104 104 0 1 1 206 190" fill="none" stroke="url(#s7-arc)" stroke-width="6" stroke-linecap="round" style="--d:1.6s;--dl:3.9s;filter:drop-shadow(0 0 10px rgba(242,163,58,.8))"/></svg>
+        <img class="mk" src="__ASSET:brand/identity/logo-symbol.svg__" alt="OSME"/>
+        <div class="tx"><div class="nm">OSME</div><div class="ds">art and ease in one bag, <span>no machine</span></div></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    <ul>
+      <li>Axes: ritual quality (the art: right temperature, whole leaf, several infusions) against everyday ease (no machine, timer or skill). Placement is the team's reading of truth/customers-market.md §4 "Competition and why OSME wins", not a measured score.</li>
+      <li>Tea Forte $1.30 a pyramid infuser ($26 / 20, teaforte.com products.json) · Sips By about $1 a cup ($15 a month, ~15 cups; reviewed.com and mysubscriptionaddiction.com) · Nestlé Special.T €0.35 a pod + €129 machine (New Atlas, 2010 launch). Source list: facts.md "Top 3 competitors", truth/customers-market.md §4 and §5, truth/business-case.md §2.</li>
+      <li>Supermarket bag (PG Tips $0.03 a cup, truth/business-case.md §2) and loose leaf and gongfu are reference points, not rivals.</li>
+      <li>OSME $__NUM:cup__ a cup ($__NUM:price__ a bag, up to __NUM:infusions__ infusions, lab target). Lesson from Teforia (shut 2017, TechCrunch): hardware that needs explaining struggles; OSME's intelligence sits in the bag.</li>
+    </ul>
+  </aside>
+</div>

@@ -2,3 +2,4 @@
 gate=2
 now=Pitch prep: pitch v1 by 11:45 for the first read-through. Judge passes at 12:00 and 12:45; freeze at 13:15.
 decide=Speakers for parts A-D? · Price: $1.50 or $2.00? · Logo: route 1 unless you say 2 · Waitlist: Google Form, Formspree or FormSubmit?
+pin.video=pr1-review.png

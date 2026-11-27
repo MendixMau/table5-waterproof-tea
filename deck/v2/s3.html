@@ -1,0 +1,98 @@
+<div class="slide full" id="s3" data-title="Solution, live demo">
+  <iframe class="s3-app" title="OSME live demo" srcdoc="__PRODUCT__"></iframe>
+  <div class="s3-chips" aria-hidden="true">
+    <div class="s3-chip" data-k="open"><img src="__ASSET:brand/assets/icon-self-stopping.svg__" alt=""/><span>Opens at <b class="amber">80 °C</b></span></div>
+    <div class="s3-chip" data-k="seal"><img src="__ASSET:brand/assets/icon-scent-sealed.svg__" alt=""/><span>Seals below <b class="jade">70 °C</b></span></div>
+    <div class="s3-chip" data-k="three"><img src="__ASSET:brand/assets/icon-three-infusions.svg__" alt=""/><span><b class="mid">__NUM:infusions__</b> infusions, one bag</span></div>
+  </div>
+  <div class="s3-intro" aria-hidden="true">
+    <img src="__ASSET:brand/assets/hero.png__" alt=""/>
+    <div class="s3-live"><span class="s3-dot"></span>Live demo · Sencha</div>
+  </div>
+  <aside class="notes"><ul>
+    <li>Live product: product/index.html (product thread, latest), embedded. Sencha opens at 80 °C and seals below 70 °C (facts.md, tea windows). Cooling is sped up.</li>
+    <li>Keys on this slide: Space or Enter pours (and brews again once sealed), R resets, PageDown or Right next slide, PageUp back. Works with the clicker and with focus inside the demo.</li>
+    <li>R&D framing (facts.md): the principle exists in lab membranes; our R&D makes it food-safe at 70 to 90 °C.</li>
+  </ul></aside>
+  <style>
+    #s3{background:#0B0B0D}
+    #s3 .s3-app{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:1;background:#0B0B0D}
+    #s3 .s3-intro{position:absolute;inset:0;z-index:5;pointer-events:none;background:#0d0d0f;opacity:0}
+    #s3 .s3-intro img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    #s3.play .s3-intro{animation:s3-intro 2.6s var(--ease) both}
+    #s3.play .s3-intro img{animation:s3-push 2.6s var(--ease) both}
+    @keyframes s3-intro{0%{opacity:1}72%{opacity:1}100%{opacity:0}}
+    @keyframes s3-push{from{transform:scale(1.06)}to{transform:scale(1)}}
+    #s3 .s3-live{position:absolute;left:72px;top:7vh;font-size:20px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:14px}
+    #s3 .s3-dot{width:12px;height:12px;border-radius:50%;background:#ff5b4a;box-shadow:0 0 14px #ff5b4a;animation:s3-blink 1s ease-in-out infinite}
+    @keyframes s3-blink{50%{opacity:.25}}
+    #s3 .s3-chips{position:absolute;right:52px;top:18px;z-index:3;display:flex;gap:14px;pointer-events:none}
+    #s3 .s3-chip{display:flex;align-items:center;gap:14px;padding:10px 22px 10px 12px;border-radius:40px;background:rgba(23,23,27,.92);border:1px solid var(--line);
+      font-size:28px;color:var(--text);opacity:.0;filter:blur(10px) sepia(1);transform:translateY(-14px) scale(.96);
+      transition:opacity .7s var(--ease),filter .9s var(--ease),transform .7s var(--ease),border-color .7s,box-shadow .7s}
+    #s3 .s3-chip img{width:52px;height:52px}
+    #s3 .s3-chip b{font-weight:600}
+    #s3 .s3-chip.on{opacity:1;filter:none;transform:none}
+    #s3 .s3-chip.hot{border-color:rgba(242,163,58,.7);box-shadow:0 0 28px rgba(242,163,58,.35)}
+    #s3 .s3-chip[data-k="seal"].hot{border-color:rgba(61,186,155,.8);box-shadow:0 0 28px rgba(61,186,155,.4)}
+  </style>
+  <script>
+  (function(){
+    const STILL=()=>document.documentElement.classList.contains('still');
+    let poll=0;
+    function app(el){const f=el.querySelector('.s3-app');return f&&f.contentWindow&&f.contentWindow.osme?f.contentWindow:null;}
+    function chips(el,w){
+      const S=w.osme.state,on={
+        open:S.bag==='open'||S.bag==='sealed'||S.infusion>1,
+        seal:S.bag==='sealed'||S.infusion>1,
+        three:S.infusion>1||(S.bag==='sealed'&&S.sinceSeal>=2)};
+      el.querySelectorAll('.s3-chip').forEach(c=>{
+        const k=c.dataset.k,was=c.classList.contains('on');
+        c.classList.toggle('on',!!on[k]);
+        if(on[k]&&!was&&!STILL()){c.classList.add('hot');setTimeout(()=>c.classList.remove('hot'),1600);}
+      });
+    }
+    function wire(el,w){
+      if(w.__deckWired)return;w.__deckWired=true;
+      w.document.body.classList.add('present');
+      // keys pressed with focus inside the demo: deck navigation wins over the product's own PageDown
+      w.document.addEventListener('keydown',e=>{
+        if(e.metaKey||e.ctrlKey||e.altKey)return;
+        const k=e.key;let hit=true;
+        if(k==='PageDown')DECK.next();
+        else if(k==='PageUp'||k==='ArrowLeft'||k==='Backspace')DECK.prev();
+        else if(k==='n'||k==='N')DECK.toggleNotes();
+        else if(k==='t'||k==='T')DECK.toggleTimer(e.shiftKey);
+        else if(k==='Home')DECK.goto(0,0);
+        else if(k==='End')DECK.goto(7,0);
+        else hit=false;
+        if(hit){e.preventDefault();e.stopImmediatePropagation();if(DECK.cur!==2){w.blur();window.focus();}}
+      },true);
+    }
+    function start(el){
+      const w=app(el);
+      if(!w){setTimeout(()=>start(el),60);return;}
+      wire(el,w);
+      w.osme.speed(1);w.osme.choose('sencha');
+      if(STILL()){
+        // contact sheet: show the moment the bag has sealed, all three benefits landed
+        w.osme.pour();for(let i=0;i<600&&w.osme.state.bag!=='sealed';i++)w.osme.advance(.1);w.osme.advance(2.5);
+        w.osme.state.phase='paused';chips(el,w);return;
+      }
+      el.querySelectorAll('.s3-chip').forEach(c=>c.classList.remove('on','hot'));
+      clearInterval(poll);poll=setInterval(()=>chips(el,w),120);
+      setTimeout(()=>{if(DECK.cur===2)el.querySelector('.s3-app').focus();},300);
+    }
+    window.ENTER[3]=el=>start(el);
+    window.LEAVE[3]=el=>{clearInterval(poll);const w=app(el);if(w){w.osme.reset();}el.querySelector('.s3-app').blur();window.focus();};
+    // keys pressed with focus on the deck: Space and Enter pour, R resets; everything else stays with the deck
+    window.DEMOKEY=e=>{
+      const w=app(document.getElementById('s3'));if(!w)return false;
+      const k=e.key;
+      if(k===' '||k==='Enter'){e.preventDefault();if(!e.repeat)w.document.dispatchEvent(new w.KeyboardEvent('keydown',{key:k,bubbles:true}));return true;}
+      if(k==='r'||k==='R'){e.preventDefault();w.osme.reset();return true;}
+      return false;
+    };
+  })();
+  </script>
+</div>

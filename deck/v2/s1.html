@@ -1,0 +1,61 @@
+<div class="slide full" id="s1" data-title="Company">
+  <video class="s1-film" data-auto muted playsinline preload="auto" poster="__ASSET:deck/v2/s1-start.jpg__" src="__ASSET:FILM__"></video>
+  <img class="s1-end" src="__ASSET:deck/v2/s1-end.jpg__" alt=""/>
+  <div class="s1-era" aria-hidden="true">
+    <div class="s1-yr" data-from="0" data-to="3.8"><b>760</b><span>China · Lu Yu reads the boil</span></div>
+    <div class="s1-yr" data-from="3.8" data-to="7.0"><b>1908</b><span>The tea bag · one temperature for all</span></div>
+    <div class="s1-yr" data-from="7.0" data-to="99"><b class="jade">Today</b><span>OSME · a bag that knows its temperature</span></div>
+  </div>
+  <svg class="sig s1-sig" viewBox="0 0 1920 1080" preserveAspectRatio="none" aria-hidden="true">
+    <defs><linearGradient id="s1g" x1="0" x2="1"><stop offset="0" stop-color="#F2A33A"/><stop offset=".48" stop-color="#D9C46B"/><stop offset="1" stop-color="#3DBA9B"/></linearGradient></defs>
+    <path class="s1-arc" d="M 120 1080 A 840 840 0 0 1 1800 1080" pathLength="1" fill="none" stroke="url(#s1g)" stroke-width="3" stroke-linecap="round"/>
+  </svg>
+  <div class="s1-team">Table 5 · Sell the unsellable</div>
+  <aside class="notes"><ul>
+    <li>Film: video/osme-film.mp4 (video thread, v03, 18.4 s, silent). It carries Lu Yu's three boils, the 1908 bag and the lockup; the year marker top left is synced to it.</li>
+    <li>Lu Yu, Cha Jing, 760 to 762 CE; three boils in Okakura, The Book of Tea (1906), ch. II (truth/history-cultures.md §2).</li>
+    <li>Tea bag c. 1908 (facts.md). Tagline "Every tea has its temperature." (brand, facts.md).</li>
+  </ul></aside>
+  <style>
+    #s1{background:#0B0B0D}
+    #s1 .s1-film,#s1 .s1-end{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+    #s1 .s1-end{opacity:0;transition:opacity .6s var(--ease)}
+    #s1.ended .s1-end,html.still #s1 .s1-end{opacity:1}
+    #s1 .s1-era{position:absolute;left:72px;top:7vh;z-index:3;width:640px;height:220px}
+    #s1 .s1-yr{position:absolute;left:0;top:0;opacity:0;filter:blur(14px) sepia(1);transform:translateY(16px);
+      transition:opacity .8s var(--ease),filter .9s var(--ease),transform .8s var(--ease)}
+    #s1 .s1-yr.on{opacity:1;filter:none;transform:none}
+    #s1 .s1-yr b{display:block;font-size:112px;font-weight:500;line-height:1;letter-spacing:-.02em;color:var(--amber)}
+    #s1 .s1-yr b.jade{color:var(--jade)}
+    #s1 .s1-yr span{display:block;font-size:28px;color:rgba(243,238,230,.8);margin-top:10px;letter-spacing:.02em}
+    #s1.ended .s1-yr,html.still #s1 .s1-yr{opacity:0!important}
+    #s1 .s1-sig{opacity:0;transition:opacity .8s}
+    #s1.ended .s1-sig,html.still #s1 .s1-sig{opacity:.7}
+    #s1 .s1-arc{stroke-dasharray:1;stroke-dashoffset:1;filter:drop-shadow(0 0 14px rgba(242,163,58,.6))}
+    #s1.ended .s1-arc{animation:drawin 1.8s var(--ease) both}
+    html.still #s1 .s1-arc{stroke-dashoffset:0}
+    #s1 .s1-team{position:absolute;right:72px;top:7vh;z-index:3;font-size:20px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(243,238,230,.45)}
+  </style>
+  <script>
+  (function(){
+    let raf=0;
+    function sync(el){
+      const v=el.querySelector('.s1-film'),yrs=[...el.querySelectorAll('.s1-yr')];
+      cancelAnimationFrame(raf);
+      (function tick(){
+        const t=v.currentTime||0;
+        yrs.forEach(y=>y.classList.toggle('on',t>=+y.dataset.from&&t<+y.dataset.to&&!el.classList.contains('ended')));
+        if(el.classList.contains('active'))raf=requestAnimationFrame(tick);
+      })();
+    }
+    window.ENTER[1]=el=>{
+      const v=el.querySelector('.s1-film');
+      el.classList.remove('ended');
+      v.onended=()=>el.classList.add('ended');
+      if(document.documentElement.classList.contains('still')){el.classList.add('ended');return;}
+      sync(el);
+    };
+    window.LEAVE[1]=el=>{cancelAnimationFrame(raf);el.classList.remove('ended');};
+  })();
+  </script>
+</div>

@@ -17,6 +17,11 @@ Status: v2, validated (judge/business-validation.md) and judged 4.5/5 (slides 5,
 | TAM: bagged tea | $18.77 bn x 38% bag share (same source) | **$7.1 bn** |
 | SAM: premium bagged tea, Japan + China + UK + US | $7.1 bn x 45% (ASSUMPTION: four markets) x 20% (ASSUMPTION: premium share) | **$640 m** |
 
+How many of them (people, not dollars):
+- US: "On any given day, over 159 million Americans are drinking tea" ("more than one half of the American population"), Tea Association of the USA fact sheet 2022 via US Census Bureau, January 2024. SOURCED https://www.census.gov/newsroom/stories/hot-tea-month.html
+- UK: about 100 million cups a day (UKTIA, facts.md proof point); "41% [of British adults] drink tea ... at least twice a day" (YouGov, 30 June 2025) https://yougov.com/en-gb/articles/52458-is-britain-still-a-tea-drinking-nation
+- Year 3 needs about 205 k buyers: 20 k Ritual subscribers + 185 k tin and gift buyers (ASSUMPTION: one tin per buyer) = 0.13% of US daily tea drinkers alone. Japan and China counts: needs data.
+
 ## 2. Price per cup: today's tea vs OSME
 | Tea | Pack price | Per cup | Source |
 |---|---|---|---|
