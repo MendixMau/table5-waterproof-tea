@@ -3,7 +3,7 @@
 | Agent | Pod | Plan | Output | Status |
 |---|---|---|---|---|
 | truth-customers | Truth | ops/agents/truth-customers.md | truth/customers-market.md | ✅ done, 4 questions |
-| truth-history | Truth | ops/agents/truth-history.md | truth/history-cultures.md | running |
+| truth-history | Truth | ops/agents/truth-history.md | truth/history-cultures.md | ✅ done, 4 questions |
 | business | Business | ops/agents/business.md | truth/business-case.md | ✅ done, validating |
 | business-validator | Business | ops/agents/business-validator.md | judge/business-validation.md | running |
 | strategist | Story | ops/agents/strategist.md | brand/strategy.md | ✅ done, 5 questions open |
