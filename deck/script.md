@@ -1,7 +1,7 @@
 # OSME pitch talk track v3 (3 minutes, spoken total 2:50)
 
 Status: v3 (presentation-lead, 27 Nov 2026 12:30), pitch v3 shape (lead 12:15, Maurits approved; lead 12:22 film sync). Spoken words: 329, slides 2 to 8, in 2:23 (about 150 a minute), with silent seconds in the demo. Matches the built deck: deck/v2/s1.html to s9.html.
-Slide 1 is the film with its own voice (video/osme-film-v04-vo.mp4, 26.5 s): nobody speaks. Spoken lines are plain text. Headers are bold, stage cues sit in square brackets and are not spoken. 10 s spare to 3:00.
+Slide 1 is the film with its own voice (video/osme-film-v04-vo.mp4, 26.6 s): nobody speaks. Spoken lines are plain text. Headers are bold, stage cues sit in square brackets and are not spoken. 10 s spare to 3:00.
 Rehearsal voice: the lines can be read by Kokoro (video/tools/tts.py, the voice used in the film) to time a run; the team speaks them live on stage.
 
 ## Speakers
@@ -18,7 +18,7 @@ Rehearsal voice: the lines can be read by Kokoro (video/tools/tts.py, the voice 
 
 **0:00 to 0:27 · Slide 1 · Company: the film · nobody speaks**
 Cue to next slide: the film ends on the logo. (A clicks)
-[The film plays full screen with its voice: the 1908 hook, China, Japan, the tea bag, OSME opening and sealing, ending "Oz-may! The art of tea!" on the logo. If the screen shows "Press Space to play the film", press Space once. Team stands still and watches the film with the room.]
+[Slide 1 opens on standby, the title card. When the jury is settled, click "Start the pitch" (or press Space): it starts the film with sound and the 3:00 timer. The film plays full screen with its voice: the 1908 hook, China, Japan, the tea bag, OSME opening and sealing, ending "Oz-may! The art of tea!" on the logo. Restart: round button top left.]
 
 **0:27 to 0:45 · Slide 2 · Problem · Speaker A**
 Cue to next slide: "comes from a bag." (A clicks)
@@ -28,15 +28,15 @@ Today's bag: one cup, the scent gone, often bitter.
 And ninety-six percent of UK tea comes from a bag.
 
 **0:45 to 1:27 · Slide 3 · Solution, live demo · Speaker B**
-Cue to next slide: "food-safe at seventy to ninety degrees." (B presses PageDown)
-[7 s membrane beat: the bag in layers, sealed, open, sealed. B says the first line over it. Then the live demo, Sencha preselected: B presses Space to pour boiling water. The demo runs on its own; the team explains it. Leave the pauses: the jury watches the dial and the cups.]
+Cue to next slide: "a second cup, and a third." (B presses PageDown)
+[8 s membrane explainer: too hot, sealed; 80 to 70, open; below 70 the steep stops. B says the first line over it. Then the live demo, Sencha preselected: B presses Space to pour boiling water. The demo runs on its own; the team explains it. Leave the pauses: the jury watches the dial and the cups.]
 Inside every OSME bag is a membrane that opens only in its tea's window, and seals again below it.
 Sencha in boiling water, cooling sped up. On the right, an ordinary bag. OSME waits, sealed.
 [Pause until the dial reaches 80.]
 Eighty degrees: it opens.
-[Pause until the dial drops below 70.]
-Below seventy, it seals again: the scent kept for a second cup, and a third.
 The principle exists: lab membranes already open and close with temperature. Our R&D makes it food-safe at seventy to ninety degrees.
+[Wait until the dial drops below 70.]
+Below seventy, it seals again: the scent kept for a second cup, and a third.
 
 **1:27 to 1:42 · Slide 4 · Customer · Speaker C**
 Cue to next slide: "after one steep." (C clicks)

@@ -51,3 +51,7 @@ Behind it: deck/script.md "## Speakers" (names TBD by the team); slide 8 (use of
 ## Questions for the team
 1. Q10 needs the real team: names, roles and whether there is a lab partner. The answer above is a placeholder.
 2. Q2: no TRL is stated in any source. If the jury asks for a number, agree one (likely TRL 2 to 3: principle proven, not yet in a bag).
+
+## Opening Q&A (D, not part of the 2:50)
+Say: "Scan the code and turn the capsule in 3D on your phone."
+Behind it: the slide 8 QR opens https://mendixmau.github.io/table5-waterproof-tea/keepers.html#join; under the waitlist form the site has "See it in 3D" and "How the membrane works" (lead 13:00).

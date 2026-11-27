@@ -131,7 +131,7 @@ def window_gauge(t):
 <g font-family="Jost, sans-serif" font-size="10" fill="#8E8A83">{ticks}</g></svg>'''
 
 # ---------------------------------------------------------------- shared chrome
-NAV = [("shop.html", "Shop"), ("ritual.html", "Ritual"), ("story.html", "Our story"), ("keepers.html", "Keepers"), ("index.html#how", "How it works")]
+NAV = [("shop.html", "Shop"), ("ritual.html", "Ritual"), ("story.html", "Our story"), ("keepers.html", "Keepers"), ("index.html#how", "How it works"), ("capsule-3d.html", "See it in 3D")]
 
 def nav(active, vbs):
     links = "".join(f'<li><a href="{h}"{" aria-current=\"page\"" if h == active else ""}>{n}</a></li>' for h, n in NAV)
@@ -253,7 +253,15 @@ def waitlist_block(heading='Take back one cup a day.<br><span class="arc-text">B
     <button class="btn primary" type="submit">Join the waitlist</button></form>
   <div class="wl-msg" role="status" aria-live="polite"></div>
   <div class="wl-note" data-wl-note></div>{more}</div>
-</div>'''
+</div>''' + (capsule_frame() if wow else "")
+
+def capsule_frame():
+    """The v2 Capsule 3D page (PR #5 model) shown in place; embed-html inlines capsule-3d.html into the frame."""
+    # srcdoc, not src: a data: frame gets an opaque origin and the 3D page does not start in it
+    doc = html.escape(open(os.path.join(DOCS, "capsule-3d.html"), encoding="utf-8").read(), quote=True)
+    return ('\n<figure class="cap3d"><iframe srcdoc="' + doc + '" title="v2: the OSME Capsule, in 3D" allow="fullscreen"></iframe>'
+            '<figcaption class="muted small"><b>v2: the OSME Capsule, in 3D.</b> Drag to rotate, slide the temperature or press Pour &amp; cool. '
+            '<a href="capsule-3d.html">Open full screen</a></figcaption></figure>')
 
 def three_steps():
     return f'''<div class="steps">
@@ -326,6 +334,7 @@ def home(vbs):
 <section id="how"><div class="wrap">
   <div class="eyebrow">How it works · <b>Sencha</b>, Japan</div>
   <h2>Sealed. Open. Sealed.</h2>
+  {capsule_frame()}
   <p class="lead">Boiling water scorches a green tea. An ordinary bag brews at any heat and never stops. An OSME bag waits for its tea’s window, brews inside it, and closes when it is done.</p>
   {three_steps()}
   <div class="tryit">

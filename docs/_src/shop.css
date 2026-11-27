@@ -308,3 +308,13 @@ footer.site .top{display:flex;justify-content:space-between;gap:40px;flex-wrap:w
 .wow{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
 .wow .btn{min-height:52px;padding:0 26px;display:inline-flex;align-items:center;justify-content:center}
 @media (max-width:600px){.wow{flex-direction:column}.wow .btn{width:100%;min-height:56px;font-size:15px}}
+.see3d-top{margin:6px 0 18px}.see3d-top .btn{min-height:48px}
+
+/* v2 Capsule 3D in place: How it works and keepers.html#join */
+.cap3d{margin:22px 0 30px}
+.cap3d iframe{display:block;width:100%;height:770px;border:1px solid var(--brand-line,#2A2A30);border-radius:22px;background:#0B0B0D}
+.cap3d figcaption{margin-top:10px}
+.cap3d figcaption a{color:#F2A33A;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.join + .cap3d{margin-top:36px}
+@media (max-width:900px){.cap3d iframe{height:1300px}}
+@media (max-width:600px){.cap3d iframe{height:1500px;border-radius:16px}}

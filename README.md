@@ -4,9 +4,9 @@
 Everyone drives at least once.
 
 <!-- LIVE:START -->
-## Live status · 12:56 · 0 h 33 to hand-in
+## Live status · 13:01 · 0 h 28 to hand-in
 
-**Now:** Pitch v3: the film with voice, then about 2:20 of talk. v08 at 12:40, timed run-through 12:45, freeze 13:15, hand in 13:30.
+**Now:** "Freeze 13:15, hand in 13:30. Start at docs/handin.html on the live site: all five hand-ins on one page."
 
 | | Topic | Status | Latest preview |
 |---|---|---|---|
@@ -14,8 +14,8 @@ Everyone drives at least once.
 | 🚦 | Gate 1 deck | 🟡 working · judge 4/5 · 10:53 | <img src="gallery/gate1-v09.png" width="260"> |
 | 📈 | Business case | 🟢 done · judge 4.5/5 · 12:22 | <img src="gallery/business-v11.png" width="260"> |
 | 🍵 | Product demo | 🟡 working · judge 4/5 · 12:35 | <img src="gallery/product-membrane-v05.png" width="260"> |
-| 🎤 | Pitch deck | 🟡 working · judge 4/5 · 12:55 | <img src="gallery/deck-v12-s5.png" width="260"> |
-| 🌐 | Site | 🟡 working · 12:54 | <img src="gallery/site-v05-deck.png" width="260"> |
+| 🎤 | Pitch deck | 🟢 done · judge 24/30 · 12:59 | <img src="gallery/deck-v12-s5.png" width="260"> |
+| 🌐 | Site | 🟡 working · 12:57 | <img src="gallery/site-v05-deck.png" width="260"> |
 | 🎬 | Video | 🟢 done · 12:43 | <img src="gallery/pr1-review.png" width="260"> |
 
 **Waiting on the team:** Speakers A to D?
@@ -23,13 +23,15 @@ Everyone drives at least once.
 
 ## Five things to hand in by 13:30
 
-| # | Hand-in | Definition | Lives in |
-|---|---|---|---|
-| 1 | Brand | Name, logo, one line | `facts.md`, `brand/identity/` |
-| 2 | Customer | Who buys it, with evidence of where we found them | `truth/` |
-| 3 | Product | Works today, on one laptop | `product/` |
-| 4 | Site | What it does, who it is for, the price | `docs/` → GitHub Pages |
-| 5 | Pitch | 3 minutes, product running, 8 slides | `deck/` |
+**Start here: [https://mendixmau.github.io/table5-waterproof-tea/handin.html](https://mendixmau.github.io/table5-waterproof-tea/handin.html)**, all five on one page. Live site: [https://mendixmau.github.io/table5-waterproof-tea/](https://mendixmau.github.io/table5-waterproof-tea/)
+
+| # | Hand-in | What the brief asks | Open it (live) | In this repo |
+|---|---|---|---|---|
+| 1 | Brand | Name, logo, one line | [Brand board](https://mendixmau.github.io/table5-waterproof-tea/brand.html) | `brand/identity/board.html`, `facts.md` |
+| 2 | Customer | Who buys it, and where we found them | [Customer evidence](https://mendixmau.github.io/table5-waterproof-tea/customer.html) | `shared/business/customer-evidence.html`, `truth/customers-market.md` |
+| 3 | Product | Works today, on one laptop | [Live demo](https://mendixmau.github.io/table5-waterproof-tea/demo.html) · [How the membrane works](https://mendixmau.github.io/table5-waterproof-tea/membrane.html) · [v2 in 3D](https://mendixmau.github.io/table5-waterproof-tea/capsule-3d.html) | `product/index.html`, `shared/product/membrane-how.html` |
+| 4 | Site | What it does, who it is for, the price | [The site](https://mendixmau.github.io/table5-waterproof-tea/) | `docs/` (GitHub Pages) |
+| 5 | Pitch | 3 minutes, product running, 8 slides | [Pitch deck](https://mendixmau.github.io/table5-waterproof-tea/pitch.html) (Space starts the film) | `deck/pitch.html`, `deck/script.md`, `video/osme-film-v04-vo.mp4` |
 
 Eight slides: 1 company · 2 problem · 3 solution · 4 customer evidence · 5 market · 6 business · 7 competition · 8 the ask.
 
