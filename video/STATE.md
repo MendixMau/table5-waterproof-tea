@@ -32,3 +32,6 @@
 - Slide-1 files: `osme-film-v04.mp4` (silent) and `osme-film-v04-vo.mp4` = v11. `osme-film.mp4` is still v03 until critic + judge pass.
 - Critic r5 on v10: PASS (7.8). Judge r5 on v10: HOOK 3, rest 4 -> v11 hook fix. Judge r6 + critic r6 (S1-S2) on v11 running.
 - People version: `renders/osme-film-fv2_v05.mp4` (27.1 s, on v11). Maurits' call; not for slide 1.
+
+## 12:35 pacing re-cut (lead 12:31)
+Master = renders/osme-film-fv2_v11 via tools/fv2e.sh 14 11, also copied to osme-film.mp4. Cues vo-in/cues-fv2e.txt. Not re-judged.

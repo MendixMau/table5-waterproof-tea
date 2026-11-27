@@ -6,10 +6,10 @@
     <div class="s3-chip" data-k="three"><img src="__ASSET:brand/assets/icon-three-infusions.svg__" alt=""/><span>Up to <b class="mid">__NUM:infusions__</b> infusions, one bag</span></div>
   </div>
   <div class="s3-intro" aria-hidden="true">
-    <img class="s3-x" src="__ASSET:shared/product/exploded-view-animated.svg__" alt=""/>
+    <iframe class="s3-x" title="How the membrane works" tabindex="-1" data-src="__ASSET:shared/product/membrane-how.html__"></iframe>
   </div>
   <aside class="notes"><ul>
-    <li>Opens on the membrane beat, about 7 s: shared/product/exploded-view-animated.svg (product thread; 92 °C sealed, 75 °C open, 64 °C sealed for Sencha). B says one sentence on how it works over it, then runs the demo.</li>
+    <li>Opens on the membrane beat, about 8 s: shared/product/membrane-how.html (product thread, final 12:3x): too hot, sealed; 80 to 70 °C, open, the tea flows; below 70 °C the steep stops. Sources on screen PMC9920928, C4TA04852K. B says one sentence on how it works over it, then runs the demo. The exploded view is the backup, slide 9.</li>
     <li>Live product: product/index.html (product thread, latest), embedded. Sencha opens at 80 °C and seals below 70 °C (facts.md, tea windows). Cooling is sped up.</li>
     <li>Keys on this slide: Space or Enter pours (and brews again once sealed), R resets, PageDown next slide, PageUp back. Works with the clicker and with focus inside the demo. Inside the demo, Right also pours: use PageDown to move on.</li>
     <li>Up to 3 infusions a bag (facts.md, Price; model_business.py INFUSIONS).</li>
@@ -19,9 +19,8 @@
     #s3{background:#0B0B0D}
     #s3 .s3-app{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:1;background:#0B0B0D}
     #s3 .s3-intro{position:absolute;inset:0;z-index:5;pointer-events:none;background:#0d0d0f;opacity:0}
-    #s3 .s3-intro img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
-    #s3.play .s3-intro{animation:s3-intro 7.5s var(--ease) both}
-    #s3.play .s3-intro img{animation:s3-push 7.5s var(--ease) both}
+    #s3 .s3-intro .s3-x{position:absolute;inset:0;width:100%;height:100%;border:0;background:#0B0B0D}
+    #s3.play .s3-intro{animation:s3-intro 9s var(--ease) both}
     html.still #s3 .s3-intro{display:none}
     #s3 .s3-sos{position:absolute;left:72px;top:15vh;font-size:84px;font-weight:500;letter-spacing:-.01em;line-height:1.1}
     #s3 .s3-sos span{display:inline-block;opacity:0}
@@ -79,8 +78,8 @@
       },true);
     }
     function start(el){
-      // restart the exploded view's 12 s loop at 0 (SMIL inside an img starts at load)
-      const x=el.querySelector('.s3-x');if(x&&!x.dataset.fresh){const c=x.cloneNode();c.dataset.fresh=1;x.replaceWith(c);}
+      // start the membrane explainer from 0 each time the slide opens (loading it restarts it)
+      const x=el.querySelector('.s3-x');if(x&&!STILL()&&!x.dataset.fresh){x.dataset.fresh=1;x.src=x.dataset.src;}
       const w=app(el);
       if(!w){setTimeout(()=>start(el),60);return;}
       wire(el,w);
@@ -95,7 +94,7 @@
       setTimeout(()=>{if(DECK.cur===2)el.querySelector('.s3-app').focus();},300);
     }
     window.ENTER[3]=el=>start(el);
-    window.LEAVE[3]=el=>{const x=el.querySelector('.s3-x');if(x)delete x.dataset.fresh;clearInterval(poll);const w=app(el);if(w){w.osme.reset();}el.querySelector('.s3-app').blur();window.focus();};
+    window.LEAVE[3]=el=>{const x=el.querySelector('.s3-x');if(x){delete x.dataset.fresh;x.removeAttribute('src');}clearInterval(poll);const w=app(el);if(w){w.osme.reset();}el.querySelector('.s3-app').blur();window.focus();};
     // keys pressed with focus on the deck: Space and Enter pour, R resets; everything else stays with the deck
     window.DEMOKEY=e=>{
       const w=app(document.getElementById('s3'));if(!w)return false;

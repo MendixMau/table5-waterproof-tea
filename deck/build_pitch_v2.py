@@ -33,7 +33,7 @@ PRICE = m.PRICE
 R, D = bp.R, bp.D
 V2 = D / "v2"
 MIME = {".svg": "image/svg+xml", ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg",
-        ".mp4": "video/mp4", ".woff2": "font/woff2", ".webp": "image/webp"}
+        ".mp4": "video/mp4", ".woff2": "font/woff2", ".webp": "image/webp", ".html": "text/html"}
 FONTX = bp.b64(D / "assets-src" / "jost-latin-ext.woff2", "font/woff2")
 TIMES = ["0:00 to 0:27", "0:27 to 0:45", "0:45 to 1:27", "1:27 to 1:42",
          "1:42 to 2:03", "2:03 to 2:17", "2:17 to 2:30", "2:30 to 2:50", "Q&A"]
