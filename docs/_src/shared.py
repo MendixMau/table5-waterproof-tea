@@ -83,7 +83,7 @@ def sealed_open_sealed():
     return [stage("sealed-open-sealed.html", "Sealed · Open · Sealed", inner, 1.42)]
 
 def six_tins():
-    tins = "".join(f'''<div style="text-align:center">{B.tin_svg(t).replace('viewBox="0 0 400 480"', 'viewBox="70 50 260 400"')}<div style="font-family:var(--font-display);font-size:19px;letter-spacing:.05em;margin-top:4px">{t["name"]}</div>
+    tins = "".join(f'''<div style="text-align:center">{B.tin_svg(t).replace('viewBox="0 0 400 480"', 'viewBox="60 44 280 410"')}<div style="font-family:var(--font-display);font-size:19px;letter-spacing:.05em;margin-top:4px">{t["name"]}</div>
 <div class="muted" style="font-size:13px">{t["country"]} · opens at {B.deg(t["open"])}</div></div>''' for t in B.TEAS)
     inner = f'''<div class="eyebrow">The teas</div>
 <h2 style="margin:12px 0 26px">Six teas. Six temperatures.</h2>

@@ -3,7 +3,9 @@
    osmeCount(slideEl)            counts every [data-count] inside slideEl (or slideEl itself)
    osmeCount(slideEl, {at: 0.6}) renders the state at 0.6 s without animating (for stills)
    Options per element: data-duration (ms, default 1400), data-from (default 0).
-   Decimals follow data-count: "8.3" -> one decimal, "640" -> none. Thousands get commas. */
+   Decimals follow data-count: "8.3" -> one decimal, "640" -> none. Thousands get commas.
+   The element's text is replaced, so keep units in data-prefix / data-suffix, not in child markup.
+   The HTML text is the no-JS fallback: write the final value there. osmePause (osme-play.js) resets to the start value. */
 (function () {
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   function ease(t) { return 1 - Math.pow(1 - t, 4); } // quartic ease-out: fast start, soft landing
@@ -16,7 +18,8 @@
 
   function one(el, at) {
     var to = parseFloat(el.dataset.count), from = parseFloat(el.dataset.from || "0");
-    var dur = parseFloat(el.dataset.duration || "1400");
+    var dur = parseFloat(el.dataset.duration);
+    if (!(dur > 0)) dur = 1400;
     el.style.fontVariantNumeric = "tabular-nums";
     el.style.whiteSpace = "nowrap";
     if (el._osmeRaf) cancelAnimationFrame(el._osmeRaf);

@@ -8,16 +8,16 @@
 #s6 .lname{font-size:30px;line-height:1.15;color:rgba(243,238,230,.86);padding-right:28px;text-align:right}
 #s6 .lname small{display:block;font-size:26px;color:var(--muted)}
 #s6 .track{position:relative;height:56px;display:flex;align-items:center}
-#s6 .bar{height:56px;width:0;border-radius:6px;background:#3A3A42;transition:width .9s var(--ease);position:relative;flex:0 0 auto}
+#s6 .bar{height:56px;width:0;border-radius:6px;--c:150,90,40;background:linear-gradient(180deg,rgba(var(--c),.62),rgba(var(--c),.30) 70%,rgba(var(--c),.42));box-shadow:inset 0 3px 0 -1px rgba(255,244,220,.38),inset 0 0 0 1px rgba(var(--c),.55);transition:width .9s var(--ease);position:relative;flex:0 0 auto}
 #s6 .lprice{font-size:34px;font-weight:500;margin-left:20px;font-variant-numeric:tabular-nums;opacity:0;transition:opacity .4s ease .5s;white-space:nowrap}
 #s6 .lrow.in .lprice{opacity:1}
 #s6 .lrow.osme .lname{color:var(--amber);font-weight:500;font-size:34px}
-#s6 .lrow.osme .bar{background:linear-gradient(90deg,#F2A33A,#D9C46B 55%,#3DBA9B)}
+#s6 .lrow.osme .bar{background:linear-gradient(90deg,#F2A33A,#D9C46B 55%,#3DBA9B);box-shadow:none}
 #s6 .lrow.osme.glow .bar{animation:s6-glow 2.4s ease-in-out infinite alternate}
 #s6 .lrow.osme .lprice{font-size:56px;font-weight:600;background:linear-gradient(90deg,#F2A33A,#3DBA9B);-webkit-background-clip:text;background-clip:text;color:transparent}
 @keyframes s6-glow{from{box-shadow:0 0 18px 2px rgba(242,163,58,.45)}to{box-shadow:0 0 40px 8px rgba(61,186,155,.55)}}
 #s6 .lrow.clip .bar{border-radius:6px 0 0 6px;-webkit-mask:linear-gradient(90deg,#000 88%,transparent 88%,transparent 90.5%,#000 90.5%,#000 93%,transparent 93%,transparent 95.5%,#000 95.5%);mask:linear-gradient(90deg,#000 88%,transparent 88%,transparent 90.5%,#000 90.5%,#000 93%,transparent 93%,transparent 95.5%,#000 95.5%)}
-#s6 .lcap{font-size:22px;color:var(--muted);margin:18px 0 0 420px}
+#s6 .lcap{font-size:26px;color:var(--muted);margin:18px 0 0 120px}
 #s6 .side{flex:0 0 640px;display:flex;flex-direction:column;align-items:center;position:relative}
 #s6 .packs{position:relative;width:640px;height:500px}
 #s6 .packs .tin{position:absolute;bottom:24px;filter:drop-shadow(0 24px 30px rgba(0,0,0,.6))}
@@ -68,7 +68,7 @@
           <text x="200" y="306" text-anchor="middle" font-family="Jost, sans-serif" font-size="12" letter-spacing="2.6" fill="#8E8A83">JAPAN · OPENS AT 80 °C</text>
           <rect x="98" y="324" width="204" height="3" rx="1.5" fill="url(#s6-arcg)"/>
           <text x="200" y="364" text-anchor="middle" font-family="Jost, sans-serif" font-size="12" letter-spacing="2.4" fill="#BDB7AD">12 TEA BAGS · UP TO 3 INFUSIONS EACH</text></svg>
-        <svg class="bag" viewBox="400 150 740 1110" role="img" aria-label="A single OSME Sencha bag"><image href="__ASSET:brand/assets/pack-single-bag.svg__" x="0" y="0" width="1200" height="1400"/></svg>
+        <svg class="bag" viewBox="400 150 740 1110" role="img" aria-label="A single OSME Sencha bag"><image href="__ASSET:brand/assets/pack-single-bag-transparent.svg__" x="0" y="0" width="1200" height="1400"/></svg>
       </div>
       <div class="margin">
         <div class="big" data-count="__NUM:margin_pct__" data-suffix="%" data-dl=".6" data-dur="2">__NUM:margin_pct__%</div>
@@ -95,6 +95,7 @@
   const KEEP=["Supermarket bag","OSME","Subscription","Pyramid","Cafe cup"];
   const MAX=1.40, CLIPW=96; /* linear up to $1.40 = 64% of the track; the cafe cup is cut */
   const timers=[];
+  const TINT={'Supermarket bag':'147,68,26','Subscription':'184,200,106','Pyramid':'217,168,69','Cafe cup':'120,52,20'};
   function build(el){
     timers.forEach(clearTimeout);timers.length=0;
     const still=document.documentElement.classList.contains('still');
@@ -108,7 +109,7 @@
       if(osme){nm.textContent='OSME';const s=document.createElement('small');s.textContent='up to __NUM:infusions__ cups a bag';nm.appendChild(s);}
       else{nm.textContent=who;const s=document.createElement('small');s.textContent=kind;nm.appendChild(s);}
       const tr=document.createElement('div');tr.className='track';
-      const bar=document.createElement('div');bar.className='bar';
+      const bar=document.createElement('div');bar.className='bar';if(TINT[kind])bar.style.setProperty('--c',TINT[kind]);
       const pr=document.createElement('div');pr.className='lprice';pr.textContent='$'+r.cup.toFixed(2);
       tr.appendChild(bar);tr.appendChild(pr);row.appendChild(nm);row.appendChild(tr);box.appendChild(row);
       const w=clip?CLIPW*0.82:Math.max(1.2,r.cup/MAX*64);

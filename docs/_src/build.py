@@ -110,7 +110,7 @@ def tin_svg(t, w="100%"):
 <text x="200" y="272" text-anchor="middle" font-family="Jost, Futura, sans-serif" font-weight="500" font-size="{20 if len(t['name']) < 12 else 15}" letter-spacing="5" fill="{t['liquor'] if t['id'] not in ('puerh','english-breakfast') else '#E0A167'}">{html.escape(t['name'].upper())}</text>
 <text x="200" y="296" text-anchor="middle" font-family="Jost, Futura, sans-serif" font-size="10.5" letter-spacing="2.6" fill="#8E8A83">{html.escape(t['country'].upper())} · OPENS AT {t['open']} °C</text>
 <rect x="98" y="314" width="204" height="2.5" rx="1.2" fill="url(#ta-{tid})"/>
-<text x="200" y="352" text-anchor="middle" font-family="Jost, Futura, sans-serif" font-size="9.5" letter-spacing="2.4" fill="#BDB7AD">12 TEA BAGS · UP TO 3 INFUSIONS EACH</text>
+<text x="200" y="352" text-anchor="middle" font-family="Jost, Futura, sans-serif" font-size="9" letter-spacing="1.6" fill="#BDB7AD">12 BAGS · UP TO 3 INFUSIONS</text>
 <text x="200" y="398" text-anchor="middle" font-family="Jost, Futura, sans-serif" font-size="10" fill="#6E6A64">Every tea has its temperature.</text>
 </svg>'''
 

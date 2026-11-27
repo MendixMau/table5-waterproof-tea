@@ -29,7 +29,13 @@
 | Ambient loop and poster | `video/osme-loop.mp4`, `video/osme-loop-poster.jpg`; web cut at `docs/_src/loop-web.mp4` | video, site | Behind deck slide 8, site hero |
 | Live demo: two cups, the 1908 bag next to OSME | `product/index.html`. F gives full screen and presenter mode; `#tea=sencha&sec=16` jumps to the rehearsal point | product | Full-screen on deck slide 3, site `demo.html` |
 | Site hero cup with temperature arc | `docs/_src/hero-cup.svg`, `hero.js` | site | Deck slide 3, film |
-| Site sections: the 1,200-years timeline, Sealed · Open · Sealed, the six tinted tins, the temperature slider | Coming in `shared/site/` | site | Deck slides 1–3 and 6, film |
+| Site hero cup + temperature arc, animated (Sencha cooling loop), with or without headline | `shared/site/hero-cup.html`, `hero-cup-solo.html` (+ `.png` still) | site | Deck slide 3, film "Now" beat |
+| 1,200-years timeline: 760s · 1908 · Now | `shared/site/timeline.html` (+ `.png`) | site | Deck slides 1–2, film history beats |
+| Sealed · Open · Sealed cards (Sencha >80 / 80–70 / <70 °C) | `shared/site/sealed-open-sealed.html` (+ `.png`) | site | Deck slide 3 |
+| Six tins, tinted per tea, with opening temperatures | `shared/site/six-tins.html` (+ `.png`) | site | Deck slide 6, film product beat |
+| Temperature slider, interactive; `?auto` sweeps 100→60→100 °C for recording | `shared/site/slider.html` (+ `.png`) | site | Deck slide 3 live, film |
+| Lu Yu's three bubbles row: fish eyes, string of pearls, rolling waves | `shared/site/bubbles-row.html` (+ `.png`) | site | Deck slide 1, film 0–3 s |
+| How to use the shared/site slides: 1920x1080, scale to any window or iframe; rebuild with `python3 docs/_src/shared.py` (same components as the site) | `docs/_src/shared.py` | site | Rebuild after a logo or number change |
 | Business charts: price ladder, market circles | `deck/build_business.py` builds `deck/business.html` | business | Deck slides 5 and 6 |
 | "What's inside" exploded view | Coming in `shared/product/` | product | Deck backup slide, site "How it works" |
 | Dwi's Osme Control concept. Reference only: it is a manual capsule, not our product | `refs/dwi-osme-control/` | none | Ideas only: the plume close-up, the exploded view |
