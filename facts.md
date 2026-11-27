@@ -22,4 +22,5 @@ Locked at the 10:40 gate. Change here first; every slide, site and product reads
 | Movement belief | In a world of AI and craziness, we go back to what life is about: art, love, scent. We are the new tea-tech disruptor. |
 | Name style | Written OSME, said "oz-MAY". "Tea-tech disruptor" only on jury slides. |
 | Story focus | Life, art, scent, love. Everyone can be a tea person. Not anti-screen or anti-tech. |
+| Demo tea | Sencha (Japan): the bag opens when the water cools to 80 °C and seals again below 70 °C. Shown in the HTML app, cooling sped up, side by side with an ordinary 1908 bag. |
 | Tone | Tradition meets the future: back to the roots, embracing technology. Patience, ritual. Futuristic and premium, never the default app look. |

@@ -17,3 +17,15 @@
 09:57 | truth-history | PROGRESS | sections 2-4 sourced (Lu Yu, te/cha, tea bag); next cultures, aroma, why now, quotes
 09:57 | storyteller | PROGRESS | problem and evidence slides grounded in customers-market.md quotes and UKTIA
 09:57 | identity | PROGRESS | logos v3 saved (ring opens on the diagonal, 3 bubbles escape); building board
+09:58 | lead | PROGRESS | Tone update (life, art, scent, love; no anti-screen); agents stopped by an interrupt, relaunching 6 to resume
+09:59 | truth-customers | START | resuming from existing truth/customers-market.md
+09:59 | identity | START | resume: review v3 logos, build board.html
+09:59 | product | START | resume: index.html was a stub, building pod demo
+09:59 | truth-history | START | resuming; file held skeleton only, re-sourcing sections
+09:59 | business | START | resume from skeleton truth/business-case.md
+09:59 | storyteller | START | resuming deck/story.md; removing AI/noise framing; demo = HTML app, Sencha
+09:59 | identity | PROGRESS | logos reviewed at 32/256px; lockup wordmark re-centred on ring (y 23.6->19.6)
+09:59 | truth-customers | PROGRESS | 8 complaints, specialty + subscription market saved
+09:59 | truth-history | PROGRESS | sections 3-4 re-sourced and saved
+10:00 | storyteller | DONE | story.md draft 2: positive tone, AI/noise and email lines removed, Sencha app demo, Keepers explained, script 419 words
+10:00 | identity | PROGRESS | board.html v1 saved (pre-embed)
