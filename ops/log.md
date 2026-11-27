@@ -243,3 +243,4 @@
 13:15 | site-lead | FINAL | docs/ | hand-in build = the 13:15 freeze rebuild. docs/pitch.html is deck v13 (12:59), md5 c284360e2661254033a003cefb223eef, confirmed final by the lead and presentation (take a). It is not a fallback.
 13:18 | lead | LIVE | hand-in verified live at 13:18 (push f9e1448 13:16): all 9 URLs 200 (/, handin, brand, customer, demo, pitch, keepers, capsule-3d, membrane); live pitch.html md5 c284360e = deck v13; keepers 272 KB + index 1.09 MB = the 13:15 build. Simon message can go
 13:31 | lead | SYNC | final deck check 13:30: deck v13 unchanged (md5 c284360e), live hand-in 200. Deck sync loop stopped (hand-in done)
+13:39 | lead | LAUNCH | launch research DONE 13:38: plan.md/html/png in launch/ (local only; launch/ added to .git/info/exclude: names the patent chemistry, keep private until the provisional is filed)
