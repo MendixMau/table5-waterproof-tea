@@ -24,6 +24,6 @@ Rehearsal: `index.html#tea=sencha&sec=16` jumps to 16 demo seconds after the pou
 
 Not built yet. The plan is in `mendix-plan.md`; no app location exists so far.
 
-## Explainer video
+## Explainer video (reference)
 
-`product/Osme_Control_20s.mp4` is a 20-second 1080p explainer (no audio) of the Osme Control concept: sealed capsule, lower into water, lift to open, tea diffuses, push to close, sip. It is built from the concept storyboard image, so it is a stills-and-motion slideshow rather than real product footage.
+Dwi's 20-second Osme Control explainer and its storyboard are in `refs/dwi-osme-control/`. It shows a manual capsule (lift to open, push to close), not our temperature mechanism, so it is a reference and is not shown in the pitch.
