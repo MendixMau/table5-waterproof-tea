@@ -4,7 +4,7 @@
 Everyone drives at least once.
 
 <!-- LIVE:START -->
-## Live status · 11:44 · 1 h 45 to hand-in
+## Live status · 11:49 · 1 h 40 to hand-in
 
 **Now:** Pitch prep: pitch v1 by 11:45 for the first read-through. Judge passes at 12:00 and 12:45; freeze at 13:15.
 

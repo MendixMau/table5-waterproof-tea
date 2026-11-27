@@ -16,3 +16,10 @@
 | 2 | S5 | seal does not read | halves close with overshoot, jade ring pulse r 40 -> 256 px, marker flash | v03 |
 | 2 | S6 | 0.4 s near-dead frames 14.8-15.15; lockup 23 % wide; end card 4.5 s | the cup's bag flies into the end card (no gap); lockup h 300 / wordmark 540 px; end card about 3.4 s | v03 |
 | 2 | WARN | one-liner 69 px from bottom | one-liner at the top, y 110, 46 px, after the push-out; arc fades out first | v03 |
+| 3 | S1 | title card lower frame empty 0-1.4 s | card starts mid-build (0.9 s in), plays 1.2x, done by 2.2 s, fades 2.4-2.8 | v08 |
+| 3 | S2 | 14-word caption in 1.8 s; bubbles don't grow | caption "Hotter water, bigger bubbles." from 2.6 s; bubble radius x0.7 -> x3.3 over 2.8-4.5 s; Lu Yu gets topknot + beard (judge) | v08 |
+| 3 | S3 | steam into caption; kettle small | kettle group x1.25, raised 30 px; steam 200 -> 100 px; wind arcs stroke 4 -> 5; MATSUKAZE label dropped | v08 |
+| 3 | S4 | (judge) 100 °C before 1908; 100 million misdated | bTemp hidden; "Today: about 100 million cups a day." | v08 |
+| 3 | S5 | (judge) damage not shown; orbs unexplained | caption "Easy, but every tea gets the boil."; orbs only from 13.8 s | v08 |
+| 3 | S6 | arc strikes caption/eyebrow; glass cut on push | NOW caption moved to the bottom (dy 845), 14.3-15.6 s; timeline out 13.9-14.3; CAM k 1.5 -> 1.3, cy 330 -> 560; sub-label 36 -> 40 px, "open from 80 down to 70 °C" | v08 |
+| 3 | S8 | tagline late; grey fade | tag 14.7 -> 14.5 (film 22.5 s); fade only in the last 0.3 s | v08 |

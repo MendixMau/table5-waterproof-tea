@@ -1,0 +1,9 @@
+# Voice cues for film v08 (26.4 s). Lines trimmed of silence (-45 dB). Kokoro af_heart, speed 1.0.
+vo-01.wav  @ 0.30   Twelve centuries ago, a tea master read water by its bubbles.
+vo-02c.wav @ 4.90   In Japan, the kettle's pine wind says the water is ready.
+vo-03b.wav @ 8.40   In Britain, afternoon tea became a ritual.
+vo-04b.wav @ 11.50  Then the tea bag made it easy, and every tea got the boil.
+vo-05.wav  @ 15.15  Oz-may waits. At its temperature, it opens.
+vo-06.wav  @ 18.00  As the water cools, it closes, and keeps the scent.
+vo-07.wav  @ 20.90  So every cup is the one you meant to make.
+vo-08.wav  @ 22.70  Oz-may. Every tea has its temperature.
