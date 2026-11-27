@@ -1,38 +1,31 @@
-# OSME brand film: storyboard
+# OSME brand film: storyboard (v03)
 
 Preview: [gallery/video-storyboard.png](../gallery/video-storyboard.png) (8 key frames, real renders of `video/src/film.html`).
 
 | | |
 |---|---|
-| Use | Pitch opener (plays before slide 1) |
-| Length | 19 s, 1920×1080, 30 fps, H.264 |
-| Sound | Silent by default. Optional: a soft room tone and one water pour, self-made, no music (no copyright). |
-| Look | Midnight Brew tokens: matte black #0B0B0D, amber #F2A33A → gold #D9C46B → jade #3DBA9B, warm white #F3EEE6. Futura display, Avenir Next text. |
-| Logo | Injected at render time from `brand/identity/logo-symbol.svg` and `logo-wordmark.svg`, so logo v4 drops in without edits. |
-| Pace | Calm and patient: one new thing at a time, every beat holds at least 1 s. |
+| Use | Pitch opener. Plays silent on the projector behind the spoken hook on slide 1. |
+| Length | 18.4 s, 1920×1080, 30 fps, H.264 (`video/osme-film.mp4`) |
+| Sound | Silent. No music (no copyright). |
+| Look | Midnight Brew tokens: matte black #0B0B0D, amber #F2A33A → gold #D9C46B → jade #3DBA9B, warm white #F3EEE6. Jost display, Avenir Next text. |
+| Logo | Injected at render time from `brand/identity/logo-symbol.svg` and `logo-wordmark.svg`. A logo change needs only a re-render. |
+| Pace | Calm and patient: one new thing at a time. The line is on screen from frame 0, so the opening reads even when the film starts mid-sentence. |
 
 ## Story in three beats
-Art (Lu Yu's bubbles) → the product (the bag opens at its temperature) → the movement (OSME, the tagline).
-The film says what the product does by 0:13, so the jury knows the noun before slide 1.
+Art (Lu Yu's bubbles) → the trade-off (1908: easy, but every tea at a boil) → the product (the bag opens at its temperature, then seals) → OSME.
+The film says what the product does by 0:12, so the jury knows the noun before slide 1.
 
 ## Shots
 
 | # | Time | Beat | Picture | Words on screen |
 |---|---|---|---|---|
-| 1 | 0:00–0:02 | Stillness | Black with a warm breath of light rising from the centre; no dead frames. | "In the eighth century, Lu Yu read water by its bubbles." |
-| 2 | 0:02–0:04 | Fish eyes | First bubble rises from below, small, jade. | FISH EYES |
-| 3 | 0:03–0:05 | String of pearls | Second bubble, gold, a string of tiny pearls trailing beneath it. | STRING OF PEARLS |
-| 4 | 0:05–0:07 | Rolling waves | Third bubble, amber, the largest; two rings roll out. All three hold. | ROLLING WAVES |
-| 5 | 0:07–0:10 | Into the bag | Caption and labels fade; the three bubbles rise one after another into the OSME tea bag, which draws itself. | none |
-| 6 | 0:10–0:12 | The temperature | The amber-to-jade arc draws under the bag. A marker slides along it as the water cools: 100 °C counts down. | 100 °C … 80 °C |
-| 7 | 0:12–0:14 | It opens | At 80 °C the bag breathes and a scent wisp curls up. | "Sencha opens at 80 °C. And closes as the cup cools." |
-| 8 | 0:14–0:19 | OSME | Bag settles up, OSME wordmark and the arc, then the tagline. Hold, fade to black. | OSME · "Every tea has its temperature." |
+| 1 | 0.0–3.4 | Art | Three glowing bubbles (jade, gold, amber) rise 0.6 s apart: fish eyes, pearls trailing, a rolling ripple | "In the eighth century, Lu Yu read water by its bubbles." · FISH EYES · STRING OF PEARLS · ROLLING WAVES |
+| 2 | 3.4–6.3 | Trade-off | The bubbles shrink and wait above a glass; a plain paper bag drops in and the water turns dark brown; the bag lifts out and the water clears | "Around 1908 came the tea bag: easy, and every tea at a boil." · ANY TEA 100° |
+| 3 | 6.0–8.6 | Product | The three bubbles fall into the glass and become the OSME bag; the string and tag draw; the temperature arc draws | SENCHA 100° · SEALED · too hot for Sencha |
+| 4 | 8.6–10.6 | Opens | Slow push-in; at 80 the bag's halves part on an amber seam; tea plumes out and fills the glass; scent wisps rise | SENCHA 80° · OPEN · brewing below 80 °C |
+| 5 | 10.6–11.9 | Seals | At 70 the halves snap shut; a jade ring pulses out; the wisps sink; push back out | SENCHA 70° · SEALED · scent kept inside |
+| 6 | 11.9–13.8 | Say it | The arc fades; the line sits above the brewed cup | "A tea bag that opens only at its perfect temperature." |
+| 7 | 13.5–17.6 | OSME | The bag flies from the cup into the lockup; the wordmark and tagline follow | OSME · "Every tea has its temperature." |
+| 8 | 17.6–18.4 | Out | Fade to black | |
 
-## Site hero loop (`video/osme-loop.mp4`)
-9 s, silent, seamless: the three bubbles drift up through the dark in turn, a scent wisp curls, the arc breathes amber → jade. No text (the site sets its own headline over it). Under 4 MB.
-
-## Optional photoreal inserts (Kling, needs approval)
-See ops/questions.md: leaves unfurling in a glass cup, steam over a cup in the dark. They would sit between shots 4 and 5 (water) or behind shot 7 (scent), 2 s each.
-
-## Build
-`node video/src/render.mjs video/src/film.html video/osme-film_vNN.mp4` (headless Chrome frame by frame → ffmpeg). Stills: `--stills 1.2,2.9,...`.
+Facts used: Lu Yu's three boils (truth/history-cultures.md), Sullivan's tea bags "in about 1908" (same file), Sencha 80/70 (facts.md).

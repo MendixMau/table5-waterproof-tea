@@ -4,7 +4,7 @@
 Everyone drives at least once.
 
 <!-- LIVE:START -->
-## Live status · 10:57 · 2 h 32 to hand-in
+## Live status · 11:02 · 2 h 27 to hand-in
 
 **Now:** Pitch prep: pitch v1 by 11:45 for the first read-through. Judge passes at 12:00 and 12:45; freeze at 13:15.
 
@@ -16,7 +16,7 @@ Everyone drives at least once.
 | 🍵 | Product demo | 🟡 working · judge 4/5 · 10:42 | <img src="gallery/product-v05.png" width="260"> |
 | 🎤 | Pitch deck | 🟡 working · 10:18 | <img src="gallery/deck-v03.png" width="260"> |
 | 🌐 | Site | 🟡 working · 10:46 | <img src="gallery/site-v03.png" width="260"> |
-| 🎬 | Video | 🟡 working · 10:56 | <img src="gallery/video-v04.png" width="260"> |
+| 🎬 | Video | 🟡 working · 10:56 | <img src="gallery/video-storyboard.png" width="260"> |
 
 **Waiting on the team:** Speakers for parts A-D? · Price: $1.50 or $2.00? · Logo: route 1 unless you say 2 · Waitlist: Google Form, Formspree or FormSubmit?
 <!-- LIVE:END -->

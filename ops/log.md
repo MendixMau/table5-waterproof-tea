@@ -128,3 +128,4 @@
 10:56 | brand-lead | LOGO FINAL | route 1 'B refined' under same names (brand/identity/logo-*.svg) + logo-symbol-small{,-mono,-mono-black}.svg for 16-32 px; route 2 kept in archive/route2/; PNGs in brand/assets/
 10:56 | brand-lead | PREVIEW | gallery/brand-v10-logo-final.png | judge 22/30 | validator pending | final logo: finer S, hanging tag, small file
 10:56 | video-lead | PREVIEW | gallery/video-v04.png | film v03 (18.4 s): line + bubbles from frame 0, 1908 bag beat, cup 1.35x, push-in, halves part + tea plumes, jade seal ring, bag flies into the lockup (no dead frames); video/osme-film.mp4 = v03 (provisional); critic + judge round 3
+10:57 | lead | PROGRESS | deck feedback (too bland) sent to presentation: motion system, reuse film/loop/hero/motif/tins/demo, projector-first; lead review: 1-5 keyframes, no video, demo framed
