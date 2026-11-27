@@ -38,3 +38,4 @@
 10:02 | truth-history | DONE | truth/history-cultures.md: 7 sections sourced; flags PNIPAM 32C gap, no aroma-loss number, Lu Yu wording differs from facts.md
 10:02 | truth-customers | DONE | truth/customers-market.md: 8 complaints, 2 segments, market, competition table, prices, 4 questions
 10:02 | business-validator | START | validating truth/business-case.md
+10:06 | lead | PROGRESS | Moving topics to visible child threads (brand, presentation, site, product, video); provisional numbers in facts.md

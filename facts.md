@@ -23,4 +23,11 @@ Locked at the 10:40 gate. Change here first; every slide, site and product reads
 | Name style | Written OSME, said "oz-MAY". "Tea-tech disruptor" only on jury slides. |
 | Story focus | Life, art, scent, love. Everyone can be a tea person. Not anti-screen or anti-tech. |
 | Demo tea | Sencha (Japan): the bag opens when the water cools to 80 °C and seals again below 70 °C. Shown in the HTML app, cooling sped up, side by side with an ordinary 1908 bag. |
+| Price (provisional, lead default 10:05) | Single bag $1.50 · 12-bag tin $18 · "Ritual" subscription $24/month. Up to 3 infusions per bag, so about $0.50 a cup. |
+| Market (provisional) | TAM: $7.1 bn a year spent on tea bags ($18.8 bn tea market × 38% bags). SAM $640 m (first markets, assumption). Year-3 SOM $9 m. Don't mix in the $39 bn "specialty" figure (different definition). |
+| The ask (provisional) | $2.5 m on a SAFE at a $10 m pre-money valuation: food-safe membrane proof + first Ritual boxes. |
+| Customer (provisional) | Lead: curious specialty drinkers (anyone who loves a good cup, and anyone who would love to). Route: gifts and the Ritual subscription. |
+| R&D framing | "The principle exists: lab membranes already open and close with temperature. Our R&D makes it food-safe at 70-90 °C." No aroma-loss numbers (no source). |
+| Lu Yu's stages | "fish eyes · string of pearls · rolling waves", our rendering of Lu Yu's three boils; source Okakura, The Book of Tea (1906), in truth/history-cultures.md. |
+| Logo feedback (10:04) | Team likes the look and palette, NOT the ring. Wants a tea bag, with scent linked to the logo. |
 | Tone | Tradition meets the future: back to the roots, embracing technology. Patience, ritual. Futuristic and premium, never the default app look. |
