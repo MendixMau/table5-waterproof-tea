@@ -35,9 +35,9 @@ V2 = D / "v2"
 MIME = {".svg": "image/svg+xml", ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg",
         ".mp4": "video/mp4", ".woff2": "font/woff2", ".webp": "image/webp"}
 FONTX = bp.b64(D / "assets-src" / "jost-latin-ext.woff2", "font/woff2")
-TIMES = ["0:00 to 0:25", "0:25 to 0:45", "0:45 to 1:25", "1:25 to 1:50",
-         "1:50 to 2:05", "2:05 to 2:20", "2:20 to 2:35", "2:35 to 3:00", "Q&A"]
-TITLES = ["Company", "Problem", "Solution, live demo", "Customer", "Market", "Business", "Competition", "The ask", "Backup: what is inside"]
+TIMES = ["0:00 to 0:27", "0:27 to 0:47", "0:47 to 1:30", "1:30 to 1:48",
+         "1:48 to 2:02", "2:02 to 2:16", "2:16 to 2:30", "2:30 to 2:50", "Q&A"]
+TITLES = ["Company: the film", "Problem", "Solution, live demo", "Customer", "Market", "Business", "Competition", "The ask", "Backup: what is inside"]
 
 
 def film_path():
@@ -61,7 +61,9 @@ def nums():
         "y3": f"{w['total'] / 1e6:.1f}", "share": f"{w['share'] * 100:.1f}",
         "sam": f"{m.SAM / 1e6:.0f}", "tam": "7.1",
         "rit_m": f"{w['rev_ritual'] / 1e6:.1f}", "tins_m": f"{w['rev_tins'] / 1e6:.1f}", "ret_m": f"{w['rev_retail'] / 1e6:.1f}",
-        "ritual_avg": f"{m.RITUAL_AVG / 1e3:.0f}",
+        "ritual_avg": f"{m.RITUAL_AVG / 1e3:.0f}", "end_y2": f"{m.END_Y2 / 1e3:.0f}", "end_y3": f"{m.END_Y3 / 1e3:.0f}",
+        "tins_k": f"{m.TINS / 1e3:.0f}", "retail_bags": f"{m.RETAIL_BAGS / 1e6:.1f}",
+        "buyers": f"{(m.END_Y3 + m.TINS) / 1e3:.0f}", "buyers_pct": f"{(m.END_Y3 + m.TINS) / 159e6 * 100:.1f}",
     }
 
 

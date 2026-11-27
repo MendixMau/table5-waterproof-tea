@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OSME · How the membrane works</title>
+<!--
+  How the OSME membrane works: two thin thermal gates in series, Sencha example.
+  Hot gate: UCST-type chains swell when hot and shut the pores (above 80 °C).
+  Cool gate: PNIPAm-type (LCST) chains swell when cool and shut the pores (below 70 °C).
+  Tea passes only while both are open (80 to 70 °C).
+  Sources:
+    PNIPAm thermal gate, 5 clean cycles: https://pmc.ncbi.nlm.nih.gov/articles/PMC9920928/
+    UCST gate (grafted poly(sulfobetaine), permeability drops above its UCST; battery separator, not tea):
+      https://pubs.rsc.org/en/Content/ArticleLanding/2014/TA/C4TA04852K
+  The lab switch points (PNIPAm 32 °C) are not ours; tuning them to 70-90 °C, food-safe, is the R&D.
+  Keys: Space / click = replay. Hash: #t=6 freezes at 6 s (stills), #loop loops.
+-->
+<style>
+@font-face { font-family: "Jost"; src: url(data:font/woff2;base64,{{JOST}}) format("woff2"); font-weight: 300 700; }
+:root { --bg:#0B0B0D; --surface:#17171B; --line:#2A2A30; --amber:#F2A33A; --jade:#3DBA9B; --mid:#D9C46B; --text:#F3EEE6; --muted:#8E8A83; }
+html, body { margin:0; height:100%; background:var(--bg); overflow:hidden; }
+#stage { position:absolute; left:50%; top:50%; width:1920px; height:1080px; transform-origin:0 0; font-family:"Jost","Futura","Century Gothic","Avenir Next",sans-serif; color:var(--text); }
+svg text { font-family:"Jost","Futura","Century Gothic","Avenir Next",sans-serif; }
+.cap { font-size:30px; font-weight:500; letter-spacing:.16em; }
+</style>
+</head>
+<body>
+<div id="stage">
+<svg id="art" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-label="How the OSME membrane works: a hot gate and a cool gate; Sencha tea flows only between 80 and 70 °C, when both are open.">
+  <defs>
+    <radialGradient id="pool" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#F2A33A" stop-opacity=".08"/><stop offset="1" stop-color="#F2A33A" stop-opacity="0"/></radialGradient>
+    <linearGradient id="cupG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F2A33A" stop-opacity=".15"/><stop offset="1" stop-color="#C98526" stop-opacity=".9"/></linearGradient>
+    <pattern id="fibre" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><path d="M0 0H14" stroke="#2E2E36" stroke-width="3"/></pattern>
+    <clipPath id="lensClip"><rect x="0" y="0" width="1060" height="760" rx="36"/></clipPath>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3"/></filter>
+  </defs>
+  <rect width="1920" height="1080" fill="#0B0B0D"/>
+  <ellipse cx="470" cy="470" rx="420" ry="420" fill="url(#pool)"/>
+
+  <!-- dial -->
+  <g id="dial" transform="translate(470 470)"></g>
+  <text id="num" x="470" y="500" text-anchor="middle" style="font-size:150px;font-weight:400;fill:#F3EEE6">100<tspan id="unit" style="font-size:56px" dx="8" dy="-62">°C</tspan></text>
+  <text id="say" x="470" y="850" text-anchor="middle" style="font-size:46px;font-weight:500;letter-spacing:.04em">Too hot. Sealed.</text>
+
+  <!-- membrane close-up -->
+  <g id="lens" transform="translate(800 110)">
+    <rect width="1060" height="760" rx="36" fill="#121215"/>
+    <g clip-path="url(#lensClip)">
+      <rect x="0" y="500" width="1060" height="260" fill="#17171B"/>
+      <path d="M0 512 Q 132 500 265 512 T 530 512 T 795 512 T 1060 512" fill="none" stroke="#2A2A30" stroke-width="3"/>
+      <rect id="cup" x="0" y="500" width="1060" height="290" fill="url(#cupG)" opacity="0"/>
+      <g id="leaves"></g>
+      <g id="gates"></g>
+      <g id="flow"></g>
+    </g>
+    <rect width="1060" height="760" rx="36" fill="none" stroke="#2A2A30" stroke-width="2"/>
+  </g>
+
+  <!-- honest line + sources -->
+  <circle cx="132" cy="985" r="9" fill="#3DBA9B"/>
+  <text x="158" y="996" style="font-size:32px;font-weight:400;fill:#F3EEE6">The principle exists: lab membranes already open and close with temperature. Our R&amp;D makes it food-safe at 70-90 °C.</text>
+  <text x="1860" y="920" text-anchor="end" style="font-size:28px;font-weight:400;fill:#8E8A83">Sources: PMC9920928 · C4TA04852K</text>
+</svg>
+</div>
+<script>
+(function () {
+  var NS = "http://www.w3.org/2000/svg";
+  var AMBER = [242,163,58], JADE = [61,186,155];
+  var DUR = 12, C_OPEN = 2.2, C_CLOSE = 5.6, C_END = 8, EASE = 0.5;
+  function el(tag, attrs, parent) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
+  function clamp(x) { return x < 0 ? 0 : x > 1 ? 1 : x; }
+  function smooth(x) { x = clamp(x); return x * x * (3 - 2 * x); }
+  function mix(a, b, f) { return "rgb(" + a.map(function (v, i) { return Math.round(v + (b[i] - v) * f); }).join(",") + ")"; }
+
+  // water temperature over the loop: 100 -> 80 (3.5 s) -> 70 (8.5 s) -> 62 (12 s)
+  function temp(t) {
+    if (t < C_OPEN) return 100 - 20 * t / C_OPEN;
+    if (t < C_CLOSE) return 80 - 10 * (t - C_OPEN) / (C_CLOSE - C_OPEN) - 0.001;
+    return Math.max(62, 70 - 0.001 - 8 * (t - C_CLOSE) / (C_END - C_CLOSE));
+  }
+  function shown(t) { var T = temp(t); return t < C_CLOSE ? Math.ceil(T) : Math.floor(T); }
+  // the switch moments follow the displayed number: open when it reads 80, seal when it reads 69
+  var T_OPEN = 0, T_CLOSE = 0;
+  for (var s = 0; s <= DUR; s += 0.01) { var v = shown(s); if (!T_OPEN && v <= 80) T_OPEN = s; if (!T_CLOSE && v < 70) T_CLOSE = s; }
+
+  // ---------- dial
+  var dial = document.getElementById("dial"), R = 300;
+  var A0 = 140, A1 = 400;                       // 60 °C at A0, 100 °C at A1 (degrees, clockwise)
+  function ang(T) { return (A0 + (T - 60) / 40 * (A1 - A0)) * Math.PI / 180; }
+  function pt(T, r) { var a = ang(T); return [Math.cos(a) * r, Math.sin(a) * r]; }
+  function arc(t0, t1, r) { var p0 = pt(t0, r), p1 = pt(t1, r), big = (ang(t1) - ang(t0)) > Math.PI ? 1 : 0;
+    return "M" + p0[0].toFixed(1) + " " + p0[1].toFixed(1) + " A" + r + " " + r + " 0 " + big + " 1 " + p1[0].toFixed(1) + " " + p1[1].toFixed(1); }
+  el("path", { d: arc(60, 100, R), fill: "none", stroke: "#2A2A30", "stroke-width": 14, "stroke-linecap": "round" }, dial);
+  el("path", { d: arc(70, 80, R), fill: "none", stroke: "#F2A33A", "stroke-width": 26, "stroke-linecap": "butt" }, dial);
+  for (var T = 60; T <= 100; T += 5) {
+    var a = pt(T, R + 26), b = pt(T, R + (T % 10 ? 40 : 52));
+    el("line", { x1: a[0], y1: a[1], x2: b[0], y2: b[1], stroke: "#8E8A83", "stroke-width": T % 10 ? 2 : 3 }, dial);
+  }
+  [60, 70, 80, 90, 100].forEach(function (T) {
+    var p = pt(T, R - 62), tx = el("text", { x: p[0].toFixed(1), y: (p[1] + 11).toFixed(1), "text-anchor": "middle" }, dial);
+    tx.setAttribute("style", "font-size:30px;font-weight:500;fill:" + (T === 70 || T === 80 ? "#F2A33A" : "#8E8A83"));
+    tx.textContent = T;
+  });
+  var needle = el("g", {}, dial);
+  el("circle", { cx: R, cy: 0, r: 20, fill: "#F3EEE6" }, needle);
+  var needleDot = el("circle", { cx: R, cy: 0, r: 11, fill: "#0B0B0D" }, needle);
+
+  // ---------- lens: leaves inside the bag (top)
+  var leaves = document.getElementById("leaves");
+  var rnd = (function (s) { return function () { s = (s * 16807) % 2147483647; return s / 2147483647; }; })(11);
+  var greens = ["#6F8A35", "#86A13F", "#A9BE55", "#5E7A2C", "#7E9A3A"];
+  for (var i = 0; i < 70; i++) {
+    var x = 40 + rnd() * 980, y = 70 + rnd() * 140, L = 50 + rnd() * 50, w = 7 + rnd() * 5, r = -20 + rnd() * 40;
+    var g = el("g", { transform: "translate(" + x.toFixed(0) + " " + y.toFixed(0) + ") rotate(" + r.toFixed(0) + ")" }, leaves);
+    el("path", { d: "M" + (-L / 2) + " 0 Q0 " + (-w) + " " + (L / 2) + " 0 Q0 " + (w * .7) + " " + (-L / 2) + " 0Z", fill: greens[i % 5] }, g);
+    el("path", { d: "M" + (-L / 2 + 5) + " -1 Q0 " + (-w * .6) + " " + (L / 2 - 5) + " -1", fill: "none", stroke: "#E4EBA0", "stroke-opacity": .35, "stroke-width": 1.4 }, g);
+  }
+
+  // ---------- gates: two thin layers, pores through both
+  var gates = document.getElementById("gates");
+  var PORES = [356, 500, 644, 788, 932], PW = 112;
+  var LAYERS = [
+    { key: "hot", y: 246, h: 112, label: "HOT GATE" },
+    { key: "cool", y: 374, h: 112, label: "COOL GATE" }
+  ];
+  var layerEls = {};
+  LAYERS.forEach(function (Ly) {
+    var g = el("g", {}, gates);
+    // solid membrane between pores
+    var edges = [290].concat(PORES.map(function (c) { return c - PW / 2; }));
+    var solid = el("g", {}, g);
+    var xs = [280];
+    PORES.forEach(function (c) { xs.push(c - PW / 2, c + PW / 2); });
+    xs.push(1024);
+    for (var k = 0; k < xs.length; k += 2) {
+      el("rect", { x: xs[k], y: Ly.y, width: xs[k + 1] - xs[k], height: Ly.h, fill: "#1B1B20" }, solid);
+      el("rect", { x: xs[k], y: Ly.y, width: xs[k + 1] - xs[k], height: Ly.h, fill: "url(#fibre)" }, solid);
+    }
+    var frame = el("rect", { x: 280, y: Ly.y, width: 744, height: Ly.h, fill: "none", "stroke-width": 3 }, g);
+    var poreFill = [], chains = [];
+    PORES.forEach(function (c) {
+      poreFill.push(el("rect", { x: c - PW / 2, y: Ly.y, width: PW, height: Ly.h, fill: "#3DBA9B", opacity: 0 }, g));
+      for (var side = -1; side <= 1; side += 2) {
+        for (var j = 0; j < 5; j++) {
+          var y0 = Ly.y + 14 + j * (Ly.h - 28) / 4;
+          chains.push({ el: el("path", { fill: "none", "stroke-width": 5, "stroke-linecap": "round", "stroke-linejoin": "round" }, g), x0: c + side * PW / 2, dir: -side, y0: y0, ph: j * 1.3 + (side > 0 ? .7 : 0) });
+        }
+      }
+    });
+    var lab = el("text", { x: 36, y: Ly.y + Ly.h / 2 + 11, class: "cap" }, g);
+    lab.textContent = Ly.label;
+    layerEls[Ly.key] = { frame: frame, poreFill: poreFill, chains: chains, lab: lab };
+  });
+
+  function chainPath(c, s, t) {
+    // s = 1 swollen (stretched across the pore), s = 0 collapsed (tight coil at the wall)
+    var L = 14 + s * (PW / 2 - 8), n = 18, A = 4 + (1 - s) * 5, waves = 2.2 + (1 - s) * 1.6, d = "";
+    for (var i = 0; i <= n; i++) {
+      var f = i / n, x = c.x0 + c.dir * L * f, y = c.y0 + A * Math.sin(f * waves * 2 * Math.PI + c.ph + t * 2.2) * (0.35 + 0.65 * f);
+      d += (i ? " L" : "M") + x.toFixed(1) + " " + y.toFixed(1);
+    }
+    return d;
+  }
+
+  // ---------- flow: tea particles from the leaves through the pores into the cup
+  var flow = document.getElementById("flow"), parts = [];
+  var PERIOD = 1.3, PER_PORE = 7;
+  PORES.forEach(function (c, p) {
+    for (var k = 0; k < PER_PORE; k++) parts.push({ el: el("circle", { r: 6 + (k % 3) * 2, fill: "#F2A33A", opacity: 0 }, flow), c: c, off: k * PERIOD / PER_PORE + p * 0.11, wob: (k % 2 ? 1 : -1) * (8 + k * 3) });
+  });
+  var cup = document.getElementById("cup");
+
+  function render(t) {
+    var openH = smooth((t - T_OPEN) / EASE);        // hot gate: collapses (opens) at 80
+    var sealC = smooth((t - T_CLOSE) / EASE);       // cool gate: swells (seals) below 70
+    var sw = { hot: 1 - openH, cool: sealC };
+    var v = shown(t);
+    document.getElementById("num").firstChild.nodeValue = v;
+    var a = ang(temp(t)) * 180 / Math.PI;
+    needle.setAttribute("transform", "rotate(" + a.toFixed(2) + ")");
+    var open = t >= T_OPEN && t < T_CLOSE;
+    var say = document.getElementById("say");
+    say.textContent = t < T_OPEN ? "Too hot. Sealed." : open ? "Both open. Tea flows." : "Sealed. Steeping stops.";
+    say.style.fill = open ? "#F2A33A" : "#3DBA9B";
+    needleDot.setAttribute("fill", open ? "#F2A33A" : "#0B0B0D");
+    ["hot", "cool"].forEach(function (k) {
+      var L = layerEls[k], s = sw[k], col = mix(AMBER, JADE, s);
+      L.frame.setAttribute("stroke", col);
+      L.lab.style.fill = col;
+      L.poreFill.forEach(function (p) { p.setAttribute("opacity", (0.16 * s).toFixed(3)); });
+      L.chains.forEach(function (c) { c.el.setAttribute("d", chainPath(c, s, t)); c.el.setAttribute("stroke", col); });
+    });
+    // particles: emitted only while both gates are open
+    var gateOpen = Math.min(openH, 1 - sealC);
+    parts.forEach(function (q) {
+      var age = ((t - q.off) % PERIOD + PERIOD) % PERIOD, born = t - age;
+      var alive = born >= T_OPEN + 0.25 && born < T_CLOSE - 0.1;
+      var f = age / PERIOD, y = 225 + f * 520, x = q.c + Math.sin(f * 5 + q.wob) * (f > .53 ? q.wob * f : 4);
+      // until the particle has crossed the membrane it needs both gates open
+      if (alive && f < .53 && gateOpen < .5) alive = false;
+      q.el.setAttribute("cx", x.toFixed(1)); q.el.setAttribute("cy", y.toFixed(1));
+      q.el.setAttribute("opacity", alive ? (0.9 * Math.min(1, f * 6) * (1 - Math.max(0, f - .8) * 5)).toFixed(2) : 0);
+    });
+    cup.setAttribute("opacity", (0.85 * smooth((t - T_OPEN - 0.3) / 3.2)).toFixed(3));
+  }
+
+  // ---------- scale the 1920x1080 stage to any window or iframe
+  var stage = document.getElementById("stage");
+  function fit() { var k = Math.min(innerWidth / 1920, innerHeight / 1080); stage.style.transform = "scale(" + k + ") translate(-960px,-540px)"; }
+  addEventListener("resize", fit); fit();
+
+  // ---------- play once, hold; Space / click replays; #t=6 freezes; #loop loops
+  var hash = location.hash, m = /t=([\d.]+)/.exec(hash), loop = /loop/.test(hash), t0 = null, raf;
+  function tick(now) {
+    if (t0 === null) t0 = now;
+    var t = (now - t0) / 1000;
+    if (t >= DUR) { if (loop) { t0 = now; t = 0; } else { render(DUR); return; } }
+    render(t); raf = requestAnimationFrame(tick);
+  }
+  function play() { cancelAnimationFrame(raf); t0 = null; raf = requestAnimationFrame(tick); }
+  window.osmeMembrane = { render: render, play: play, T_OPEN: T_OPEN, T_CLOSE: T_CLOSE, DUR: DUR };
+  if (m) render(+m[1]); else play();
+  addEventListener("keydown", function (e) { if (e.code === "Space" || e.key === "Enter") { e.preventDefault(); play(); } });
+  addEventListener("click", play);
+})();
+</script>
+</body>
+</html>

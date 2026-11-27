@@ -1,72 +1,54 @@
-<div class="slide full" id="s1" data-title="Company">
-  <video class="s1-film" muted playsinline preload="auto" poster="__ASSET:deck/v2/s1-start.jpg__" src="__ASSET:FILM__"></video>
-  <div class="s1-title" role="img" aria-label="The Art of Tea. 1,200 years of temperature.">__SVG:brand/motion/title-1200-years.svg__</div>
+<div class="slide full" id="s1" data-title="Company: the film">
+  <video class="s1-film" playsinline preload="auto" poster="__ASSET:deck/v2/s1-start.jpg__" src="__ASSET:video/osme-film-v04-vo.mp4__"></video>
   <img class="s1-end" src="__ASSET:deck/v2/s1-end.jpg__" alt=""/>
-  <div class="s1-era" aria-hidden="true">
-    <div class="s1-yr" data-from="0" data-to="3.8"><b>760</b><span>China · Lu Yu reads the boil</span></div>
-    <div class="s1-yr" data-from="3.8" data-to="7.0"><b>1908</b><span>The tea bag · one temperature for all</span></div>
-    <div class="s1-yr" data-from="7.0" data-to="99"><b class="jade">Today</b><span>OSME · a bag that knows its temperature</span></div>
-  </div>
-  <svg class="sig s1-sig" viewBox="0 0 1920 1080" preserveAspectRatio="none" aria-hidden="true">
-    <defs><linearGradient id="s1g" x1="0" x2="1"><stop offset="0" stop-color="#F2A33A"/><stop offset=".48" stop-color="#D9C46B"/><stop offset="1" stop-color="#3DBA9B"/></linearGradient></defs>
-    <path class="s1-arc" d="M 120 1080 A 840 840 0 0 1 1800 1080" pathLength="1" fill="none" stroke="url(#s1g)" stroke-width="3" stroke-linecap="round"/>
-  </svg>
-  <div class="s1-noun">A tea bag that opens only at its perfect temperature.</div>
-  <div class="s1-team">Table 5 · Sell the unsellable</div>
+  <div class="s1-hint" aria-hidden="true"><span class="s1-dot"></span>Press Space to play the film</div>
   <aside class="notes"><ul>
-    <li>Opens on the brand title card brand/motion/title-1200-years.svg (truth/storyline.md, "The Art of Tea: 1,200 years of temperature"; 760s, Britain 100 °C, China 80 to 95 °C, Japan 80 °C from facts.md), 4 s, then the film.</li>
-    <li>Film: video/osme-film.mp4 (video thread, v03, 18.4 s, silent). It carries Lu Yu's three boils, the 1908 bag and the lockup; the year marker bottom right is synced to it.</li>
-    <li>Lu Yu, Cha Jing, 760 to 762 CE; three boils in Okakura, The Book of Tea (1906), ch. II (truth/history-cultures.md §2).</li>
-    <li>Tea bag c. 1908 (facts.md). Tagline "Every tea has its temperature." (brand, facts.md).</li>
+    <li>Film with voice: video/osme-film-v04-vo.mp4 (video thread, v11, 26.7 s, full screen). Nobody speaks; the film opens on the brand title card "The Art of Tea. 1,200 years of temperature." and tells Lu Yu, the cultures, 1908 and now (truth/storyline.md beats 1 to 5).</li>
+    <li>Sound: the film plays with its voice-over. If the browser blocks sound before the first key press, the slide shows "Press Space to play the film": the first Space, click or PageDown starts the film instead of moving on. Check the room volume in the run-through.</li>
+    <li>When the film ends it holds on its last frame. A clicks to slide 2.</li>
+    <li>Sources for the film's history: truth/history-cultures.md §1 to §4; facts.md "Lu Yu's stages", tea windows, 96%.</li>
   </ul></aside>
   <style>
     #s1{background:#0B0B0D}
     #s1 .s1-film,#s1 .s1-end{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
     #s1 .s1-end{opacity:0;transition:opacity .6s var(--ease)}
-    #s1 .s1-title{position:absolute;inset:0;z-index:4;background:#0B0B0D;transition:opacity .8s var(--ease)}#s1 .s1-title svg{width:100%;height:100%;display:block}
-    #s1.film .s1-title,html.still #s1 .s1-title{opacity:0;pointer-events:none}
     #s1.ended .s1-end,html.still #s1 .s1-end{opacity:1}
-    #s1 .s1-era{position:absolute;right:84px;bottom:12vh;z-index:3;width:640px;height:170px;text-align:right}
-    #s1 .s1-yr{position:absolute;right:0;bottom:0;opacity:0;filter:blur(14px) sepia(1);transform:translateY(16px);
-      transition:opacity .8s var(--ease),filter .9s var(--ease),transform .8s var(--ease)}
-    #s1 .s1-yr.on{opacity:1;filter:none;transform:none}
-    #s1 .s1-yr b{display:block;font-size:112px;font-weight:500;line-height:1;letter-spacing:-.02em;color:var(--amber)}
-    #s1 .s1-yr b.jade{color:var(--jade)}
-    #s1 .s1-yr span{display:block;font-size:28px;color:rgba(243,238,230,.8);margin-top:10px;letter-spacing:.02em}
-    #s1.ended .s1-yr,html.still #s1 .s1-yr{opacity:0!important}
-    #s1 .s1-sig{left:0;top:0;bottom:auto;width:100%;height:100%;transform:none;z-index:2;opacity:0;transition:opacity .8s}
-    #s1.ended .s1-sig,html.still #s1 .s1-sig{opacity:.7}
-    #s1 .s1-arc{stroke-dasharray:1;stroke-dashoffset:1;filter:drop-shadow(0 0 14px rgba(242,163,58,.6))}
-    #s1.ended .s1-arc{animation:drawin 1.8s var(--ease) both}
-    html.still #s1 .s1-arc{stroke-dashoffset:0}
-    #s1 .s1-noun{position:absolute;left:0;right:0;bottom:14vh;z-index:3;text-align:center;font-size:32px;color:rgba(243,238,230,.78);letter-spacing:.02em;opacity:0;filter:blur(10px) sepia(1);transition:opacity .9s var(--ease) .9s,filter 1s var(--ease) .9s}
-    #s1.ended .s1-noun,html.still #s1 .s1-noun{opacity:1;filter:none}
-    #s1 .s1-team{position:absolute;right:72px;top:7vh;z-index:3;font-size:20px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(243,238,230,.45)}
+    #s1 .s1-hint{position:absolute;left:50%;bottom:9vh;transform:translateX(-50%);z-index:3;display:none;align-items:center;gap:16px;padding:14px 30px;border-radius:40px;
+      background:rgba(11,11,13,.85);border:1px solid var(--line);font-size:28px;color:var(--text)}
+    #s1.blocked .s1-hint{display:flex}
+    #s1 .s1-dot{width:12px;height:12px;border-radius:50%;background:var(--amber);box-shadow:0 0 12px var(--amber);animation:s1-blink 1s ease-in-out infinite}
+    @keyframes s1-blink{50%{opacity:.3}}
+    html.still #s1 .s1-hint{display:none}
+    body.s0 #snum,body.s0 #dots{opacity:0}
   </style>
   <script>
   (function(){
-    let raf=0,cue=0;
-    function sync(el){
-      const v=el.querySelector('.s1-film'),yrs=[...el.querySelectorAll('.s1-yr')];
-      cancelAnimationFrame(raf);
-      (function tick(){
-        const t=v.currentTime||0;
-        if(t>=16.4&&!el.classList.contains('ended'))el.classList.add('ended');
-        yrs.forEach(y=>y.classList.toggle('on',t>=+y.dataset.from&&t<+y.dataset.to&&!el.classList.contains('ended')));
-        if(el.classList.contains('active'))raf=requestAnimationFrame(tick);
-      })();
+    let started=false;
+    function play(el){
+      const v=el.querySelector('.s1-film');
+      v.muted=false;
+      const p=v.play();
+      if(p&&p.then)p.then(()=>{started=true;el.classList.remove('blocked');},()=>{started=false;el.classList.add('blocked');});
+      else started=true;
     }
+    // the first key or click on slide 1 starts the film when the browser blocked sound
+    function gate(e){
+      if(!window.DECK||DECK.cur!==0||started)return;
+      if(e.type==='keydown'&&![' ','Enter','PageDown','ArrowRight'].includes(e.key))return;
+      e.preventDefault();e.stopImmediatePropagation();
+      const el=document.getElementById('s1');el.querySelector('.s1-film').currentTime=0;play(el);
+    }
+    window.addEventListener('keydown',gate,true);
+    window.addEventListener('click',gate,true);
     window.ENTER[1]=el=>{
       const v=el.querySelector('.s1-film');
-      el.classList.remove('ended','film');
+      el.classList.remove('ended','blocked');
       v.onended=()=>el.classList.add('ended');
-      if(document.documentElement.classList.contains('still')){el.classList.add('ended','film');return;}
-      // brand title card "1,200 years of temperature" (all in by 3.5 s), then the film
-      const t=el.querySelector('.s1-title svg');try{t.setCurrentTime(0);t.unpauseAnimations()}catch(e){}
-      try{v.pause();v.currentTime=0;}catch(e){}
-      clearTimeout(cue);cue=setTimeout(()=>{if(!el.classList.contains('active'))return;el.classList.add('film');try{v.play()}catch(e){}sync(el);},4200);
+      if(document.documentElement.classList.contains('still')){el.classList.add('ended');started=true;return;}
+      try{v.currentTime=0;}catch(e){}
+      play(el);
     };
-    window.LEAVE[1]=el=>{cancelAnimationFrame(raf);clearTimeout(cue);el.classList.remove('ended','film');try{el.querySelector('.s1-film').pause()}catch(e){}};
+    window.LEAVE[1]=el=>{const v=el.querySelector('.s1-film');try{v.pause()}catch(e){}el.classList.remove('ended','blocked');started=true;};
   })();
   </script>
 </div>

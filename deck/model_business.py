@@ -97,4 +97,4 @@ if __name__ == "__main__":
               f"  payback {w['payback']:.1f} mo  LTV {w['ltv']:.0f}  LTV:CAC {w['ltv_cac']:.2f}")
         print(f"  Y3 ritual {w['rev_ritual']/1e6:.2f}m + tins {w['rev_tins']/1e6:.2f}m + retail {w['rev_retail']/1e6:.2f}m"
               f" = {w['total']/1e6:.2f}m  bags {w['bags']/1e6:.2f}m  share of SAM {w['share']:.2%}")
-    print(f"\nY1 pilot GM at $1.50: {(1.5-cogs(1)):.2f} ({(1.5-cogs(1))/1.5:.1%})")
+    print(f"\nY1 pilot GM at ${PRICE:.2f}: {(PRICE-cogs(1)):.2f} ({(PRICE-cogs(1))/PRICE:.1%})")

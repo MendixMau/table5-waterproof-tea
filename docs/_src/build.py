@@ -18,7 +18,7 @@ def rd(*p):
 
 # ---------------------------------------------------------------- facts (facts.md)
 # PRICES: the one place. Every page and the cart read these (tokens §BAG§ §CUP§ §TIN§ §RITUAL§ and §*_N§ for JS).
-PRICE_BAG, PRICE_TIN, PRICE_RITUAL, PRICE_CUP = 1.50, 18, 24, 0.50
+PRICE_BAG, PRICE_TIN, PRICE_RITUAL, PRICE_CUP = 2.00, 24, 32, 0.67  # facts.md, Maurits 12:10
 
 def prices(text):
     for k, v in (("BAG", PRICE_BAG), ("TIN", PRICE_TIN), ("RITUAL", PRICE_RITUAL), ("CUP", PRICE_CUP)):
@@ -344,6 +344,8 @@ def home(vbs):
   </div>
   <figure class="exploded"><div class="ex-scroll"><img src="../shared/product/exploded-view-animated.svg" alt="What is inside an OSME bag: tag and string, seal, outer filter, the temperature membrane and the leaf. The Sencha membrane is sealed above 80 °C, open from 80 to 70 °C, sealed below 70 °C." width="1600" height="1000"></div>
   <figcaption class="muted small">What is inside: five layers, one of them reads the water. <span class="swipe">Swipe to see all of it.</span></figcaption></figure>
+  <figure class="membrane"><a href="membrane.html" aria-label="Play how the membrane works"><img src="../shared/product/membrane-how.png" alt="How the membrane works, Sencha: a hot gate shuts the pores above 80 °C, a cool gate shuts them below 70 °C. Tea passes only from 80 to 70 °C."><span class="play">Play the explainer</span></a>
+  <figcaption class="muted small">Two thin gates in series: one shuts when hot, one shuts when cool. Tea passes only while both are open.</figcaption></figure>
   <div class="phone-only">{honest()}</div>
 </div></section>
 
@@ -378,6 +380,13 @@ def home(vbs):
   </div>
   {quotes_block()}
 </div></section>
+
+<section class="capsule"><div class="wrap"><div class="cap">
+  <div><span class="badge">Coming next</span><div class="eyebrow" style="margin-top:14px">Roadmap</div>
+  <h2>v2: the OSME Capsule.</h2>
+  <p class="lead">Reusable, same temperature seal, loose leaf. Roadmap only; no price; not in the live demo.</p></div>
+  <div class="cap-cta"><p class="muted">Keepers hear about it first.</p><a class="btn primary" href="#join">Join the waitlist</a></div>
+</div></div></section>
 
 <section class="movement"><div class="wrap">{waitlist_block()}</div></section>
 '''
@@ -644,9 +653,10 @@ if __name__ == "__main__":
     LOGO_DEFS, VBS = logo_symbols()
     have = {"customer": copy_in("shared/business/customer-evidence.html", "customer.html"),
             "brand": copy_in("brand/identity/board.html", "brand.html"),
-            "pitch": copy_in("deck/pitch.html", "pitch.html")}
+            "pitch": copy_in("deck/pitch.html", "pitch.html"),
+            "membrane": copy_in("shared/product/membrane-how.html", "membrane.html")}
     out = [home(VBS), shop(VBS), ritual(VBS), story(VBS), keepers(VBS), handin(VBS, have), script_page(VBS)] + [tea_page(t, VBS) for t in TEAS]
-    out += [f for f, k in (("brand.html", "brand"), ("customer.html", "customer"), ("pitch.html", "pitch")) if have[k]]
+    out += [f for f, k in (("brand.html", "brand"), ("customer.html", "customer"), ("pitch.html", "pitch"), ("membrane.html", "membrane")) if have[k]]
     # live demo: the product thread's page, copied as is
     with open(os.path.join(ROOT, "product/index.html"), encoding="utf-8") as f:
         demo = f.read()

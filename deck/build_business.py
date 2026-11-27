@@ -128,7 +128,7 @@ def price_table():
     cols = [m.walk(p) for p in (1.50, 2.00, 2.50)]
     cls = ["now", "rec", ""]
     head = "".join(f'<th class="{c}">{usd(w["price"])}<div class="src" style="font-weight:400;margin-top:4px">{t}</div></th>'
-                   for w, c, t in zip(cols, cls, ["today", "recommended", "ceiling"]))
+                   for w, c, t in zip(cols, cls, ["before", "decided 12:10", "ceiling"]))
     rows = [
         ("Price per cup (3 cups)", lambda w: usd(w["cup"])),
         ("Gross margin a bag, direct", lambda w: f'{usd(w["gm_d2c"])} · {w["gm_d2c_pct"]:.0%}'),
@@ -145,6 +145,7 @@ def price_table():
 
 def build():
     e = m.econ(m.PRICE)
+    b = m.econ(1.50)   # the price before the 12:10 decision
     w = m.walk(m.PRICE)
     p1, p3, y1, y3, leg, oo = stack()
     rit, tins, ret = w["rev_ritual"], w["rev_tins"], w["rev_retail"]
@@ -153,7 +154,7 @@ def build():
 <!-- 1 · PRICE LADDER -->
 <div class="slide bg-grid" id="s1" data-steps="0" data-title="Price per cup">
   <div class="head a"><div class="label">Business · price per cup</div>
-    <div class="h1">At $1.50 a bag and three cups, an OSME cup costs <em>50 cents</em>: half a Sips By cup, under half a Tea Forte pyramid.</div></div>
+    <div class="h1">At {usd(m.PRICE)} a bag and three cups, an OSME cup costs <em>{m.PRICE/m.INFUSIONS*100:.0f} cents</em>: two-thirds of a Sips By cup, half a Tea Forte pyramid.</div></div>
   <div class="body"><div class="lad a2">{ladder()}</div>
     <div class="src" style="margin-top:2.4vh">USD per cup. Prices opened 27 Nov 2026 on retailer and brand pages; £1 = $1.27, €1 = $1.08. OSME assumes 3 infusions a bag (lab target).</div></div>
   <aside class="notes"><p>Ladder sources in truth/business-case.md §2.</p></aside>
@@ -171,7 +172,7 @@ def build():
     <div><div class="leg"><div class="li hd"><i></i>Per bag<span>Year 1</span><span>Year 3</span></div>{leg}</div>
       <div class="sm" style="margin-top:2.2vh"><b class="amber">Membrane:</b> the polymer is under 1 cent a bag (food-grade cellulose, $2.70 to $91 a kg, 2 g a m² on 84 cm²). The 10 cents is coating, curing and lost yield.</div>
       <div class="src" style="margin-top:1vh">Sourced: tin, polymer and filter paper prices. Assumptions: tea, membrane process, tag, packing.</div>
-      <div class="sm" style="margin-top:1.2vh">Year 1 is hand-made in small lots: {1-y1/1.5:.0%} margin, a pilot, not a business.</div>
+      <div class="sm" style="margin-top:1.2vh">Year 1 is hand-made in small lots: {1-y1/m.PRICE:.0%} margin, a pilot, not a business.</div>
       <div class="oneoff sm">One-off, funded by the ask: {oo}</div></div>
   </div></div>
   <aside class="notes"><p>Cost lines and labels in truth/business-case.md §3.</p></aside>
@@ -179,13 +180,13 @@ def build():
 
 <!-- 3 · MARGIN AND PRICE -->
 <div class="slide bg-mesh" id="s3" data-steps="0" data-title="Margin and price">
-  <div class="head a"><div class="label">Business · margin per bag · price recommendation, the team decides</div>
-    <div class="h1">Over 70% a bag direct at any price; <span class="jade">$2.00</span> repays a subscriber in <em>{m.econ(2.0)['payback']:.0f} months</em>, not {e['payback']:.0f}, and clears 3x LTV:CAC.</div></div>
+  <div class="head a"><div class="label">Business · margin per bag · price decided 12:10</div>
+    <div class="h1">Over 70% a bag direct at any price; <span class="jade">{usd(m.PRICE)}</span> repays a subscriber in <em>{e['payback']:.0f} months</em>, not {b['payback']:.0f}, and clears 3x LTV:CAC.</div></div>
   <div class="body"><div class="mg a2">
     <div class="mgb"><div class="cap" style="letter-spacing:.16em;text-transform:uppercase">Months to repay a $75 subscriber</div>
-      <div style="display:flex;flex-direction:column;gap:4px"><div class="big" style="font-size:clamp(76px,6.4vw,128px);color:var(--amber)">{e['payback']:.1f}</div><div class="sm" style="white-space:nowrap">at $1.50 a bag · LTV:CAC {e['ltv_cac']:.1f}x</div></div>
-      <div style="display:flex;flex-direction:column;gap:4px"><div class="big" style="font-size:clamp(76px,6.4vw,128px);color:var(--jade)">{m.econ(2.0)['payback']:.1f}</div><div class="sm" style="white-space:nowrap">at $2.00 a bag · LTV:CAC {m.econ(2.0)['ltv_cac']:.1f}x</div></div>
-      <div class="sm">Investors expect 3x; at $1.50 that needs CAC near $47. A Ritual box at $1.50: $24 minus bags {usd(e['box_cogs'])}, post {usd(m.FULFIL)}, card fee {usd(e['fee'])} = {usd(e['contrib'])} a month.</div></div>
+      <div style="display:flex;flex-direction:column;gap:4px"><div class="big" style="font-size:clamp(76px,6.4vw,128px);color:var(--amber)">{b['payback']:.1f}</div><div class="sm" style="white-space:nowrap">at $1.50 a bag, before · LTV:CAC {b['ltv_cac']:.1f}x</div></div>
+      <div style="display:flex;flex-direction:column;gap:4px"><div class="big" style="font-size:clamp(76px,6.4vw,128px);color:var(--jade)">{e['payback']:.1f}</div><div class="sm" style="white-space:nowrap">at {usd(m.PRICE)} a bag, decided · LTV:CAC {e['ltv_cac']:.1f}x</div></div>
+      <div class="sm">A Ritual box at {usd(m.PRICE)}: {usd(e['ritual'], 0)} minus bags {usd(e['box_cogs'])}, post {usd(m.FULFIL)}, card fee {usd(e['fee'])} = {usd(e['contrib'])} a month. Investors expect 3x; at $1.50 that needed CAC near ${b['ltv']/3:.0f}.</div></div>
     {price_table()}
   </div></div>
   <aside class="notes"><p>Working in truth/business-case.md §4 and §6.</p></aside>
@@ -194,21 +195,21 @@ def build():
 <!-- 4 · 640 TO YEAR 3 -->
 <div class="slide bg-warm" id="s4" data-steps="0" data-title="Year 3">
   <div class="head a"><div class="label">Business · from market to year 3</div>
-    <div class="h1">Year 3 at $1.50: {m.RITUAL_AVG/1e3:.0f} k subscribers on average, {m.TINS/1e3:.0f} k tins and {m.RETAIL_BAGS/1e6:.0f} m retail bags make <em>{mn(w['total'])}</em>, {w['share']:.1%} of our market.</div></div>
+    <div class="h1">Year 3 at {usd(m.PRICE)}: {m.RITUAL_AVG/1e3:.0f} k subscribers on average, {m.TINS/1e3:.0f} k tins and {m.RETAIL_BAGS/1e6:.1f} m retail bags make <em>{mn(w['total'])}</em>, {w['share']:.1%} of our market.</div></div>
   <div class="body"><div class="wk a2">
     <div class="funnel">
       <div class="fr"><div class="k">TAM · tea bags</div><div class="b ghost" style="width:100%">$7.1 bn a year</div></div>
       <div class="fr"><div class="k">SAM · premium bags, 4 first markets</div><div style="display:flex;align-items:center;gap:16px"><div class="b ghost" style="width:9%;min-width:9%;position:relative;padding:0"><i style="position:absolute;right:0;top:0;bottom:0;width:6px;background:var(--amber);border-radius:0 10px 10px 0;box-shadow:0 0 14px rgba(242,163,58,.6)"></i></div><span style="font-size:clamp(20px,1.4vw,27px);font-weight:500">$640 m</span><span class="sm">9% of TAM, to scale</span></div></div>
-      <div class="fr"><div class="k">People</div><div class="sm" style="color:var(--text)"><b style="font-weight:500">159 m</b> Americans drink tea on any given day; Britain drinks <b style="font-weight:500">100 m</b> cups a day. Year 3 needs ~{(20_000 + m.TINS)/1e3:.0f} k buyers: {(20_000 + m.TINS)/159e6:.2%} of US daily drinkers alone.</div></div>
-      <div class="fr"><div class="k" style="color:var(--text)">OSME year 3<br/><span style="font-size:.8em;color:var(--muted)">1.3% of SAM, zoomed in</span></div><div class="b" style="width:100%;padding:0;overflow:hidden;gap:0">
+      <div class="fr"><div class="k">People</div><div class="sm" style="color:var(--text)"><b style="font-weight:500">159 m</b> Americans drink tea on any given day; Britain drinks <b style="font-weight:500">100 m</b> cups a day. Year 3 needs ~{(m.END_Y3 + m.TINS)/1e3:.0f} k buyers: {(m.END_Y3 + m.TINS)/159e6:.2%} of US daily drinkers alone.</div></div>
+      <div class="fr"><div class="k" style="color:var(--text)">OSME year 3<br/><span style="font-size:.8em;color:var(--muted)">{w['share']:.1%} of SAM, zoomed in</span></div><div class="b" style="width:100%;padding:0;overflow:hidden;gap:0">
         <div style="width:{rit/w['total']*100:.1f}%;height:100%;background:#F2A33A;display:flex;align-items:center;padding-left:12px;white-space:nowrap;overflow:hidden">{mn(rit)}</div>
         <div style="width:{tins/w['total']*100:.1f}%;height:100%;background:#D9C46B;display:flex;align-items:center;padding-left:12px;white-space:nowrap;overflow:hidden">{mn(tins)}</div>
         <div style="width:{ret/w['total']*100:.1f}%;height:100%;background:#3DBA9B;display:flex;align-items:center;padding-left:8px;white-space:nowrap;overflow:hidden;font-size:.85em">{mn(ret)}</div></div></div>
       <div class="fr"><div class="k"></div><div class="flg" style="gap:8px 22px;flex-wrap:nowrap"><span><b style="background:#F2A33A"></b>Ritual subscription</span><span><b style="background:#D9C46B"></b>Tins and gifts (web shop)</span><span><b style="background:#3DBA9B"></b>Premium retail</span></div></div>
       <div class="fr"><div class="k"></div><div class="big" style="font-size:clamp(64px,5.4vw,104px);color:var(--amber);white-space:nowrap">{mn(w['total'])}<span class="sm" style="font-size:clamp(18px,1.2vw,23px);margin-left:18px;letter-spacing:0">= {w['share']:.1%} of SAM</span></div></div>
-      <div class="fr"><div class="k"></div><div class="sm">Tins sell as gifts: 7 in 10 would welcome a premium tea gift box (Mintel). The $2.5 m funds the food-safe membrane and the first Ritual boxes; growth to 20 k subscribers is paid from margin and a Series A.</div></div>
+      <div class="fr"><div class="k"></div><div class="sm">Tins sell as gifts: 7 in 10 would welcome a premium tea gift box (Mintel). The $2.5 m funds the food-safe membrane and the first Ritual boxes; growth to {m.END_Y3/1e3:.0f} k subscribers is paid from margin and a Series A.</div></div>
     </div>
-    <div><div class="eq"><b>Bottom-up</b><br/>{m.RITUAL_AVG:,} subscribers × $24 × 12 = {mn(rit)}<br/>{m.TINS:,} tins and gifts × $18 = {mn(tins)}<br/>{m.RETAIL_BAGS/1e6:.0f} m retail bags × $0.75 = {mn(ret)}<br/><br/><b>Top-down</b><br/>{mn(w['total'])} ÷ $640 m = {w['share']:.1%} of SAM</div>
+    <div><div class="eq"><b>Bottom-up</b><br/>{m.RITUAL_AVG:,} subscribers × {usd(m.RITUAL_PRICE, 0)} × 12 = {mn(rit)}<br/>{m.TINS:,} tins and gifts × {usd(m.TIN_PRICE, 0)} = {mn(tins)}<br/>{m.RETAIL_BAGS/1e6:.1f} m retail bags × {usd(m.PRICE * m.WHOLESALE)} = {mn(ret)}<br/><br/><b>Top-down</b><br/>{mn(w['total'])} ÷ $640 m = {w['share']:.1%} of SAM</div>
       <div class="bench"><div class="src" style="letter-spacing:.16em;text-transform:uppercase">Plausibility: public subscription counts</div>__BENCH__</div></div>
   </div></div>
   <aside class="notes"><p>Walk and benchmarks in truth/business-case.md §5.</p></aside>
@@ -218,7 +219,7 @@ def build():
 
 
 BENCH = [("Sips By tea members, 2020", "350 k"), ("Trade Coffee subscribers, 2020", "75 k"),
-         ("Pact Coffee UK subscribers, 2021", "60 k"), ("OSME Ritual, end of year 3", "20 k")]
+         ("Pact Coffee UK subscribers, 2021", "60 k"), ("OSME Ritual, end of year 3", f"{m.END_Y3/1e3:.0f} k")]
 
 if __name__ == "__main__":
     slides = build().replace("__BENCH__", "".join(
