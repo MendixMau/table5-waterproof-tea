@@ -29,3 +29,7 @@
 09:59 | truth-history | PROGRESS | sections 3-4 re-sourced and saved
 10:00 | storyteller | DONE | story.md draft 2: positive tone, AI/noise and email lines removed, Sencha app demo, Keepers explained, script 419 words
 10:00 | identity | PROGRESS | board.html v1 saved (pre-embed)
+10:00 | truth-customers | PROGRESS | UK/China numbers, Teforia, Special.T, Sips By saved
+10:00 | identity | PROGRESS | board.html embedded+checked; PNGs in /tmp/t5-identity/
+10:01 | identity | DONE | tokens stable, logos v3 reviewed (lockup re-centred), board.html self-contained; PNGs /tmp/t5-identity/
+10:01 | truth-history | PROGRESS | Lu Yu wording, cultures, quotes, PNIPAM, matcha sourced; writing file

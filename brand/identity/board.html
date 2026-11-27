@@ -1,0 +1,181 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>OSME brand board - Midnight Brew</title>
+<style>
+/* OSME brand tokens - "Midnight Brew". Names are stable; values may be tuned. */
+:root {
+  /* Colour roles */
+  --brand-bg:       #0B0B0D;  /* matte midnight black - every page starts here */
+  --brand-surface:  #17171B;  /* cards, panels, the cup */
+  --brand-line:     #2A2A30;  /* hairlines, dividers */
+  --brand-primary:  #F2A33A;  /* Amber - heat, the moment it opens. Buttons, key numbers */
+  --brand-accent:   #3DBA9B;  /* Jade - the cooled cup, it closes. Links, success, calm */
+  --brand-text:     #F3EEE6;  /* warm paper white */
+  --brand-muted:    #8E8A83;  /* captions, secondary copy */
+
+  /* The temperature arc: hot amber to cool jade (left = hot, right = cool) */
+  --brand-arc-hot:  #F2A33A;
+  --brand-arc-mid:  #D9C46B;
+  --brand-arc-cool: #3DBA9B;
+  --brand-arc: linear-gradient(90deg, var(--brand-arc-hot) 0%, var(--brand-arc-mid) 48%, var(--brand-arc-cool) 100%);
+  --brand-glow: 0 0 24px rgba(242,163,58,.35), 0 0 48px rgba(61,186,155,.18);
+
+  /* Type */
+  --font-display: "Futura", "Jost", "Century Gothic", "Avenir Next", sans-serif;
+  --font-body:    "Avenir Next", "Avenir", "Inter", "Helvetica Neue", Arial, sans-serif;
+  --fw-display: 500;
+  --tracking-display: 0.18em;   /* wide, calm caps */
+  --fs-hero: clamp(48px, 7vw, 96px);
+  --fs-h1: 48px; --fs-h2: 32px; --fs-h3: 22px; --fs-body: 17px; --fs-small: 13px;
+
+  /* Spacing (8pt) */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 16px; --space-4: 24px;
+  --space-5: 32px; --space-6: 48px; --space-7: 64px; --space-8: 96px;
+
+  /* Radius: mostly soft-square, circles for the bubble motif */
+  --radius-s: 4px; --radius-m: 10px; --radius-l: 20px; --radius-pill: 999px;
+}
+
+</style>
+<style>
+*{box-sizing:border-box;margin:0}
+body{background:var(--brand-bg);color:var(--brand-text);font-family:var(--font-body);font-size:var(--fs-body);line-height:1.5;padding:var(--space-7) var(--space-8);max-width:1600px;margin:0 auto}
+.lbl{font-family:var(--font-display);text-transform:uppercase;letter-spacing:var(--tracking-display);font-size:var(--fs-small);color:var(--brand-muted);margin-bottom:var(--space-4)}
+section{border-top:1px solid var(--brand-line);padding:var(--space-6) 0}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:var(--space-7);align-items:center;padding:var(--space-6) 0 var(--space-7);border:0}
+.hero h1{font-family:var(--font-display);font-weight:var(--fw-display);font-size:var(--fs-hero);line-height:1.05;letter-spacing:-.01em}
+.hero p{color:var(--brand-muted);margin-top:var(--space-4);font-size:20px}
+.arcline{height:4px;border-radius:var(--radius-pill);background:var(--brand-arc);box-shadow:var(--brand-glow);margin-top:var(--space-5);width:70%}
+.grid{display:grid;gap:var(--space-4)}
+.g3{grid-template-columns:1.4fr 1fr 1fr}.g2{grid-template-columns:1fr 1fr}
+.card{background:var(--brand-surface);border-radius:var(--radius-l);padding:var(--space-5);display:flex;flex-direction:column;justify-content:space-between;min-height:260px}
+.card.light{background:var(--brand-text);color:var(--brand-bg)}
+.card .cap{font-size:var(--fs-small);color:var(--brand-muted);margin-top:var(--space-3)}
+.card.light .cap{color:#6b675f}
+.sizes{display:flex;align-items:flex-end;gap:var(--space-5)}
+.sizes span{display:block;font-size:11px;color:var(--brand-muted);text-align:center;margin-top:6px}
+.sw{border-radius:var(--radius-m);overflow:hidden;background:var(--brand-surface)}
+.sw .chip{height:110px}
+.sw .t{padding:var(--space-3)}
+.sw b{font-family:var(--font-display);font-weight:500;letter-spacing:.06em;display:block}
+.sw code{font-size:12px;color:var(--brand-muted)}
+.sw i{font-style:normal;font-size:var(--fs-small);color:var(--brand-muted);display:block;margin-top:4px}
+.pal{grid-template-columns:repeat(7,1fr)}
+.arcbig{height:64px;border-radius:var(--radius-pill);background:var(--brand-arc);box-shadow:var(--brand-glow)}
+.ticks{display:flex;justify-content:space-between;margin-top:var(--space-3);font-size:var(--fs-small);color:var(--brand-muted)}
+.ticks b{color:var(--brand-text);font-weight:500;display:block;font-family:var(--font-display);letter-spacing:.06em}
+.ticks div:last-child{text-align:right}
+.type .disp{font-family:var(--font-display);font-weight:var(--fw-display);font-size:72px;line-height:1.05}
+.type .caps{font-family:var(--font-display);text-transform:uppercase;letter-spacing:var(--tracking-display);font-size:20px;color:var(--brand-primary);margin:var(--space-4) 0}
+.type .body{max-width:56ch;color:var(--brand-text)}
+.stages{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4)}
+.stage{background:var(--brand-surface);border-radius:var(--radius-l);padding:var(--space-5);text-align:center}
+.stage svg{height:150px;width:100%}
+.stage b{display:block;font-family:var(--font-display);letter-spacing:.06em;font-weight:500;margin-top:var(--space-3)}
+.stage i{font-style:normal;color:var(--brand-muted);font-size:var(--fs-small)}
+.lines{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4)}
+.line{border-radius:var(--radius-l);padding:var(--space-6) var(--space-5);background:var(--brand-surface);min-height:220px;display:flex;flex-direction:column;justify-content:space-between}
+.line q{quotes:none;font-family:var(--font-display);font-size:40px;line-height:1.15;font-weight:500}
+.line .use{font-size:var(--fs-small);color:var(--brand-muted)}
+.btns{display:flex;gap:var(--space-3);align-items:center;flex-wrap:wrap}
+.btn{font-family:var(--font-display);letter-spacing:.12em;text-transform:uppercase;font-size:14px;padding:14px 28px;border-radius:var(--radius-pill)}
+.btn.p{background:var(--brand-primary);color:var(--brand-bg)}
+.btn.s{border:1.5px solid var(--brand-accent);color:var(--brand-accent)}
+.scale{display:flex;align-items:flex-end;gap:var(--space-3)}
+.scale div{background:var(--brand-arc-mid);opacity:.85;border-radius:2px}
+.foot{color:var(--brand-muted);font-size:var(--fs-small);display:flex;justify-content:space-between}
+</style></head><body>
+
+<div class="hero">
+  <div><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNzAuNTUgNjQiIHdpZHRoPSIxNzAuNTUiIGhlaWdodD0iNjQiPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iYXJjIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjgiIHkxPSIwIiB4Mj0iNTYiIHkyPSIwIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNGMkEzM0EiLz48c3RvcCBvZmZzZXQ9Ii40OCIgc3RvcC1jb2xvcj0iI0Q5QzQ2QiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzNEQkE5QiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMCkgc2NhbGUoMS4wKSI+PHBhdGggZD0iTTUzLjUyIDI3LjQzIEEyMiAyMiAwIDEgMSAzNi41NyAxMC40OCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2FyYykiIHN0cm9rZS13aWR0aD0iNi41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48Y2lyY2xlIGN4PSIyNS4yIiBjeT0iMzguOCIgcj0iMy42IiBmaWxsPSIjM0RCQTlCIi8+PGNpcmNsZSBjeD0iMzUuNiIgY3k9IjI4LjQiIHI9IjQuNyIgZmlsbD0iI0Q5QzQ2QiIvPjxjaXJjbGUgY3g9IjQ4Ljc1NjM0OTE4NjEwNDA0NiIgY3k9IjE1LjI0MzY1MDgxMzg5NTk1NyIgcj0iNi4yIiBmaWxsPSIjRjJBMzNBIi8+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDc0IDE5LjYwKSBzY2FsZSgwLjYyKSI+PGNpcmNsZSBjeD0iMjAuMDAiIGN5PSIyMC4wMCIgcj0iMTcuNTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0YzRUVFNiIgc3Ryb2tlLXdpZHRoPSI1LjAiLz48cGF0aCBkPSJNNjYuMzAgNy43NSBBOC43NSA4Ljc1IDAgMSAwIDU4LjI1IDIwLjAwIEE4Ljc1IDguNzUgMCAxIDEgNTAuMjAgMzIuMjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0YzRUVFNiIgc3Ryb2tlLXdpZHRoPSI1LjAiIHN0cm9rZS1saW5lY2FwPSJidXR0Ii8+PHBhdGggZD0iTTg0LjUwIDQwLjAgVjIuNTAgTDk5LjUwIDI0LjgwIEwxMTQuNTAgMi41MCBWNDAuMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRjNFRUU2IiBzdHJva2Utd2lkdGg9IjUuMCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIi8+PHBhdGggZD0iTTE1MC4wMCAyLjUwIEgxMjkuNTAgVjM3LjUwIEgxNTAuMDAgTTEyOS41MCAyMC4wIEgxNDYuNTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0YzRUVFNiIgc3Ryb2tlLXdpZHRoPSI1LjAiIHN0cm9rZS1saW5lam9pbj0ibWl0ZXIiLz48L2c+PC9zdmc+Cg==" style="width:100%;max-width:640px" alt="OSME lockup"></div>
+  <div>
+    <div class="lbl">Brand board · Midnight Brew</div>
+    <h1>Every tea has its temperature.</h1>
+    <p>OSME, from the Greek <i>osmē</i>: scent. Said "oz-MAY". Art, love and scent, brewed at the right heat.</p>
+    <div class="arcline"></div>
+  </div>
+</div>
+
+<section>
+  <div class="lbl">Logo</div>
+  <div class="grid g3">
+    <div class="card"><div class="sizes">
+      <div><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0Ij48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImFyYyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSI4IiB5MT0iMCIgeDI9IjU2IiB5Mj0iMCI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjRjJBMzNBIi8+PHN0b3Agb2Zmc2V0PSIuNDgiIHN0b3AtY29sb3I9IiNEOUM0NkIiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMzREJBOUIiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDApIHNjYWxlKDEuMCkiPjxwYXRoIGQ9Ik01My41MiAyNy40MyBBMjIgMjIgMCAxIDEgMzYuNTcgMTAuNDgiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNhcmMpIiBzdHJva2Utd2lkdGg9IjYuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PGNpcmNsZSBjeD0iMjUuMiIgY3k9IjM4LjgiIHI9IjMuNiIgZmlsbD0iIzNEQkE5QiIvPjxjaXJjbGUgY3g9IjM1LjYiIGN5PSIyOC40IiByPSI0LjciIGZpbGw9IiNEOUM0NkIiLz48Y2lyY2xlIGN4PSI0OC43NTYzNDkxODYxMDQwNDYiIGN5PSIxNS4yNDM2NTA4MTM4OTU5NTciIHI9IjYuMiIgZmlsbD0iI0YyQTMzQSIvPjwvZz48L3N2Zz4K" width="192"><span>192</span></div>
+      <div><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0Ij48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImFyYyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSI4IiB5MT0iMCIgeDI9IjU2IiB5Mj0iMCI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjRjJBMzNBIi8+PHN0b3Agb2Zmc2V0PSIuNDgiIHN0b3AtY29sb3I9IiNEOUM0NkIiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMzREJBOUIiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDApIHNjYWxlKDEuMCkiPjxwYXRoIGQ9Ik01My41MiAyNy40MyBBMjIgMjIgMCAxIDEgMzYuNTcgMTAuNDgiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNhcmMpIiBzdHJva2Utd2lkdGg9IjYuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PGNpcmNsZSBjeD0iMjUuMiIgY3k9IjM4LjgiIHI9IjMuNiIgZmlsbD0iIzNEQkE5QiIvPjxjaXJjbGUgY3g9IjM1LjYiIGN5PSIyOC40IiByPSI0LjciIGZpbGw9IiNEOUM0NkIiLz48Y2lyY2xlIGN4PSI0OC43NTYzNDkxODYxMDQwNDYiIGN5PSIxNS4yNDM2NTA4MTM4OTU5NTciIHI9IjYuMiIgZmlsbD0iI0YyQTMzQSIvPjwvZz48L3N2Zz4K" width="64"><span>64</span></div>
+      <div><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0Ij48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImFyYyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSI4IiB5MT0iMCIgeDI9IjU2IiB5Mj0iMCI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjRjJBMzNBIi8+PHN0b3Agb2Zmc2V0PSIuNDgiIHN0b3AtY29sb3I9IiNEOUM0NkIiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMzREJBOUIiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDApIHNjYWxlKDEuMCkiPjxwYXRoIGQ9Ik01My41MiAyNy40MyBBMjIgMjIgMCAxIDEgMzYuNTcgMTAuNDgiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNhcmMpIiBzdHJva2Utd2lkdGg9IjYuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PGNpcmNsZSBjeD0iMjUuMiIgY3k9IjM4LjgiIHI9IjMuNiIgZmlsbD0iIzNEQkE5QiIvPjxjaXJjbGUgY3g9IjM1LjYiIGN5PSIyOC40IiByPSI0LjciIGZpbGw9IiNEOUM0NkIiLz48Y2lyY2xlIGN4PSI0OC43NTYzNDkxODYxMDQwNDYiIGN5PSIxNS4yNDM2NTA4MTM4OTU5NTciIHI9IjYuMiIgZmlsbD0iI0YyQTMzQSIvPjwvZz48L3N2Zz4K" width="32"><span>32</span></div>
+      <div><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0Ij48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImFyYyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSI4IiB5MT0iMCIgeDI9IjU2IiB5Mj0iMCI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjRjJBMzNBIi8+PHN0b3Agb2Zmc2V0PSIuNDgiIHN0b3AtY29sb3I9IiNEOUM0NkIiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMzREJBOUIiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDApIHNjYWxlKDEuMCkiPjxwYXRoIGQ9Ik01My41MiAyNy40MyBBMjIgMjIgMCAxIDEgMzYuNTcgMTAuNDgiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNhcmMpIiBzdHJva2Utd2lkdGg9IjYuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PGNpcmNsZSBjeD0iMjUuMiIgY3k9IjM4LjgiIHI9IjMuNiIgZmlsbD0iIzNEQkE5QiIvPjxjaXJjbGUgY3g9IjM1LjYiIGN5PSIyOC40IiByPSI0LjciIGZpbGw9IiNEOUM0NkIiLz48Y2lyY2xlIGN4PSI0OC43NTYzNDkxODYxMDQwNDYiIGN5PSIxNS4yNDM2NTA4MTM4OTU5NTciIHI9IjYuMiIgZmlsbD0iI0YyQTMzQSIvPjwvZz48L3N2Zz4K" width="16"><span>16</span></div></div>
+      <div class="cap">Symbol: the ring opens on the diagonal and Lu Yu's three bubbles rise out of it, small and jade to large and amber. The ring carries the temperature arc.</div></div>
+    <div class="card"><div><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNTIuNSA0MC4wIiB3aWR0aD0iMTUyLjUiIGhlaWdodD0iNDAuMCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJhcmN3IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAiIHkxPSIwIiB4Mj0iNDAuMCIgeTI9IjAiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI0YyQTMzQSIvPjxzdG9wIG9mZnNldD0iLjQ4IiBzdG9wLWNvbG9yPSIjRDlDNDZCIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjM0RCQTlCIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PGNpcmNsZSBjeD0iMjAuMDAiIGN5PSIyMC4wMCIgcj0iMTcuNTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNhcmN3KSIgc3Ryb2tlLXdpZHRoPSI1LjAiLz48cGF0aCBkPSJNNjYuMzAgNy43NSBBOC43NSA4Ljc1IDAgMSAwIDU4LjI1IDIwLjAwIEE4Ljc1IDguNzUgMCAxIDEgNTAuMjAgMzIuMjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0YzRUVFNiIgc3Ryb2tlLXdpZHRoPSI1LjAiIHN0cm9rZS1saW5lY2FwPSJidXR0Ii8+PHBhdGggZD0iTTg0LjUwIDQwLjAgVjIuNTAgTDk5LjUwIDI0LjgwIEwxMTQuNTAgMi41MCBWNDAuMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRjNFRUU2IiBzdHJva2Utd2lkdGg9IjUuMCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIi8+PHBhdGggZD0iTTE1MC4wMCAyLjUwIEgxMjkuNTAgVjM3LjUwIEgxNTAuMDAgTTEyOS41MCAyMC4wIEgxNDYuNTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0YzRUVFNiIgc3Ryb2tlLXdpZHRoPSI1LjAiIHN0cm9rZS1saW5lam9pbj0ibWl0ZXIiLz48L3N2Zz4K" style="width:100%"><div style="margin-top:28px"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNTIuNSA0MC4wIiB3aWR0aD0iMTUyLjUiIGhlaWdodD0iNDAuMCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJhcmN3IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAiIHkxPSIwIiB4Mj0iNDAuMCIgeTI9IjAiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI0YyQTMzQSIvPjxzdG9wIG9mZnNldD0iLjQ4IiBzdG9wLWNvbG9yPSIjRDlDNDZCIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjM0RCQTlCIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PGNpcmNsZSBjeD0iMjAuMDAiIGN5PSIyMC4wMCIgcj0iMTcuNTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNhcmN3KSIgc3Ryb2tlLXdpZHRoPSI1LjAiLz48cGF0aCBkPSJNNjYuMzAgNy43NSBBOC43NSA4Ljc1IDAgMSAwIDU4LjI1IDIwLjAwIEE4Ljc1IDguNzUgMCAxIDEgNTAuMjAgMzIuMjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0YzRUVFNiIgc3Ryb2tlLXdpZHRoPSI1LjAiIHN0cm9rZS1saW5lY2FwPSJidXR0Ii8+PHBhdGggZD0iTTg0LjUwIDQwLjAgVjIuNTAgTDk5LjUwIDI0LjgwIEwxMTQuNTAgMi41MCBWNDAuMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRjNFRUU2IiBzdHJva2Utd2lkdGg9IjUuMCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIi8+PHBhdGggZD0iTTE1MC4wMCAyLjUwIEgxMjkuNTAgVjM3LjUwIEgxNTAuMDAgTTEyOS41MCAyMC4wIEgxNDYuNTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0YzRUVFNiIgc3Ryb2tlLXdpZHRoPSI1LjAiIHN0cm9rZS1saW5lam9pbj0ibWl0ZXIiLz48L3N2Zz4K" height="20"></div></div>
+      <div class="cap">Wordmark: geometric caps, the O carries the arc. Always written OSME.</div></div>
+    <div class="card light"><div><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNzAuNTUgNjQiIHdpZHRoPSIxNzAuNTUiIGhlaWdodD0iNjQiPjxkZWZzPjwvZGVmcz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDApIHNjYWxlKDEuMCkiPjxwYXRoIGQ9Ik01My41MiAyNy40MyBBMjIgMjIgMCAxIDEgMzYuNTcgMTAuNDgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzBCMEIwRCIgc3Ryb2tlLXdpZHRoPSI2LjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxjaXJjbGUgY3g9IjI1LjIiIGN5PSIzOC44IiByPSIzLjYiIGZpbGw9IiMwQjBCMEQiLz48Y2lyY2xlIGN4PSIzNS42IiBjeT0iMjguNCIgcj0iNC43IiBmaWxsPSIjMEIwQjBEIi8+PGNpcmNsZSBjeD0iNDguNzU2MzQ5MTg2MTA0MDQ2IiBjeT0iMTUuMjQzNjUwODEzODk1OTU3IiByPSI2LjIiIGZpbGw9IiMwQjBCMEQiLz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNzQgMTkuNjApIHNjYWxlKDAuNjIpIj48Y2lyY2xlIGN4PSIyMC4wMCIgY3k9IjIwLjAwIiByPSIxNy41MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMEIwQjBEIiBzdHJva2Utd2lkdGg9IjUuMCIvPjxwYXRoIGQ9Ik02Ni4zMCA3Ljc1IEE4Ljc1IDguNzUgMCAxIDAgNTguMjUgMjAuMDAgQTguNzUgOC43NSAwIDEgMSA1MC4yMCAzMi4yNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMEIwQjBEIiBzdHJva2Utd2lkdGg9IjUuMCIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiLz48cGF0aCBkPSJNODQuNTAgNDAuMCBWMi41MCBMOTkuNTAgMjQuODAgTDExNC41MCAyLjUwIFY0MC4wIiBmaWxsPSJub25lIiBzdHJva2U9IiMwQjBCMEQiIHN0cm9rZS13aWR0aD0iNS4wIiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiLz48cGF0aCBkPSJNMTUwLjAwIDIuNTAgSDEyOS41MCBWMzcuNTAgSDE1MC4wMCBNMTI5LjUwIDIwLjAgSDE0Ni41MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMEIwQjBEIiBzdHJva2Utd2lkdGg9IjUuMCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIvPjwvZz48L3N2Zz4K" style="width:100%"><div style="margin-top:28px;display:flex;gap:24px;align-items:center"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0Ij48ZGVmcz48L2RlZnM+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAwKSBzY2FsZSgxLjApIj48cGF0aCBkPSJNNTMuNTIgMjcuNDMgQTIyIDIyIDAgMSAxIDM2LjU3IDEwLjQ4IiBmaWxsPSJub25lIiBzdHJva2U9IiMwQjBCMEQiIHN0cm9rZS13aWR0aD0iNi41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48Y2lyY2xlIGN4PSIyNS4yIiBjeT0iMzguOCIgcj0iMy42IiBmaWxsPSIjMEIwQjBEIi8+PGNpcmNsZSBjeD0iMzUuNiIgY3k9IjI4LjQiIHI9IjQuNyIgZmlsbD0iIzBCMEIwRCIvPjxjaXJjbGUgY3g9IjQ4Ljc1NjM0OTE4NjEwNDA0NiIgY3k9IjE1LjI0MzY1MDgxMzg5NTk1NyIgcj0iNi4yIiBmaWxsPSIjMEIwQjBEIi8+PC9nPjwvc3ZnPgo=" width="32"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNzAuNTUgNjQiIHdpZHRoPSIxNzAuNTUiIGhlaWdodD0iNjQiPjxkZWZzPjwvZGVmcz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDApIHNjYWxlKDEuMCkiPjxwYXRoIGQ9Ik01My41MiAyNy40MyBBMjIgMjIgMCAxIDEgMzYuNTcgMTAuNDgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzBCMEIwRCIgc3Ryb2tlLXdpZHRoPSI2LjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxjaXJjbGUgY3g9IjI1LjIiIGN5PSIzOC44IiByPSIzLjYiIGZpbGw9IiMwQjBCMEQiLz48Y2lyY2xlIGN4PSIzNS42IiBjeT0iMjguNCIgcj0iNC43IiBmaWxsPSIjMEIwQjBEIi8+PGNpcmNsZSBjeD0iNDguNzU2MzQ5MTg2MTA0MDQ2IiBjeT0iMTUuMjQzNjUwODEzODk1OTU3IiByPSI2LjIiIGZpbGw9IiMwQjBCMEQiLz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNzQgMTkuNjApIHNjYWxlKDAuNjIpIj48Y2lyY2xlIGN4PSIyMC4wMCIgY3k9IjIwLjAwIiByPSIxNy41MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMEIwQjBEIiBzdHJva2Utd2lkdGg9IjUuMCIvPjxwYXRoIGQ9Ik02Ni4zMCA3Ljc1IEE4Ljc1IDguNzUgMCAxIDAgNTguMjUgMjAuMDAgQTguNzUgOC43NSAwIDEgMSA1MC4yMCAzMi4yNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMEIwQjBEIiBzdHJva2Utd2lkdGg9IjUuMCIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiLz48cGF0aCBkPSJNODQuNTAgNDAuMCBWMi41MCBMOTkuNTAgMjQuODAgTDExNC41MCAyLjUwIFY0MC4wIiBmaWxsPSJub25lIiBzdHJva2U9IiMwQjBCMEQiIHN0cm9rZS13aWR0aD0iNS4wIiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiLz48cGF0aCBkPSJNMTUwLjAwIDIuNTAgSDEyOS41MCBWMzcuNTAgSDE1MC4wMCBNMTI5LjUwIDIwLjAgSDE0Ni41MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMEIwQjBEIiBzdHJva2Utd2lkdGg9IjUuMCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIvPjwvZz48L3N2Zz4K" height="32"></div></div>
+      <div class="cap">Mono for pack embossing, one-colour print and light grounds. Clear space = one bubble's height around the mark.</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="lbl">Colour with roles</div>
+  <div class="grid pal">
+    <div class="sw"><div class="chip" style="background:var(--brand-bg);border:1px solid var(--brand-line)"></div><div class="t"><b>Midnight</b><code>--brand-bg #0B0B0D</code><i>Every page starts here</i></div></div>
+    <div class="sw"><div class="chip" style="background:var(--brand-surface);border:1px solid var(--brand-line)"></div><div class="t"><b>Cup</b><code>--brand-surface #17171B</code><i>Cards, panels</i></div></div>
+    <div class="sw"><div class="chip" style="background:var(--brand-line)"></div><div class="t"><b>Hairline</b><code>--brand-line #2A2A30</code><i>Dividers</i></div></div>
+    <div class="sw"><div class="chip" style="background:var(--brand-primary)"></div><div class="t"><b>Amber</b><code>--brand-primary #F2A33A</code><i>Heat, it opens. Actions, key numbers</i></div></div>
+    <div class="sw"><div class="chip" style="background:var(--brand-arc-mid)"></div><div class="t"><b>Steep</b><code>--brand-arc-mid #D9C46B</code><i>Arc midpoint only</i></div></div>
+    <div class="sw"><div class="chip" style="background:var(--brand-accent)"></div><div class="t"><b>Jade</b><code>--brand-accent #3DBA9B</code><i>Cooled, it closes. Links, calm</i></div></div>
+    <div class="sw"><div class="chip" style="background:var(--brand-text)"></div><div class="t"><b>Paper</b><code>--brand-text #F3EEE6</code><i>Text. Muted: #8E8A83</i></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="lbl">The temperature arc · --brand-arc</div>
+  <div class="arcbig"></div>
+  <div class="ticks">
+    <div><b>Opens · hot</b>Black tea, around 95°C</div>
+    <div style="text-align:center"><b>Oolong</b>around 85°C</div>
+    <div style="text-align:center"><b>Green</b>around 75°C</div>
+    <div><b>Closes · cool</b>The steep stops itself</div>
+  </div>
+</section>
+
+<section>
+  <div class="lbl">Motif · Lu Yu's three bubble stages, 8th century</div>
+  <div class="stages">
+    <div class="stage"><svg viewBox="0 0 120 96"><g fill="var(--brand-accent)"><circle cx="38" cy="58" r="7"/><circle cx="62" cy="40" r="7"/><circle cx="84" cy="62" r="7"/><circle cx="56" cy="76" r="6"/></g></svg><b>Fish eyes</b><i>First boil: small bubbles, a faint sound</i></div>
+    <div class="stage"><svg viewBox="0 0 120 96"><g fill="var(--brand-arc-mid)"><circle cx="16" cy="66" r="10"/><circle cx="38" cy="54" r="10"/><circle cx="60" cy="50" r="10"/><circle cx="82" cy="54" r="10"/><circle cx="104" cy="66" r="10"/></g></svg><b>String of pearls</b><i>Second boil: bubbles rim the edge like pearls</i></div>
+    <div class="stage"><svg viewBox="0 0 120 96"><g fill="none" stroke="var(--brand-primary)" stroke-width="8" stroke-linecap="round"><path d="M8 72 Q28 44 48 72 T88 72 T112 60"/></g><circle cx="60" cy="28" r="16" fill="var(--brand-primary)"/></svg><b>Rolling waves</b><i>Third boil: the water surges</i></div>
+  </div>
+</section>
+
+<section class="type" style="display:grid;grid-template-columns:1.6fr 1fr;gap:var(--space-7)">
+  <div>
+  <div class="lbl">Type · display Futura (Jost on the web) · body Avenir Next</div>
+  <div class="disp">Patience, ritual, harmony.</div>
+  <div class="caps">Opens at the right heat · closes when it is done</div>
+  <p class="body">Lu Yu read water by its bubbles. The tea bag traded that art for convenience a century ago. OSME brings it back: a bag that stays sealed until the water reaches its tea's ideal temperature, then closes again as the cup cools.</p>
+  </div>
+  <div style="border-left:1px solid var(--brand-line);padding-left:var(--space-6)">
+    <div class="lbl">Scale</div>
+    <div style="font-family:var(--font-display);font-size:96px;line-height:1">Aa</div>
+    <div style="font-family:var(--font-display);font-size:var(--fs-h1);line-height:1.2;margin-top:12px">H1 · 48</div>
+    <div style="font-family:var(--font-display);font-size:var(--fs-h2);line-height:1.3">H2 · 32</div>
+    <div style="font-family:var(--font-display);font-size:var(--fs-h3);line-height:1.4">H3 · 22</div>
+    <div style="font-size:var(--fs-body)">Body · 17 Avenir Next</div>
+    <div style="font-size:var(--fs-small);color:var(--brand-muted)">Small · 13 captions and labels</div>
+  </div>
+</section>
+
+<section>
+  <div class="lbl">Sample lines</div>
+  <div class="lines">
+    <div class="line"><q>Every tea has its temperature.</q><div class="use">Tagline · slide 1, site hero, campaign #EveryTeaHasItsTemperature</div></div>
+    <div class="line" style="background:linear-gradient(160deg,#1c1a16,var(--brand-surface) 60%)"><q>Osme. The scent of every tea, kept.</q><div class="use">Pack, solution slide, the reseal benefit</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="lbl">UI atoms · spacing 8pt · radius 4 / 10 / 20 / pill</div>
+  <div class="grid g2" style="align-items:center">
+    <div class="btns"><span class="btn p">Become a Keeper</span><span class="btn s">Find your temperature</span></div>
+    <div class="scale"><div style="width:4px;height:4px"></div><div style="width:8px;height:8px"></div><div style="width:16px;height:16px"></div><div style="width:24px;height:24px"></div><div style="width:32px;height:32px"></div><div style="width:48px;height:48px"></div><div style="width:64px;height:64px"></div><div style="width:96px;height:96px"></div></div>
+  </div>
+</section>
+
+<section class="foot"><span>OSME · brand/identity/tokens.css is the source of truth for every value on this board</span><span>Table 5 · Sell the unsellable</span></section>
+</body></html>
