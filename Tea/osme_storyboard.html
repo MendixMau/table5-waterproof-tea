@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Osme Control Storyboard</title>
+<style>
+  :root {
+    --bg: #eef7f8;
+    --panel: #ffffff;
+    --stage: #f6fbfc;
+    --text: #0e2648;
+    --muted: #55657a;
+    --teal: #16a0a0;
+    --teal-soft: #d2f0f0;
+    --amber: #c9771c;
+    --track: #cfe0e3;
+    --line: #dbe8ea;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0b171c; --panel: #12232a; --stage: #0f1e24; --text: #e6f2f5;
+      --muted: #9db0b8; --teal: #2cc0c0; --teal-soft: #17393d; --amber: #e2953a;
+      --track: #24414a; --line: #22383f;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0b171c; --panel: #12232a; --stage: #0f1e24; --text: #e6f2f5;
+    --muted: #9db0b8; --teal: #2cc0c0; --teal-soft: #17393d; --amber: #e2953a;
+    --track: #24414a; --line: #22383f;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+    min-height: 100vh; padding: 20px 16px 28px;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; }
+  header { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 14px; margin-bottom: 4px; }
+  .brand { font-family: Georgia, "Times New Roman", serif; font-style: italic; font-weight: 700; font-size: 40px; letter-spacing: -1px; }
+  .pill { background: var(--text); color: var(--bg); font-weight: 800; padding: 3px 14px; border-radius: 8px; font-size: 26px; transform: skewX(-8deg); }
+  h1 { font-size: 26px; margin: 0; font-weight: 700; }
+  .sub { color: var(--muted); margin: 0 0 16px; font-size: 15px; }
+  main { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 20px; align-items: stretch; }
+  @media (max-width: 820px) { main { grid-template-columns: 1fr; } }
+  .stage { background: var(--stage); border: 1px solid var(--line); border-radius: 22px; position: relative; overflow: hidden; }
+  .stage svg { display: block; width: 100%; height: auto; max-height: 72vh; }
+  .badge { position: absolute; top: 14px; left: 14px; background: var(--teal); color: #fff; font-weight: 700; border-radius: 12px; padding: 4px 12px; font-size: 15px; }
+  .ports { position: absolute; top: 14px; right: 14px; font-weight: 700; font-size: 14px; border-radius: 999px; padding: 4px 12px; border: 2px solid; transition: color .25s, border-color .25s; }
+  .side { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; padding: 26px 26px 22px; display: flex; flex-direction: column; }
+  .step-no { align-self: flex-start; background: var(--text); color: var(--panel); font-weight: 800; border-radius: 999px; padding: 4px 14px; font-size: 14px; letter-spacing: .5px; }
+  .title { font-size: clamp(30px, 4vw, 46px); font-weight: 800; margin: 14px 0 6px; line-height: 1.05; }
+  .rule { width: 70px; height: 6px; background: var(--teal); border-radius: 3px; margin-bottom: 18px; }
+  ul.pts { list-style: none; margin: 0; padding: 0; }
+  ul.pts li { position: relative; padding-left: 32px; margin: 0 0 12px; font-size: 18px; line-height: 1.35; color: var(--muted); }
+  ul.pts li::before { content: ""; position: absolute; left: 0; top: 3px; width: 20px; height: 20px; border-radius: 50%; background: var(--teal); }
+  ul.pts li::after { content: ""; position: absolute; left: 6px; top: 7px; width: 6px; height: 10px; border: solid #fff; border-width: 0 3px 3px 0; transform: rotate(45deg); }
+  .fade { animation: fadeIn .45s ease both; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateX(16px); } to { opacity: 1; transform: none; } }
+  .spacer { flex: 1; min-height: 16px; }
+  .controls { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  button { font: inherit; cursor: pointer; }
+  .btn { background: var(--teal); color: #fff; border: 0; border-radius: 12px; height: 42px; min-width: 42px; padding: 0 14px; font-weight: 700; font-size: 15px; display: inline-flex; align-items: center; gap: 6px; }
+  .btn.ghost { background: transparent; color: var(--text); border: 2px solid var(--line); }
+  .btn:focus-visible, .seg:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
+  .time { margin-left: auto; color: var(--muted); font-variant-numeric: tabular-nums; font-size: 15px; }
+  .timeline { position: relative; display: flex; gap: 4px; touch-action: none; user-select: none; }
+  .seg { position: relative; flex-grow: 1; flex-basis: 0; height: 46px; border: 0; border-radius: 10px; background: var(--track); color: var(--text); overflow: hidden; padding: 0 8px; text-align: left; font-size: 12px; font-weight: 700; }
+  .seg .fill { position: absolute; inset: 0; width: 0; background: var(--teal); opacity: .9; }
+  .seg span { position: relative; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .seg .t { font-weight: 600; opacity: .75; font-size: 11px; }
+  .seg.done, .seg.cur { color: #fff; }
+  footer { margin-top: 16px; color: var(--muted); font-size: 13px; text-align: center; }
+  kbd { border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="brand">Osme</span><span class="pill">CONTROL</span><h1>How it works</h1>
+  </header>
+  <p class="sub">Animated video storyboard · 20 seconds · concept illustration, not a tested product</p>
+
+  <main>
+    <div class="stage">
+      <svg id="svg" viewBox="0 0 600 600" role="img" aria-label="Animated cross-section of the Osme Control capsule in a glass mug">
+        <defs>
+          <pattern id="mesh" width="7" height="7" patternUnits="userSpaceOnUse">
+            <rect width="7" height="7" fill="#e9eff1"/>
+            <circle cx="3.5" cy="3.5" r="1.6" fill="#7d8f95"/>
+          </pattern>
+          <clipPath id="mugIn">
+            <path d="M160,230 L440,230 L420,505 Q418,525 398,525 L202,525 Q182,525 180,505 Z"/>
+          </clipPath>
+          <filter id="blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5"/></filter>
+          <marker id="ahBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2a86d6"/></marker>
+          <marker id="ahOrange" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#f0902a"/></marker>
+          <linearGradient id="sleeveG" x1="0" x2="1">
+            <stop offset="0" stop-color="#0f8c8c"/><stop offset=".35" stop-color="#3cc4c2"/><stop offset=".6" stop-color="#22a9a8"/><stop offset="1" stop-color="#0d7f80"/>
+          </linearGradient>
+          <linearGradient id="glassG" x1="0" x2="1">
+            <stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".2" stop-color="#fff" stop-opacity=".1"/><stop offset=".85" stop-color="#fff" stop-opacity=".05"/><stop offset="1" stop-color="#fff" stop-opacity=".45"/>
+          </linearGradient>
+        </defs>
+
+        <g id="cam">
+          <!-- table shadow -->
+          <ellipse cx="300" cy="540" rx="190" ry="16" fill="#000" opacity=".08"/>
+          <!-- mug back -->
+          <path d="M158,292 C86,292 76,430 174,452" fill="none" stroke="#b9d0d6" stroke-width="24" stroke-linecap="round" opacity=".55"/>
+          <path d="M158,292 C86,292 76,430 174,452" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity=".5"/>
+          <path d="M150,220 L450,220 L430,510 Q426,535 400,535 L200,535 Q174,535 170,510 Z" fill="#dfeef1" opacity=".35"/>
+          <!-- water behind capsule -->
+          <g clip-path="url(#mugIn)">
+            <rect id="waterBack" x="140" y="262" width="320" height="280"/>
+            <g id="plumes" filter="url(#blur)"></g>
+          </g>
+          <ellipse id="surface" cx="300" cy="262" rx="138" ry="9"/>
+          <g id="ripples" fill="none" stroke="#9fc6d0"></g>
+
+          <!-- capsule -->
+          <g id="capsule">
+            <g id="core">
+              <rect x="-50" y="-150" width="100" height="150" rx="12" fill="#ffffff" fill-opacity=".45" stroke="#8fb0b8" stroke-width="2.5"/>
+              <rect x="-44" y="-118" width="88" height="96" rx="6" fill="url(#mesh)" stroke="#94a9ae" stroke-width="1.5"/>
+              <g id="leaves"></g>
+              <!-- water-flow ports -->
+              <g fill="#5e7479">
+                <rect x="-56" y="-74" width="14" height="8" rx="4"/><rect x="-56" y="-50" width="14" height="8" rx="4"/>
+                <rect x="42" y="-74" width="14" height="8" rx="4"/><rect x="42" y="-50" width="14" height="8" rx="4"/>
+              </g>
+              <rect x="-52" y="-14" width="104" height="14" rx="6" fill="#ffffff" fill-opacity=".6" stroke="#8fb0b8" stroke-width="2"/>
+              <rect x="-55" y="-158" width="110" height="12" rx="5" fill="#e7f2f4" stroke="#8fb0b8" stroke-width="2"/>
+            </g>
+            <g id="slider">
+              <rect x="-3" y="-300" width="6" height="175" fill="#9aa9ad" stroke="#7b8a8e" stroke-width="1"/>
+              <rect x="-7" y="-150" width="14" height="10" rx="3" fill="#2bb3b1"/>
+              <rect id="sleeve" x="-60" y="-130" width="120" height="112" rx="12" fill="url(#sleeveG)" fill-opacity=".82" stroke="#0c7778" stroke-width="2"/>
+              <rect x="-46" y="-124" width="10" height="100" rx="5" fill="#fff" opacity=".28"/>
+              <path d="M-48,-345 h96 a12,12 0 0 1 12,12 v20 a12,12 0 0 1 -12,12 h-30 l-18,12 l-18,-12 h-30 a12,12 0 0 1 -12,-12 v-20 a12,12 0 0 1 12,-12z" fill="#1fa7a6" stroke="#0c7778" stroke-width="2"/>
+              <text x="0" y="-328" text-anchor="middle" font-size="13" font-weight="800" fill="#fff" font-family="Segoe UI, Arial">OPEN /</text>
+              <text x="0" y="-313" text-anchor="middle" font-size="13" font-weight="800" fill="#fff" font-family="Segoe UI, Arial">CLOSE</text>
+            </g>
+          </g>
+
+          <!-- water in front (tints submerged parts) -->
+          <g clip-path="url(#mugIn)"><rect id="waterFront" x="140" y="262" width="320" height="280"/></g>
+
+          <!-- flow arrows -->
+          <g id="flow" opacity="0" fill="none" stroke-width="7" stroke-linecap="round">
+            <path id="inL" stroke="#2a86d6" marker-end="url(#ahBlue)"/>
+            <path id="inR" stroke="#2a86d6" marker-end="url(#ahBlue)"/>
+            <path id="outL" stroke="#f0902a" marker-end="url(#ahOrange)"/>
+            <path id="outR" stroke="#f0902a" marker-end="url(#ahOrange)"/>
+          </g>
+
+          <!-- mug front -->
+          <path d="M150,220 L450,220 L430,510 Q426,535 400,535 L200,535 Q174,535 170,510 Z" fill="url(#glassG)" stroke="#9dbcc4" stroke-width="3"/>
+          <ellipse cx="300" cy="220" rx="150" ry="13" fill="none" stroke="#b5ced4" stroke-width="3"/>
+          <path d="M172,250 L190,500" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity=".55"/>
+          <path d="M424,250 L412,420" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".4"/>
+
+          <!-- motion arrow -->
+          <g id="motion" opacity="0"><path id="motionPath" fill="#16a0a0"/></g>
+        </g>
+
+        <!-- callouts (screen space) -->
+        <g id="callouts" font-family="Segoe UI, Arial" font-size="13" font-weight="700"></g>
+      </svg>
+      <div class="badge" id="badge">0–3s</div>
+      <div class="ports" id="ports">Ports: SEALED</div>
+    </div>
+
+    <aside class="side" aria-live="polite">
+      <div id="text">
+        <span class="step-no" id="stepNo">STEP 1 OF 6</span>
+        <div class="title" id="title">Sealed capsule</div>
+        <div class="rule"></div>
+        <ul class="pts" id="pts"></ul>
+      </div>
+      <div class="spacer"></div>
+      <div class="controls">
+        <button class="btn" id="play" aria-label="Pause">❚❚ <span>Pause</span></button>
+        <button class="btn ghost" id="restart" aria-label="Restart">↺</button>
+        <span class="time" id="time">0.0s / 20s</span>
+      </div>
+      <div class="timeline" id="timeline"></div>
+    </aside>
+  </main>
+  <footer>Concept only. Seal performance, hot-water food safety and brewing control require testing. &nbsp;·&nbsp; <kbd>Space</kbd> play/pause &nbsp;<kbd>←</kbd><kbd>→</kbd> step &nbsp;<kbd>R</kbd> restart</footer>
+</div>
+
+<script>
+(() => {
+  const DUR = 20;
+  const STEPS = [
+    { s: 0,  e: 3,  title: "Sealed capsule",   pts: ["Dry tea sits in a porous inner filter.", "The waterproof sleeve covers the water-flow ports.", "Nothing gets in or out."] },
+    { s: 3,  e: 6,  title: "Lower into water", pts: ["Drop the sealed capsule into your cup.", "Ports stay covered, so no brewing yet.", "The water stays clear."] },
+    { s: 6,  e: 9,  title: "Lift to OPEN",     pts: ["Pull the OPEN / CLOSE rod up.", "The sleeve slides up the filter.", "The ports are uncovered."] },
+    { s: 9,  e: 13, title: "Watch tea diffuse", pts: ["Water flows in through the ports.", "Tea flows out into the cup.", "You decide how strong it gets."] },
+    { s: 13, e: 16, title: "Push to CLOSE",    pts: ["Press the rod back down.", "The sleeve covers the ports again.", "Brewing stops: no over-steeping."] },
+    { s: 16, e: 20, title: "Sip when ready",   pts: ["The tea stays in your cup.", "Wet leaves stay trapped inside the capsule.", "After use: open, empty, wash and dry."] },
+  ];
+
+  const $ = id => document.getElementById(id);
+  const NS = "http://www.w3.org/2000/svg";
+  const mk = (tag, attrs, parent) => { const el = document.createElementNS(NS, tag); for (const k in attrs) el.setAttribute(k, attrs[k]); if (parent) parent.appendChild(el); return el; };
+
+  const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+  const ease = x => { x = clamp(x); return x * x * (3 - 2 * x); };
+  const ramp = (t, a, b) => ease((t - a) / (b - a));
+  const lerp = (a, b, k) => a + (b - a) * k;
+  const mixRGBA = (c1, c2, k) => `rgba(${c1.map((v, i) => i < 3 ? Math.round(lerp(v, c2[i], k)) : lerp(v, c2[i], k).toFixed(3)).join(",")})`;
+
+  // ---- static geometry ----
+  // leaves: seeded pseudo-random shapes in the bottom of the filter
+  let seed = 7; const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
+  const leaves = [];
+  for (let i = 0; i < 26; i++) {
+    const x = -36 + rnd() * 72, y = -26 - rnd() * 34 - (Math.abs(x) < 20 ? rnd() * 8 : 0);
+    leaves.push(mk("ellipse", { cx: x.toFixed(1), cy: y.toFixed(1), rx: (5 + rnd() * 6).toFixed(1), ry: (1.8 + rnd() * 2).toFixed(1), transform: `rotate(${Math.round(rnd() * 180)} ${x.toFixed(1)} ${y.toFixed(1)})` }, $("leaves")));
+  }
+  // plume particles
+  const N = 90, plumes = [];
+  for (let i = 0; i < N; i++) plumes.push(mk("circle", { r: 0, fill: "rgb(196,104,18)" }, $("plumes")));
+  // ripples
+  const rip = [0, 1, 2].map(() => mk("ellipse", { cx: 300, cy: 262, rx: 0, ry: 0 }, $("ripples")));
+  // callouts
+  const CALL = [
+    { lx: 0, ly: -205, side: 1, text: "Control rod + seals", at: 0.3 },
+    { lx: 60, ly: -105, side: 1, text: "Sliding waterproof sleeve", at: 0.7 },
+    { lx: -44, ly: -40, side: -1, text: "Porous inner tea filter", at: 1.1 },
+    { lx: -56, ly: -70, side: -1, text: "Water-flow ports (covered)", at: 1.5 },
+  ].map(c => {
+    const g = mk("g", { opacity: 0 }, $("callouts"));
+    c.line = mk("polyline", { fill: "none", stroke: "#0e2648", "stroke-width": 2 }, g);
+    c.dot = mk("circle", { r: 5, fill: "#16a0a0", stroke: "#fff", "stroke-width": 2 }, g);
+    c.box = mk("rect", { rx: 10, fill: "#fff", stroke: "#16a0a0", "stroke-width": 2 }, g);
+    c.label = mk("text", { fill: "#0e2648" }, g);
+    c.label.textContent = c.text;
+    c.g = g; return c;
+  });
+
+  // ---- timeline UI ----
+  const segs = STEPS.map((st, i) => {
+    const b = document.createElement("button");
+    b.className = "seg"; b.style.flexGrow = st.e - st.s;
+    b.setAttribute("aria-label", `Step ${i + 1}: ${st.title}`);
+    b.innerHTML = `<div class="fill"></div><span class="t">${st.s}–${st.e}s</span><span>${st.title}</span>`;
+    $("timeline").appendChild(b);
+    return b;
+  });
+
+  // ---- state ----
+  let t = 0, playing = true, last = null, curStep = -1, dragging = false;
+
+  function stepAt(time) { for (let i = 0; i < STEPS.length; i++) if (time < STEPS[i].e) return i; return STEPS.length - 1; }
+
+  function render() {
+    // --- kinematics (all pure functions of t, so scrubbing works) ---
+    const lower = ramp(t, 3.1, 5.3);
+    const baseY = lerp(232, 500, lower) + (t < 3.1 ? Math.sin(t * 2.2) * 4 : 0);
+    const open = ramp(t, 6.6, 8.4) * (1 - ramp(t, 13.5, 15.2)); // 0 sealed, 1 open
+    const brew = ramp(t, 8.7, 13.4);                               // tea strength in cup
+    const wet = ramp(t, 8.6, 9.6);
+    const zoom = 1 - ramp(t, 2.3, 3.5);
+    const scale = lerp(1, 1.5, zoom);
+    const cx = 300, cy = lerp(300, baseY - 95, zoom);
+
+    $("cam").setAttribute("transform", `translate(300 300) scale(${scale.toFixed(4)}) translate(${-cx} ${(-cy).toFixed(2)})`);
+    $("capsule").setAttribute("transform", `translate(300 ${baseY.toFixed(2)})`);
+    $("slider").setAttribute("transform", `translate(0 ${(-open * 100).toFixed(2)})`);
+
+    // water colour
+    const clear = [196, 228, 238, 0.42], tea = [206, 122, 28, 0.82];
+    $("waterBack").setAttribute("fill", mixRGBA(clear, tea, brew));
+    $("waterFront").setAttribute("fill", mixRGBA([196, 228, 238, 0.16], [206, 122, 28, 0.34], brew));
+    $("surface").setAttribute("fill", mixRGBA([226, 243, 248, 0.9], [232, 160, 70, 0.95], brew));
+    const leafCol = mixRGBA([120, 84, 46, 1], [58, 38, 20, 1], wet);
+    leaves.forEach(l => l.setAttribute("fill", leafCol));
+
+    // ripples when the capsule enters the water
+    rip.forEach((r, i) => {
+      const a = t - 4.3 - i * 0.25;
+      if (a > 0 && a < 1.4) { const k = a / 1.4; r.setAttribute("rx", 20 + k * 110); r.setAttribute("ry", 3 + k * 7); r.setAttribute("stroke-opacity", (0.8 * (1 - k)).toFixed(3)); r.setAttribute("stroke-width", 2.5); }
+      else r.setAttribute("stroke-opacity", 0);
+    });
+
+    // tea plumes leaving through the ports
+    for (let i = 0; i < N; i++) {
+      const b = 8.6 + i * 0.055, age = t - b, life = 2.8, p = plumes[i];
+      if (age < 0 || age > life || b > 13.6) { p.setAttribute("r", 0); continue; }
+      const side = i % 2 ? -1 : 1, k = age / life;
+      const px = 300 + side * (54 + age * (34 + (i % 4) * 9) + Math.sin(i * 1.7 + age * 2.2) * 10);
+      const py = baseY - 58 + age * (16 + (i % 5) * 9) - Math.sin(age * 2.6 + i) * 8;
+      p.setAttribute("cx", px.toFixed(1)); p.setAttribute("cy", py.toFixed(1));
+      p.setAttribute("r", (5 + age * 13).toFixed(1));
+      p.setAttribute("fill-opacity", (0.6 * (1 - k) * open).toFixed(3));
+    }
+
+    // flow arrows
+    const flowA = ramp(t, 9.0, 9.5) * (1 - ramp(t, 12.6, 13.2));
+    $("flow").setAttribute("opacity", flowA.toFixed(3));
+    const y0 = baseY - 66;
+    $("inL").setAttribute("d", `M200,${y0 - 40} Q215,${y0} 236,${y0}`);
+    $("inR").setAttribute("d", `M400,${y0 - 40} Q385,${y0} 364,${y0}`);
+    $("outL").setAttribute("d", `M246,${y0 + 18} Q226,${y0 + 40} 210,${y0 + 70}`);
+    $("outR").setAttribute("d", `M354,${y0 + 18} Q374,${y0 + 40} 390,${y0 + 70}`);
+
+    // motion arrow (lift / push)
+    const upA = ramp(t, 6.1, 6.5) * (1 - ramp(t, 8.6, 9.0));
+    const dnA = ramp(t, 13.1, 13.5) * (1 - ramp(t, 15.4, 15.8));
+    const mA = Math.max(upA, dnA), bob = Math.sin(t * 6) * 6;
+    $("motion").setAttribute("opacity", mA.toFixed(3));
+    const ax = 395, ay = baseY - 330 - open * 100 + 30 + bob;
+    $("motionPath").setAttribute("d", upA >= dnA
+      ? `M${ax - 9},${ay + 45} h18 v-38 h16 l-25,-30 l-25,30 h16 z`
+      : `M${ax - 9},${ay - 25} h18 v38 h16 l-25,30 l-25,-30 h16 z`);
+
+    // callouts in screen space (only during the close-up)
+    const callOut = 1 - ramp(t, 2.2, 2.7);
+    CALL.forEach(c => {
+      const a = ramp(t, c.at, c.at + 0.35) * callOut;
+      c.g.setAttribute("opacity", a.toFixed(3));
+      if (a <= 0) return;
+      const sx = 300 + (300 + c.lx - cx) * scale, sy = 300 + (baseY + c.ly - cy) * scale;
+      const w = c.label.getComputedTextLength() + 18, h = 28;
+      const bx = c.side > 0 ? 592 - w : 8, by = sy - h / 2;
+      const ex = c.side > 0 ? bx : bx + w;
+      c.dot.setAttribute("cx", sx); c.dot.setAttribute("cy", sy);
+      c.line.setAttribute("points", `${sx},${sy} ${ex},${sy}`);
+      c.box.setAttribute("x", bx); c.box.setAttribute("y", by); c.box.setAttribute("width", w); c.box.setAttribute("height", h);
+      c.label.setAttribute("x", bx + 9); c.label.setAttribute("y", by + 19);
+    });
+
+    // --- UI ---
+    const si = stepAt(t);
+    if (si !== curStep) {
+      curStep = si;
+      const st = STEPS[si];
+      $("stepNo").textContent = `STEP ${si + 1} OF 6`;
+      $("title").textContent = st.title;
+      $("pts").innerHTML = st.pts.map(p => `<li>${p}</li>`).join("");
+      const box = $("text"); box.classList.remove("fade"); void box.offsetWidth; box.classList.add("fade");
+      $("badge").textContent = `${st.s}–${st.e}s`;
+    }
+    segs.forEach((b, i) => {
+      const st = STEPS[i], k = clamp((t - st.s) / (st.e - st.s));
+      b.querySelector(".fill").style.width = (k * 100) + "%";
+      b.classList.toggle("done", k >= 1); b.classList.toggle("cur", i === si);
+    });
+    const isOpen = open > 0.5;
+    const pe = $("ports");
+    pe.textContent = isOpen ? "Ports: OPEN" : "Ports: SEALED";
+    pe.style.color = pe.style.borderColor = isOpen ? "var(--amber)" : "var(--teal)";
+    $("time").textContent = `${t.toFixed(1)}s / ${DUR}s`;
+  }
+
+  function setPlaying(p) {
+    playing = p;
+    if (p && t >= DUR) t = 0;
+    $("play").innerHTML = p ? "❚❚ <span>Pause</span>" : (t >= DUR ? "↻ <span>Replay</span>" : "▶ <span>Play</span>");
+    $("play").setAttribute("aria-label", p ? "Pause" : "Play");
+    last = null;
+  }
+
+  function tick(now) {
+    if (playing && !dragging) {
+      if (last != null) t += Math.min(0.1, (now - last) / 1000);
+      last = now;
+      if (t >= DUR) { t = DUR; render(); setPlaying(false); }
+    }
+    render();
+    requestAnimationFrame(tick);
+  }
+
+  // controls
+  $("play").onclick = () => setPlaying(!playing);
+  $("restart").onclick = () => { t = 0; setPlaying(true); };
+  const jump = i => { t = STEPS[clamp(i, 0, STEPS.length - 1)].s + 0.001; last = null; render(); };
+  // keyboard activation of a step button (mouse/touch is handled by the pointer logic below)
+  segs.forEach((b, i) => b.addEventListener("click", e => { if (e.detail === 0) jump(i); }));
+
+  // tap a step to jump to it, or drag along the timeline to scrub
+  const tl = $("timeline");
+  const timeAtX = x => { const r = tl.getBoundingClientRect(); return clamp((x - r.left) / r.width) * DUR; };
+  let moved = false, downX = 0;
+  tl.addEventListener("pointerdown", e => { dragging = true; moved = false; downX = e.clientX; tl.setPointerCapture(e.pointerId); });
+  tl.addEventListener("pointermove", e => {
+    if (!dragging) return;
+    if (Math.abs(e.clientX - downX) > 4) moved = true;
+    if (moved) { t = timeAtX(e.clientX); last = null; }
+  });
+  tl.addEventListener("pointerup", e => {
+    if (dragging && !moved) jump(stepAt(timeAtX(e.clientX)));
+    dragging = false; last = null;
+  });
+  tl.addEventListener("pointercancel", () => { dragging = false; });
+
+  document.addEventListener("keydown", e => {
+    if (e.code === "Space") { e.preventDefault(); setPlaying(!playing); }
+    else if (e.key === "ArrowRight") jump(stepAt(t) + 1);
+    else if (e.key === "ArrowLeft") jump(t - STEPS[stepAt(t)].s > 0.6 ? stepAt(t) : stepAt(t) - 1);
+    else if (e.key === "r" || e.key === "R") { t = 0; setPlaying(true); }
+  });
+
+  // honour reduced motion: start paused
+  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) setPlaying(false);
+  // deep link: osme_storyboard.html#t=10 opens paused at 10 s
+  const m = location.hash.match(/t=([\d.]+)/);
+  if (m) { t = clamp(parseFloat(m[1]), 0, DUR); setPlaying(false); }
+  requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
