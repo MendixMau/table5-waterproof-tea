@@ -23,3 +23,11 @@
 | 3 | S5 | (judge) damage not shown; orbs unexplained | caption "Easy, but every tea gets the boil."; orbs only from 13.8 s | v08 |
 | 3 | S6 | arc strikes caption/eyebrow; glass cut on push | NOW caption moved to the bottom (dy 845), 14.3-15.6 s; timeline out 13.9-14.3; CAM k 1.5 -> 1.3, cy 330 -> 560; sub-label 36 -> 40 px, "open from 80 down to 70 °C" | v08 |
 | 3 | S8 | tagline late; grey fade | tag 14.7 -> 14.5 (film 22.5 s); fade only in the last 0.3 s | v08 |
+| 4 | (judge) S5 | "ANY TEA 100°" doesn't say why the boil is wrong; 1908 wording off-storyline | panel "SENCHA 100° too hot for Sencha"; caption "The tea bag trades art for ease." / "96% of UK tea is brewed from a bag."; VO "traded art for ease" | v09 |
+| 4 | (judge) S5 | bag dissolves into dots at 13.9 s | waiting bubbles opacity 0 | v09 |
+| 4 | (judge) S8 | tagline too small | 48 -> 60 px | v09 |
+| 4 | S1 FAIL | lower 43 % empty before 0.9 s | card clock 0.9 + 1.2t -> 2.2 + 0.6t: arc, icons and labels building from frame 0, all in by 2.4 s | v10 |
+| 4 | S3 FAIL | steam/wind arcs 12 px under caption | kettle group 40 px lower (translate 960 570 -> 610) | v10 |
+| 4 | S6 FAIL | dial arc runs through "°C" of sub-label | sub-label "open 80 to 70 °C" (ends x ~465, arc tail at x ~496) | v10 |
+| 4 | S6 WARN | NOW caption 30 px from bottom | dy 845 -> 805 | v10 |
+| 4 | WARNs left | S2/S4 figures 34-40 % width; S5/S7 left-heavy; S6 steam crosses tag; S8 tag grey till 24 s | not done (time), listed for handover | - |
