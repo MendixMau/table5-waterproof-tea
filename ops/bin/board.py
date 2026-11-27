@@ -118,6 +118,8 @@ def topic_rows(lines, c):
                 break
         note = next((l[-1] for l in reversed(mine) if l[2].upper() == "PREVIEW"), last[-1] if last else "")
         imgs = sorted(GAL.glob(prefix + "*.png"), key=lambda p: p.stat().st_mtime)
+        if (GAL / c.get("pin." + key, "-")).is_file():  # the lead pins a decision sheet during a gate
+            imgs.append(GAL / c["pin." + key])
         rows.append(dict(key=key, label=label, icon=icon, state=state, judge=judge,
                          when=last[0] if last else "", note=short(note), img=imgs[-1] if imgs else None))
     return rows

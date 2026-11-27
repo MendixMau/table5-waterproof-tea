@@ -4,4 +4,4 @@ now=Gate 1 at 10:40: you review brand, logo and market. Site, video and pitch wa
 decide=Logo: B "Scent S"? · Price: tin $18, Ritual $24 · Ask $2.5m at $10m pre · Site: multi-page shop + real waitlist?
 deck=hold
 site=hold
-video=hold
+pin.brand=brand-gate1.png

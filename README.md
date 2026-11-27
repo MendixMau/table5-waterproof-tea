@@ -4,18 +4,18 @@
 Everyone drives at least once.
 
 <!-- LIVE:START -->
-## Live status · 10:26 · 3 h 03 to hand-in
+## Live status · 10:31 · 2 h 58 to hand-in
 
 **Now:** Gate 1 at 10:40: you review brand, logo and market. Site, video and pitch wait for it.
 
 | | Topic | Status | Latest preview |
 |---|---|---|---|
-| 🎨 | Brand & logo | 🟡 working · judge 21/25 · 10:22 | <img src="gallery/brand-v07-board.png" width="260"> |
-| 🚦 | Gate 1 deck | 🟡 working · 10:23 | <img src="gallery/gate1-v01.png" width="260"> |
-| 🍵 | Product demo | 🟡 working · 10:24 | <img src="gallery/product-v02.png" width="260"> |
+| 🎨 | Brand & logo | 🟡 working · judge 21/25 · 10:27 | <img src="gallery/brand-gate1.png" width="260"> |
+| 🚦 | Gate 1 deck | 🟡 working · judge 3.5/5 · 10:30 | <img src="gallery/gate1-v03.png" width="260"> |
+| 🍵 | Product demo | 🟡 working · 10:30 | <img src="gallery/product-v03.png" width="260"> |
 | 🎤 | Pitch deck | ⚪ on hold · 10:18 | <img src="gallery/deck-v03.png" width="260"> |
 | 🌐 | Site | ⚪ on hold · 10:20 | <img src="gallery/site-v02.png" width="260"> |
-| 🎬 | Video | ⚪ on hold · 10:25 | <img src="gallery/video-v02.png" width="260"> |
+| 🎬 | Video | 🟡 working · 10:25 | <img src="gallery/video-v02.png" width="260"> |
 
 **Waiting on the team:** Logo: B "Scent S"? · Price: tin $18, Ritual $24 · Ask $2.5m at $10m pre · Site: multi-page shop + real waitlist?
 <!-- LIVE:END -->

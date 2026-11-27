@@ -83,3 +83,9 @@
 10:24 | product-judge-2 | START | judging product/index.html round 2
 10:25 | video-lead | START | resumed (user: go, no Kling); building film v02 with product beat + logo v4
 10:26 | lead | DONE | facts.md: one-liner, colours, font, price (team 10:23), market, competitors, ask, tea windows, proof points; business case single bag -> $1.50
+10:27 | product-judge-2 | DONE | Clarity 4, Cred 4, Demo 5, Hero 3, Projector 3; ghost-wisp bug after seal; report /tmp/t5-product/judge2-1027.md
+10:27 | brand-lead | PREVIEW | gallery/brand-v08-logo-wide.png | judge 21/25 logo | validator pending | 'i' fix: bag 20->26 wide, S stroke 3.2->4.0; files regenerated
+10:27 | brand-lead | PROGRESS | logo v4.1 (same file names): wider bag + bolder S after product judge read it as 'i' at 50px; gate1 sheet, assets, board re-rendered
+10:27 | presentation-lead | PREVIEW | gallery/gate1-v02.png | s3 hero refit + 1-line title + zoomed tin/bag; s4 subscriptions $530m hero + gift segment; s5 ask 20% dilution/24 mo, assumptions marked; s6 Kling credits 200 of 322, provisional tags; latin-ext Jost for ē | judge 3.5/5 | validator FAIL (5)
+10:30 | product-lead | PREVIEW | gallery/product-v03.png | judge round 2 fixes: cup ~1.3x, wisp rises from the bag (gold to jade), no ghost wisp, visible bitter 1908, clear water before opening, cleaner gauge, presenter type up
+10:30 | presentation-lead | PREVIEW | gallery/gate1-v03.png | price one story on s5+s6 ($2.00 rec or $1.50); year 3 $8.3 to 9 m; Kling 'no for now (user 10:25)' to confirm; Gen Z 32% + Mintel wording per facts.md; captions 16-18 px | judge 3.5/5 | validator FAIL (5)

@@ -39,6 +39,7 @@ ICONS = [img(A / f"icon-{n}.svg") for n in ("self-stopping", "three-infusions", 
 
 FONTX = bp.b64(D / "assets-src" / "jost-latin-ext.woff2", "font/woff2")
 CSS = bp.CSS + r"""
+.src{font-size:clamp(15px,.9vw,17px)}
 @font-face{font-family:"Jost";src:url(__FONTX__) format("woff2");font-weight:300 700;unicode-range:U+0100-02BA,U+1E00-1EFF}
 .g1chip{position:absolute;top:5.2vh;right:72px;font-size:13px;letter-spacing:.18em;text-transform:uppercase;padding:7px 16px;border-radius:999px;border:1px solid rgba(242,163,58,.45);color:var(--amber);background:rgba(242,163,58,.07)}
 .g1chip.ok{border-color:rgba(61,186,155,.45);color:var(--jade);background:rgba(61,186,155,.07)}
@@ -51,7 +52,7 @@ CSS = bp.CSS + r"""
 .opt:last-child{border-bottom:0}
 .opt img{width:150px;border-radius:10px;background:#17171B}
 .opt .sc{font-size:clamp(32px,2.4vw,46px);font-weight:500}
-.kit{display:grid;grid-template-columns:1.5fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:16px;height:min(64vh,700px)}
+.kit{display:grid;grid-template-columns:2.2fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:16px;height:min(66vh,720px)}
 .kit .t{border-radius:16px;overflow:hidden;background:#111114;border:1px solid var(--line);position:relative;display:flex;align-items:center;justify-content:center}
 .kit .t img{width:100%;height:100%;object-fit:cover}
 .kit .t.fit img{object-fit:contain;padding:10px}
@@ -64,17 +65,17 @@ CSS = bp.CSS + r"""
 .mbar .tr{height:54px;position:relative}
 .mbar .fl{height:100%;border-radius:8px;min-width:6px}
 .mbar .v{position:absolute;top:50%;transform:translateY(-50%);font-size:clamp(22px,1.7vw,32px);font-weight:500;padding-left:14px}
-.mbar .w{font-size:clamp(13px,.9vw,16px);color:var(--muted);margin-top:4px}
+.mbar .w{font-size:clamp(16px,.95vw,18px);color:var(--muted);margin-top:4px}
 .tiles{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:4vh}
 .tile{border:1px solid var(--line);border-radius:14px;padding:18px 20px;background:rgba(243,238,230,.03)}
 .tile .v{font-size:clamp(28px,2.2vw,42px);font-weight:500;line-height:1.1}
 .tile .k{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
-.tile .w{font-size:14px;color:rgba(243,238,230,.65);margin-top:4px}
+.tile .w{font-size:clamp(16px,.95vw,18px);color:rgba(243,238,230,.65);margin-top:4px}
 .dec{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.dec .card{display:flex;flex-direction:column;gap:10px}
-.dec .q1{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-.dec .rec{font-size:clamp(22px,1.6vw,30px);font-weight:500;line-height:1.25}
-.dec .alt{font-size:clamp(14px,.95vw,17px);color:rgba(243,238,230,.65)}
+.dec .card{display:flex;flex-direction:column;gap:14px;min-height:22vh;justify-content:center;padding:3.2vh 2.4vw}
+.dec .q1{font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.dec .rec{font-size:clamp(28px,2.1vw,40px);font-weight:500;line-height:1.25}
+.dec .alt{font-size:clamp(16px,1.1vw,20px);color:rgba(243,238,230,.65)}
 .ic3{display:flex;gap:26px;justify-content:center;margin-top:3vh}
 .ic3 div{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:rgba(243,238,230,.75)}
 .ic3 img{height:64px}
@@ -111,7 +112,7 @@ SLIDES = r"""
         <div class="opt"><img src="__SYM__" alt="" style="padding:22px 40px;background:#17171B"/><div><div class="sc amber">21<span class="muted" style="font-size:.5em"> / 25</span></div><div class="sm">B · Scent S · <b class="jade" style="font-weight:500">recommended</b></div></div></div>
         <div class="opt"><img src="__OPT_A__" alt="Option A"/><div><div class="sc">18<span class="muted" style="font-size:.5em"> / 25</span></div><div class="sm">A · Three Bubbles</div></div></div>
         <div class="opt"><img src="__OPT_C__" alt="Option C"/><div><div class="sc">12<span class="muted" style="font-size:.5em"> / 25</span></div><div class="sm">C · Monoline</div></div></div>
-        <div class="src" style="margin-top:1.5vh">Score: brand judge, 5 criteria × 5 points</div><div style="margin-top:2vh"><img src="__LOCK__" alt="" style="height:54px"/></div>
+        <div class="src" style="margin-top:1.5vh">Brief: a tea bag plus a scent wisp · scored by the brand judge, out of 25</div><div style="margin-top:2vh"><img src="__LOCK__" alt="" style="height:54px"/></div>
       </div>
     </div>
   </div>
@@ -120,12 +121,12 @@ SLIDES = r"""
 
 <!-- 3 · IDENTITY IN USE -->
 <div class="slide bg-night" id="s3" data-steps="0" data-title="Identity in use">
-  <div class="g1chip ok">Decision · none, for review</div>
+  <div class="g1chip ok">Decision · confirm direction</div>
   <div class="head a"><div class="label">Gate 1 · identity in use</div>
     <div class="h1">Midnight Brew on hero, tin, bag and <em>#ThreeBubbles</em> post.</div></div>
   <div class="body">
     <div class="kit">
-      <div class="t fit" style="grid-row:span 2"><img src="__HERO__" alt="" style="padding:0"/><span class="lb">Hero</span></div>
+      <div class="t" style="grid-row:span 2"><img src="__HERO__" alt="" style="object-position:84% 50%"/><span class="lb">Hero</span></div>
       <div class="t"><img src="__TIN__" alt="" style="transform:scale(1.35)"/><span class="lb">12-bag tin</span></div>
       <div class="t"><img src="__BAG__" alt="" style="transform:scale(1.35)"/><span class="lb">Single bag</span></div>
       <div class="t fit"><img src="__SOCIAL__" alt=""/><span class="lb">#ThreeBubbles</span></div>
@@ -134,7 +135,7 @@ SLIDES = r"""
         <div><i style="background:#F2A33A"></i>Amber #F2A33A · hot</div>
         <div><i style="background:#3DBA9B"></i>Jade #3DBA9B · cool</div>
         <div><i style="background:#F3EEE6"></i>Paper #F3EEE6</div>
-        <div style="font-size:22px;font-weight:500;letter-spacing:.06em;margin-top:6px">Jost · Aa Bb 0.50</div>
+        <div style="font-size:22px;font-weight:500;letter-spacing:.06em;margin-top:6px">Jost · Every tea has its temperature.</div>
       </div><span class="lb">Palette and type</span></div>
     </div>
   </div>
@@ -142,7 +143,7 @@ SLIDES = r"""
 </div>
 
 <!-- 4 · CUSTOMER -->
-<div class="slide bg-warm top" id="s4" data-steps="0" data-title="Customer">
+<div class="slide bg-warm" id="s4" data-steps="0" data-title="Customer">
   <div class="g1chip">Decision · lead with A or B</div>
   <div class="head a"><div class="label">Gate 1 · the customer</div>
     <div class="h1">First buyer: the <em>curious specialty drinker</em>, 25 to 45, who pays for good leaves; gifts and Ritual bring them in.</div></div>
@@ -150,28 +151,28 @@ SLIDES = r"""
     <div class="g3">
       <div class="card q"><img src="__IC0__" alt="" style="height:52px;align-self:flex-start"/><div class="qt">“I've been steeping this for 20 minutes …”</div><div class="src">weland · Hacker News, trimmed<br/>news.ycombinator.com/item?id=7725580</div></div>
       <div class="card q"><img src="__IC1__" alt="" style="height:52px;align-self:flex-start"/><div class="qt">“I spend way too much on tea to just throw them away after one steep!”</div><div class="src">hopeofdawn · TeaChat<br/>teachat.com/viewtopic.php?p=212298</div></div>
-      <div class="card q"><img src="__IC2__" alt="" style="height:52px;align-self:flex-start"/><div class="qt">“My leaves start not tasting as fresh when I reuse them from the day before.”</div><div class="src">silversun · TeaChat<br/>same thread</div></div>
+      <div class="card q"><img src="__IC2__" alt="" style="height:52px;align-self:flex-start"/><div class="qt">“…my leaves start not tasting as fresh when I reuse them from the day before.”</div><div class="src">silversun · TeaChat<br/>same thread</div></div>
     </div>
     <div class="tiles" style="grid-template-columns:1.4fr 1fr 1fr;margin-top:4vh">
       <div class="tile" style="border-color:rgba(61,186,155,.45)"><div class="k">Route in: tea subscriptions</div><div class="v jade">$530 m <span style="font-size:.5em">+9.1% a year</span></div><div class="w">“preference for premium tea experiences” · Fact.MR 2025</div></div>
-      <div class="tile"><div class="k">Segment A · lead</div><div class="v" style="font-size:clamp(20px,1.4vw,26px)">Curious specialty drinker</div><div class="w">16% of UK tea drinkers already brew black tea loose (UKTIA 2024)</div></div>
-      <div class="tile"><div class="k">Segment B · or lead with</div><div class="v" style="font-size:clamp(20px,1.4vw,26px)">Gift and Ritual buyer</div><div class="w">7 in 10 tea drinkers happy to get a premium tea box as a gift (Mintel UK)</div></div>
+      <div class="tile"><div class="k">Segment A · lead</div><div class="v" style="font-size:clamp(20px,1.4vw,26px)">Curious specialty drinker</div><div class="w">32% of UK Gen Z drink green tea (YouGov); Sencha leads the demo</div></div>
+      <div class="tile"><div class="k">Segment B · or lead with</div><div class="v" style="font-size:clamp(20px,1.4vw,26px)">Gift and Ritual buyer</div><div class="w">7 in 10 would welcome a premium tea gift box (Mintel)</div></div>
     </div>
   </div>
-  <aside class="notes"><p>Sources: truth/customers-market.md §1 (quotes, URLs opened), §2 segments A and B ($530 m Fact.MR, Mintel 7 in 10, UKTIA 16%); facts.md Customer (provisional).</p></aside>
+  <aside class="notes"><p>Sources: truth/customers-market.md §1 (quotes, URLs opened), §2 segments A and B ($530 m Fact.MR, Mintel 7 in 10, YouGov 32% Gen Z green, wording as facts.md Proof points); facts.md Customer (provisional).</p></aside>
 </div>
 
 <!-- 5 · MARKET AND MONEY -->
 <div class="slide bg-grid top" id="s5" data-steps="0" data-title="Market and money">
   <div class="g1chip">Decision 3 and 4 · price and ask</div>
   <div class="head a"><div class="label">Gate 1 · market, price, ask <span class="prov">provisional</span></div>
-    <div class="h1">Tea bags are a <em>$7.1 billion</em> market; premium bags in four countries are $640 million; year 3 aims for $9 million.</div></div>
+    <div class="h1">Tea bags are a <em>$7.1 billion</em> market; premium bags in four countries are $640 million; year 3 $8.3 to 9 million.</div></div>
   <div class="body">
     <div class="mbar"><div class="k">TAM · the world's tea bags</div><div><div class="tr"><div class="fl" style="width:100%;background:rgba(243,238,230,.18)"></div><div class="v" style="left:0">$7.1 bn</div></div><div class="w">$18.8 bn tea (Fortune BI 2025) × 38% sold in bags · sourced</div></div></div>
     <div class="mbar"><div class="k">SAM · premium, JP CN UK US</div><div><div class="tr"><div class="fl" style="width:9%;background:var(--jade)"></div><div class="v jade" style="left:9%">$640 m</div></div><div class="w">× 45% four markets × 20% premium · our assumptions</div></div></div>
-    <div class="mbar"><div class="k">SOM · OSME year 3</div><div><div class="tr"><div class="fl" style="width:.5%;background:var(--amber);min-width:8px"></div><div class="v amber" style="left:.5%">$9 m</div></div><div class="w">6.5 m bags × $1.38 · assumption · <span class="amber">validator: the stated 70/30 D2C/retail mix gives $1.28, so $8.3 m</span></div></div></div>
+    <div class="mbar"><div class="k">SOM · OSME year 3</div><div><div class="tr"><div class="fl" style="width:.5%;background:var(--amber);min-width:8px"></div><div class="v amber" style="left:.5%">$8.3 to 9 m</div></div><div class="w">6.5 m bags × $1.38 · assumption · validator: the stated 70/30 D2C/retail mix gives $1.28, so $8.3 m</div></div></div>
     <div class="tiles"><span class="prov" style="position:absolute;margin:-26px 0 0 0">provisional, all four</span>
-      <div class="tile" style="border-color:rgba(242,163,58,.45)"><div class="k">Single bag · decide</div><div class="v">$1.50 <span class="muted" style="font-size:.5em">or</span> $2.00</div><div class="w">at $1.50 the tin saves nothing</div></div>
+      <div class="tile" style="border-color:rgba(242,163,58,.45)"><div class="k">Single bag · decide</div><div class="v">$2.00 <span class="muted" style="font-size:.5em">or</span> $1.50</div><div class="w">$2.00 recommended; at $1.50 the tin saves nothing</div></div>
       <div class="tile"><div class="k">12-bag tin</div><div class="v">$18</div><div class="w">3 cups a bag (assumption) · $0.50 a cup</div></div>
       <div class="tile"><div class="k">Ritual</div><div class="v">$24<span class="muted" style="font-size:.5em"> / month</span></div><div class="w">16 bags · ~60% gross margin</div></div>
       <div class="tile" style="border-color:rgba(242,163,58,.45)"><div class="k">The ask</div><div class="v amber">$2.5 m</div><div class="w">SAFE · $10 m pre · 20% dilution · 24 months runway</div></div>
@@ -181,18 +182,18 @@ SLIDES = r"""
 </div>
 
 <!-- 6 · DECISIONS -->
-<div class="slide bg-mesh top" id="s6" data-steps="0" data-title="Decisions">
+<div class="slide bg-mesh" id="s6" data-steps="0" data-title="Decisions">
   <div class="head a"><div class="label">Gate 1 · decide now</div>
     <div class="h1">Four decisions unlock the pitch, the site and the film: <em>logo, price, ask, Kling</em>.</div></div>
   <div class="body">
     <div class="dec">
       <div class="card"><div class="q1">1 · Logo</div><div class="rec">B, Scent S</div><div class="alt">A Three Bubbles 18 · C Monoline 12</div></div>
-      <div class="card"><div class="q1">2 · Price <span class="prov">provisional</span></div><div class="rec">$2.00 a bag · $18 tin · $24 a month</div><div class="alt">validator: singles at $2.00 so the $18 tin is a real deal; $1.50 makes the tin no cheaper per bag</div></div>
-      <div class="card"><div class="q1">3 · The ask <span class="prov">provisional</span></div><div class="rec">$2.5 m SAFE at $10 m pre-money</div><div class="alt">funds the food-safe membrane and the first Ritual boxes · margin ~60% (not 62%), year 3 $8.3 to 9 m</div></div>
-      <div class="card"><div class="q1">4 · Kling film credits</div><div class="rec">Yes or no? <span class="muted" style="font-size:.7em">about 200 of 322 credits</span></div><div class="alt">3 photoreal film inserts, 5 s each, ~150 credits · 3 hero and pack stills, ~50 · nothing spent before a yes</div></div>
+      <div class="card"><div class="q1">2 · Price <span class="prov">provisional</span></div><div class="rec">Single bag $2.00 <span class="muted" style="font-size:.6em">(recommended)</span> or $1.50</div><div class="alt">$2.00: the $18 tin (12 bags) is a real saving · $1.50: the tin saves nothing · tin $18 and Ritual $24 a month stay</div></div>
+      <div class="card"><div class="q1">3 · The ask <span class="prov">provisional</span></div><div class="rec">$2.5 m SAFE at <span style="white-space:nowrap">$10 m pre-money</span></div><div class="alt">20% dilution · 24 months runway · funds the food-safe membrane and the first Ritual boxes</div></div>
+      <div class="card"><div class="q1">4 · Kling film credits</div><div class="rec">No for now <span class="muted" style="font-size:.6em">(user, 10:25)</span></div><div class="alt">confirm, or reopen: 3 film inserts ~150 + 3 stills ~50 = ~200 of 322 credits · nothing spent</div></div>
     </div>
   </div>
-  <aside class="notes"><p>Kling: balance 322 credits, Standard; film inserts ~50 credits each (video, ops/questions.md 10:11), stills ~8 to 16 each, ~50 for 3 (brand, 10:11). Questions logged in ops/questions.md. Recommendations from facts.md (provisional) and brand judge scores.</p></aside>
+  <aside class="notes"><p>Kling: ops/log.md 10:25 video-lead "user: go, no Kling", shown as the current answer to confirm. Balance 322 credits, Standard; film inserts ~50 credits each (video, ops/questions.md 10:11), stills ~8 to 16 each, ~50 for 3 (brand, 10:11). Questions logged in ops/questions.md. Recommendations from facts.md (provisional) and brand judge scores.</p></aside>
 </div>
 """
 
