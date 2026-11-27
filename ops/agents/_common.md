@@ -11,6 +11,12 @@ Exercise: presales training "Sell the unsellable", Table 5. Hand-ins by 13:30: b
 - B2C only: D2C web shop, "Ritual" subscription, premium retail. No hotels, offices or B2B.
 - Look "Midnight Brew": dark matte black, a glowing temperature arc from amber (hot) to jade (cool), Lu Yu's three bubble stages as a 3-dot motif, geometric sans display, calm, premium. Never a default app or SaaS look.
 
+## Tone decisions (09:58)
+- Positive story: life, art, scent, love. Do NOT frame Osme as anti-screen, anti-phone or anti-AI; no "screen-free" or "phone-down" rituals.
+- Everyone can be a tea person: inclusive, welcoming, never snobbish.
+- "Tea-tech disruptor" appears only on jury slides (market, business, the ask), never in consumer copy.
+- Name written OSME; said "oz-MAY".
+
 ## Never lose work
 1. Before starting, check whether your output file already exists. If it does, RESUME from it; don't start over.
 2. Save to your output file early (a skeleton within 3 minutes) and after every meaningful step.

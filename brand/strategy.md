@@ -7,7 +7,7 @@ Sources: facts.md (locked 10:40) and ops/agents/_common.md. truth/history-cultur
 | | |
 |---|---|
 | Purpose | Give tea back its art: the right water, the right moment, the full scent, in every cup. |
-| The enemy | **The rush.** A century of convenience that boils everything to 100 degrees, stews the leaf bitter and forgets the bag in the mug. And a world of feeds, alerts and machines that leaves no time to breathe. |
+| The enemy | **The rush.** A century of convenience that boils everything to 100 degrees, stews the leaf bitter and forgets the bag in the mug. |
 | Belief | In a world of AI and craziness, we go back to what life is about: art, love, scent. Technology should serve the ritual, not replace it. |
 | Values | **Patience** (we wait for the water, not the other way round). **Ritual** (a cup is a moment, not a fuel stop). **Harmony** (old craft and new science in one bag). |
 | Personality | The quiet host. Calm, warm, exact. Speaks little and means it. Knows 1,200 years of tea history and never lectures. Futuristic in material, timeless in manner. |
@@ -37,7 +37,7 @@ Why: the one-liner tells a sales jury the whole product in one breath (opens at 
 
 ## 3. Manifesto (60 words)
 
-> The world got fast. Feeds, alerts, machines thinking for us.
+> The world got fast. We forgot to taste it.
 > So we go back.
 > To art: water read by its bubbles, as Lu Yu did in the eighth century.
 > To love: a cup made for someone, at its own temperature.
@@ -51,11 +51,11 @@ Read-aloud time about 25 seconds: fits the pitch close or the solution slide.
 ## 4. The movement mechanic
 
 - **Members are called Keepers** (keepers of the scent, keepers of the ritual). Subscribers to "Ritual" become Keepers; the welcome box says "You are now a Keeper."
-- **The ritual: Three Bubbles.** Once a day, one cup with no screen. Watch the water through Lu Yu's three stages (fish eyes, string of pearls, rolling waves) and take one breath at each. The 3-dot motif is the logo, the ritual and the gesture.
+- **The ritual: Three Bubbles.** Once a day, one cup made with love. Watch the water through Lu Yu's three stages (fish eyes, string of pearls, rolling waves) and take one breath at each. The 3-dot motif is the logo, the ritual and the gesture.
 - **Hashtag:** #ThreeBubbles (primary), #EveryTeaHasItsTemperature (campaign).
-- **Share format:** a 10-second, phone-down clip of the bag opening in the cup. No faces, no talking, just water and scent.
+- **Share format:** a 10-second clip of the bag opening in the cup. No faces, no talking, just water and scent.
 - **Call to action:** "Take back one cup a day. Become a Keeper." (site button: "Begin the Ritual")
-- **Proof of movement for the pitch:** Keeper count, cups kept screen-free, infusions per bag (waste saved).
+- **Proof of movement for the pitch:** Keeper count, cups brewed together, infusions per bag (waste saved).
 
 ## 5. Verbal identity
 

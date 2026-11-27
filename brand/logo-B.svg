@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 300" width="240" height="300">
+  <rect width="240" height="300" fill="#1E2A44"/>
+  <g fill="none" stroke="#3FC1B0" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <!-- bag outline doubles as thermometer: rounded bag on a bulb -->
+    <path d="M120 48 V30"/>
+    <path d="M84 48 H156 Q166 48 166 58 V150 Q166 162 154 162 H86 Q74 162 74 150 V58 Q74 48 84 48 Z"/>
+    <!-- scale ticks -->
+    <path d="M90 76 H104 M90 98 H104 M90 142 H104"/>
+    <!-- setpoint mark -->
+    <path d="M90 120 H150"/>
+  </g>
+  <!-- liquid column to setpoint -->
+  <rect x="104" y="10" width="32" height="20" rx="3" fill="#3FC1B0"/>
+  <rect x="116" y="120" width="8" height="42" fill="#3FC1B0"/>
+  <circle cx="120" cy="186" r="22" fill="#3FC1B0"/>
+  <path d="M150 112 L162 120 L150 128 Z" fill="#3FC1B0"/>
+  <text x="120" y="258" text-anchor="middle" font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="40" letter-spacing="1" fill="#3FC1B0">setpoint</text>
+</svg>

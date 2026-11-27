@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 300" width="240" height="300">
+  <rect width="240" height="300" fill="#FFF4E6"/>
+  <g fill="none" stroke="#E2622E" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M120 62 V30"/>
+    <path d="M84 62 H156 Q170 62 170 76 V176 Q170 192 154 192 H86 Q70 192 70 176 V76 Q70 62 84 62 Z"/>
+    <!-- sleeping (closed) eyes -->
+    <path d="M90 124 Q102 136 114 124"/>
+    <path d="M126 124 Q138 136 150 124"/>
+    <!-- smile -->
+    <path d="M108 156 Q120 166 132 156"/>
+  </g>
+  <rect x="102" y="12" width="36" height="22" rx="4" fill="#E2622E"/>
+  <text x="120" y="254" text-anchor="middle" font-family="'Fraunces',Georgia,serif" font-weight="700" font-size="42" fill="#E2622E">forgetea</text>
+</svg>

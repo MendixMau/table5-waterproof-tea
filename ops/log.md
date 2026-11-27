@@ -11,3 +11,9 @@
 09:55 | storyteller | PROGRESS | skeleton saved to deck/story.md
 09:56 | identity | PROGRESS | tokens ready: brand/identity/tokens.css (names stable)
 09:56 | strategist | DONE | brand/strategy.md: platform, 5+5 lines (rec: one-liner + 'Every tea has its temperature.'), 60-word manifesto, Keepers/#ThreeBubbles, verbal ID, 5 questions
+09:56 | storyteller | PROGRESS | draft 1: arc, 8 slides, script, hooks saved
+09:56 | storyteller | PROGRESS | aligned close with brand/strategy.md (tagline, Keepers)
+09:57 | truth-customers | PROGRESS | complaints (7) + first market numbers saved
+09:57 | truth-history | PROGRESS | sections 2-4 sourced (Lu Yu, te/cha, tea bag); next cultures, aroma, why now, quotes
+09:57 | storyteller | PROGRESS | problem and evidence slides grounded in customers-market.md quotes and UKTIA
+09:57 | identity | PROGRESS | logos v3 saved (ring opens on the diagonal, 3 bubbles escape); building board

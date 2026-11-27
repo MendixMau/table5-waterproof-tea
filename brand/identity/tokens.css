@@ -1,0 +1,33 @@
+/* OSME brand tokens - "Midnight Brew". Names are stable; values may be tuned. */
+:root {
+  /* Colour roles */
+  --brand-bg:       #0B0B0D;  /* matte midnight black - every page starts here */
+  --brand-surface:  #17171B;  /* cards, panels, the cup */
+  --brand-line:     #2A2A30;  /* hairlines, dividers */
+  --brand-primary:  #F2A33A;  /* Amber - heat, the moment it opens. Buttons, key numbers */
+  --brand-accent:   #3DBA9B;  /* Jade - the cooled cup, it closes. Links, success, calm */
+  --brand-text:     #F3EEE6;  /* warm paper white */
+  --brand-muted:    #8E8A83;  /* captions, secondary copy */
+
+  /* The temperature arc: hot amber to cool jade (left = hot, right = cool) */
+  --brand-arc-hot:  #F2A33A;
+  --brand-arc-mid:  #D9C46B;
+  --brand-arc-cool: #3DBA9B;
+  --brand-arc: linear-gradient(90deg, var(--brand-arc-hot) 0%, var(--brand-arc-mid) 48%, var(--brand-arc-cool) 100%);
+  --brand-glow: 0 0 24px rgba(242,163,58,.35), 0 0 48px rgba(61,186,155,.18);
+
+  /* Type */
+  --font-display: "Futura", "Jost", "Century Gothic", "Avenir Next", sans-serif;
+  --font-body:    "Avenir Next", "Avenir", "Inter", "Helvetica Neue", Arial, sans-serif;
+  --fw-display: 500;
+  --tracking-display: 0.18em;   /* wide, calm caps */
+  --fs-hero: clamp(48px, 7vw, 96px);
+  --fs-h1: 48px; --fs-h2: 32px; --fs-h3: 22px; --fs-body: 17px; --fs-small: 13px;
+
+  /* Spacing (8pt) */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 16px; --space-4: 24px;
+  --space-5: 32px; --space-6: 48px; --space-7: 64px; --space-8: 96px;
+
+  /* Radius: mostly soft-square, circles for the bubble motif */
+  --radius-s: 4px; --radius-m: 10px; --radius-l: 20px; --radius-pill: 999px;
+}

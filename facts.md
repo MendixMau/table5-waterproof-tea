@@ -20,4 +20,6 @@ Locked at the 10:40 gate. Change here first; every slide, site and product reads
 | Colours | _TBD_ (set by the identity tokens) |
 | Font | _TBD_ |
 | Movement belief | In a world of AI and craziness, we go back to what life is about: art, love, scent. We are the new tea-tech disruptor. |
+| Name style | Written OSME, said "oz-MAY". "Tea-tech disruptor" only on jury slides. |
+| Story focus | Life, art, scent, love. Everyone can be a tea person. Not anti-screen or anti-tech. |
 | Tone | Tradition meets the future: back to the roots, embracing technology. Patience, ritual. Futuristic and premium, never the default app look. |

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 300" width="240" height="300">
+  <rect width="240" height="300" fill="#F3EBDD"/>
+  <g fill="none" stroke="#2F4A3A" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <!-- string and tag -->
+    <path d="M120 70 V30"/>
+    <rect x="104" y="12" width="32" height="20" rx="3" fill="#2F4A3A" stroke="none"/>
+    <!-- bag -->
+    <path d="M78 70 H162 L172 92 V186 Q172 200 158 200 H82 Q68 200 68 186 V92 Z"/>
+    <path d="M70 92 H170"/>
+    <!-- opening eye -->
+    <path d="M86 146 Q120 112 154 146"/>
+    <path d="M86 146 Q120 172 154 146"/>
+  </g>
+  <circle cx="120" cy="146" r="10" fill="#2F4A3A"/>
+  <text x="120" y="252" text-anchor="middle" font-family="'Shippori Mincho','Hiragino Mincho ProN',Georgia,serif" font-size="38" letter-spacing="6" fill="#2F4A3A">HIRAKU</text>
+  <text x="120" y="282" text-anchor="middle" font-family="'Hiragino Mincho ProN','Yu Mincho',serif" font-size="18" letter-spacing="8" fill="#2F4A3A">開く</text>
+</svg>
