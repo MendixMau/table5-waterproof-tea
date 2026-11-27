@@ -544,6 +544,11 @@ footer.site .top{display:flex;justify-content:space-between;gap:40px;flex-wrap:w
 .see3d{color:var(--brand-amber,#F2A33A);text-decoration:underline;text-underline-offset:3px;margin-left:6px;white-space:nowrap}
 @media (max-width:600px){.see3d{display:block;margin:12px 0 0;white-space:normal}}
 
+/* keepers.html#join: the slide 8 QR lands here */
+.wow{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.wow .btn{min-height:52px;padding:0 26px;display:inline-flex;align-items:center;justify-content:center}
+@media (max-width:600px){.wow{flex-direction:column}.wow .btn{width:100%;min-height:56px;font-size:15px}}
+
 </style>
 </head>
 <body>
@@ -599,7 +604,8 @@ footer.site .top{display:flex;justify-content:space-between;gap:40px;flex-wrap:w
     <input type="email" name="email" placeholder="Your email" aria-label="Your email" autocomplete="email">
     <button class="btn primary" type="submit">Join the waitlist</button></form>
   <div class="wl-msg" role="status" aria-live="polite"></div>
-  <div class="wl-note" data-wl-note></div></div>
+  <div class="wl-note" data-wl-note></div>
+  <div class="wow"><a class="btn primary" href="capsule-3d.html">See it in 3D</a><a class="btn" href="membrane.html">How the membrane works</a></div></div>
 </div></div></section>
 
 </main>

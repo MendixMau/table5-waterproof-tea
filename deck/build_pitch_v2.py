@@ -230,7 +230,7 @@ function countBuild(){SLIDES[cur].querySelectorAll('.rv[data-s="'+step+'"] [data
 function ui(){
   document.getElementById('bar').style.width=(Math.min(cur+1,NM)/NM*100)+'%';
   document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('on',i===cur));
-  document.getElementById('snum').textContent=cur<NM?(cur+1)+' / '+NM+'  ·  '+TIMES[cur]:'Backup  ·  Q&A';
+  document.getElementById('snum').textContent=cur<NM?(cur+1)+' / '+NM:'Backup  ·  Q&A';
   document.body.className=document.body.className.replace(/\bs\d+\b/g,'').trim()+' s'+cur;
   const el=SLIDES[cur],nt=el.querySelector('.notes'),sp=el.querySelector('.spoken');
   document.getElementById('notes').innerHTML='<p class="nh">Slide '+(cur+1)+' · '+el.dataset.title+' · target '+TIMES[cur]+'</p>'

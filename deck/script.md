@@ -1,6 +1,6 @@
 # OSME pitch talk track v3 (3 minutes, spoken total 2:50)
 
-Status: v3 (presentation-lead, 27 Nov 2026 12:30), pitch v3 shape (lead 12:15, Maurits approved; lead 12:22 film sync). Spoken words: 322, slides 2 to 8, in 2:23 (about 150 a minute), with silent seconds in the demo. Matches the built deck: deck/v2/s1.html to s9.html.
+Status: v3 (presentation-lead, 27 Nov 2026 12:30), pitch v3 shape (lead 12:15, Maurits approved; lead 12:22 film sync). Spoken words: 329, slides 2 to 8, in 2:23 (about 150 a minute), with silent seconds in the demo. Matches the built deck: deck/v2/s1.html to s9.html.
 Slide 1 is the film with its own voice (video/osme-film-v04-vo.mp4, 26.5 s): nobody speaks. Spoken lines are plain text. Headers are bold, stage cues sit in square brackets and are not spoken. 10 s spare to 3:00.
 Rehearsal voice: the lines can be read by Kokoro (video/tools/tts.py, the voice used in the film) to time a run; the team speaks them live on stage.
 
@@ -11,7 +11,7 @@ Rehearsal voice: the lines can be read by Kokoro (video/tools/tts.py, the voice 
 | (film) | 1 | The 1908 hook, China, Japan, the bag, "Oz-may! The art of tea!" | 0 | 27 |
 | A (name TBD by the team) | 2 | The why, the problem | 46 | 18 |
 | B (name TBD by the team) | 3, plus the laptop for the whole pitch | How it works, live demo, the honest line | 75 | 42 |
-| C (name TBD by the team) | 4 to 6 | Customer, market walk, business | 116 | 50 |
+| C (name TBD by the team) | 4 to 6 | Customer, market walk, business | 123 | 50 |
 | D (name TBD by the team) | 7 to 8 | Competition, the ask | 85 | 33 |
 
 ## Script
@@ -48,7 +48,7 @@ One wrote: "I spend way too much on tea to just throw them away after one steep.
 Cue to next slide: "one point three percent of premium." (C clicks)
 [The walk to year 3 is the slide's last row: Ritual + tins + shops. Point at it as you say it.]
 Tea bags: a seven billion dollar market. Premium, in our four first markets: six hundred and forty million.
-Year three, eight point three million: Ritual subscriptions three and a half, tins three point three, shops one and a half.
+Year three, eight point three million: Ritual subscriptions three and a half, from nine thousand subscribers on average; tins three point three; shops one and a half.
 Just one point three percent of premium.
 
 **2:03 to 2:17 · Slide 6 · Business · Speaker C**

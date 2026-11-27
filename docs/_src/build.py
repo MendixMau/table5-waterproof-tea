@@ -241,7 +241,10 @@ def quotes_block():
     q = "".join(f'''<figure class="quote"><q>{html.escape(a)}</q><div><div class="fix">{f}</div><cite>{b}, <a href="{u}" target="_blank" rel="noopener">{c}</a></cite></div></figure>''' for a, b, c, u, f in QUOTES)
     return f'<div class="quotes">{q}</div>'
 
-def waitlist_block(heading='Take back one cup a day.<br><span class="arc-text">Become a Keeper.</span>', sub="The first Ritual boxes go to the waitlist first."):
+def waitlist_block(heading='Take back one cup a day.<br><span class="arc-text">Become a Keeper.</span>', sub="The first Ritual boxes go to the waitlist first.", wow=False):
+    # wow: keepers.html#join is the slide 8 QR target, so it gets two big buttons under the form
+    more = ('\n  <div class="wow"><a class="btn primary" href="capsule-3d.html">See it in 3D</a>'
+            '<a class="btn" href="membrane.html">How the membrane works</a></div>') if wow else ""
     return f'''<div class="join" id="join">
   <div><div class="eyebrow">Join the waitlist</div><h2>{heading}</h2><p class="muted">{sub}</p>
   <div class="kcount" data-keeper-count hidden></div></div>
@@ -249,7 +252,7 @@ def waitlist_block(heading='Take back one cup a day.<br><span class="arc-text">B
     <input type="email" name="email" placeholder="Your email" aria-label="Your email" autocomplete="email">
     <button class="btn primary" type="submit">Join the waitlist</button></form>
   <div class="wl-msg" role="status" aria-live="polite"></div>
-  <div class="wl-note" data-wl-note></div></div>
+  <div class="wl-note" data-wl-note></div>{more}</div>
 </div>'''
 
 def three_steps():
@@ -558,7 +561,7 @@ def keepers(vbs):
     </div>
   </div>
 </div></section>
-<section class="movement"><div class="wrap">{waitlist_block()}</div></section>
+<section class="movement"><div class="wrap">{waitlist_block(wow=True)}</div></section>
 '''
     return page("keepers.html", "Keepers · OSME", "Join the OSME movement: art, love, scent. #ThreeBubbles, one cup a day. Become a Keeper.", "keepers.html", body, vbs)
 

@@ -4,7 +4,7 @@
 Everyone drives at least once.
 
 <!-- LIVE:START -->
-## Live status · 12:51 · 0 h 38 to hand-in
+## Live status · 12:56 · 0 h 33 to hand-in
 
 **Now:** Pitch v3: the film with voice, then about 2:20 of talk. v08 at 12:40, timed run-through 12:45, freeze 13:15, hand in 13:30.
 
@@ -14,8 +14,8 @@ Everyone drives at least once.
 | 🚦 | Gate 1 deck | 🟡 working · judge 4/5 · 10:53 | <img src="gallery/gate1-v09.png" width="260"> |
 | 📈 | Business case | 🟢 done · judge 4.5/5 · 12:22 | <img src="gallery/business-v11.png" width="260"> |
 | 🍵 | Product demo | 🟡 working · judge 4/5 · 12:35 | <img src="gallery/product-membrane-v05.png" width="260"> |
-| 🎤 | Pitch deck | 🟢 done · judge 3/5 · 12:47 | <img src="gallery/deck-v09-s3.png" width="260"> |
-| 🌐 | Site | 🟡 working · 12:45 | <img src="gallery/site-v05-deck.png" width="260"> |
+| 🎤 | Pitch deck | 🟡 working · judge 4/5 · 12:55 | <img src="gallery/deck-v12-s5.png" width="260"> |
+| 🌐 | Site | 🟡 working · 12:54 | <img src="gallery/site-v05-deck.png" width="260"> |
 | 🎬 | Video | 🟢 done · 12:43 | <img src="gallery/pr1-review.png" width="260"> |
 
 **Waiting on the team:** Speakers A to D?
