@@ -4,8 +4,8 @@
 |---|---|---|---|---|
 | truth-customers | Truth | ops/agents/truth-customers.md | truth/customers-market.md | running |
 | truth-history | Truth | ops/agents/truth-history.md | truth/history-cultures.md | running |
-| business | Business | ops/agents/business.md | truth/business-case.md | running |
-| business-validator | Business | ops/agents/business-validator.md | judge/business-validation.md | waits for business |
+| business | Business | ops/agents/business.md | truth/business-case.md | ✅ done, validating |
+| business-validator | Business | ops/agents/business-validator.md | judge/business-validation.md | running |
 | strategist | Story | ops/agents/strategist.md | brand/strategy.md | ✅ done, 5 questions open |
 | storyteller | Story | ops/agents/storyteller.md | deck/story.md | 🟡 draft 2 (420 words), waits for business + history |
 | identity | Design | ops/agents/identity.md | brand/identity/ | ✅ board + logos v3, 3 questions |

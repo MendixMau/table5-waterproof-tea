@@ -33,3 +33,4 @@
 10:00 | identity | PROGRESS | board.html embedded+checked; PNGs in /tmp/t5-identity/
 10:01 | identity | DONE | tokens stable, logos v3 reviewed (lockup re-centred), board.html self-contained; PNGs /tmp/t5-identity/
 10:01 | truth-history | PROGRESS | Lu Yu wording, cultures, quotes, PNIPAM, matcha sourced; writing file
+10:02 | business | DONE | truth/business-case.md: TAM $7.1bn, 3 cups/bag, $0.50/cup, 62% GM, ask $2.5m @ $10m pre; 5 questions
