@@ -34,3 +34,7 @@
 10:01 | identity | DONE | tokens stable, logos v3 reviewed (lockup re-centred), board.html self-contained; PNGs /tmp/t5-identity/
 10:01 | truth-history | PROGRESS | Lu Yu wording, cultures, quotes, PNIPAM, matcha sourced; writing file
 10:02 | business | DONE | truth/business-case.md: TAM $7.1bn, 3 cups/bag, $0.50/cup, 62% GM, ask $2.5m @ $10m pre; 5 questions
+10:02 | product | PROGRESS | full pod demo v1 saved (6 teas, cooling curve, OSME vs 1908 cups, controls)
+10:02 | truth-history | DONE | truth/history-cultures.md: 7 sections sourced; flags PNIPAM 32C gap, no aroma-loss number, Lu Yu wording differs from facts.md
+10:02 | truth-customers | DONE | truth/customers-market.md: 8 complaints, 2 segments, market, competition table, prices, 4 questions
+10:02 | business-validator | START | validating truth/business-case.md
