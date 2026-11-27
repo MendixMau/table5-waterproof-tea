@@ -14,4 +14,13 @@
   - The fade ends at 18.4.
 - Evidence: `python3.14 -I personal-library/bin/film-frames.py <mp4> --scenes "..." --step 1 --out /tmp/osme-video/critic-film-vNN`
 - Reviews: `video/reviews/` (judge and critic per round). Ledger: `video/critic-ledger.md`.
+- Film v05 (storyline cut, `src/film_v05.html`, made by `/tmp/osme-video/tools/make_v05.py` from v04; v04 wraps v03 shifted by 8.0 s), 26.4 s:
+  - S1=0: title "1,200 years of temperature"
+  - S2=1.9: 760s China, Lu Yu's bubbles (they grow)
+  - S3=4.8: 1500s Japan, chanoyu iron kettle's pine wind
+  - S4=8.0: 1840s Britain, afternoon tea, 100 million cups
+  - S5=11.4: 1908 tea bag, art for ease, 96%
+  - S6=14.3: Now, OSME sealed at 100, opens at 80 (16.7), seals at 70 (18.7)
+  - S7=19.9: value line; S8=21.5: lockup; fade 25.6 to 26.4
+- Voice version: `/tmp/osme-video/tools/mix.sh` places Kokoro lines (video/vo-in) with adelay, loudnorm -16 LUFS.
 - Open: the critic and judge rounds on v03, then the creative-director pass. Also open: whether the film pre-empts the live demo (ops/questions.md, 10:52).

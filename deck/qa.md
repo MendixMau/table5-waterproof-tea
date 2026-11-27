@@ -27,7 +27,7 @@ Answer: The tuned membrane is the product, so 35% of the raise goes to membrane 
 Behind it: slide 8 (use of funds); slide 7; truth/customers-market.md §4 (why OSME wins).
 
 ## 7. Is the market real? Why $640 m?
-Answer: $7.1 bn is global tea bag spend; $640 m is its premium share in Japan, China, UK and US. Year 3 needs only 1.3%.
+Answer: $7.1 bn is global tea bag spend; $640 m is its premium share in Japan, China, UK and US. Year 3 needs only 1.3% of it: about 205 k buyers, 0.13% of the 159 m Americans who drink tea every day.
 Behind it: slide 5; truth/business-case.md §1 (Fortune Business Insights 2025, shares labelled ASSUMPTION) and §5 (bottom-up $8.3 m).
 
 ## 8. What do you do with $2.5 m, and what are the milestones?

@@ -36,8 +36,8 @@ MIME = {".svg": "image/svg+xml", ".png": "image/png", ".jpg": "image/jpeg", ".jp
         ".mp4": "video/mp4", ".woff2": "font/woff2", ".webp": "image/webp"}
 FONTX = bp.b64(D / "assets-src" / "jost-latin-ext.woff2", "font/woff2")
 TIMES = ["0:00 to 0:25", "0:25 to 0:45", "0:45 to 1:25", "1:25 to 1:50",
-         "1:50 to 2:05", "2:05 to 2:20", "2:20 to 2:35", "2:35 to 3:00"]
-TITLES = ["Company", "Problem", "Solution, live demo", "Customer", "Market", "Business", "Competition", "The ask"]
+         "1:50 to 2:05", "2:05 to 2:20", "2:20 to 2:35", "2:35 to 3:00", "Q&A"]
+TITLES = ["Company", "Problem", "Solution, live demo", "Customer", "Market", "Business", "Competition", "The ask", "Backup: what is inside"]
 
 
 def film_path():
@@ -181,6 +181,8 @@ JS = r"""
 window.ENTER=window.ENTER||{};window.LEAVE=window.LEAVE||{};window.STEP=window.STEP||{};
 const SLIDES=[...document.querySelectorAll('.deck > .slide')];
 const N=SLIDES.length, TIMES=__TIMES__;
+// backup slides sit after the close: reachable with the arrows, not counted in the pitch
+const NM=SLIDES.filter(x=>!x.dataset.backup).length;
 const STILL=/still/.test(location.search);
 let cur=0, step=0;
 const steps=i=>+(SLIDES[i].dataset.steps||0);
@@ -224,18 +226,18 @@ function next(){ if(step<steps(cur)){step++;paint();countBuild();ui();} else got
 function prev(){ if(step>0){step--;paint();ui();} else if(cur>0) goto(cur-1,steps(cur-1)); }
 function countBuild(){SLIDES[cur].querySelectorAll('.rv[data-s="'+step+'"] [data-count], .rv[data-s="'+step+'"][data-count]').forEach(countUp);}
 function ui(){
-  document.getElementById('bar').style.width=((cur+1)/N*100)+'%';
+  document.getElementById('bar').style.width=(Math.min(cur+1,NM)/NM*100)+'%';
   document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('on',i===cur));
-  document.getElementById('snum').textContent=(cur+1)+' / '+N+'  ·  '+TIMES[cur];
+  document.getElementById('snum').textContent=cur<NM?(cur+1)+' / '+NM+'  ·  '+TIMES[cur]:'Backup  ·  Q&A';
   document.body.className=document.body.className.replace(/\bs\d+\b/g,'').trim()+' s'+cur;
   const el=SLIDES[cur],nt=el.querySelector('.notes'),sp=el.querySelector('.spoken');
   document.getElementById('notes').innerHTML='<p class="nh">Slide '+(cur+1)+' · '+el.dataset.title+' · target '+TIMES[cur]+'</p>'
     +(sp?sp.innerHTML:'')+(nt?'<p class="nh">Sources and detail</p>'+nt.innerHTML:'');
-  document.getElementById('tgt').textContent='target '+TIMES[cur].split(' to ')[1];
+  document.getElementById('tgt').textContent=cur<NM?'target '+TIMES[cur].split(' to ')[1]:'Q&A';
   history.replaceState(null,'','#'+(cur+1)+(step?'.'+step:''));
 }
 const dotsEl=document.getElementById('dots');
-for(let i=0;i<N;i++){const d=document.createElement('div');d.className='dot';d.onclick=e=>{e.stopPropagation();goto(i,0)};dotsEl.appendChild(d);}
+for(let i=0;i<NM;i++){const d=document.createElement('div');d.className='dot';d.onclick=e=>{e.stopPropagation();goto(i,0)};dotsEl.appendChild(d);}
 
 /* presenter timer: T start/pause, Shift+T reset */
 let tLeft=180,tRun=false,tLast=0;
@@ -254,7 +256,7 @@ document.addEventListener('keydown',e=>{
   if(k==='ArrowRight'||k==='ArrowDown'||k===' '||k==='PageDown'||k==='Enter'){e.preventDefault();next();}
   else if(k==='ArrowLeft'||k==='ArrowUp'||k==='PageUp'||k==='Backspace'){e.preventDefault();prev();}
   else if(k==='Home')goto(0,0);
-  else if(k==='End')goto(N-1,steps(N-1));
+  else if(k==='End')goto(NM-1,steps(NM-1));
   else if(k==='t'||k==='T')toggleTimer(e.shiftKey);
   else if(k==='n'||k==='N')DECK.toggleNotes();
   else if(k==='?'||k==='h'||k==='H')document.getElementById('help').classList.toggle('on');
@@ -304,7 +306,7 @@ __SLIDES__
 
 def build():
     parts = []
-    for n in range(1, 9):
+    for n in range(1, len(TITLES) + 1):
         f = fragment(n)
         sp = spoken(n)
         # put the spoken script inside the slide div (before its last closing tag)

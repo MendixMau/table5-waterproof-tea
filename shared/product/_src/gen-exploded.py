@@ -75,7 +75,7 @@ def build(animated):
       f'.tt{{font-size:28px;font-weight:500;letter-spacing:.06em}}'
       f'.c{{font-size:22px;font-weight:400;fill:#B3AEA6}}'
       f'.t{{font-size:16px;font-weight:500;letter-spacing:.16em}}'
-      f'.s{{font-size:22px;font-weight:400;fill:#B3AEA6}}'
+      f'.s{{font-size:24px;font-weight:400;fill:#C9C4BB}}'
       f'.big{{font-size:64px;font-weight:400;letter-spacing:.02em}}'
       '</style>')
     A(f'<linearGradient id="arc" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{AMBER}"/>'
@@ -93,7 +93,6 @@ def build(animated):
     A('<filter id="drop" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="14" stdDeviation="10" flood-color="#000" flood-opacity=".7"/></filter>'
       '<filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5"/></filter>')
     A('<filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="14"/></filter>')
-    A(f'<clipPath id="lens"><circle r="{LR}"/></clipPath>')
     A('</defs>')
     A(f'<rect width="1600" height="1000" fill="{BG}"/>')
     # soft warm pool behind the stack
@@ -119,14 +118,16 @@ def build(animated):
     rnd = random.Random(7)
     A('<g opacity=".75">')
     A(f'<g transform="{plane(CX, LY["leaf"])}">')
-    A(f'<path d="{bp}" fill="#C8D468" fill-opacity=".05" stroke="{LINE}" stroke-width="2" stroke-dasharray="6 8"/>')
+    A(f'<path d="{bp}" fill="#2A3318" fill-opacity=".55"/>')
     A('</g>')
-    for i in range(110):
+    for i in range(240):
         x = rnd.uniform(-W / 2 + 30, W / 2 - 30); y = rnd.uniform(50, H - 30)
         px, py = P(x, y, CX, LY["leaf"]); py -= rnd.uniform(0, 8)
         ln = rnd.uniform(22, 40); wd = rnd.uniform(3.5, 6); a = rnd.uniform(-35, 35) + 18
         col = rnd.choice(["#6F8A35", "#86A13F", "#A9BE55", "#C8D468", "#5E7A2C", "#7E9A3A"])
-        A(f'<path transform="translate({px:.1f} {py:.1f}) rotate({a:.0f})" d="M{-ln/2:.1f} 0 Q0 {-wd:.1f} {ln/2:.1f} 0 Q0 {wd*0.7:.1f} {-ln/2:.1f} 0Z" fill="{col}"/>')
+        A(f'<g transform="translate({px:.1f} {py:.1f}) rotate({a:.0f})"><path d="M{-ln/2:.1f} 1.5 Q0 {-wd+1.5:.1f} {ln/2:.1f} 1.5 Q0 {wd*0.7+1.5:.1f} {-ln/2:.1f} 1.5Z" fill="#1E2610" opacity=".7"/>'
+          f'<path d="M{-ln/2:.1f} 0 Q0 {-wd:.1f} {ln/2:.1f} 0 Q0 {wd*0.7:.1f} {-ln/2:.1f} 0Z" fill="{col}"/>'
+          f'<path d="M{-ln/2+3:.1f} {-wd*0.2:.1f} Q0 {-wd*0.75:.1f} {ln/2-3:.1f} {-wd*0.2:.1f}" fill="none" stroke="#E4EBA0" stroke-opacity=".45" stroke-width="1"/></g>')
     A('</g>')
 
     # membrane layer
@@ -212,17 +213,17 @@ def build(animated):
         col = MID if key == "memb" else MUTED
         A(f'<path d="M{px+10:.1f} {py:.1f} L{LX-30} {y - 4:.1f} H{LX-14}" fill="none" stroke="{col}" stroke-width="1.2"/>'
           f'<circle cx="{px+10:.1f}" cy="{py:.1f}" r="3.5" fill="{col}"/>')
-        A(f'<text x="{LX}" y="{y + 4:.1f}" class="n" style="fill:{AMBER}">{num}</text>'
+        A(f'<text x="{LX}" y="{y + 4:.1f}" class="n" style="fill:{AMBER if key == "memb" else MUTED}">{num}</text>'
           + (f'<text x="{LX + 44}" y="{y + 6:.1f}" class="l" style="fill:{MID}">TEMPERATURE</text>'
              f'<text x="{LX + 44}" y="{y + 40:.1f}" class="l" style="fill:{MID}">MEMBRANE</text>'
-             if key == "memb" else f'<text x="{LX + 44}" y="{y + 6:.1f}" class="l">{name}</text>'))
+             if key == "memb" else f'<text x="{LX + 44}" y="{y + 6:.1f}" class="l" style="fill:#A9A39A">{name}</text>'))
 
     # ---------- inset: the membrane up close
     IX, IY, IW, IH = 1110, 190, 420, 670
     A(f'<rect x="{IX}" y="{IY}" width="{IW}" height="{IH}" rx="22" fill="{SURF}" stroke="{LINE}" stroke-width="1.5"/>')
     A(f'<text x="{IX + 32}" y="{IY + 48}" class="k">SENCHA, UP CLOSE</text>')
     if not animated:
-        A(f'<text x="{IX + 32}" y="{IY + 84}" class="t" style="fill:{MUTED}">WATER COOLS FROM THE BOIL ↓</text>')
+        A(f'<text x="{IX + 32}" y="{IY + 84}" class="t" style="fill:#C9C4BB;font-size:18px">WATER COOLS ↓</text>')
     # leader from magnifier to inset
     smx, smy = S(mx + 44, my)
     A(f'<path d="M{smx:.1f} {smy:.1f} C{smx + 160:.1f} {smy:.1f} {IX - 160} {IY + 300} {IX} {IY + 300}" fill="none" stroke="{MID}" stroke-width="2"/>')
@@ -235,11 +236,12 @@ def build(animated):
     for i, (key, word, temp, cap, col) in enumerate(states):
         cy = IY + (250 if animated else 186) + i * (158 if animated else 172)
         cx = IX + 92
-        A(f'<g transform="translate({cx} {cy})">')
+        lr = round(LR * (1.12 if key == "open" else 0.86))
+        A(f'<g transform="translate({cx} {cy})"><clipPath id="lens-{key}"><circle r="{lr}"/></clipPath>')
         if animated:
-            A(f'<circle r="{LR + 9}" fill="none" stroke="{col}" stroke-width="2.5" opacity="0">{anim_active(key)}</circle>')
-        A(f'<circle r="{LR}" fill="#101013"/>')
-        A('<g clip-path="url(#lens)">')
+            A(f'<circle r="{lr + 8}" fill="none" stroke="{col}" stroke-width="2.5" opacity="0">{anim_active(key)}</circle>')
+        A(f'<circle r="{lr}" fill="#101013"/>')
+        A(f'<g clip-path="url(#lens-{key})">')
         # membrane fibre texture
         for k in range(-80, 81, 14):
             A(f'<path d="M-80 {k} Q0 {k + 6} 80 {k}" stroke="{col}" stroke-opacity=".18" stroke-width="5" fill="none"/>')
@@ -251,18 +253,21 @@ def build(animated):
                     A(f'<circle cx="{x}" cy="{gy}" r="10" fill="url(#liq)" opacity=".9"/>'
                       f'<circle cx="{x}" cy="{gy}" r="7" fill="#0B0B0D" opacity=".35"/>'
                       f'<circle cx="{x}" cy="{gy}" r="7" fill="none" stroke="{MID}" stroke-width="1.6"/>')
+                elif key == "hot":
+                    A(f'<path d="M{x-8} {gy} q2 -4 4 0 t4 0 t4 0 t4 0" fill="none" stroke="{col}" stroke-width="3" stroke-linecap="round"/>')
                 else:
                     A(f'<path d="M{x-7} {gy}h14" stroke="{col}" stroke-width="3" stroke-linecap="round"/>')
         A('</g>')
-        A(f'<circle r="{LR}" fill="none" stroke="{col}" stroke-width="2"/>')
+        A(f'<circle r="{lr}" fill="none" stroke="{col}" stroke-width="{3 if key == "open" else 2}"/>')
         A('</g>')
-        A(f'<text x="{IX + 180}" y="{cy - 24}" class="t" style="fill:{col}">{word}</text>'
+        A(f'<text x="{IX + 180}" y="{cy - 26}" class="t" style="fill:{col};font-size:18px">{word}</text>'
           f'<text x="{IX + 180}" y="{cy + 10}" class="tt">{temp}</text>'
           f'<text x="{IX + 180}" y="{cy + 42}" class="s">{esc(cap)}</text>')
         if i < 2:
-            g = (158 if animated else 172) - 2 * LR
+            nlr = round(LR * (1.12 if states[i + 1][0] == "open" else 0.86))
+            g = (158 if animated else 172) - lr - nlr
             nc = states[i + 1][4]
-            A(f'<path d="M{cx} {cy + LR + 5} v{g - 16} m-6 -6 l6 6 l6 -6" fill="none" stroke="{nc}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>')
+            A(f'<path d="M{cx} {cy + lr + 6} v{g - 12} m-6 -6 l6 6 l6 -6" fill="none" stroke="{nc}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>')
     # cooling arrow along the lenses
 
     # ---------- animated readout
@@ -272,16 +277,16 @@ def build(animated):
         temps = timeline()
         for (t0, t1, val) in temps:
             A(f'<text x="0" y="62" class="big" opacity="0">{val}<tspan font-size="30" dx="6">°C</tspan>{anim_window(t0, t1)}</text>')
-        A(f'<text x="196" y="52" class="t" style="fill:{AMBER}" opacity="0">SEALED · TOO HOT{anim_window(0, T_OPEN)}</text>')
-        A(f'<text x="196" y="52" class="t" style="fill:{MID}" opacity="0">OPEN · STEEPING{anim_window(T_OPEN, T_CLOSE)}</text>')
-        A(f'<text x="196" y="52" class="t" style="fill:{JADE}" opacity="0">SEALED · DONE{anim_window(T_CLOSE, DUR)}</text>')
+        A(f'<text x="180" y="30" class="t" style="fill:{AMBER};font-size:26px;letter-spacing:.1em" opacity="0">SEALED<tspan x="180" dy="32">TOO HOT</tspan>{anim_window(0, T_OPEN)}</text>')
+        A(f'<text x="180" y="30" class="t" style="fill:{MID};font-size:26px;letter-spacing:.1em" opacity="0">OPEN<tspan x="180" dy="32">STEEPING</tspan>{anim_window(T_OPEN, T_CLOSE)}</text>')
+        A(f'<text x="180" y="30" class="t" style="fill:{JADE};font-size:26px;letter-spacing:.1em" opacity="0">SEALED<tspan x="180" dy="32">DONE</tspan>{anim_window(T_CLOSE, DUR)}</text>')
         A('</g>')
 
     # ---------- honest line + logo
     A(f'<rect x="80" y="884" width="1440" height="84" rx="14" fill="{JADE}" fill-opacity=".13"/>'
       f'<rect x="80" y="884" width="7" height="84" rx="3" fill="{JADE}"/>')
-    A(f'<text x="112" y="934" class="t" style="fill:{JADE};font-size:18px">THE PRINCIPLE EXISTS:</text>')
-    A(f'<text x="384" y="935" style="font-size:24px;font-weight:400">'
+    A(f'<text x="108" y="935" class="t" style="fill:{JADE};font-size:19px">THE PRINCIPLE EXISTS:</text>')
+    A(f'<text x="398" y="936" style="font-size:26px;font-weight:400;fill:#FFFFFF">'
       f'lab membranes already open and close with temperature. Our R&amp;D makes it food-safe at 70-90 °C.</text>')
 
     if animated:

@@ -334,7 +334,9 @@ def home(vbs):
       <a class="btn primary" href="demo.html">Try the live demo</a>
     </div>
   </div>
-  {honest()}
+  <figure class="exploded"><div class="ex-scroll"><img src="../shared/product/exploded-view-animated.svg" alt="What is inside an OSME bag: tag and string, seal, outer filter, the temperature membrane and the leaf. The Sencha membrane is sealed above 80 °C, open from 80 to 70 °C, sealed below 70 °C." width="1600" height="1000"></div>
+  <figcaption class="muted small">What is inside: five layers, one of them reads the water. <span class="swipe">Swipe to see all of it.</span></figcaption></figure>
+  <div class="phone-only">{honest()}</div>
 </div></section>
 
 <section id="teas"><div class="wrap">
