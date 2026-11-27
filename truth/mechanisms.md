@@ -1,3 +1,5 @@
+> **Superseded framing (09:35):** written when only a one-way 85°C trigger was on the table. The locked angle uses a *reversible* temperature window per tea (opens in range, closes as it cools), so "temperature is never the trigger" no longer applies. The mechanism analogies below are still usable.
+
 # Waterproof tea bags: borrowed mechanisms, ranked
 
 The idea behind all six: waterproof means **the tea bag does nothing until you tell it to**. The user sets the trigger by twisting, pulling, pinching or snapping it, or by choosing a time or an ingredient. Water temperature is never the trigger.
