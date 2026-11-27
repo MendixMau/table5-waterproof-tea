@@ -1,6 +1,6 @@
 <div class="slide full" id="s1" data-title="Company">
   <video class="s1-film" muted playsinline preload="auto" poster="__ASSET:deck/v2/s1-start.jpg__" src="__ASSET:FILM__"></video>
-  <img class="s1-title" src="__ASSET:brand/motion/title-1200-years.svg__" alt="The Art of Tea. 1,200 years of temperature."/>
+  <div class="s1-title" role="img" aria-label="The Art of Tea. 1,200 years of temperature.">__SVG:brand/motion/title-1200-years.svg__</div>
   <img class="s1-end" src="__ASSET:deck/v2/s1-end.jpg__" alt=""/>
   <div class="s1-era" aria-hidden="true">
     <div class="s1-yr" data-from="0" data-to="3.8"><b>760</b><span>China · Lu Yu reads the boil</span></div>
@@ -23,7 +23,7 @@
     #s1{background:#0B0B0D}
     #s1 .s1-film,#s1 .s1-end{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
     #s1 .s1-end{opacity:0;transition:opacity .6s var(--ease)}
-    #s1 .s1-title{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:4;background:#0B0B0D;transition:opacity .8s var(--ease)}
+    #s1 .s1-title{position:absolute;inset:0;z-index:4;background:#0B0B0D;transition:opacity .8s var(--ease)}#s1 .s1-title svg{width:100%;height:100%;display:block}
     #s1.film .s1-title,html.still #s1 .s1-title{opacity:0;pointer-events:none}
     #s1.ended .s1-end,html.still #s1 .s1-end{opacity:1}
     #s1 .s1-era{position:absolute;right:84px;bottom:12vh;z-index:3;width:640px;height:170px;text-align:right}
@@ -62,7 +62,7 @@
       v.onended=()=>el.classList.add('ended');
       if(document.documentElement.classList.contains('still')){el.classList.add('ended','film');return;}
       // brand title card "1,200 years of temperature" (all in by 3.5 s), then the film
-      const t=el.querySelector('.s1-title');t.src=t.src.split('#')[0]+'#'+Date.now();
+      const t=el.querySelector('.s1-title svg');try{t.setCurrentTime(0);t.unpauseAnimations()}catch(e){}
       try{v.pause();v.currentTime=0;}catch(e){}
       clearTimeout(cue);cue=setTimeout(()=>{if(!el.classList.contains('active'))return;el.classList.add('film');try{v.play()}catch(e){}sync(el);},4200);
     };

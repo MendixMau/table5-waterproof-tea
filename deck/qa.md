@@ -7,7 +7,7 @@ Answer: Not yet: the raise funds it. A food-grade cellulose coating, tuned to 70
 Behind it: slide 8 (use of funds: R&D 35%, certification 15%); facts.md "R&D framing"; truth/business-case.md §3 (hydroxypropyl cellulose).
 
 ## 2. Does it really work? How far along are you?
-Answer: The principle is lab-proven: PNIPAm membranes open and close with heat, five clean cycles. Tuning the switch point per tea is our R&D.
+Answer: The principle exists: lab membranes already open and close with temperature. Our R&D makes it food-safe at 70-90 °C. The evidence: PNIPAm-grafted membranes opened and closed with heat over five clean cycles in the lab (PMC9920928); they switch at 32 °C, so tuning them per tea and making them food-safe is the R&D the raise funds.
 Behind it: slide 3 notes; truth/history-cultures.md (PMC9920928, plain PNIPAm switches at 32 °C); facts.md "R&D framing".
 
 ## 3. What does a bag cost you at scale?
