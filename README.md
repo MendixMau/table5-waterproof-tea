@@ -4,9 +4,9 @@
 Everyone drives at least once.
 
 <!-- LIVE:START -->
-## Live status · 13:16 · 0 h 13 to hand-in
+## Live status · 13:21 · 0 h 08 to hand-in
 
-**Now:** "Freeze 13:15, hand in 13:30. Start at docs/handin.html on the live site: all five hand-ins on one page."
+**Now:** "Handed in: the live site is verified at 13:18. Start at handin.html: all five hand-ins on one page."
 
 | | Topic | Status | Latest preview |
 |---|---|---|---|

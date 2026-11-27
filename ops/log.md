@@ -241,3 +241,4 @@
 13:12 | lead | SYNC | nothing new for the deck; deck/pitch.html locked at v13 (md5 c284360e, take a), same file live. Next: site freeze rebuild 13:15, then the hand-in push
 13:15 | site-lead | FREEZE | docs/ | freeze rebuild 13:15: docs/pitch.html = deck/pitch.html md5 c284360e2661254033a003cefb223eef (deck last changed 12:59, no 13:12 update arrived); 3D now tap-to-load with loader (index 1.09 MB, keepers 272 KB); docs 34 MB, no file over 45 MB; all pages build OK
 13:15 | site-lead | FINAL | docs/ | hand-in build = the 13:15 freeze rebuild. docs/pitch.html is deck v13 (12:59), md5 c284360e2661254033a003cefb223eef, confirmed final by the lead and presentation (take a). It is not a fallback.
+13:18 | lead | LIVE | hand-in verified live at 13:18 (push f9e1448 13:16): all 9 URLs 200 (/, handin, brand, customer, demo, pitch, keepers, capsule-3d, membrane); live pitch.html md5 c284360e = deck v13; keepers 272 KB + index 1.09 MB = the 13:15 build. Simon message can go
