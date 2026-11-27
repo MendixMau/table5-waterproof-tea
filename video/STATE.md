@@ -24,3 +24,11 @@
   - S7=19.9: value line; S8=21.5: lockup; fade 25.6 to 26.4
 - Voice version: `/tmp/osme-video/tools/mix.sh` places Kokoro lines (video/vo-in) with adelay, loudnorm -16 LUFS.
 - Open: the critic and judge rounds on v03, then the creative-director pass. Also open: whether the film pre-empts the live demo (ops/questions.md, 10:52).
+
+## 12:12 state (film v11)
+- Build chain: `src/film_v05.html` ... `src/film_v11.html`, each made from the previous by `tools/make_vNN.py <in> <out>` (string patches; copies of /tmp/osme-video/tools). Render: `node src/render.mjs src/film_vNN.html renders/osme-film_vNN.mp4` (~5 min).
+- `tools/post.sh NN`: voice mix (cues in `vo-in/cues-v11.txt`), evidence pack, `gallery/video-vNN.png`, loudness. `tools/fv2b.sh NN VV`: people version (Firefly Japan/Britain/share with film captions over them).
+- Scene starts v11 (26.4 s): S1=0 title card (1.3-2.3 s: "Since 1908: every tea at 100 °C.", temps flip to 100), S2=3.0 China, S3=4.8 Japan kettle, S4=8.0 Britain, S5=11.4 1908, S6=14.3 OSME (opens 80 at 16.8, seals 69 at 18.75), S7=19.9 value line, S8=21.5 lockup.
+- Slide-1 files: `osme-film-v04.mp4` (silent) and `osme-film-v04-vo.mp4` = v11. `osme-film.mp4` is still v03 until critic + judge pass.
+- Critic r5 on v10: PASS (7.8). Judge r5 on v10: HOOK 3, rest 4 -> v11 hook fix. Judge r6 + critic r6 (S1-S2) on v11 running.
+- People version: `renders/osme-film-fv2_v05.mp4` (27.1 s, on v11). Maurits' call; not for slide 1.

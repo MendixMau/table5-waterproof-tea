@@ -180,3 +180,4 @@
 12:00 | video-lead | PREVIEW | gallery/video-fv2-v02.png | people version v03 rebuilt on film v10 (same cut as fv2-v02, critic fixes inside): video/renders/osme-film-fv2_v03.mp4
 12:01 | video-lead | critic r5 on v10: PASS, every scene (7.8). Waiting for judge r5
 12:06 | video-lead | PREVIEW | gallery/video-fv2-v04.png | people version v04 (27.1 s) per mix judge: film captions + timeline over the Japan/Britain photos, 0.3 s crossfades, share fades straight into the bag-to-logo (no 69° rewind); video/renders/osme-film-fv2_v04.mp4
+12:10 | video-lead | PREVIEW | gallery/video-v11.png | v11: judge r5 hook fix (title card temps struck through -> all 100 °C, 'Since 1908: every tea at 100 °C.'; card out 2.9-3.3), last VO line +0.5 s; now video/osme-film-v04(-vo).mp4; people version v05 on v11: video/renders/osme-film-fv2_v05.mp4; judge r6 running

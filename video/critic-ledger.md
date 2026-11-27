@@ -32,3 +32,6 @@
 | 4 | S6 WARN | NOW caption 30 px from bottom | dy 845 -> 805 | v10 |
 | 4 | WARNs left | S2/S4 figures 34-40 % width; S5/S7 left-heavy; S6 steam crosses tag; S8 tag grey till 24 s | not done (time), listed for handover | - |
 | 5 | ALL PASS | critic r5 on v10: 7.8, every scene passes; S1/S3/S6 claims verified on frames (S3 caption gap 41-49 px, S6 arc gap 38 px, NOW caption 70 px from bottom) | WARNs: S1 bottom row lopsided 0-0.5 s; S3 stand 15 px above timeline | v10 |
+| 5 | (judge) HOOK 3 | no loss in the first 3 s; problem only at 11.4 s | title card: subline -> "Since 1908: every tea at 100 °C." (1.3 s), China/Japan temps struck (1.6 s) and flipped to amber 100 °C (2.0 s); card out 2.9-3.3, China caption from 3.2 | v11 |
+| 5 | (judge) CRAFT | vo-07 runs into "Oz-may" | vo-08 22.7 -> 23.2 s | v11 |
+| 5 | (mix judge) fv2 | photos lose caption/timeline; dips to black; 69° rewind at 24.5 s | fv2b.sh: film caption + timeline bands lightened over the photos (RGB blend), 0.3 s xfades, share -> bag-to-logo (film 22.3) | fv2 v04/v05 |
