@@ -47,8 +47,10 @@ svg text { font-family:"Jost","Futura","Century Gothic","Avenir Next",sans-serif
   <g id="lens" transform="translate(800 110)">
     <rect width="1060" height="760" rx="36" fill="#121215"/>
     <g clip-path="url(#lensClip)">
-      <rect x="0" y="500" width="1060" height="260" fill="#17171B"/>
-      <path d="M0 512 Q 132 500 265 512 T 530 512 T 795 512 T 1060 512" fill="none" stroke="#2A2A30" stroke-width="3"/>
+      <linearGradient id="waterG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A2E33"/><stop offset="1" stop-color="#16181B"/></linearGradient>
+      <rect x="0" y="500" width="1060" height="260" fill="url(#waterG)"/>
+      <path d="M60 590 h160 M420 640 h220 M780 600 h180 M200 700 h140 M600 720 h200" stroke="#F3EEE6" stroke-opacity=".07" stroke-width="3" stroke-linecap="round"/>
+      <path d="M0 512 Q 132 500 265 512 T 530 512 T 795 512 T 1060 512" fill="none" stroke="#F3EEE6" stroke-opacity=".18" stroke-width="3"/>
       <rect id="cup" x="0" y="500" width="1060" height="290" fill="url(#cupG)" opacity="0"/>
       <g id="leaves"></g>
       <g id="gates"></g>
@@ -81,8 +83,8 @@ svg text { font-family:"Jost","Futura","Century Gothic","Avenir Next",sans-serif
   }
   function shown(t) { var T = temp(t); return t < C_CLOSE ? Math.ceil(T) : Math.floor(T); }
   // the switch moments follow the displayed number: open when it reads 80, seal when it reads 69
-  var T_OPEN = 0, T_CLOSE = 0;
-  for (var s = 0; s <= DUR; s += 0.01) { var v = shown(s); if (!T_OPEN && v <= 80) T_OPEN = s; if (!T_CLOSE && v < 70) T_CLOSE = s; }
+  // (shown(C_OPEN) is 80 and shown(C_CLOSE) is 69, so the gates switch exactly with the number)
+  var T_OPEN = C_OPEN, T_CLOSE = C_CLOSE;
 
   // ---------- dial
   var dial = document.getElementById("dial"), R = 300;
@@ -102,6 +104,8 @@ svg text { font-family:"Jost","Futura","Century Gothic","Avenir Next",sans-serif
     tx.setAttribute("style", "font-size:30px;font-weight:500;fill:" + (T === 70 || T === 80 ? "#F2A33A" : "#8E8A83"));
     tx.textContent = T;
   });
+  var sp = pt(75, R + 92), st = el("text", { x: sp[0].toFixed(1), y: (sp[1] + 10).toFixed(1), "text-anchor": "middle" }, dial);
+  st.setAttribute("style", "font-size:30px;font-weight:500;letter-spacing:.16em;fill:#F2A33A"); st.textContent = "SENCHA";
   var needle = el("g", {}, dial);
   el("circle", { cx: R, cy: 0, r: 20, fill: "#F3EEE6" }, needle);
   var needleDot = el("circle", { cx: R, cy: 0, r: 11, fill: "#0B0B0D" }, needle);
@@ -179,9 +183,9 @@ svg text { font-family:"Jost","Futura","Century Gothic","Avenir Next",sans-serif
     document.getElementById("num").firstChild.nodeValue = v;
     var a = ang(temp(t)) * 180 / Math.PI;
     needle.setAttribute("transform", "rotate(" + a.toFixed(2) + ")");
-    var open = t >= T_OPEN && t < T_CLOSE;
+    var open = v <= 80 && v >= 70;
     var say = document.getElementById("say");
-    say.textContent = t < T_OPEN ? "Too hot. Sealed." : open ? "Both open. Tea flows." : "Sealed. Steeping stops.";
+    say.textContent = v > 80 ? "Too hot. Sealed." : open ? "Both open. Tea flows." : "Steep stops. Scent stays in.";
     say.style.fill = open ? "#F2A33A" : "#3DBA9B";
     needleDot.setAttribute("fill", open ? "#F2A33A" : "#0B0B0D");
     ["hot", "cool"].forEach(function (k) {
@@ -195,7 +199,7 @@ svg text { font-family:"Jost","Futura","Century Gothic","Avenir Next",sans-serif
     var gateOpen = Math.min(openH, 1 - sealC);
     parts.forEach(function (q) {
       var age = ((t - q.off) % PERIOD + PERIOD) % PERIOD, born = t - age;
-      var alive = born >= T_OPEN + 0.25 && born < T_CLOSE - 0.1;
+      var alive = born >= T_OPEN + 0.25 && born < T_CLOSE - 0.1 && t < T_CLOSE + 0.5;
       var f = age / PERIOD, y = 225 + f * 520, x = q.c + Math.sin(f * 5 + q.wob) * (f > .53 ? q.wob * f : 4);
       // until the particle has crossed the membrane it needs both gates open
       if (alive && f < .53 && gateOpen < .5) alive = false;

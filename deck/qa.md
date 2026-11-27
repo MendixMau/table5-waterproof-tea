@@ -14,9 +14,9 @@ Behind it: slide 3 notes; truth/history-cultures.md (PMC9920928, plain PNIPAm sw
 Answer: $0.42 a bag at year-3 scale, against $1.27 in the year-1 pilot. The membrane material itself is under one cent a bag.
 Behind it: slide 6; truth/business-case.md §3 (cost stack); deck/model_business.py cogs().
 
-## 4. Why $1.50 and not $2.00?
-Answer: $1.50 makes the first cup an easy yes at $0.50 a cup. At $2.00 it is still $0.67, below every premium rival; the team decides.
-Behind it: slide 6; truth/business-case.md §6 (price sensitivity: LTV:CAC 1.9x at $1.50, 3.3x at $2.00).
+## 4. Why $2.00 a bag?
+Answer: one bag brews up to three cups, so it is $0.67 a cup, about half a Tea Forte pyramid: cheap for a premium brand because of the membrane. At $2.00 the gross margin is 79% at year-three scale, Ritual payback is 4.3 months and LTV:CAC 3.3x.
+Behind it: slide 6; facts.md Price (decided 12:10); truth/business-case.md §6 (LTV:CAC 1.9x at $1.50, 3.3x at $2.00).
 
 ## 5. Why a subscription?
 Answer: Ritual turns one cup into a habit: 16 bags a month, $24, skip or pause anytime. It repays acquisition in 7.7 months.
@@ -27,12 +27,12 @@ Answer: The tuned membrane is the product, so 35% of the raise goes to membrane 
 Behind it: slide 8 (use of funds); slide 7; truth/customers-market.md §4 (why OSME wins).
 
 ## 7. Is the market real? Why $640 m?
-Answer: $7.1 bn is global tea bag spend; $640 m is its premium share in Japan, China, UK and US. Year 3 needs only 1.3% of it: about 205 k buyers, 0.13% of the 159 m Americans who drink tea every day.
+Answer: $7.1 bn is global tea bag spend; $640 m is its premium share in Japan, China, UK and US. Year 3 at $2.00 a bag needs only 1.3% of it: 15 k Ritual subscribers, 139 k tins and 1.5 m bags in shops, about 154 k buyers, 0.1% of the 159 m Americans who drink tea every day.
 Behind it: slide 5; truth/business-case.md §1 (Fortune Business Insights 2025, shares labelled ASSUMPTION) and §5 (bottom-up $8.3 m).
 
 ## 8. What do you do with $2.5 m, and what are the milestones?
-Answer: 18 months to a food-safe membrane at 70 to 90 °C, then the first Ritual boxes. Series A at 20 k subscribers.
-Behind it: slide 8; truth/business-case.md §7 (use of funds 35 / 15 / 30 / 15 / 5, 24 months runway; Series A trigger 20 k subscribers or $5 m run-rate).
+Answer: 18 months to a food-safe membrane at 70 to 90 °C, then the first Ritual boxes. Series A at 15 k subscribers or a $5 m run-rate.
+Behind it: slide 8; truth/business-case.md §7 (use of funds 35 / 15 / 30 / 15 / 5, 24 months runway; Series A trigger 15 k subscribers or $5 m run-rate, decided 12:10).
 
 ## 9. Why a $10 m pre-money valuation?
 Answer: Carta's Q3 2025 median seed pre-money is $16 m; as a pre-revenue brand with R&D ahead, we price below it: $12.5 m post, 20% dilution.

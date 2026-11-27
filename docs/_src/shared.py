@@ -5,7 +5,7 @@ Each file is self-contained (embed-html) and scales to fit any window or iframe.
 The pieces are the same components as the site (build.py), so they stay in step.
 Run: python3 docs/_src/shared.py
 """
-import os, subprocess, sys
+import os, re, subprocess, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import build as B
 
@@ -27,7 +27,25 @@ function fit(){var s=document.querySelector('.stage');var k=Math.min(innerWidth/
 addEventListener('resize',fit);fit();
 """
 
+# Deck versions (<name>-deck.html): every HTML text at least 28 px on the 1920 stage, and ranges
+# written "80 to 70 °C", never with a dash. SVG art (tins, cup) keeps its own type.
+DECK_JS = """
+var z=parseFloat(getComputedStyle(document.querySelector('.inner')).getPropertyValue('--z'))||1.5, min=28/z;
+document.querySelectorAll('.inner *').forEach(function(el){
+  if(el.closest('svg'))return;
+  var own=[].some.call(el.childNodes,function(n){return n.nodeType===3&&n.textContent.trim();});
+  if(own&&parseFloat(getComputedStyle(el).fontSize)<min)el.style.fontSize=min+'px';
+});
+"""
+
+def deck_text(s):
+    return re.sub(r"(\d)(?:&nbsp;|\s)*(?:–|&ndash;)(?:&nbsp;|\s)*(\d)", r"\1 to \2", s)
+
 def stage(fname, title, inner, z=1.5, js="", mark=True):
+    return [_stage(fname, title, inner, z, js, mark),
+            _stage(fname.replace(".html", "-deck.html"), title + " (deck)", deck_text(inner), z, js + DECK_JS, mark)]
+
+def _stage(fname, title, inner, z=1.5, js="", mark=True):
     css = B.rd(B.SRC, "base.css") + B.rd(B.SRC, "shop.css") + STAGE_CSS
     logo = f'<svg class="mark" viewBox="{VBS["osme-lockup"]}" aria-label="OSME"><use href="#osme-lockup"/></svg>' if mark else ""
     doc = f'''<!doctype html>
@@ -62,8 +80,7 @@ def hero_cup():
 </div>'''
     solo = f'<div class="hero-visual" style="width:560px;margin:0 auto">{B.rd(B.SRC, "hero-cup.svg")}</div>'
     js = B.rd(B.SRC, "hero.js")
-    return [stage("hero-cup.html", "Hero cup with temperature arc", inner, 1.45, js),
-            stage("hero-cup-solo.html", "Hero cup, cup only", solo, 1.6, js, mark=False)]
+    return stage("hero-cup.html", "Hero cup with temperature arc", inner, 1.45, js) + stage("hero-cup-solo.html", "Hero cup, cup only", solo, 1.6, js, mark=False)
 
 def timeline():
     inner = f'''<div class="eyebrow">Our story</div>
@@ -74,13 +91,13 @@ def timeline():
   <div class="tl"><div class="yr">1908</div><h3>The tea bag trades art for ease</h3><p>One temperature, no stop, one cup. Today 96% of UK tea is brewed from a bag.</p></div>
   <div class="tl"><div class="yr arc-text">Now</div><h3>The art, back in the bag</h3><p>It opens at its tea’s temperature, closes when done, and keeps the scent.</p></div>
 </div>'''
-    return [stage("timeline.html", "1,200 years of temperature", inner, 1.55)]
+    return stage("timeline.html", "1,200 years of temperature", inner, 1.55)
 
 def sealed_open_sealed():
     inner = f'''<div class="eyebrow">How it works · <b>Sencha</b>, Japan</div>
 <h2 style="margin:12px 0 0">Sealed. Open. Sealed.</h2>
 {B.three_steps().replace('margin-top:48px', '')}'''
-    return [stage("sealed-open-sealed.html", "Sealed · Open · Sealed", inner, 1.42)]
+    return stage("sealed-open-sealed.html", "Sealed · Open · Sealed", inner, 1.42)
 
 def six_tins():
     tins = "".join(f'''<div style="text-align:center">{B.tin_svg(t).replace('viewBox="0 0 400 480"', 'viewBox="60 44 280 410"')}<div style="font-family:var(--font-display);font-size:19px;letter-spacing:.05em;margin-top:4px">{t["name"]}</div>
@@ -88,7 +105,7 @@ def six_tins():
     inner = f'''<div class="eyebrow">The teas</div>
 <h2 style="margin:12px 0 26px">Six teas. Six temperatures.</h2>
 <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:22px">{tins}</div>'''
-    return [stage("six-tins.html", "Six tinted tins", inner, 1.25)]
+    return stage("six-tins.html", "Six tinted tins", inner, 1.25)
 
 def slider():
     inner = f'''<div style="max-width:820px;margin:0 auto;width:100%">
@@ -107,7 +124,7 @@ def slider():
 if (Q.has("auto")) { var s = document.getElementById("tSlider"), t0 = performance.now();
   (function step(now){ var ph = ((now - t0) / 9000) % 1, v = 100 - 40 * (ph < .5 ? ph * 2 : 2 - ph * 2);
     s.value = 160 - Math.round(v); s.dispatchEvent(new Event("input")); requestAnimationFrame(step); })(t0); }'''
-    return [stage("slider.html", "Temperature slider", inner, 1.6, B.rd(B.SRC, "slider.js") + auto)]
+    return stage("slider.html", "Temperature slider", inner, 1.6, B.rd(B.SRC, "slider.js") + auto)
 
 def bubbles_row():
     row = [("#3DBA9B", 22, "Fish eyes", "the first small bubbles"), ("#D9C46B", 32, "String of pearls", "beads rising from the bottom"), ("#F2A33A", 44, "Rolling waves", "the full boil")]
@@ -117,7 +134,7 @@ def bubbles_row():
 <p style="font-family:var(--font-display);font-size:46px;line-height:1.12;margin:16px 0 44px">Lu Yu read water by its bubbles.<br><span class="arc-text">OSME reads it for you.</span></p>
 <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:30px;max-width:900px;margin:0 auto;position:relative">
 <div style="position:absolute;left:16%;right:16%;top:35px;height:2px;background:var(--brand-arc);opacity:.5"></div>{cells}</div></div>'''
-    return [stage("bubbles-row.html", "Lu Yu's three bubbles", inner, 1.45)]
+    return stage("bubbles-row.html", "Lu Yu's three bubbles", inner, 1.45)
 
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)

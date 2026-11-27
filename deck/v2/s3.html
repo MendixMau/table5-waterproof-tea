@@ -6,11 +6,11 @@
     <div class="s3-chip" data-k="three"><img src="__ASSET:brand/assets/icon-three-infusions.svg__" alt=""/><span>Up to <b class="mid">__NUM:infusions__</b> infusions, one bag</span></div>
   </div>
   <div class="s3-intro" aria-hidden="true">
-    <img src="__ASSET:brand/motion/hero-alive.svg__" alt=""/>
-    <div class="s3-sos"><span class="amber">Sealed.</span> <span class="mid">Open.</span> <span class="jade">Sealed.</span></div>
+    <img class="s3-x" src="__ASSET:shared/product/exploded-view-animated.svg__" alt=""/>
     <div class="s3-live"><span class="s3-dot"></span>Live demo · Sencha</div>
   </div>
   <aside class="notes"><ul>
+    <li>Opens on the membrane beat, about 7 s: shared/product/exploded-view-animated.svg (product thread; 92 °C sealed, 75 °C open, 64 °C sealed for Sencha). B says one sentence on how it works over it, then runs the demo.</li>
     <li>Live product: product/index.html (product thread, latest), embedded. Sencha opens at 80 °C and seals below 70 °C (facts.md, tea windows). Cooling is sped up.</li>
     <li>Keys on this slide: Space or Enter pours (and brews again once sealed), R resets, PageDown next slide, PageUp back. Works with the clicker and with focus inside the demo. Inside the demo, Right also pours: use PageDown to move on.</li>
     <li>Up to 3 infusions a bag (facts.md, Price; model_business.py INFUSIONS).</li>
@@ -20,16 +20,17 @@
     #s3{background:#0B0B0D}
     #s3 .s3-app{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:1;background:#0B0B0D}
     #s3 .s3-intro{position:absolute;inset:0;z-index:5;pointer-events:none;background:#0d0d0f;opacity:0}
-    #s3 .s3-intro img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-    #s3.play .s3-intro{animation:s3-intro 3.4s var(--ease) both}
-    #s3.play .s3-intro img{animation:s3-push 3.4s var(--ease) both}
+    #s3 .s3-intro img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+    #s3.play .s3-intro{animation:s3-intro 7.5s var(--ease) both}
+    #s3.play .s3-intro img{animation:s3-push 7.5s var(--ease) both}
+    html.still #s3 .s3-intro{display:none}
     #s3 .s3-sos{position:absolute;left:72px;top:15vh;font-size:84px;font-weight:500;letter-spacing:-.01em;line-height:1.1}
     #s3 .s3-sos span{display:inline-block;opacity:0}
     #s3.play .s3-sos span{animation:steep .8s var(--ease) both}
     #s3.play .s3-sos span:nth-child(2){animation-delay:.45s}#s3.play .s3-sos span:nth-child(3){animation-delay:.9s}
     #s3 .s3-sos .amber{color:var(--amber)}#s3 .s3-sos .mid{color:var(--mid)}#s3 .s3-sos .jade{color:var(--jade)}
-    @keyframes s3-intro{0%{opacity:1}72%{opacity:1}100%{opacity:0}}
-    @keyframes s3-push{from{transform:scale(1.06)}to{transform:scale(1)}}
+    @keyframes s3-intro{0%{opacity:1}90%{opacity:1}100%{opacity:0}}
+    @keyframes s3-push{from{transform:scale(1.04)}to{transform:scale(1)}}
     #s3 .s3-live{position:absolute;left:72px;top:7vh;font-size:20px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:14px}
     #s3 .s3-dot{width:12px;height:12px;border-radius:50%;background:#ff5b4a;box-shadow:0 0 14px #ff5b4a;animation:s3-blink 1s ease-in-out infinite}
     @keyframes s3-blink{50%{opacity:.25}}
@@ -79,6 +80,8 @@
       },true);
     }
     function start(el){
+      // restart the exploded view's 12 s loop at 0 (SMIL inside an img starts at load)
+      const x=el.querySelector('.s3-x');if(x&&!x.dataset.fresh){const c=x.cloneNode();c.dataset.fresh=1;x.replaceWith(c);}
       const w=app(el);
       if(!w){setTimeout(()=>start(el),60);return;}
       wire(el,w);
@@ -93,7 +96,7 @@
       setTimeout(()=>{if(DECK.cur===2)el.querySelector('.s3-app').focus();},300);
     }
     window.ENTER[3]=el=>start(el);
-    window.LEAVE[3]=el=>{clearInterval(poll);const w=app(el);if(w){w.osme.reset();}el.querySelector('.s3-app').blur();window.focus();};
+    window.LEAVE[3]=el=>{const x=el.querySelector('.s3-x');if(x)delete x.dataset.fresh;clearInterval(poll);const w=app(el);if(w){w.osme.reset();}el.querySelector('.s3-app').blur();window.focus();};
     // keys pressed with focus on the deck: Space and Enter pour, R resets; everything else stays with the deck
     window.DEMOKEY=e=>{
       const w=app(document.getElementById('s3'));if(!w)return false;
