@@ -82,3 +82,4 @@
 10:24 | product-validator-2 | START | round 2 validation of product/index.html
 10:24 | product-judge-2 | START | judging product/index.html round 2
 10:25 | video-lead | START | resumed (user: go, no Kling); building film v02 with product beat + logo v4
+10:26 | lead | DONE | facts.md: one-liner, colours, font, price (team 10:23), market, competitors, ask, tea windows, proof points; business case single bag -> $1.50

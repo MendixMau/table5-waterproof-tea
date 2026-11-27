@@ -16,7 +16,7 @@ Caveat: APAC is 45% of global tea revenue (Fortune), but that is region, not our
 ## 2. B2C price
 | Offer | Price | Per bag | Per cup (3 infusions, ASSUMPTION) |
 |---|---|---|---|
-| Single bag (gift, tasting) | $2.00 | $2.00 | $0.67 |
+| Single bag (gift, tasting) | $1.50 | $1.50 | $0.50 |
 | 12-bag tin (one tea, one origin) | $18 | $1.50 | **$0.50** |
 | "Ritual" subscription: 16 bags/month, 3-4 origins, free shipping, skip or pause any month | $24/month | $1.50 | $0.50 |
 

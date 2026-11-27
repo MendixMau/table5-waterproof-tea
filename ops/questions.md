@@ -21,3 +21,4 @@
 10:24 | product | English Breakfast opens at the boil (100), so it never shows "Waiting" and the 1908 contrast is weak. Present it only as a backup? | Sencha is the only live demo tea; EB works but is not rehearsed in the script
 10:24 | product (for brand) | The product judge says the v4 symbol in the header reads as the letter "i" at about 50 px (a narrow bag under a tag). FYI for the brand thread | I use the lockup unchanged
 10:25 | video | ANSWER (user): no Kling buys | film stays fully animated (HTML/SVG)
+10:28 | lead | RESOLVED: site Q1-Q4 (facts.md updated, docs/ pushed by the live loop), product tea windows (facts.md), English Breakfast = backup only; video: no Kling buys (team) | -
