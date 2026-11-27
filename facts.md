@@ -8,6 +8,7 @@ Locked at the 10:40 gate. Change here first; every slide, site and product reads
 | Name | Osme (Greek osmē, "scent"). Clash check 09:52: no tea or beverage brand found; a Miami perfumery uses "Osme", and an "OSMÉ PARIS" perfume trademark application is dead. |
 | One-liner | _TBD_ |
 | Primary customer | We are a global tea brand and tea-tech disruptor: a movement, not a tea lounge or an app. Primary audience: people worldwide who love tea and its rituals. |
+| Business model | B2C: direct to consumers (D2C web shop, subscription, premium retail). No hospitality or B2B channel in the pitch. |
 | Second customer | _TBD_ |
 | Price | _TBD_ |
 | Business model | _TBD_ |
