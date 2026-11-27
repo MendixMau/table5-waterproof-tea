@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OSME · the bag that knows its temperature</title>
+<title>OSME · the tea bag that knows its temperature</title>
 <style>
 /* OSME brand tokens - "Midnight Brew" (values copied inline from brand/identity/tokens.css) */
 :root {
@@ -19,99 +19,144 @@
   --brand-arc-cool: #3DBA9B;
   --brand-arc: linear-gradient(90deg, var(--brand-arc-hot) 0%, var(--brand-arc-mid) 48%, var(--brand-arc-cool) 100%);
   --brand-glow: 0 0 24px rgba(242,163,58,.35), 0 0 48px rgba(61,186,155,.18);
-  --font-display: "Futura", "Jost", "Century Gothic", "Avenir Next", sans-serif;
+  --font-display: "Jost", "Futura", "Century Gothic", "Avenir Next", sans-serif;
   --font-body:    "Avenir Next", "Avenir", "Inter", "Helvetica Neue", Arial, sans-serif;
   --fw-display: 500;
   --tracking-display: 0.18em;
-  --fs-hero: clamp(48px, 7vw, 96px);
-  --fs-h1: 48px; --fs-h2: 32px; --fs-h3: 22px; --fs-body: 17px; --fs-small: 13px;
-  --space-1: 4px;  --space-2: 8px;  --space-3: 16px; --space-4: 24px;
-  --space-5: 32px; --space-6: 48px; --space-7: 64px; --space-8: 96px;
   --radius-s: 4px; --radius-m: 10px; --radius-l: 20px; --radius-pill: 999px;
 }
 * { box-sizing: border-box; }
+/* Presenter scale: everything is in rem, and rem follows the screen, so a projector gets big type. */
+html { font-size: max(12px, min(1.12vw, 1.95vh)); }
 html, body { margin: 0; height: 100%; }
 body {
-  background: radial-gradient(ellipse 80% 60% at 50% 30%, #131317 0%, var(--brand-bg) 70%);
-  color: var(--brand-text); font-family: var(--font-body); font-size: var(--fs-body);
-  display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden;
+  background: radial-gradient(ellipse 70% 55% at 62% 42%, #16161B 0%, var(--brand-bg) 72%);
+  color: var(--brand-text); font-family: var(--font-body); font-size: 1rem;
+  display: grid; grid-template-rows: auto auto minmax(0, 1fr) auto auto; height: 100vh; overflow: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 .caps { font-family: var(--font-display); font-weight: var(--fw-display); letter-spacing: var(--tracking-display); text-transform: uppercase; }
-header { display: flex; align-items: center; justify-content: space-between; padding: var(--space-4) var(--space-6) var(--space-3); }
-header .tag { color: var(--brand-muted); font-size: var(--fs-small); }
-.teas { display: flex; gap: var(--space-2); padding: 0 var(--space-6); flex-wrap: wrap; }
+.logodefs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+header { display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 2.6rem .8rem; }
+.lockup { display: flex; align-items: center; height: 3.4rem; }
+.lockup svg { height: 100%; width: auto; display: block; }
+header .tag { color: var(--brand-muted); font-size: .8rem; }
+
+.teas { display: grid; grid-template-columns: repeat(6, 1fr); gap: .5rem; padding: 0 2.6rem; }
 .tea {
-  flex: 1 1 0; min-width: 140px; background: transparent; color: var(--brand-text);
-  border: 1px solid var(--brand-line); border-radius: var(--radius-m);
-  padding: 10px 14px; text-align: left; cursor: pointer; font-family: var(--font-body);
-  transition: border-color .3s, background .3s;
+  background: transparent; color: var(--brand-text); border: 1px solid var(--brand-line); border-radius: var(--radius-m);
+  padding: .55rem .8rem; text-align: left; cursor: pointer; font-family: var(--font-body); transition: border-color .3s, background .3s, box-shadow .3s;
 }
 .tea:hover { border-color: #44444c; }
-.tea b { display: block; font-family: var(--font-display); font-weight: var(--fw-display); letter-spacing: .08em; font-size: 15px; }
-.tea span { color: var(--brand-muted); font-size: 12px; }
-.tea.on { border-color: var(--brand-primary); background: rgba(242,163,58,.07); box-shadow: 0 0 18px rgba(242,163,58,.12); }
-main { flex: 1; display: grid; grid-template-columns: minmax(340px, 4fr) 7fr; gap: var(--space-5); padding: var(--space-4) var(--space-6) var(--space-3); align-items: center; }
-.gauge { position: relative; text-align: center; }
-.gauge svg { width: 100%; max-width: 460px; display: block; margin: 0 auto; overflow: visible; }
-.readout { font-family: var(--font-display); font-size: 84px; line-height: 1; letter-spacing: .02em; }
-.readout small { font-size: 32px; color: var(--brand-muted); margin-left: 4px; }
-.stage { margin-top: var(--space-3); display: flex; align-items: center; justify-content: center; gap: var(--space-3); min-height: 44px; }
-.dots { display: flex; gap: 7px; align-items: center; }
-.dots i { display: block; border-radius: 50%; background: var(--brand-line); transition: background .5s, box-shadow .5s; }
-.dots i:nth-child(1) { width: 9px; height: 9px; }
-.dots i:nth-child(2) { width: 12px; height: 12px; }
-.dots i:nth-child(3) { width: 16px; height: 16px; }
-.dots i.lit { background: var(--brand-primary); box-shadow: 0 0 10px rgba(242,163,58,.6); }
+.tea b { display: block; font-family: var(--font-display); font-weight: var(--fw-display); letter-spacing: .06em; font-size: .95rem; }
+.tea span { color: var(--brand-muted); font-size: .7rem; letter-spacing: .02em; }
+.tea.on { border-color: var(--brand-primary); background: rgba(242,163,58,.07); box-shadow: 0 0 1.2rem rgba(242,163,58,.14); }
+.tea.on span { color: #C9BFAF; }
+
+main { display: grid; grid-template-columns: 0.95fr 2fr; gap: 2.2rem; padding: 1rem 2.6rem .4rem; align-items: center; min-height: 0; }
+
+/* ---- gauge column */
+.gauge { text-align: center; min-height: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.gauge svg { width: 100%; max-height: 34vh; display: block; overflow: visible; }
+.window { margin-top: .2rem; font-size: .85rem; letter-spacing: .14em; color: var(--brand-text); line-height: 1.5; }
+.window b { display: block; font-weight: inherit; font-size: 1.15rem; letter-spacing: .2em; }
+.window i { font-style: normal; color: var(--brand-primary); }
+.window u { text-decoration: none; color: var(--brand-accent); }
+.stage { margin-top: 1.1rem; display: flex; align-items: center; justify-content: center; gap: .9rem; min-height: 2.6rem; }
+.dots { display: flex; gap: .4rem; align-items: center; }
+.dots i { display: block; border-radius: 50%; background: var(--brand-line); transition: background .6s, box-shadow .6s, transform .6s; }
+.dots i:nth-child(1) { width: .55rem; height: .55rem; }
+.dots i:nth-child(2) { width: .75rem; height: .75rem; }
+.dots i:nth-child(3) { width: 1rem; height: 1rem; }
+.dots i.lit:nth-child(1) { background: var(--brand-arc-cool); box-shadow: 0 0 .6rem rgba(61,186,155,.7); }
+.dots i.lit:nth-child(2) { background: var(--brand-arc-mid); box-shadow: 0 0 .6rem rgba(217,196,107,.7); }
+.dots i.lit:nth-child(3) { background: var(--brand-arc-hot); box-shadow: 0 0 .6rem rgba(242,163,58,.7); }
 .stage-name { text-align: left; }
-.stage-name b { display: block; font-family: var(--font-display); font-weight: var(--fw-display); letter-spacing: .12em; text-transform: uppercase; font-size: 15px; }
-.stage-name span { color: var(--brand-muted); font-size: var(--fs-small); }
-.ritual { margin: var(--space-4) auto 0; max-width: 420px; color: var(--brand-muted); font-size: 15px; line-height: 1.5; min-height: 46px; }
+.stage-name b { display: block; font-family: var(--font-display); font-weight: var(--fw-display); letter-spacing: .14em; text-transform: uppercase; font-size: 1.05rem; transition: color .4s; }
+.stage-name span { color: var(--brand-muted); font-size: .72rem; }
+.clock { margin-top: .55rem; color: var(--brand-muted); font-size: .72rem; letter-spacing: .06em; }
+.ritual { margin: .9rem auto 0; max-width: 24rem; color: var(--brand-muted); font-size: .8rem; line-height: 1.5; }
 .ritual em { color: var(--brand-text); font-style: normal; }
-.clock { margin-top: var(--space-2); color: var(--brand-muted); font-size: var(--fs-small); letter-spacing: .06em; }
-.cups { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
-.cup { background: linear-gradient(180deg, rgba(23,23,27,.85), rgba(23,23,27,.4)); border: 1px solid var(--brand-line); border-radius: var(--radius-l); padding: var(--space-3) var(--space-4) var(--space-4); text-align: center; transition: border-color .6s, box-shadow .6s; }
-.cup.osme.open { border-color: rgba(242,163,58,.55); box-shadow: var(--brand-glow); }
-.cup.osme.sealed { border-color: rgba(61,186,155,.55); box-shadow: 0 0 28px rgba(61,186,155,.18); }
-.cup h3 { margin: 0; font-size: 13px; color: var(--brand-muted); }
+
+/* ---- cups */
+.cups { display: grid; grid-template-columns: 1.6fr 0.7fr; gap: 1.4rem; min-height: 0; height: 100%; align-items: stretch; }
+.cup { position: relative; background: linear-gradient(180deg, rgba(23,23,27,.9), rgba(23,23,27,.35)); border: 1px solid var(--brand-line); border-radius: var(--radius-l);
+  padding: 1rem 1.4rem 1.1rem; text-align: center; transition: border-color .8s, box-shadow .8s; display: flex; flex-direction: column; min-height: 0; }
+.cup.osme.waiting { border-color: rgba(242,163,58,.28); }
+.cup.osme.open { border-color: rgba(242,163,58,.6); box-shadow: var(--brand-glow); }
+.cup.osme.sealed { border-color: rgba(61,186,155,.6); box-shadow: 0 0 1.8rem rgba(61,186,155,.2); }
+.cup h3 { margin: 0; font-size: .78rem; color: var(--brand-muted); display: flex; align-items: center; justify-content: center; gap: .5rem; }
 .cup h3 b { color: var(--brand-text); }
-.cup svg { width: 100%; max-width: 300px; height: auto; display: block; margin: 6px auto 4px; overflow: visible; }
-.status { font-family: var(--font-display); font-weight: var(--fw-display); font-size: 19px; letter-spacing: .03em; min-height: 52px; line-height: 1.3; }
-.status small { display: block; font-family: var(--font-body); color: var(--brand-muted); font-size: 13px; letter-spacing: 0; margin-top: 3px; }
+.cup .art { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; }
+.cup svg.scene { height: 100%; max-height: 62vh; width: auto; max-width: 100%; display: block; overflow: visible; }
+.status { font-family: var(--font-display); font-weight: var(--fw-display); font-size: 1.45rem; letter-spacing: .02em; line-height: 1.2; min-height: 4.2rem; transition: color .5s; }
+.status small { display: block; font-family: var(--font-body); font-weight: 400; color: var(--brand-muted); font-size: .82rem; letter-spacing: 0; margin-top: .35rem; }
+.old .status { font-size: 1.2rem; }
+.cup.old { opacity: .8; }
+.cup.old .art { filter: saturate(.7); }
+.osme .status.s-wait { color: #F6CF94; }
 .osme .status.s-open { color: var(--brand-primary); }
 .osme .status.s-sealed { color: var(--brand-accent); }
 .old .status.s-bitter { color: #C9775A; }
-.count { margin-top: var(--space-2); font-size: 12px; color: var(--brand-muted); letter-spacing: .08em; }
-footer { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); padding: var(--space-3) var(--space-6) var(--space-4); border-top: 1px solid var(--brand-line); flex-wrap: wrap; }
-.btn { font-family: var(--font-display); font-weight: var(--fw-display); letter-spacing: .14em; text-transform: uppercase; font-size: 13px; border-radius: var(--radius-pill); padding: 12px 22px; cursor: pointer; border: 1px solid var(--brand-line); background: transparent; color: var(--brand-text); transition: all .25s; }
+.count { margin-top: .3rem; font-size: .8rem; color: var(--brand-muted); letter-spacing: .1em; }
+.count b { color: var(--brand-text); font-weight: 500; }
+
+.basis { margin: 0; padding: .5rem 2.6rem .7rem; text-align: center; color: #B3AEA6; font-size: .9rem; letter-spacing: .03em; }
+.basis::before { content: ""; display: inline-block; width: .45rem; height: .45rem; border-radius: 50%; background: var(--brand-accent); margin-right: .6rem; vertical-align: .08rem; box-shadow: 0 0 .5rem rgba(61,186,155,.6); }
+
+footer { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .8rem 2.6rem 1.1rem; border-top: 1px solid var(--brand-line); }
+.group { display: flex; gap: .6rem; align-items: center; }
+.btn { font-family: var(--font-display); font-weight: var(--fw-display); letter-spacing: .14em; text-transform: uppercase; font-size: .78rem; border-radius: var(--radius-pill);
+  padding: .75rem 1.3rem; cursor: pointer; border: 1px solid var(--brand-line); background: transparent; color: var(--brand-text); transition: all .25s; display: inline-flex; align-items: center; gap: .6rem; }
 .btn:hover:not(:disabled) { border-color: #55555e; }
-.btn:disabled { opacity: .35; cursor: default; }
-.btn.primary { background: var(--brand-primary); color: #1a1206; border-color: var(--brand-primary); box-shadow: 0 0 20px rgba(242,163,58,.3); }
+.btn:disabled { opacity: .3; cursor: default; }
+.btn.primary { background: var(--brand-primary); color: #1a1206; border-color: var(--brand-primary); box-shadow: 0 0 1.2rem rgba(242,163,58,.35); font-size: .9rem; padding: .85rem 1.6rem; }
+.btn.primary:disabled { box-shadow: none; }
 .btn.jade { border-color: var(--brand-accent); color: var(--brand-accent); }
 .btn.jade.pulse { animation: pulse 2s ease-in-out infinite; }
-@keyframes pulse { 50% { box-shadow: 0 0 22px rgba(61,186,155,.45); } }
-.group { display: flex; gap: var(--space-2); align-items: center; }
+@keyframes pulse { 50% { box-shadow: 0 0 1.4rem rgba(61,186,155,.5); background: rgba(61,186,155,.08); } }
+kbd { font-family: var(--font-body); font-size: .62rem; letter-spacing: .04em; text-transform: none; border: 1px solid currentColor; border-radius: 5px; padding: .08rem .38rem; opacity: .7; }
 .seg { display: flex; border: 1px solid var(--brand-line); border-radius: var(--radius-pill); overflow: hidden; }
-.seg button { background: transparent; border: 0; color: var(--brand-muted); padding: 10px 14px; font-family: var(--font-display); font-size: 13px; cursor: pointer; letter-spacing: .08em; }
+.seg button { background: transparent; border: 0; color: var(--brand-muted); padding: .65rem .9rem; font-family: var(--font-display); font-size: .78rem; cursor: pointer; letter-spacing: .08em; }
 .seg button.on { color: var(--brand-text); background: var(--brand-line); }
-.hint { color: var(--brand-muted); font-size: 12px; }
-/* SVG animation helpers */
-.wisp { fill: none; stroke: var(--brand-text); stroke-width: 1.6; stroke-linecap: round; stroke-dasharray: 6 10; animation: rise 3.2s linear infinite; }
-.wisp.w2 { animation-duration: 4.1s; animation-delay: -1.2s; }
-.wisp.w3 { animation-duration: 3.6s; animation-delay: -2.1s; }
-@keyframes rise { to { stroke-dashoffset: -64; } }
-.drift { animation: drift 5s ease-in-out infinite alternate; }
-.drift.d2 { animation-duration: 6.5s; animation-delay: -2s; }
-.drift.d3 { animation-duration: 7.3s; animation-delay: -4s; }
-@keyframes drift { from { transform: translate(0, 0) scale(1); } to { transform: translate(14px, -18px) scale(1.35); } }
-.sway { animation: sway 6s ease-in-out infinite alternate; transform-origin: 150px 20px; }
-@keyframes sway { from { transform: rotate(-1.2deg); } to { transform: rotate(1.2deg); } }
-@media (max-width: 980px) { main { grid-template-columns: 1fr; } }
-:fullscreen body, body:fullscreen { background: var(--brand-bg); }
+.hint { color: var(--brand-muted); font-size: .7rem; letter-spacing: .06em; }
+
+/* ---- SVG animation helpers */
+.sway { animation: sway 7s ease-in-out infinite alternate; transform-box: view-box; transform-origin: 150px 120px; }
+@keyframes sway { from { transform: rotate(-1.4deg); } to { transform: rotate(1.4deg); } }
+.wisp { fill: none; stroke-linecap: round; stroke-dasharray: 130 290; animation: rise 4.6s linear infinite; }
+.wisp.glow { stroke-width: 24; filter: url(#blurW); opacity: .6; }
+.wisp.core { stroke-width: 6; }
+.wisp.w2 { animation-duration: 5.1s; animation-delay: -1.7s; }
+.wisp.w3 { animation-duration: 4.6s; animation-delay: -3.1s; }
+@keyframes rise { from { stroke-dashoffset: 130; } to { stroke-dashoffset: -290; } }
+#wispA.back .wisp { animation: sink 1.1s ease-in forwards; }
+@keyframes sink { from { stroke-dashoffset: -150; } to { stroke-dashoffset: 300; } }
+.plume { animation: plume 6s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: center; }
+.plume.p2 { animation-duration: 7.5s; animation-delay: -2s; }
+.plume.p3 { animation-duration: 8.5s; animation-delay: -4s; }
+.plume.p4 { animation-duration: 6.8s; animation-delay: -1s; }
+@keyframes plume { from { transform: translate(0, 0) scale(.9); } to { transform: translate(6px, 14px) scale(1.35); } }
+/* presenter mode: only what the room needs */
+body.present .clock, body.present .stage-name span, body.present .ritual, body.present .hint, body.present .tea span, body.present kbd, body.present header .tag { display: none; }
+body.present .tea { padding: .7rem .9rem; }
+body.present .tea b { font-size: 1.05rem; }
+body.present .count, body.present .basis { font-size: 1rem; }
+body.present .status small { font-size: 1rem; }
+body.present .stage-name b { font-size: 1.25rem; }
+body.present footer { opacity: .18; transition: opacity .6s; }
+body.present.awake footer, body.present footer:hover { opacity: 1; }
+@media (max-width: 900px) { main { grid-template-columns: 1fr; } .teas { grid-template-columns: repeat(3, 1fr); } body { overflow: auto; height: auto; } }
+:fullscreen body, body:fullscreen { background: radial-gradient(ellipse 70% 55% at 62% 42%, #16161B 0%, var(--brand-bg) 72%); }
+.status small{font-size:1rem}.window{font-size:1rem}.window b{font-size:1.3rem}.count,.clock,.stage-name span{font-size:.88rem}.basis{font-size:.95rem}.tea span{font-size:.82rem}.hint{font-size:.82rem}kbd{font-size:.72rem}.cup h3{font-size:.9rem}
 </style>
 </head>
 <body>
+<svg class="logodefs" aria-hidden="true" focusable="false"><defs><!--LOGO--><symbol id="osme-sym" viewBox="0 0 64 64"><defs><linearGradient id="osme-sym-gb" gradientUnits="userSpaceOnUse" x1="0" y1="35" x2="0" y2="6"><stop offset="0" stop-color="#F2A33A"/><stop offset=".48" stop-color="#D9C46B"/><stop offset="1" stop-color="#3DBA9B"/></linearGradient><mask id="osme-sym-mb" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64"><rect width="64" height="64" fill="#fff"/><circle cx="46" cy="5.4" r="1.7" fill="#000"/></mask></defs><g transform="translate(-3.6 0)"><g mask="url(#osme-sym-mb)"><path d="M21 37.5 L25.5 33 H36.5 L41 37.5 V59.8 Q41 63 37.8 63 H24.2 Q21 63 21 59.8 Z" fill="#F3EEE6"/><path d="M31.0 33 C31.0 29 41.5 30.5 41.5 25.5 C41.5 20.5 34 20 31 19.8 C28 19.6 21 19 21 13.6 C21 8.8 26.5 7.6 31 7.6 H40" fill="none" stroke="url(#osme-sym-gb)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><rect x="40" y="1.5" width="12" height="13" rx="2" fill="#3DBA9B"/></g></g></symbol><symbol id="osme-lock" viewBox="15.0 0 141.54 64"><defs><linearGradient id="osme-lock-gb" gradientUnits="userSpaceOnUse" x1="0" y1="35" x2="0" y2="6"><stop offset="0" stop-color="#F2A33A"/><stop offset=".48" stop-color="#D9C46B"/><stop offset="1" stop-color="#3DBA9B"/></linearGradient><mask id="osme-lock-mb" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64"><rect width="64" height="64" fill="#fff"/><circle cx="46" cy="5.4" r="1.7" fill="#000"/></mask></defs><g transform="translate(-3.6 0)"><g mask="url(#osme-lock-mb)"><path d="M21 37.5 L25.5 33 H36.5 L41 37.5 V59.8 Q41 63 37.8 63 H24.2 Q21 63 21 59.8 Z" fill="#F3EEE6"/><path d="M31.0 33 C31.0 29 41.5 30.5 41.5 25.5 C41.5 20.5 34 20 31 19.8 C28 19.6 21 19 21 13.6 C21 8.8 26.5 7.6 31 7.6 H40" fill="none" stroke="url(#osme-lock-gb)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><rect x="40" y="1.5" width="12" height="13" rx="2" fill="#3DBA9B"/></g></g><path transform="translate(60.27 45.50)" d="M4.8975 -10.5Q4.8975 -12.667499999999999 5.81625 -14.35125Q6.734999999999999 -16.035 8.3475 -17.00625Q9.959999999999999 -17.9775 12.0375 -17.9775Q14.16 -17.9775 15.7575 -17.00625Q17.355 -16.035 18.26625 -14.35125Q19.1775 -12.667499999999999 19.1775 -10.5Q19.1775 -8.34 18.25875 -6.6525Q17.34 -4.965 15.73875 -3.99375Q14.1375 -3.0225 12.0375 -3.0225Q9.959999999999999 -3.0225 8.3475 -3.99375Q6.734999999999999 -4.965 5.81625 -6.6525Q4.8975 -8.34 4.8975 -10.5ZM1.125 -10.5Q1.125 -8.16 1.935 -6.1537500000000005Q2.745 -4.1475 4.215 -2.67375Q5.685 -1.2 7.68375 -0.375Q9.6825 0.44999999999999996 12.0375 0.44999999999999996Q14.415 0.44999999999999996 16.4025 -0.375Q18.39 -1.2 19.86 -2.67375Q21.33 -4.1475 22.14 -6.1537500000000005Q22.95 -8.16 22.95 -10.5Q22.95 -12.862499999999999 22.136249999999997 -14.846249999999998Q21.322499999999998 -16.83 19.845 -18.28875Q18.3675 -19.7475 16.38375 -20.56125Q14.399999999999999 -21.375 12.0375 -21.375Q9.7125 -21.375 7.7175 -20.56125Q5.7225 -19.7475 4.245 -18.28875Q2.7675 -16.83 1.94625 -14.846249999999998Q1.125 -12.862499999999999 1.125 -10.5ZM32.61 -6.765 29.97 -4.92Q30.6675 -3.4875 31.841250000000002 -2.25375Q33.015 -1.02 34.59 -0.28500000000000003Q36.165 0.44999999999999996 38.01 0.44999999999999996Q39.36 0.44999999999999996 40.60875 0.022499999999999992Q41.8575 -0.40499999999999997 42.8475 -1.2074999999999998Q43.8375 -2.01 44.411249999999995 -3.17625Q44.985 -4.3425 44.985 -5.8125Q44.985 -7.199999999999999 44.5125 -8.2275Q44.04 -9.254999999999999 43.2675 -10.00875Q42.495 -10.7625 41.55 -11.27625Q40.605000000000004 -11.79 39.66 -12.1275Q37.980000000000004 -12.7125 36.92625 -13.282499999999999Q35.8725 -13.8525 35.38125 -14.504999999999999Q34.89 -15.157499999999999 34.89 -15.9675Q34.89 -16.86 35.58375 -17.53875Q36.2775 -18.217499999999998 37.7325 -18.217499999999998Q38.7975 -18.217499999999998 39.588750000000005 -17.805Q40.38 -17.3925 40.97625 -16.721249999999998Q41.5725 -16.05 41.985 -15.2775L44.85 -16.8975Q44.325 -18.0 43.37625 -19.02375Q42.4275 -20.0475 41.0475 -20.71125Q39.667500000000004 -21.375 37.792500000000004 -21.375Q35.917500000000004 -21.375 34.425 -20.666249999999998Q32.9325 -19.9575 32.07 -18.682499999999997Q31.2075 -17.4075 31.2075 -15.719999999999999Q31.2075 -14.2425 31.770000000000003 -13.2075Q32.3325 -12.1725 33.20625 -11.46375Q34.08 -10.754999999999999 35.04375 -10.30125Q36.0075 -9.8475 36.78 -9.57Q38.1075 -9.09 39.11625 -8.598749999999999Q40.125 -8.1075 40.69125 -7.4025Q41.2575 -6.6975 41.2575 -5.535Q41.2575 -4.2825 40.3575 -3.5062499999999996Q39.457499999999996 -2.73 38.0025 -2.73Q36.825 -2.73 35.853750000000005 -3.2325Q34.8825 -3.735 34.09125 -4.64625Q33.3 -5.5575 32.61 -6.765ZM57.300000000000004 -12.7875 63.697500000000005 -1.95 70.095 -12.7875 71.535 0.0H75.21000000000001L72.3225 -22.05L63.697500000000005 -7.8075L55.072500000000005 -22.05L52.185 0.0H55.86ZM85.6725 0.0H96.2625V-3.1125H85.6725ZM85.6725 -17.8875H96.2625V-21.0H85.6725ZM85.6725 -9.7125H95.66250000000001V-12.7875H85.6725ZM83.47500000000001 -21.0V0.0H86.9625V-21.0Z" fill="#F3EEE6"/></symbol><!--/LOGO--></defs></svg>
+
 <header>
-  <svg width="122" height="32" viewBox="0 0 152.5 40" aria-label="OSME"><defs><linearGradient id="arcw" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="40" y2="0"><stop offset="0" stop-color="#F2A33A"/><stop offset=".48" stop-color="#D9C46B"/><stop offset="1" stop-color="#3DBA9B"/></linearGradient></defs><circle cx="20" cy="20" r="17.5" fill="none" stroke="url(#arcw)" stroke-width="5"/><path d="M66.30 7.75 A8.75 8.75 0 1 0 58.25 20.00 A8.75 8.75 0 1 1 50.20 32.25" fill="none" stroke="#F3EEE6" stroke-width="5"/><path d="M84.50 40 V2.50 L99.50 24.80 L114.50 2.50 V40" fill="none" stroke="#F3EEE6" stroke-width="5" stroke-linejoin="miter" stroke-miterlimit="10"/><path d="M150 2.5 H129.5 V37.5 H150 M129.5 20 H146.5" fill="none" stroke="#F3EEE6" stroke-width="5"/></svg>
+  <div class="lockup" aria-label="OSME"><svg class="lg-lock" viewBox="0 0 141.54 64" role="img"><use href="#osme-lock"/></svg></div>
   <div class="tag caps">Every tea has its temperature</div>
 </header>
 
@@ -119,174 +164,214 @@ footer { display: flex; align-items: center; justify-content: space-between; gap
 
 <main>
   <section class="gauge">
-    <svg viewBox="0 0 400 220" id="gaugeSvg" aria-hidden="true">
+    <svg viewBox="0 0 400 228" id="gaugeSvg" aria-hidden="true">
       <defs>
         <linearGradient id="arcg" gradientUnits="userSpaceOnUse" x1="30" y1="0" x2="370" y2="0">
           <stop offset="0" stop-color="#F2A33A"/><stop offset=".48" stop-color="#D9C46B"/><stop offset="1" stop-color="#3DBA9B"/>
         </linearGradient>
         <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="glowBig" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="7"/></filter>
       </defs>
-      <path id="arcBase" d="M30 200 A170 170 0 0 1 370 200" fill="none" stroke="#2A2A30" stroke-width="14" stroke-linecap="round"/>
-      <path id="arcDone" d="M30 200 A170 170 0 0 1 370 200" fill="none" stroke="url(#arcg)" stroke-width="14" stroke-linecap="round" opacity=".9"/>
-      <path id="win" fill="none" stroke="#F3EEE6" stroke-width="26" stroke-linecap="butt" opacity=".13"/>
-      <path id="winEdge" fill="none" stroke="#F3EEE6" stroke-width="2" stroke-dasharray="2 5" opacity=".55"/>
+      <path id="arcBase" fill="none" stroke="#1E1E23" stroke-width="16" stroke-linecap="round"/>
+      <path id="arcDim" fill="none" stroke="url(#arcg)" stroke-width="16" stroke-linecap="round" opacity=".22"/>
+      <path id="arcDone" fill="none" stroke="url(#arcg)" stroke-width="16" stroke-linecap="round"/>
+      <path id="winGlow" fill="none" stroke="url(#arcg)" stroke-width="30" opacity="0" filter="url(#glowBig)"/>
+      <path id="win" fill="none" stroke="#F3EEE6" stroke-width="30" stroke-linecap="butt" opacity=".10"/>
+      <path id="winEdgeOut" fill="none" stroke="#F3EEE6" stroke-width="1.5" opacity=".55"/>
+      <g id="winMarks"></g>
       <g id="ticks"></g>
-      <text id="winLabel" text-anchor="middle" fill="#F3EEE6" font-size="12" letter-spacing="1.5" font-family="Futura, Jost, 'Century Gothic', 'Avenir Next', sans-serif"></text>
-      <circle id="needle" r="11" fill="#F3EEE6" filter="url(#glow)"/>
+      <circle id="needle" r="12" fill="#F3EEE6" filter="url(#glow)"/>
       <circle id="needleCore" r="5" fill="#0B0B0D"/>
+      <text id="tempText" x="200" y="186" text-anchor="middle" fill="#F3EEE6" font-family="Jost, Futura, 'Century Gothic', 'Avenir Next', sans-serif" font-weight="500" font-size="80" letter-spacing="1"><tspan id="tempNum">--</tspan><tspan font-size="28" fill="#8E8A83" dx="4" dy="-34">°C</tspan></text>
     </svg>
-    <div style="margin-top:-118px">
-      <div class="readout" id="temp">--<small>°C</small></div>
-      <div class="clock" id="clock">Choose a tea, then pour</div>
-    </div>
+    <div class="window caps" id="window"></div>
     <div class="stage">
       <div class="dots" id="dots"><i></i><i></i><i></i></div>
       <div class="stage-name"><b id="stageName">Lu Yu's water</b><span id="stageNote">The Classic of Tea, 8th century</span></div>
     </div>
+    <div class="clock" id="clock">Choose a tea, then pour</div>
     <p class="ritual" id="ritual"></p>
   </section>
 
   <section class="cups">
     <div class="cup osme" id="cupOsme">
       <h3 class="caps"><b>OSME</b> bag</h3>
-      <svg viewBox="0 0 300 300" id="svgOsme" aria-label="OSME bag in a cup">
+      <div class="art">
+      <svg class="scene" viewBox="0 -78 300 373" id="svgOsme" aria-label="OSME bag in a glass of water">
         <defs>
           <clipPath id="glassClipA"><path d="M62 70 L80 262 Q82 276 98 276 L202 276 Q218 276 220 262 L238 70 Z"/></clipPath>
-          <filter id="soft" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="9"/></filter>
-          <filter id="softS" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.2"/></filter>
-          <linearGradient id="bagFill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EDE6DA" stop-opacity=".92"/><stop offset="1" stop-color="#BDB5A8" stop-opacity=".85"/></linearGradient>
-          <linearGradient id="glassSheen" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".10"/><stop offset=".25" stop-color="#fff" stop-opacity="0"/><stop offset=".8" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".06"/></linearGradient>
+          <clipPath id="bagClip"><path d="M-34 -35.7 L-18.7 -51 H18.7 L34 -35.7 V40 Q34 51 23 51 H-23 Q-34 51 -34 40 Z"/></clipPath>
+          <filter id="soft" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="10"/></filter>
+          <filter id="softS" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.4"/></filter>
+          <filter id="blurW" x="-100%" y="-20%" width="300%" height="140%"><feGaussianBlur stdDeviation="4"/></filter>
+          <linearGradient id="bagFill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F1EADF"/><stop offset="1" stop-color="#C8BFB1"/></linearGradient>
+          <linearGradient id="glassSheen" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".10"/><stop offset=".22" stop-color="#fff" stop-opacity="0"/><stop offset=".82" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".07"/></linearGradient>
+          <linearGradient id="wispGrad" gradientUnits="userSpaceOnUse" x1="0" y1="78" x2="0" y2="-98"><stop offset="0" stop-color="#F2A33A" stop-opacity="0"/><stop offset=".12" stop-color="#F6C77E" stop-opacity=".95"/><stop offset=".55" stop-color="#F3EEE6" stop-opacity=".55"/><stop offset="1" stop-color="#F3EEE6" stop-opacity="0"/></linearGradient>
+          <linearGradient id="stringGrad" gradientUnits="userSpaceOnUse" x1="0" y1="150" x2="0" y2="64"><stop offset="0" stop-color="#F2A33A"/><stop offset=".48" stop-color="#D9C46B"/><stop offset="1" stop-color="#3DBA9B"/></linearGradient>
+          <pattern id="pores" width="7" height="7" patternUnits="userSpaceOnUse"><circle id="pore" cx="3.5" cy="3.5" r=".4" fill="#3a2a14"/></pattern>
         </defs>
-        <!-- scent wisps -->
+        <!-- the scent: wisps that rise only while the bag is open -->
         <g id="wispA" opacity="0">
-          <path class="wisp" d="M132 66 C120 46 146 34 134 12 C128 0 140 -10 136 -22"/>
-          <path class="wisp w2" d="M152 64 C164 44 140 30 154 8 C160 -2 150 -12 156 -24"/>
-          <path class="wisp w3" d="M170 66 C160 50 182 36 172 16 C168 6 176 -4 172 -14"/>
+          <path class="wisp glow" stroke="url(#wispGrad)" d="M136 78 C118 46 156 26 134 -8 C120 -30 150 -56 130 -96"/>
+          <path class="wisp core" stroke="url(#wispGrad)" d="M136 78 C118 46 156 26 134 -8 C120 -30 150 -56 130 -96"/>
+          <path class="wisp glow w2" stroke="url(#wispGrad)" d="M156 78 C176 44 138 22 162 -14 C178 -38 150 -60 168 -98"/>
+          <path class="wisp core w2" stroke="url(#wispGrad)" d="M156 78 C176 44 138 22 162 -14 C178 -38 150 -60 168 -98"/>
+          <path class="wisp glow w3" stroke="url(#wispGrad)" d="M174 78 C160 52 192 30 176 0 C164 -22 188 -44 180 -84"/>
+          <path class="wisp core w3" stroke="url(#wispGrad)" d="M174 78 C160 52 192 30 176 0 C164 -22 188 -44 180 -84"/>
         </g>
+        <g transform="translate(150 203)"><path id="pulseA" d="M-34 -35.7 L-18.7 -51 H18.7 L34 -35.7 V40 Q34 51 23 51 H-23 Q-34 51 -34 40 Z" fill="none" stroke="#F2A33A" stroke-width="3" opacity="0" filter="url(#softS)"/></g>
+        <!-- pour stream -->
+        <rect id="streamA" x="146" y="-100" width="8" height="0" rx="4" fill="#BFD3D6" opacity="0"/>
         <g clip-path="url(#glassClipA)">
-          <rect id="waterA" x="40" y="276" width="220" height="0" fill="#C9C76A" fill-opacity=".08"/>
+          <rect id="waterA" x="40" y="276" width="220" height="0" fill="#9FB5B8" fill-opacity=".1"/>
+          <ellipse id="surfA" cx="150" cy="276" rx="0" ry="5" fill="#F3EEE6" fill-opacity=".08"/>
           <g id="cloudA" opacity="0">
-            <circle class="drift" cx="132" cy="200" r="26" fill="#C9C76A" filter="url(#soft)"/>
-            <circle class="drift d2" cx="172" cy="214" r="22" fill="#C9C76A" filter="url(#soft)"/>
-            <circle class="drift d3" cx="150" cy="168" r="18" fill="#C9C76A" filter="url(#soft)"/>
+            <ellipse class="plume" cx="132" cy="236" rx="24" ry="30" filter="url(#soft)"/>
+            <ellipse class="plume p2" cx="170" cy="244" rx="22" ry="28" filter="url(#soft)"/>
+            <ellipse class="plume p3" cx="150" cy="262" rx="40" ry="16" filter="url(#soft)"/>
+            <ellipse class="plume p4" cx="150" cy="208" rx="18" ry="22" filter="url(#soft)"/>
           </g>
         </g>
-        <!-- the OSME bag -->
+        <!-- the OSME bag: the logo's bag (chamfered shoulders, S-shaped scent string, jade tag) with a membrane that opens -->
         <g class="sway">
-          <line x1="150" y1="20" x2="150" y2="148" stroke="#8E8A83" stroke-width="1"/>
-          <path d="M150 20 Q168 18 212 30" stroke="#8E8A83" stroke-width="1" fill="none"/>
-          <g transform="translate(212 24)"><rect x="0" y="0" width="34" height="22" rx="3" fill="#17171B" stroke="#2A2A30"/><path d="M23.6 10 A6.3 6.3 0 1 1 18.6 5.4" fill="none" stroke="url(#arcg)" stroke-width="1.8" stroke-linecap="round"/><circle cx="21.5" cy="6.5" r="1.6" fill="#F2A33A"/></g>
-          <g id="bagA" transform="translate(150 196)">
-            <!-- leaves that show when open -->
-            <g id="leavesA" opacity="0">
-              <ellipse cx="-14" cy="-40" rx="9" ry="3.4" fill="#6F7E3A" transform="rotate(-24 -14 -40)"/>
-              <ellipse cx="2" cy="-44" rx="10" ry="3.6" fill="#7E8C43" transform="rotate(12 2 -44)"/>
-              <ellipse cx="15" cy="-38" rx="8" ry="3" fill="#5F6E33" transform="rotate(38 15 -38)"/>
+          <path d="M150 150 C150 136 178 140 178 123 C178 106 152 107 140 104 C126 101 119 91 125 80 C131 69 165 62 228 64 Q244 66 246 82" stroke="url(#stringGrad)" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+          <g transform="translate(233 82)">
+            <rect id="tagGlow" x="-6" y="-6" width="40" height="44" rx="8" fill="#3DBA9B" opacity="0" filter="url(#soft)"/>
+            <rect x="0" y="0" width="28" height="32" rx="4" fill="#3DBA9B"/>
+            <circle cx="14" cy="7" r="2.6" fill="#0B0B0D"/>
+          </g>
+          <g transform="translate(150 203)">
+            <path id="bagHalo" d="M-34 -35.7 L-18.7 -51 H18.7 L34 -35.7 V40 Q34 51 23 51 H-23 Q-34 51 -34 40 Z" fill="none" stroke="#F2A33A" stroke-width="6" opacity="0" filter="url(#softS)"/>
+            <path id="bagBody" d="M-34 -35.7 L-18.7 -51 H18.7 L34 -35.7 V40 Q34 51 23 51 H-23 Q-34 51 -34 40 Z" fill="url(#bagFill)" fill-opacity=".9"/>
+            <g clip-path="url(#bagClip)">
+              <g id="leavesA" opacity=".3">
+                <ellipse cx="-14" cy="-6" rx="12" ry="4" transform="rotate(-24 -14 -6)"/>
+                <ellipse cx="6" cy="-18" rx="13" ry="4.2" transform="rotate(14 6 -18)"/>
+                <ellipse cx="18" cy="4" rx="11" ry="3.6" transform="rotate(40 18 4)"/>
+                <ellipse cx="-6" cy="14" rx="12" ry="3.8" transform="rotate(-8 -6 14)"/>
+                <ellipse cx="-20" cy="-30" rx="10" ry="3.4" transform="rotate(18 -20 -30)"/>
+                <ellipse cx="16" cy="-36" rx="10" ry="3.4" transform="rotate(-30 16 -36)"/>
+                <ellipse cx="10" cy="30" rx="11" ry="3.6" transform="rotate(30 10 30)"/>
+                <ellipse cx="-18" cy="36" rx="10" ry="3.4" transform="rotate(-36 -18 36)"/>
+              </g>
+              <g id="poreLayer" opacity=".9"></g>
+              <rect x="-40" y="-56" width="40" height="112" fill="#000" opacity=".08"/>
             </g>
-            <path id="bagBody" d="M-34 -36 C-40 -6 -38 26 -22 38 C-10 46 10 46 22 38 C38 26 40 -6 34 -36 Z" fill="url(#bagFill)"/>
-            <path d="M-26 -20 C-30 4 -28 22 -16 32" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1.4"/>
-            <!-- three bubbles motif -->
-            <circle cx="-8" cy="14" r="2.6" fill="#3DBA9B"/><circle cx="1" cy="5" r="3.4" fill="#D9C46B"/><circle cx="12" cy="-6" r="4.4" fill="#F2A33A"/>
-            <!-- seam: two lips that part when open -->
-            <path id="lipL" d="M-36 -38 Q0 -30 36 -38" fill="none" stroke="#D8D0C2" stroke-width="5" stroke-linecap="round"/>
-            <path id="lipU" d="M-36 -38 Q0 -46 36 -38" fill="none" stroke="#F3EEE6" stroke-width="5" stroke-linecap="round"/>
-            <path id="sealGlow" d="M-36 -38 Q0 -38 36 -38" fill="none" stroke="#3DBA9B" stroke-width="3" stroke-linecap="round" opacity="0" filter="url(#softS)"/>
-            <line x1="0" y1="-42" x2="0" y2="-48" stroke="#8E8A83" stroke-width="1"/>
+            <path d="M-24 -30 C-27 -10 -26 14 -22 32" fill="none" stroke="#fff" stroke-opacity=".4" stroke-width="1.6" stroke-linecap="round"/>
+            <path id="bagEdge" d="M-34 -35.7 L-18.7 -51 H18.7 L34 -35.7 V40 Q34 51 23 51 H-23 Q-34 51 -34 40 Z" fill="none" stroke="#F3EEE6" stroke-opacity=".35" stroke-width="1.2"/>
+            <path d="M-18 -49 H18" stroke="#B9B0A2" stroke-width="4" stroke-dasharray="1.2 2.4"/>
           </g>
         </g>
         <!-- glass -->
-        <path d="M62 70 L80 262 Q82 276 98 276 L202 276 Q218 276 220 262 L238 70" fill="url(#glassSheen)" stroke="#F3EEE6" stroke-opacity=".38" stroke-width="2"/>
-        <ellipse cx="150" cy="70" rx="88" ry="7" fill="none" stroke="#F3EEE6" stroke-opacity=".3" stroke-width="1.5"/>
-        <ellipse cx="150" cy="284" rx="78" ry="5" fill="#000" opacity=".5"/>
+        <path d="M62 70 L80 262 Q82 276 98 276 L202 276 Q218 276 220 262 L238 70" fill="url(#glassSheen)" stroke="#F3EEE6" stroke-opacity=".4" stroke-width="2"/>
+        <ellipse cx="150" cy="70" rx="88" ry="7" fill="none" stroke="#F3EEE6" stroke-opacity=".32" stroke-width="1.5"/>
+        <ellipse cx="150" cy="285" rx="80" ry="5" fill="#000" opacity=".55"/>
       </svg>
-      <div class="status" id="statusA">Ready.<small>Pour freshly boiled water.</small></div>
+      </div>
+      <div class="status" id="statusA">Ready.<small>Press Space to pour freshly boiled water.</small></div>
       <div class="count" id="countA">1st infusion · 1 bag</div>
     </div>
 
     <div class="cup old" id="cupOld">
       <h3 class="caps"><b>1908</b> tea bag</h3>
-      <svg viewBox="0 0 300 300" id="svgOld" aria-label="Classic tea bag in a cup">
+      <div class="art">
+      <svg class="scene" viewBox="0 -78 300 373" id="svgOld" aria-label="Classic tea bag in a glass of water">
         <defs>
           <clipPath id="glassClipB"><path d="M62 70 L80 262 Q82 276 98 276 L202 276 Q218 276 220 262 L238 70 Z"/></clipPath>
         </defs>
+        <rect id="streamB" x="146" y="-100" width="8" height="0" rx="4" fill="#BFD3D6" opacity="0"/>
         <g clip-path="url(#glassClipB)">
-          <rect id="waterB" x="40" y="276" width="220" height="0" fill="#C9C76A" fill-opacity=".08"/>
+          <rect id="waterB" x="40" y="276" width="220" height="0" fill="#9FB5B8" fill-opacity=".1"/>
+          <ellipse id="surfB" cx="150" cy="276" rx="0" ry="5" fill="#F3EEE6" fill-opacity=".08"/>
           <g id="cloudB" opacity="0">
-            <circle class="drift" cx="140" cy="214" r="34" fill="#C9C76A" filter="url(#soft)"/>
-            <circle class="drift d2" cx="168" cy="236" r="30" fill="#C9C76A" filter="url(#soft)"/>
+            <ellipse class="plume" cx="138" cy="238" rx="30" ry="30" filter="url(#soft)"/>
+            <ellipse class="plume p2" cx="170" cy="252" rx="30" ry="22" filter="url(#soft)"/>
+            <ellipse class="plume p3" cx="150" cy="200" rx="26" ry="26" filter="url(#soft)"/>
           </g>
         </g>
-        <!-- classic flat paper bag, string and tag over the rim -->
-        <path d="M150 196 L150 120 Q152 70 232 66 L236 96" stroke="#8E8A83" stroke-width="1" fill="none"/>
-        <g transform="translate(224 96)"><rect x="0" y="0" width="26" height="30" fill="#2A2A30" stroke="#3a3a42"/><text x="13" y="19" text-anchor="middle" font-size="8" fill="#8E8A83" font-family="Avenir Next, Arial, sans-serif">1908</text></g>
-        <g transform="translate(150 230) rotate(-8)">
-          <rect x="-30" y="-36" width="60" height="70" rx="2" fill="#CFC6B6" fill-opacity=".72"/>
+        <!-- classic flat paper bag, string and paper tag over the rim -->
+        <path d="M150 196 L150 120 Q152 70 228 64 Q238 64 240 84" stroke="#8E8A83" stroke-width="1" fill="none"/>
+        <g transform="translate(226 84)"><rect x="0" y="0" width="28" height="32" fill="#2A2A30" stroke="#3a3a42"/><text x="14" y="20" text-anchor="middle" font-size="9" fill="#8E8A83" font-family="Avenir Next, Arial, sans-serif">1908</text></g>
+        <g transform="translate(150 232) rotate(-8)">
+          <rect x="-30" y="-36" width="60" height="70" rx="2" fill="#CFC6B6" fill-opacity=".75"/>
           <rect x="-30" y="-36" width="60" height="70" rx="2" fill="none" stroke="#A79E8E" stroke-dasharray="2 3"/>
           <rect id="stainB" x="-30" y="-36" width="60" height="70" rx="2" fill="#3a1c0a" opacity="0"/>
           <rect x="-4" y="-38" width="8" height="4" fill="#9A9AA0"/>
         </g>
-        <path d="M62 70 L80 262 Q82 276 98 276 L202 276 Q218 276 220 262 L238 70" fill="url(#glassSheen)" stroke="#F3EEE6" stroke-opacity=".38" stroke-width="2"/>
-        <ellipse cx="150" cy="70" rx="88" ry="7" fill="none" stroke="#F3EEE6" stroke-opacity=".3" stroke-width="1.5"/>
-        <ellipse cx="150" cy="284" rx="78" ry="5" fill="#000" opacity=".5"/>
+        <path d="M62 70 L80 262 Q82 276 98 276 L202 276 Q218 276 220 262 L238 70" fill="url(#glassSheen)" stroke="#F3EEE6" stroke-opacity=".4" stroke-width="2"/>
+        <ellipse cx="150" cy="70" rx="88" ry="7" fill="none" stroke="#F3EEE6" stroke-opacity=".32" stroke-width="1.5"/>
+        <ellipse cx="150" cy="285" rx="80" ry="5" fill="#000" opacity=".55"/>
       </svg>
+      </div>
       <div class="status" id="statusB">Ready.<small>The bag goes in, the clock starts.</small></div>
       <div class="count" id="countB">1 bag used</div>
     </div>
   </section>
 </main>
 
+<p class="basis">Based on temperature-responsive membranes; food-safe version in R&amp;D.</p>
+
 <footer>
   <div class="group">
-    <button class="btn primary" id="pour">Pour boiling water</button>
-    <button class="btn jade" id="again" disabled>Brew again</button>
+    <button class="btn primary" id="pour">Pour boiling water <kbd>Space</kbd></button>
+    <button class="btn jade" id="again" disabled>Brew again <kbd>Space</kbd></button>
   </div>
   <div class="group">
     <span class="hint">Time-lapse</span>
     <div class="seg" id="speed"><button data-s="1" class="on">1x</button><button data-s="2">2x</button><button data-s="4">4x</button></div>
-    <button class="btn" id="reset">Reset</button>
-    <button class="btn" id="fs">Full screen</button>
+    <button class="btn" id="reset">Reset <kbd>R</kbd></button>
+    <button class="btn" id="fs">Full screen <kbd>F</kbd></button>
   </div>
 </footer>
 
 <script>
 (function () {
   "use strict";
-  // ---- The teas: windows are typical brewing temperatures; steep = minutes for a full cup in the window.
+  // ---- The teas. Each bag opens when the water cools to `hi` and seals again below `lo` (facts.md: Sencha 80 / 70).
+  // steep = minutes for a full-strength cup; liquor and leaf colours for the drawing.
   var TEAS = [
-    { id: "gyokuro",  name: "Gyokuro",           culture: "Japan · Uji",          lo: 50, hi: 60,  steep: 2.0, liquor: "#B8C86A", green: true,  ritual: "Shade-grown and sweet. <em>Cool water, small cup, slow sip.</em>" },
-    { id: "sencha",   name: "Sencha",            culture: "Japan · Shizuoka",     lo: 70, hi: 80,  steep: 1.5, liquor: "#C9C25E", green: true,  ritual: "Japan's everyday green. <em>Pour to the last drop; it carries the best of the cup.</em>" },
-    { id: "longjing", name: "Longjing",          culture: "China · Hangzhou",     lo: 75, hi: 85,  steep: 2.0, liquor: "#D6C77A", green: true,  ritual: "Dragon Well. <em>Watch the flat leaves stand up and dance.</em>" },
-    { id: "tieguanyin", name: "Tieguanyin",      culture: "China · Fujian oolong", lo: 85, hi: 95, steep: 1.0, liquor: "#D9A845", green: false, ritual: "The Iron Goddess. <em>Many short cups; each one opens the leaf a little more.</em>" },
-    { id: "puerh",    name: "Pu-erh",            culture: "China · Yunnan",       lo: 95, hi: 100, steep: 0.7, liquor: "#6B2E12", green: false, ritual: "Aged leaf, deep and earthy. <em>Short, hot, again and again.</em>" },
-    { id: "eb",       name: "English Breakfast", culture: "Britain",              lo: 90, hi: 100, steep: 2.5, liquor: "#93441A", green: false, ritual: "Britain's morning cup. <em>Freshly boiled, a splash of milk if you like.</em>" }
+    { id: "gyokuro",    name: "Gyokuro",           culture: "Japan · Uji",           lo: 50, hi: 60,  steep: 2.0, liquor: "#B8C86A", leaf: "#5E7A2E", green: true,  ritual: "Shade-grown and sweet. <em>Cool water, small cup, slow sip.</em>" },
+    { id: "sencha",     name: "Sencha",            culture: "Japan · Shizuoka",      lo: 70, hi: 80,  steep: 1.5, liquor: "#C9C25E", leaf: "#6F8A35", green: true,  ritual: "Japan's everyday green. <em>Pour to the last drop; it carries the best of the cup.</em>" },
+    { id: "longjing",   name: "Longjing",          culture: "China · Hangzhou",      lo: 75, hi: 85,  steep: 2.0, liquor: "#D6C77A", leaf: "#7E8C43", green: true,  ritual: "Dragon Well. <em>Watch the flat leaves stand up and dance.</em>" },
+    { id: "tieguanyin", name: "Tieguanyin",        culture: "China · Fujian", lo: 85, hi: 95,  steep: 1.0, liquor: "#D9A845", leaf: "#4F5A2A", green: false, ritual: "The Iron Goddess. <em>Many short cups; each one opens the leaf a little more.</em>" },
+    { id: "puerh",      name: "Pu-erh",            culture: "China · Yunnan",        lo: 95, hi: 100, steep: 0.7, liquor: "#6B2E12", leaf: "#3A2414", green: false, ritual: "Aged leaf, deep and earthy. <em>Short, hot, again and again.</em>" },
+    { id: "eb",         name: "English Breakfast", culture: "Britain",               lo: 90, hi: 100, steep: 2.5, liquor: "#93441A", leaf: "#3B2517", green: false, ritual: "Britain's morning cup. <em>Freshly boiled, a splash of milk if you like.</em>" }
   ];
-  // ---- Cooling: Newton's law, a 250 ml cup in a 22°C room (100 -> 60°C in about 12 minutes).
-  var AMB = 22, K = 0.0599, END_T = 44;
-  // Real minutes per demo second at 1x: time-lapse runs slower while the bag is open, so the brew can be seen.
-  var LAPSE_FAST = 50 / 60, LAPSE_BREW = 15 / 60, POUR_S = 1.4;
-  // Lu Yu read water by its bubbles as it boiled; we name them again as the cup settles.
+  // ---- Cooling: Newton's law for a small cup in a 22 °C room (100 -> 80 °C in about 4 minutes).
+  var AMB = 22, K = 0.075, END_T = 40;
+  // Time-lapse (real cup minutes per demo second at 1x): fast while waiting, slower while the bag brews,
+  // so every tea waits about 6-8 s and brews about 12-16 s. Sencha: pour to sealed in about 25 s.
+  var POUR_S = 1.5, HOLD_S = 4, WAIT_S = 8, BREW_S = 16;
+  function minsBetween(a, b) { return Math.log((a - AMB) / (b - AMB)) / K; }
+  function lapses(tea) {
+    return { fast: Math.max(0.6, minsBetween(100, Math.min(100, tea.hi)) / WAIT_S),
+             brew: Math.max(0.15, minsBetween(Math.min(100, tea.hi), tea.lo) / BREW_S) };
+  }
+  // Lu Yu read water by its bubbles as it boiled; we name his three stages again as the cup cools.
   function luYu(t) {
-    if (t >= 96) return { n: 3, name: "Rolling waves", note: "Lu Yu's third boil: water at its hottest" };
-    if (t >= 88) return { n: 2, name: "String of pearls", note: "Lu Yu's second boil" };
-    if (t >= 78) return { n: 1, name: "Fish eyes", note: "Lu Yu's first boil" };
-    return { n: 0, name: "Still water", note: "Calm, soft, for the gentle teas" };
+    if (t >= 93) return { n: 3, name: "Rolling waves", note: "Lu Yu's third boil: the water at its hottest" };
+    if (t >= 85) return { n: 2, name: "String of pearls", note: "Lu Yu's second boil" };
+    if (t >= 75) return { n: 1, name: "Fish eyes", note: "Lu Yu's first boil" };
+    return { n: 0, name: "Still water", note: "Past Lu Yu's three boils: calm, for the gentle teas" };
   }
   var $ = function (id) { return document.getElementById(id); };
-  var S = { tea: TEAS[1], phase: "idle", t: AMB, realMin: 0, pourT: 0, openMin: 0, bag: "ready", infusion: 1, bags1908: 1, speed: 1, last: 0, sealedAt: null, openedAt: null };
+  var S = { tea: TEAS[1], phase: "idle", t: 100, realMin: 0, pourT: 0, openMin: 0, bag: "ready", infusion: 1, bags1908: 1, speed: 1, last: 0,
+            sealedAt: null, openedAt: null, sinceSeal: 0, openAmt: 0, sealFlash: 0, wisp: 0, pulse: 0, pulseCol: "#F2A33A", slow: 0, sealT: 9 };
 
-  // ---- gauge geometry: 100°C on the left (hot amber) to 40°C on the right (cool jade)
-  var CX = 200, CY = 200, R = 170, TMAX = 100, TMIN = 40;
+  // ---- gauge geometry: 100 °C on the left (hot amber) to 40 °C on the right (cool jade)
+  var CX = 200, CY = 205, R = 165, TMAX = 100, TMIN = 40;
   function ang(t) { var f = (TMAX - Math.max(TMIN, Math.min(TMAX, t))) / (TMAX - TMIN); return Math.PI * (1 - f); }
   function pt(t, r) { var a = ang(t); r = r || R; return [CX + r * Math.cos(a), CY - r * Math.sin(a)]; }
-  function arc(t1, t2, r) { var a = pt(t1, r), b = pt(t2, r); return "M" + a[0].toFixed(1) + " " + a[1].toFixed(1) + " A" + r + " " + r + " 0 0 1 " + b[0].toFixed(1) + " " + b[1].toFixed(1); }
+  function arc(t1, t2, r) { r = r || R; var a = pt(t1, r), b = pt(t2, r); return "M" + a[0].toFixed(1) + " " + a[1].toFixed(1) + " A" + r + " " + r + " 0 0 1 " + b[0].toFixed(1) + " " + b[1].toFixed(1); }
+  $("arcBase").setAttribute("d", arc(100, 40)); $("arcDim").setAttribute("d", arc(100, 40));
   (function ticks() {
-    var g = $("ticks"), h = "";
+    var h = "";
     for (var t = 40; t <= 100; t += 10) {
-      var a = pt(t, 152), b = pt(t, 144), l = pt(t, 128);
-      h += '<line x1="' + a[0] + '" y1="' + a[1] + '" x2="' + b[0] + '" y2="' + b[1] + '" stroke="#8E8A83" stroke-width="1.2"/>';
-      h += '<text x="' + l[0] + '" y="' + (l[1] + 4) + '" text-anchor="middle" fill="#8E8A83" font-size="11" font-family="Avenir Next, Arial, sans-serif">' + t + '</text>';
+      var a = pt(t, R - 14), b = pt(t, R - 22), l = pt(t, R - 36);
+      h += '<line x1="' + a[0].toFixed(1) + '" y1="' + a[1].toFixed(1) + '" x2="' + b[0].toFixed(1) + '" y2="' + b[1].toFixed(1) + '" stroke="#55534f" stroke-width="1.4"/>';
+      h += '<text x="' + l[0].toFixed(1) + '" y="' + (l[1] + 4).toFixed(1) + '" text-anchor="middle" fill="#8E8A83" font-size="15" font-family="Avenir Next, Arial, sans-serif">' + t + '</text>';
     }
-    g.innerHTML = h;
+    $("ticks").innerHTML = h;
   })();
 
   // ---- colour helpers
@@ -294,29 +379,37 @@ footer { display: flex; align-items: center; justify-content: space-between; gap
   function mix(a, b, f) { a = hex(a); b = hex(b); f = Math.max(0, Math.min(1, f)); return "rgb(" + a.map(function (v, i) { return Math.round(v + (b[i] - v) * f); }).join(",") + ")"; }
   function fmt(min) { var s = Math.max(0, Math.round(min * 60)); return Math.floor(s / 60) + ":" + ("0" + (s % 60)).slice(-2); }
   function ord(n) { return n + (n === 1 ? "st" : n === 2 ? "nd" : n === 3 ? "rd" : "th"); }
+  function halfWidth(y) { return 88 - (y - 70) * (18 / 192); }
 
   // ---- tea chooser
+  // membrane pores, one row at a time so they can open top to bottom
+  var PORES = [];
+  (function () {
+    var g = $("poreLayer"), ns = "http://www.w3.org/2000/svg";
+    for (var y = -50; y <= 52; y += 6.5) { var row = []; for (var x = -36 + ((y / 6.5) % 2 ? 3.2 : 0); x <= 36; x += 6.4) { var c = document.createElementNS(ns, "circle"); c.setAttribute("cx", x.toFixed(1)); c.setAttribute("cy", y.toFixed(1)); c.setAttribute("r", ".35"); g.appendChild(c); row.push(c); } PORES.push(row); }
+  })();
   var teasEl = $("teas");
   TEAS.forEach(function (tea) {
     var b = document.createElement("button");
     b.className = "tea"; b.dataset.id = tea.id;
-    b.innerHTML = "<b>" + tea.name + "</b><span>" + tea.culture + " · " + tea.lo + "-" + tea.hi + "°C</span>";
-    b.addEventListener("click", function () { choose(tea.id); });
+    b.innerHTML = "<b>" + tea.name + "</b><span>" + tea.culture + " · " + tea.lo + "-" + tea.hi + "\u202F°C</span>";
+    b.addEventListener("click", function () { choose(tea.id); b.blur(); });
     teasEl.appendChild(b);
   });
   function choose(id) {
     S.tea = TEAS.filter(function (x) { return x.id === id; })[0] || TEAS[1];
-    reset(true);
+    reset();
   }
-
-  function reset(keepTea) {
-    S.phase = "idle"; S.t = AMB; S.realMin = 0; S.pourT = 0; S.openMin = 0; S.bag = "ready"; S.infusion = 1; S.bags1908 = 1; S.sealedAt = null; S.openedAt = null;
-    render();
+  function reset() {
+    S.phase = "idle"; S.t = 100; S.realMin = 0; S.pourT = 0; S.openMin = 0; S.bag = "ready"; S.infusion = 1; S.bags1908 = 1;
+    S.sealedAt = null; S.openedAt = null; S.sinceSeal = 0; S.sealFlash = 0;
+    render(0);
   }
   function pour() {
-    if (S.phase === "running" || S.phase === "pouring") return;
-    S.phase = "pouring"; S.pourT = 0; S.t = 100; S.realMin = 0; S.openMin = 0; S.bag = "waiting"; S.sealedAt = null; S.openedAt = null;
-    render();
+    if (S.phase !== "idle") return;
+    S.phase = "pouring"; S.pourT = 0; S.t = 100; S.realMin = 0; S.openMin = 0; S.bag = "waiting"; S.sealedAt = null; S.openedAt = null; S.sinceSeal = 0;
+    if (S.tea.hi >= 100) { S.bag = "open"; S.openedAt = 0; S.pulse = 1; S.pulseCol = "#F2A33A"; S.slow = 1.5; }
+    render(0);
   }
   function again() {
     if (S.bag !== "sealed" && S.phase !== "done") return;
@@ -325,147 +418,191 @@ footer { display: flex; align-items: center; justify-content: space-between; gap
 
   // ---- simulation step (dt in demo seconds, already multiplied by speed)
   function step(dt) {
-    if (S.phase === "pouring") {
-      S.pourT += dt;
-      if (S.pourT >= POUR_S) { S.phase = "running"; S.pourT = POUR_S; }
-    }
-    if (S.phase === "pouring" || S.phase === "running") {
-      var tea = S.tea;
-      var inWin = S.t >= tea.lo && S.t <= tea.hi;
-      var lapse = (inWin && S.bag !== "sealed") ? LAPSE_BREW : LAPSE_FAST;
-      var dMin = (S.phase === "pouring") ? dt * LAPSE_BREW * 0.4 : dt * lapse;
-      S.realMin += dMin;
-      S.t = AMB + (100 - AMB) * Math.exp(-K * S.realMin);
-      if (S.bag === "waiting" && S.t <= tea.hi && S.t >= tea.lo) { S.bag = "open"; S.openedAt = S.realMin; }
-      if (S.bag === "open") { S.openMin += dMin; if (S.t < tea.lo) { S.bag = "sealed"; S.sealedAt = S.realMin; } }
-      if (S.phase === "running" && S.t <= END_T) { S.phase = "done"; }
-    }
+    if (S.phase !== "pouring" && S.phase !== "running") return;
+    var tea = S.tea, L = lapses(tea);
+    if (S.phase === "pouring") { S.pourT += dt; if (S.pourT >= POUR_S) { S.phase = "running"; S.pourT = POUR_S; } }
+    var lapse = S.phase === "pouring" ? L.brew * 0.4 : (S.bag === "open" ? L.brew : L.fast);
+    var dMin = dt * lapse;
+    S.realMin += dMin;
+    S.t = AMB + (100 - AMB) * Math.exp(-K * S.realMin);
+    if (S.bag === "waiting" && S.t <= tea.hi && S.t >= tea.lo) { S.bag = "open"; S.openedAt = S.realMin; S.pulse = 1; S.pulseCol = "#F2A33A"; S.slow = 1.5; }
+    if (S.bag === "open") { S.openMin += dMin; if (S.t < tea.lo) { S.bag = "sealed"; S.sealedAt = S.realMin; S.sealFlash = 1; S.pulse = 1; S.pulseCol = "#3DBA9B"; S.sealT = 0; } }
+    if (S.bag === "sealed") S.sinceSeal += dt;
+    if (S.phase === "running" && (S.sinceSeal >= HOLD_S || S.t <= END_T)) S.phase = "done";
   }
 
-  // ---- render
-  function render() {
-    var tea = S.tea, t = S.t;
+  // ---- render (dtReal in real seconds, for the eased visuals)
+  function render(dtReal) {
+    var tea = S.tea, t = S.t, idle = S.phase === "idle";
+    var open = S.bag === "open", sealed = S.bag === "sealed";
+    var ease = 1 - Math.exp(-(dtReal || 0) * 3.2);
+    if (!dtReal) ease = 1;
+    S.openAmt += ((open ? 1 : 0) - S.openAmt) * (dtReal ? 1 - Math.exp(-dtReal * (open ? 1.5 : 2.4)) : 1);
+    S.slow = Math.max(0, S.slow - (dtReal || 0));
+    S.sealT += dtReal || 0;
+    S.wisp += ((open ? 1 : 0) - S.wisp) * (1 - Math.exp(-(dtReal || 1) * (open ? 1.6 : 0.9)));
+    S.sealFlash = Math.max(0, S.sealFlash - (dtReal || 0) * 0.35);
+    S.pulse = Math.max(0, S.pulse - (dtReal || 0) / 1.4);
+    var pu = $("pulseA"); pu.setAttribute("transform", "scale(" + (1.25 + 0.9 * (1 - S.pulse)).toFixed(3) + ")"); pu.setAttribute("opacity", (0.9 * S.pulse).toFixed(2)); pu.setAttribute("stroke", S.pulseCol); pu.setAttribute("stroke-width", (1 + 3 * S.pulse).toFixed(1));
     Array.prototype.forEach.call(teasEl.children, function (b) { b.classList.toggle("on", b.dataset.id === tea.id); });
+
     // gauge
     $("win").setAttribute("d", arc(tea.hi, tea.lo, R));
-    $("winEdge").setAttribute("d", arc(tea.hi, tea.lo, R + 20));
-    var lp = pt((tea.hi + tea.lo) / 2, R + 34);
-    $("winLabel").setAttribute("x", lp[0]); $("winLabel").setAttribute("y", lp[1]);
-    $("winLabel").textContent = tea.name.toUpperCase() + " " + tea.lo + "-" + tea.hi + "°";
-    var shown = S.phase === "idle" ? 100 : t;
+    $("winGlow").setAttribute("d", arc(tea.hi, tea.lo, R));
+    $("winGlow").setAttribute("opacity", (0.85 * S.openAmt).toFixed(2));
+    $("winEdgeOut").setAttribute("d", arc(tea.hi, tea.lo, R + 19));
+    var mo = pt(tea.hi, R + 19), ms = pt(tea.lo, R + 19);
+    $("winMarks").innerHTML = '<circle cx="' + mo[0].toFixed(1) + '" cy="' + mo[1].toFixed(1) + '" r="4" fill="#F2A33A"/><circle cx="' + ms[0].toFixed(1) + '" cy="' + ms[1].toFixed(1) + '" r="4" fill="#3DBA9B"/>';
+    var shown = idle ? 100 : t;
     var np = pt(shown);
     $("needle").setAttribute("cx", np[0]); $("needle").setAttribute("cy", np[1]);
     $("needleCore").setAttribute("cx", np[0]); $("needleCore").setAttribute("cy", np[1]);
     $("needle").setAttribute("fill", mix("#F2A33A", "#3DBA9B", (100 - shown) / 60));
-    $("needle").setAttribute("opacity", S.phase === "idle" ? .35 : 1);
-    // remaining arc: from current temperature to cool end shows the glow ahead
-    $("arcDone").setAttribute("d", arc(Math.min(99.9, shown), 40, R));
-    $("arcDone").setAttribute("opacity", S.phase === "idle" ? .25 : .9);
-    $("temp").innerHTML = (S.phase === "idle" ? "--" : Math.round(t)) + "<small>°C</small>";
-    $("clock").textContent = S.phase === "idle" ? "Choose a tea, then pour" : "Cup time " + fmt(S.realMin) + "  ·  time-lapse" + (S.bag === "open" ? ", slowed while it brews" : "");
-    var st = S.phase === "idle" ? { n: 0, name: "Lu Yu's water", note: "The Classic of Tea, 8th century, read water by its bubbles" } : luYu(t);
-    Array.prototype.forEach.call($("dots").children, function (d, i) { d.classList.toggle("lit", S.phase !== "idle" && i < st.n); });
+    $("needle").setAttribute("opacity", idle ? .35 : 1);
+    $("arcDone").setAttribute("d", arc(100, Math.min(99.95, shown), R));
+    $("arcDone").setAttribute("opacity", idle ? 0 : .95);
+    $("tempNum").textContent = idle ? "--" : (sealed ? Math.floor(t) : S.bag === "waiting" ? Math.ceil(t) : Math.round(t));
+    $("window").innerHTML = "<b>" + tea.name + "</b><i>opens " + tea.hi + "\u202F°C</i> · <u>seals below " + tea.lo + "\u202F°C</u>";
+    var info = idle ? "Choose a tea, then pour" : "Cup time " + fmt(S.realMin) + " · time-lapse " + S.speed + "x" + (open ? ", slowed while it brews" : "");
+    $("clock").textContent = info;
+    var st = idle ? { n: 0, name: "Lu Yu's water", note: "The Classic of Tea, 8th century, read water by its bubbles" } : luYu(Math.round(t));
+    Array.prototype.forEach.call($("dots").children, function (d, i) { d.classList.toggle("lit", !idle && i < st.n); });
     $("stageName").textContent = st.name; $("stageNote").textContent = st.note;
     $("ritual").innerHTML = tea.culture + ". " + tea.ritual;
 
-    // water level (pour animation)
-    var level = S.phase === "idle" ? 0 : Math.min(1, S.pourT / POUR_S);
-    var topY = 276 - 186 * level;
+    // water level and pour stream
+    var level = idle ? 0 : Math.min(1, S.pourT / POUR_S);
+    var topY = 276 - 190 * level;
+    var pouring = S.phase === "pouring";
+    ["streamA", "streamB"].forEach(function (id) { var s = $(id); s.setAttribute("height", pouring ? Math.max(0, topY + 100) : 0); s.setAttribute("opacity", pouring ? .55 : 0); });
+    var water = "#9FB5B8";
+
     // ---- OSME cup
     var strength = S.openMin > 0 ? (1 - Math.exp(-2.2 * S.openMin / tea.steep)) : 0;
     strength *= Math.max(.7, 1 - (S.infusion - 1) * .1);
-    var water = "#9FB5B8";
     var liqA = mix(water, tea.liquor, strength);
-    ["waterA"].forEach(function (id) { var r = $(id); r.setAttribute("y", topY); r.setAttribute("height", 276 - topY); r.setAttribute("fill", liqA); r.setAttribute("fill-opacity", (.10 + .62 * strength).toFixed(3)); });
+    var wA = $("waterA"); wA.setAttribute("y", topY); wA.setAttribute("height", 276 - topY); wA.setAttribute("fill", liqA); wA.setAttribute("fill-opacity", (.10 + .66 * strength).toFixed(3));
+    var sA = $("surfA"); sA.setAttribute("cy", topY); sA.setAttribute("rx", level ? halfWidth(topY) : 0); sA.setAttribute("fill", mix("#F3EEE6", tea.liquor, strength * .7)); sA.setAttribute("fill-opacity", (.12 + .3 * strength).toFixed(2));
     Array.prototype.forEach.call($("cloudA").children, function (c) { c.setAttribute("fill", tea.liquor); });
-    $("cloudA").setAttribute("opacity", S.bag === "open" ? (.25 + .4 * strength).toFixed(2) : 0);
-    var open = S.bag === "open";
-    $("lipU").setAttribute("d", open ? "M-36 -38 Q0 -60 36 -38" : "M-36 -38 Q0 -42 36 -38");
-    $("lipL").setAttribute("d", open ? "M-36 -38 Q0 -26 36 -38" : "M-36 -38 Q0 -35 36 -38");
-    $("leavesA").setAttribute("opacity", open ? 1 : 0);
-    $("bagBody").setAttribute("d", open ? "M-36 -36 C-44 -4 -40 28 -23 39 C-10 47 10 47 23 39 C40 28 44 -4 36 -36 Z" : "M-34 -36 C-40 -6 -38 26 -22 38 C-10 46 10 46 22 38 C38 26 40 -6 34 -36 Z");
-    var sinceSeal = S.sealedAt == null ? 99 : S.realMin - S.sealedAt;
-    $("sealGlow").setAttribute("opacity", S.bag === "sealed" ? Math.max(.35, 1 - sinceSeal / 6).toFixed(2) : 0);
-    $("wispA").setAttribute("opacity", open ? (.25 + .45 * strength).toFixed(2) : 0);
-    var cupA = $("cupOsme"); cupA.classList.toggle("open", open); cupA.classList.toggle("sealed", S.bag === "sealed");
-    var sA = $("statusA"), msg, cls = "";
-    if (S.phase === "idle") msg = "Ready.<small>Pour freshly boiled water.</small>";
-    else if (S.bag === "waiting") msg = "Waiting. Too hot for " + tea.name + ".<small>Sealed until the water reaches " + tea.hi + "°C.</small>";
-    else if (open) { msg = "Open. Brewing at " + Math.round(t) + "°C.<small>The scent rises. Brewing " + fmt(S.openMin) + "</small>"; cls = "s-open"; }
-    else { msg = "Sealed. The scent is kept for your next cup.<small>Brewed " + fmt(S.openMin) + ", stopped by itself at " + tea.lo + "°C.</small>"; cls = "s-sealed"; }
-    sA.innerHTML = msg; sA.className = "status " + cls;
-    $("countA").textContent = ord(S.infusion) + " infusion · 1 bag";
+    $("cloudA").setAttribute("opacity", (S.openAmt * (.35 + .45 * Math.min(1, strength + .3))).toFixed(2));
+    var now = performance.now() / 1000, pf = mix("#3a2a14", tea.liquor, .25);
+    PORES.forEach(function (row, i) {
+      var f = i / (PORES.length - 1), a = Math.max(0, Math.min(1, S.openAmt * 1.7 - f * 0.7));
+      var r = .35 + 1.8 * a * (1 + .14 * Math.sin(now * 2.2 - i * .45));
+      row.forEach(function (c) { c.setAttribute("r", r.toFixed(2)); c.setAttribute("fill", pf); });
+    });
+    $("bagBody").setAttribute("fill-opacity", (.9 - .32 * S.openAmt).toFixed(2));
+    var lv = $("leavesA"); lv.setAttribute("opacity", (.28 + .62 * S.openAmt).toFixed(2));
+    Array.prototype.forEach.call(lv.children, function (e) { e.setAttribute("fill", tea.leaf); });
+    var halo = $("bagHalo");
+    if (S.bag === "waiting") { halo.setAttribute("stroke", "#F2A33A"); halo.setAttribute("opacity", (.35 + .2 * Math.sin(performance.now() / 260)).toFixed(2)); }
+    else if (sealed) { halo.setAttribute("stroke", "#3DBA9B"); halo.setAttribute("opacity", Math.max(.45, S.sealFlash).toFixed(2)); }
+    else halo.setAttribute("opacity", 0);
+    $("bagEdge").setAttribute("stroke", sealed ? "#3DBA9B" : "#F3EEE6"); $("bagEdge").setAttribute("stroke-opacity", sealed ? .8 : .35);
+    $("wispA").setAttribute("opacity", (S.wisp * (.6 + .4 * Math.min(1, strength + .2))).toFixed(2));
+    $("wispA").classList.toggle("back", sealed && S.sealT < 1.6);
+    $("tagGlow").setAttribute("opacity", sealed ? (0.9 * Math.max(0, Math.min(1, (S.sealT - 0.9) / 0.3)) * Math.max(0, 1 - (S.sealT - 1.2) / 1.6)).toFixed(2) : 0);
+    var cupA = $("cupOsme"); cupA.classList.toggle("open", open); cupA.classList.toggle("sealed", sealed); cupA.classList.toggle("waiting", S.bag === "waiting");
+    var stA = $("statusA"), msg, cls = "";
+    if (idle) msg = "Ready.<small>Press Space to pour freshly boiled water.</small>";
+    else if (S.bag === "waiting") { msg = "Waiting. Too hot for " + tea.name + ".<small>Sealed until the water cools to " + tea.hi + "\u202F°C.</small>"; cls = "s-wait"; }
+    else if (open) { msg = "Open. Brewing at " + Math.round(t) + "\u202F°C.<small>The scent rises. Brewing " + fmt(S.openMin) + "</small>"; cls = "s-open"; }
+    else { msg = "Sealed. The scent is kept for your next cup.<small>Brewed " + fmt(S.openMin) + ", stopped by itself below " + tea.lo + "\u202F°C.</small>"; cls = "s-sealed"; }
+    if (stA.innerHTML !== msg) stA.innerHTML = msg;
+    stA.className = "status " + cls;
+    $("countA").innerHTML = "<b>" + ord(S.infusion) + " infusion</b> · the same bag";
 
     // ---- 1908 cup: brews at once at whatever the water is, and keeps going
-    var s2 = S.phase === "idle" ? 0 : S.realMin / tea.steep;
-    var bitter = "#2E1407";
-    var liqB = s2 <= 1 ? mix(water, tea.liquor, s2) : mix(tea.liquor, bitter, Math.min(1, (s2 - 1) / 5));
-    var r2 = $("waterB"); r2.setAttribute("y", topY); r2.setAttribute("height", 276 - topY); r2.setAttribute("fill", liqB); r2.setAttribute("fill-opacity", (.10 + .7 * Math.min(1, s2 + (s2 > 1 ? .2 : 0))).toFixed(3));
+    var s2 = idle ? 0 : S.realMin / tea.steep * (tea.green ? 1.25 : 1);  // boiling water on green leaf over-extracts sooner
+    var bitter = tea.green ? "#5A4A14" : "#2E1407";
+    var liqB = s2 <= 1 ? mix(water, tea.liquor, s2) : mix(tea.liquor, bitter, Math.min(1, (s2 - 1) / 4));
+    var wB = $("waterB"); wB.setAttribute("y", topY); wB.setAttribute("height", 276 - topY); wB.setAttribute("fill", liqB); wB.setAttribute("fill-opacity", (.10 + .72 * Math.min(1, s2 + (s2 > 1 ? .2 : 0))).toFixed(3));
+    var sB = $("surfB"); sB.setAttribute("cy", topY); sB.setAttribute("rx", level ? halfWidth(topY) : 0);
     Array.prototype.forEach.call($("cloudB").children, function (c) { c.setAttribute("fill", s2 > 1.5 ? bitter : tea.liquor); });
-    $("cloudB").setAttribute("opacity", S.phase === "idle" ? 0 : Math.min(.7, .3 + s2 * .15).toFixed(2));
+    $("cloudB").setAttribute("opacity", idle ? 0 : Math.min(.75, .3 + s2 * .15).toFixed(2));
     $("stainB").setAttribute("opacity", Math.min(.7, s2 * .14).toFixed(2));
-    var sB = $("statusB"), m2, c2 = "";
-    if (S.phase === "idle") m2 = "Ready.<small>The bag goes in, the clock starts.</small>";
-    else if (s2 < .7) m2 = (tea.green ? "Scalding at " + Math.round(t) + "°C." : "Brewing at once.") + "<small>No one is watching the clock.</small>";
+    var stB = $("statusB"), m2, c2 = "";
+    if (idle) m2 = "Ready.<small>The bag goes in, the clock starts.</small>";
+    else if (tea.green && t > tea.hi + 1 && s2 < 3) m2 = "Scalding at " + Math.round(t) + "\u202F°C.<small>Too hot for " + tea.name + ". The bitterness comes out first.</small>";
+    else if (s2 < .7) m2 = "Brewing at once.<small>Nobody is watching the clock.</small>";
     else if (s2 < 1.3) m2 = "Just right, for a moment.<small>Take the bag out now. Now.</small>";
     else if (s2 < 3) m2 = "Stewing.<small>Still in the cup, " + fmt(S.realMin) + " in.</small>";
     else { m2 = "Bitter.<small>The bag is still in. " + fmt(S.realMin) + " steeped.</small>"; c2 = "s-bitter"; }
-    sB.innerHTML = m2; sB.className = "status " + c2;
-    $("countB").textContent = S.bags1908 + (S.bags1908 === 1 ? " bag used" : " bags used");
+    if (stB.innerHTML !== m2) stB.innerHTML = m2;
+    stB.className = "status " + c2;
+    $("countB").innerHTML = "<b>" + S.bags1908 + (S.bags1908 === 1 ? " bag" : " bags") + "</b> used";
 
     // controls
-    $("pour").disabled = S.phase !== "idle";
-    var canAgain = S.bag === "sealed" || S.phase === "done";
+    $("pour").disabled = !idle;
+    var canAgain = sealed || S.phase === "done";
     $("again").disabled = !canAgain;
     $("again").classList.toggle("pulse", canAgain);
-    $("again").textContent = canAgain ? "Brew again · " + ord(S.infusion + 1) : "Brew again";
+    $("again").firstChild.textContent = canAgain ? "Brew again · " + ord(S.infusion + 1) + " " : "Brew again ";
   }
 
   // ---- loop
   function frame(ts) {
-    if (!S.last) S.last = ts;
-    var dt = Math.min(.1, (ts - S.last) / 1000) * S.speed;
+    var dtReal = S.last ? Math.min(.1, (ts - S.last) / 1000) : 0;
     S.last = ts;
-    if (S.phase === "pouring" || S.phase === "running") { step(dt); render(); }
+    step(dtReal * S.speed * (S.slow > 0 ? 0.3 : 1));
+    render(dtReal);
     requestAnimationFrame(frame);
   }
 
-  // ---- controls
-  $("pour").addEventListener("click", pour);
-  $("again").addEventListener("click", again);
-  $("reset").addEventListener("click", function () { reset(true); });
-  $("fs").addEventListener("click", function () {
+  // ---- controls (buttons blur after a click, so Space never presses them a second time)
+  function bind(id, fn) { $(id).addEventListener("click", function () { fn(); this.blur(); }); }
+  bind("pour", pour); bind("again", again); bind("reset", reset);
+  function toggleFs() {
     if (document.fullscreenElement) { document.exitFullscreen(); }
     else if (document.documentElement.requestFullscreen) { document.documentElement.requestFullscreen().catch(function () {}); }
-  });
+  }
+  bind("fs", toggleFs);
   function setSpeed(s) { S.speed = s; Array.prototype.forEach.call($("speed").children, function (b) { b.classList.toggle("on", +b.dataset.s === s); }); }
-  Array.prototype.forEach.call($("speed").children, function (b) { b.addEventListener("click", function () { setSpeed(+b.dataset.s); }); });
-  document.addEventListener("fullscreenchange", function () { $("fs").textContent = document.fullscreenElement ? "Exit full screen" : "Full screen"; });
-  // Pitch keys: Space pour / brew again, R reset, F full screen, 1 2 4 speed, arrows change tea
+  Array.prototype.forEach.call($("speed").children, function (b) { b.addEventListener("click", function () { setSpeed(+b.dataset.s); b.blur(); }); });
+  document.addEventListener("fullscreenchange", function () { $("fs").firstChild.textContent = document.fullscreenElement ? "Exit full screen " : "Full screen "; present(!!document.fullscreenElement); });
+  // One action key, so a presentation clicker works too: pour, resume a paused rehearsal, brew again.
+  function act() {
+    if (S.phase === "idle") pour();
+    else if (S.phase === "paused") S.phase = S.pourT < POUR_S ? "pouring" : "running";
+    else if (S.bag === "sealed" || S.phase === "done") again();
+  }
+  // Presenter mode: big type, captions hidden. On with full screen (F) or P.
+  var idleTimer;
+  function present(on) { document.body.classList.toggle("present", on); }
+  document.addEventListener("mousemove", function () { document.body.classList.add("awake"); clearTimeout(idleTimer); idleTimer = setTimeout(function () { document.body.classList.remove("awake"); }, 3000); });
+  // Keys: Space / Enter / PageDown / Right = the action, R reset, F full screen, P presenter mode, 1 2 4 speed, Up/Down change tea (idle only)
   document.addEventListener("keydown", function (e) {
-    if (e.key === " ") { e.preventDefault(); if (!$("again").disabled) again(); else if (!$("pour").disabled) pour(); }
-    else if (e.key === "r" || e.key === "R") reset(true);
-    else if (e.key === "f" || e.key === "F") $("fs").click();
-    else if (e.key === "1" || e.key === "2" || e.key === "4") setSpeed(+e.key);
-    else if (e.key === "ArrowRight" || e.key === "ArrowLeft") { var i = TEAS.indexOf(S.tea) + (e.key === "ArrowRight" ? 1 : -1); choose(TEAS[(i + TEAS.length) % TEAS.length].id); }
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    var k = e.key;
+    if (k === " " || k === "Spacebar" || k === "Enter" || k === "PageDown" || k === "ArrowRight") { e.preventDefault(); if (e.repeat) return; act(); }
+    else if (k === "r" || k === "R") reset();
+    else if (k === "f" || k === "F") { present(true); toggleFs(); }
+    else if (k === "p" || k === "P") present(!document.body.classList.contains("present"));
+    else if (k === "1" || k === "2" || k === "4") setSpeed(+k);
+    else if ((k === "ArrowUp" || k === "ArrowDown") && S.phase === "idle") { e.preventDefault(); var i = TEAS.indexOf(S.tea) + (k === "ArrowDown" ? 1 : -1); choose(TEAS[(i + TEAS.length) % TEAS.length].id); }
+    else if (k === "PageUp" || k === "ArrowLeft") e.preventDefault();
   });
+  document.addEventListener("keyup", function (e) { if (e.key === " ") e.preventDefault(); });
 
-  // ---- rehearsal hook: #tea=sencha&min=3.5&infusion=2 jumps straight to that moment (cup minutes after the pour)
+  // ---- rehearsal hook: #tea=sencha&min=3.5&infusion=2 jumps to that moment (cup minutes after the pour) and pauses there
+  function advance(sec) { var n = Math.round(sec / 0.01); for (var i = 0; i < n && (S.phase === "pouring" || S.phase === "running"); i++) step(0.01); render(0); }
   function fromHash() {
     var h = {}; location.hash.slice(1).split("&").forEach(function (kv) { var p = kv.split("="); if (p[0]) h[p[0]] = decodeURIComponent(p[1] || ""); });
     if (h.tea) S.tea = TEAS.filter(function (x) { return x.id === h.tea; })[0] || TEAS[1];
-    if (h.min) {
+    present(h.present === "1");
+    reset();
+    if (h.min || h.sec) {
       pour(); S.infusion = +(h.infusion || 1); S.bags1908 = S.infusion;
-      var target = +h.min, guard = 0;
-      while (S.realMin < target && S.phase !== "done" && guard++ < 200000) step(0.01);
+      if (h.sec) advance(+h.sec);
+      else { var guard = 0; while (S.realMin < +h.min && (S.phase === "pouring" || S.phase === "running") && guard++ < 200000) step(0.01); }
       if (S.phase === "running" || S.phase === "pouring") S.phase = "paused";
     }
-    render();
+    render(0);
   }
-  window.addEventListener("hashchange", function () { reset(true); fromHash(); });
+  window.addEventListener("hashchange", fromHash);
   fromHash();
   requestAnimationFrame(frame);
-  window.osme = { state: S, teas: TEAS, pour: pour, again: again, reset: reset, choose: choose, speed: setSpeed };
+  window.osme = { state: S, teas: TEAS, pour: pour, again: again, reset: reset, choose: choose, speed: setSpeed, advance: advance, lapses: lapses };
 })();
 </script>
 </body>

@@ -17,7 +17,7 @@
   --brand-glow: 0 0 24px rgba(242,163,58,.35), 0 0 48px rgba(61,186,155,.18);
 
   /* Type */
-  --font-display: "Futura", "Jost", "Century Gothic", "Avenir Next", sans-serif;
+  --font-display: "Jost", "Futura", "Century Gothic", "Avenir Next", sans-serif;
   --font-body:    "Avenir Next", "Avenir", "Inter", "Helvetica Neue", Arial, sans-serif;
   --fw-display: 500;
   --tracking-display: 0.18em;   /* wide, calm caps */

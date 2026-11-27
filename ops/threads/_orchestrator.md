@@ -24,3 +24,8 @@ The team wants to see work before it's perfect.
 
 ## Finish
 Keep iterating in this turn until your deliverables pass or 13:00. End with a report under 200 words: what's done, final paths, preview paths, open questions.
+
+## Update 10:20 from the lead: visual updates and Gate 1
+- A new preview PNG in gallery/<topic>-vNN.png at least every 10 minutes, even when rough.
+- Every preview gets one log line: `HH:MM | <topic>-lead | PREVIEW | gallery/<file> | judge N/5 | validator PASS/FAIL (k) | what changed, max 12 words`.
+- Gate 1 (~10:40): the team reviews brand, logo and market in deck/gate1.html. Site, video and pitch hold until the lead sends the resume order.
