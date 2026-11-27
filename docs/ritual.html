@@ -558,6 +558,21 @@ footer.site .top{display:flex;justify-content:space-between;gap:40px;flex-wrap:w
 .join + .cap3d{margin-top:36px}
 @media (max-width:900px){.cap3d iframe{height:1300px}}
 @media (max-width:600px){.cap3d iframe{height:1500px;border-radius:16px}}
+/* tap-to-load: card first, loader while the 3D page loads, then the frame */
+.cap3d{position:relative}
+.cap3d-card{display:flex;align-items:center;justify-content:space-between;gap:28px;padding:30px 34px;border:1px solid var(--brand-line,#2A2A30);border-radius:22px;
+  background:radial-gradient(ellipse 70% 120% at 85% 50%,rgba(61,186,155,.14),transparent 70%),#111114}
+.cap3d-card h3{margin:10px 0 8px}
+.cap3d-card p{margin:0;max-width:560px}
+.cap3d-card .btn{min-height:56px;padding:0 32px;flex:none}
+.cap3d-load{display:none}
+.cap3d.loading .cap3d-card,.cap3d.on .cap3d-card{display:none}
+.cap3d.loading .cap3d-load{display:flex;position:absolute;left:0;right:0;top:0;height:min(100%,420px);flex-direction:column;align-items:center;justify-content:center;gap:16px;
+  border:1px solid var(--brand-line,#2A2A30);border-radius:22px;background:#0B0B0D;color:var(--brand-muted,#8E8A83);z-index:2}
+.cap3d-load i{width:38px;height:38px;border-radius:50%;border:3px solid #2A2A30;border-top-color:#F2A33A;animation:cap3dspin .9s linear infinite}
+@keyframes cap3dspin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.cap3d-load i{animation-duration:2.4s}}
+@media (max-width:600px){.cap3d-card{flex-direction:column;align-items:stretch;padding:24px 22px}.cap3d-card .btn{width:100%}}
 
 </style>
 </head>
@@ -787,18 +802,31 @@ document.querySelectorAll("form[data-waitlist]").forEach(function (f) {
 
 renderCart();
 
-/* v2 Capsule 3D frame (srcdoc, same origin): grow it to the page inside, so nothing is cut off on a phone */
-document.querySelectorAll(".cap3d iframe").forEach(function (f) {
-  var base = 0;
-  function fit() {
-    try {
-      f.style.height = ""; base = f.getBoundingClientRect().height;
-      var h = f.contentDocument.documentElement.scrollHeight;
-      if (h > base) f.style.height = (h + 2) + "px";
-    } catch (e) {}
-  }
-  f.addEventListener("load", function () { fit(); setTimeout(fit, 800); });
-  var t; addEventListener("resize", function () { clearTimeout(t); t = setTimeout(fit, 200); });
+/* v2 Capsule 3D: the 3 MB page loads only when someone taps "See it in 3D"; a loader shows until it is ready */
+document.querySelectorAll("[data-cap3d]").forEach(function (box) {
+  var go = box.querySelector("[data-cap3d-go]");
+  if (!go) return;
+  go.addEventListener("click", function () {
+    var f = document.createElement("iframe");
+    f.title = "v2: the OSME Capsule, in 3D"; f.setAttribute("allow", "fullscreen");
+    box.classList.add("loading");
+    function fit() {
+      try {
+        var d = f.contentDocument;
+        if (!d.getElementById("osme-fit")) {  /* in a frame the stage's vh height would follow the frame: fix it */
+          var st = d.createElement("style"); st.id = "osme-fit";
+          st.textContent = "@media (max-width:900px){.stage{height:520px}}@media (max-width:600px){.stage{height:400px}}";
+          d.head.appendChild(st);
+        }
+        f.style.height = ""; var base = f.getBoundingClientRect().height, h = d.documentElement.scrollHeight;
+        if (h > base) f.style.height = (h + 2) + "px";
+      } catch (e) {}
+    }
+    f.addEventListener("load", function () { box.classList.remove("loading"); box.classList.add("on"); fit(); setTimeout(fit, 800); });
+    var t; addEventListener("resize", function () { clearTimeout(t); t = setTimeout(fit, 200); });
+    f.src = box.getAttribute("data-cap3d");
+    box.insertBefore(f, box.querySelector("figcaption"));
+  });
 });
 if (document.getElementById("heroCup")) {
   /* ---------- hero: sencha cooling loop ---------- */

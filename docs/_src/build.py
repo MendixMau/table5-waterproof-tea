@@ -256,12 +256,13 @@ def waitlist_block(heading='Take back one cup a day.<br><span class="arc-text">B
 </div>''' + (capsule_frame() if wow else "")
 
 def capsule_frame():
-    """The v2 Capsule 3D page (PR #5 model) shown in place; embed-html inlines capsule-3d.html into the frame."""
-    # srcdoc, not src: a data: frame gets an opaque origin and the 3D page does not start in it
-    # the page itself is put in by main, after embed-html and its check
-    return ('\n<figure class="cap3d"><iframe srcdoc="@@CAPSULE3D@@" title="v2: the OSME Capsule, in 3D" allow="fullscreen"></iframe>'
-            '<figcaption class="muted small"><b>v2: the OSME Capsule, in 3D.</b> Drag to rotate, slide the temperature or press Pour &amp; cool. '
-            '<a href="capsule-3d.html">Open full screen</a></figcaption></figure>')
+    """The v2 Capsule 3D (PR #5 model): a light card; the 3 MB page loads into a frame only on tap (site.js)."""
+    return ('\n<figure class="cap3d" data-cap3d="capsule-3d.html"><div class="cap3d-card">'
+            '<div><div class="eyebrow">v2 · Coming next</div><h3>v2: the OSME Capsule, in 3D.</h3>'
+            '<p class="muted">Turn the capsule, cool the water from 100 to 60&nbsp;°C and watch the membrane open and seal.</p></div>'
+            '<button class="btn primary" type="button" data-cap3d-go>See it in 3D</button></div>'
+            '<div class="cap3d-load" role="status" aria-live="polite"><i></i><span>Loading the 3D capsule…</span></div>'
+            '<figcaption class="muted small">3D model by johnpjakab-JJ (PR #5). <a href="capsule-3d.html">Open full screen</a></figcaption></figure>')
 
 def three_steps():
     return f'''<div class="steps">

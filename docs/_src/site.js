@@ -141,16 +141,29 @@ document.querySelectorAll("form[data-waitlist]").forEach(function (f) {
 
 renderCart();
 
-/* v2 Capsule 3D frame (srcdoc, same origin): grow it to the page inside, so nothing is cut off on a phone */
-document.querySelectorAll(".cap3d iframe").forEach(function (f) {
-  var base = 0;
-  function fit() {
-    try {
-      f.style.height = ""; base = f.getBoundingClientRect().height;
-      var h = f.contentDocument.documentElement.scrollHeight;
-      if (h > base) f.style.height = (h + 2) + "px";
-    } catch (e) {}
-  }
-  f.addEventListener("load", function () { fit(); setTimeout(fit, 800); });
-  var t; addEventListener("resize", function () { clearTimeout(t); t = setTimeout(fit, 200); });
+/* v2 Capsule 3D: the 3 MB page loads only when someone taps "See it in 3D"; a loader shows until it is ready */
+document.querySelectorAll("[data-cap3d]").forEach(function (box) {
+  var go = box.querySelector("[data-cap3d-go]");
+  if (!go) return;
+  go.addEventListener("click", function () {
+    var f = document.createElement("iframe");
+    f.title = "v2: the OSME Capsule, in 3D"; f.setAttribute("allow", "fullscreen");
+    box.classList.add("loading");
+    function fit() {
+      try {
+        var d = f.contentDocument;
+        if (!d.getElementById("osme-fit")) {  /* in a frame the stage's vh height would follow the frame: fix it */
+          var st = d.createElement("style"); st.id = "osme-fit";
+          st.textContent = "@media (max-width:900px){.stage{height:520px}}@media (max-width:600px){.stage{height:400px}}";
+          d.head.appendChild(st);
+        }
+        f.style.height = ""; var base = f.getBoundingClientRect().height, h = d.documentElement.scrollHeight;
+        if (h > base) f.style.height = (h + 2) + "px";
+      } catch (e) {}
+    }
+    f.addEventListener("load", function () { box.classList.remove("loading"); box.classList.add("on"); fit(); setTimeout(fit, 800); });
+    var t; addEventListener("resize", function () { clearTimeout(t); t = setTimeout(fit, 200); });
+    f.src = box.getAttribute("data-cap3d");
+    box.insertBefore(f, box.querySelector("figcaption"));
+  });
 });
