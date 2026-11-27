@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>OSME DryTea CONTROL — Exploded View</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0B0B0D; font-family: 'Segoe UI', sans-serif; overflow: hidden; }
+  #canvas-container { width: 100vw; height: 100vh; }
+  #ui {
+    position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 12px; align-items: center; z-index: 10;
+  }
+  button {
+    background: #3DBA9B; color: #0B0B0D; border: none; padding: 10px 24px;
+    font-size: 14px; font-weight: 700; border-radius: 4px; cursor: pointer;
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  button:hover { background: #F2A33A; }
+  #slider-wrap { display: flex; align-items: center; gap: 10px; color: #aaa; font-size: 13px; }
+  input[type=range] { width: 180px; accent-color: #3DBA9B; }
+  #legend {
+    position: fixed; top: 24px; right: 24px; color: #ccc;
+    font-size: 13px; line-height: 2; z-index: 10;
+  }
+  .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 7px; vertical-align: middle; }
+  #title {
+    position: fixed; top: 24px; left: 32px; color: #fff; z-index: 10;
+  }
+  #title h1 { font-size: 20px; font-weight: 700; letter-spacing: 0.05em; }
+  #title p { font-size: 12px; color: #3DBA9B; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 3px; }
+  #phase-label {
+    position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    color: rgba(255,255,255,0.08); font-size: 72px; font-weight: 900;
+    letter-spacing: 0.15em; pointer-events: none; z-index: 1; text-transform: uppercase;
+    transition: opacity 0.3s;
+  }
+</style>
+</head>
+<body>
+<div id="canvas-container"></div>
+
+<div id="title">
+  <h1>OSME · DryTea CONTROL</h1>
+  <p>Exploded Component View</p>
+</div>
+
+<div id="legend">
+  <div><span class="dot" style="background:#C0C0C0"></span>Control Rod + Seals</div>
+  <div><span class="dot" style="background:#3DBA9B"></span>Sliding Waterproof Sleeve</div>
+  <div><span class="dot" style="background:#C8973A"></span>Porous Inner Tea Filter</div>
+  <div><span class="dot" style="background:#E8E4DC"></span>Outer Body + Water-Flow Ports</div>
+</div>
+
+<div id="ui">
+  <button id="btn-toggle">Explode</button>
+  <div id="slider-wrap">
+    <span>Assembled</span>
+    <input type="range" id="slider" min="0" max="100" value="0">
+    <span>Exploded</span>
+  </div>
+  <button id="btn-auto">Auto Play</button>
+</div>
+
+<div id="phase-label" id="phase-label"></div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+// ── Scene setup ────────────────────────────────────────────────────────────
+const container = document.getElementById('canvas-container');
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(devicePixelRatio);
+renderer.setSize(innerWidth, innerHeight);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+container.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x0B0B0D);
+scene.fog = new THREE.FogExp2(0x0B0B0D, 0.04);
+
+const camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.01, 200);
+camera.position.set(6, 4, 9);
+camera.lookAt(0, 0, 0);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.08;
+controls.target.set(0, 0, 0);
+
+// ── Lighting ───────────────────────────────────────────────────────────────
+const ambient = new THREE.AmbientLight(0xffffff, 0.4);
+scene.add(ambient);
+
+const keyLight = new THREE.DirectionalLight(0xffffff, 1.8);
+keyLight.position.set(5, 10, 7);
+keyLight.castShadow = true;
+keyLight.shadow.mapSize.set(2048, 2048);
+scene.add(keyLight);
+
+const fillLight = new THREE.DirectionalLight(0x3DBA9B, 0.6);
+fillLight.position.set(-6, 2, -4);
+scene.add(fillLight);
+
+const rimLight = new THREE.DirectionalLight(0xF2A33A, 0.5);
+rimLight.position.set(0, -5, -6);
+scene.add(rimLight);
+
+// ── Ground plane (subtle reflection) ──────────────────────────────────────
+const ground = new THREE.Mesh(
+  new THREE.PlaneGeometry(30, 30),
+  new THREE.MeshStandardMaterial({ color: 0x111114, roughness: 0.9, metalness: 0.1 })
+);
+ground.rotation.x = -Math.PI / 2;
+ground.position.y = -3.5;
+ground.receiveShadow = true;
+scene.add(ground);
+
+// ── Helper: create labelled group ─────────────────────────────────────────
+function makeGroup(name) {
+  const g = new THREE.Group();
+  g.name = name;
+  scene.add(g);
+  return g;
+}
+
+// ── Materials ──────────────────────────────────────────────────────────────
+const matRod = new THREE.MeshStandardMaterial({ color: 0xC8C8C8, metalness: 0.9, roughness: 0.2 });
+const matSeal = new THREE.MeshStandardMaterial({ color: 0x222222, metalness: 0.0, roughness: 0.8 });
+const matSleeve = new THREE.MeshPhysicalMaterial({
+  color: 0x3DBA9B, metalness: 0.1, roughness: 0.3,
+  transmission: 0.35, thickness: 0.5, transparent: true, opacity: 0.85
+});
+const matFilter = new THREE.MeshStandardMaterial({
+  color: 0xC8973A, metalness: 0.3, roughness: 0.6, wireframe: false, side: THREE.DoubleSide
+});
+const matFilterWire = new THREE.MeshStandardMaterial({
+  color: 0xC8973A, wireframe: true, transparent: true, opacity: 0.6
+});
+const matOuter = new THREE.MeshPhysicalMaterial({
+  color: 0xEEEBE4, metalness: 0.05, roughness: 0.4,
+  transmission: 0.5, thickness: 0.3, transparent: true, opacity: 0.72
+});
+const matPort = new THREE.MeshStandardMaterial({ color: 0x888880, metalness: 0.5, roughness: 0.5 });
+
+// ── 1. Control Rod + Seals ─────────────────────────────────────────────────
+const grpRod = makeGroup('rod');
+
+const rod = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 5.8, 16), matRod);
+rod.castShadow = true;
+grpRod.add(rod);
+
+// Top handle disc
+const handleDisc = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.28, 0.12, 24), matSeal);
+handleDisc.position.y = 2.76;
+grpRod.add(handleDisc);
+const handleKnob = new THREE.Mesh(new THREE.CylinderGeometry(0.13, 0.13, 0.22, 16), matRod);
+handleKnob.position.y = 3.0;
+grpRod.add(handleKnob);
+
+// Lower seal
+const seal1 = new THREE.Mesh(new THREE.CylinderGeometry(0.32, 0.32, 0.14, 24), matSeal);
+seal1.position.y = -1.0;
+grpRod.add(seal1);
+
+// Upper seal
+const seal2 = new THREE.Mesh(new THREE.CylinderGeometry(0.32, 0.32, 0.14, 24), matSeal);
+seal2.position.y = 0.6;
+grpRod.add(seal2);
+
+// Bottom tip
+const tip = new THREE.Mesh(new THREE.SphereGeometry(0.09, 12, 12), matRod);
+tip.position.y = -2.9;
+grpRod.add(tip);
+
+// ── 2. Sliding Waterproof Sleeve ───────────────────────────────────────────
+const grpSleeve = makeGroup('sleeve');
+
+const sleeve = new THREE.Mesh(new THREE.CylinderGeometry(0.58, 0.58, 2.2, 32, 1, true), matSleeve);
+sleeve.castShadow = true;
+grpSleeve.add(sleeve);
+
+// Top cap ring
+const sleeveCapTop = new THREE.Mesh(new THREE.TorusGeometry(0.58, 0.04, 8, 32), matSleeve);
+sleeveCapTop.rotation.x = Math.PI / 2;
+sleeveCapTop.position.y = 1.1;
+grpSleeve.add(sleeveCapTop);
+
+// Bottom cap ring
+const sleeveCapBot = new THREE.Mesh(new THREE.TorusGeometry(0.58, 0.04, 8, 32), matSleeve);
+sleeveCapBot.rotation.x = Math.PI / 2;
+sleeveCapBot.position.y = -1.1;
+grpSleeve.add(sleeveCapBot);
+
+// Grip ridges
+for (let i = 0; i < 4; i++) {
+  const ridge = new THREE.Mesh(new THREE.TorusGeometry(0.59, 0.025, 6, 32), matSleeve);
+  ridge.rotation.x = Math.PI / 2;
+  ridge.position.y = -0.6 + i * 0.4;
+  grpSleeve.add(ridge);
+}
+
+// ── 3. Porous Inner Tea Filter ─────────────────────────────────────────────
+const grpFilter = makeGroup('filter');
+
+// Mesh body (wireframe overlay on solid base)
+const filterSolid = new THREE.Mesh(
+  new THREE.CylinderGeometry(0.47, 0.47, 2.6, 24, 1, true),
+  new THREE.MeshStandardMaterial({ color: 0x8B6520, transparent: true, opacity: 0.25, side: THREE.DoubleSide })
+);
+grpFilter.add(filterSolid);
+
+const filterWire = new THREE.Mesh(
+  new THREE.CylinderGeometry(0.47, 0.47, 2.6, 24, 12, true),
+  matFilterWire
+);
+grpFilter.add(filterWire);
+
+// Cap top
+const filterCapTop = new THREE.Mesh(
+  new THREE.CylinderGeometry(0.47, 0.47, 0.06, 24),
+  matFilter
+);
+filterCapTop.position.y = 1.33;
+grpFilter.add(filterCapTop);
+
+// Cap bottom with hole suggestion
+const filterCapBot = new THREE.Mesh(
+  new THREE.CylinderGeometry(0.47, 0.47, 0.06, 24),
+  matFilter
+);
+filterCapBot.position.y = -1.33;
+grpFilter.add(filterCapBot);
+
+// Center bore (rod channel)
+const bore = new THREE.Mesh(
+  new THREE.CylinderGeometry(0.1, 0.1, 2.72, 12, 1, true),
+  new THREE.MeshStandardMaterial({ color: 0x222222, side: THREE.BackSide })
+);
+grpFilter.add(bore);
+
+// ── 4. Outer Body + Water-Flow Ports ──────────────────────────────────────
+const grpOuter = makeGroup('outer');
+
+// Main outer cylinder (open top and bottom for visibility)
+const outer = new THREE.Mesh(
+  new THREE.CylinderGeometry(0.68, 0.68, 3.2, 32, 1, true),
+  matOuter
+);
+outer.castShadow = true;
+grpOuter.add(outer);
+
+// Top collar
+const collarTop = new THREE.Mesh(
+  new THREE.CylinderGeometry(0.68, 0.68, 0.14, 32),
+  new THREE.MeshStandardMaterial({ color: 0xD0CCC4, metalness: 0.1, roughness: 0.5 })
+);
+collarTop.position.y = 1.67;
+grpOuter.add(collarTop);
+
+// Bottom collar
+const collarBot = new THREE.Mesh(
+  new THREE.CylinderGeometry(0.68, 0.68, 0.14, 32),
+  new THREE.MeshStandardMaterial({ color: 0xD0CCC4, metalness: 0.1, roughness: 0.5 })
+);
+collarBot.position.y = -1.67;
+grpOuter.add(collarBot);
+
+// Water-flow ports (8 small cylinders punched through the side)
+const portMat = new THREE.MeshStandardMaterial({ color: 0x3DBA9B, metalness: 0.3, roughness: 0.4 });
+const portAngles = [0, 45, 90, 135, 180, 225, 270, 315];
+portAngles.forEach((deg, i) => {
+  const rad = (deg * Math.PI) / 180;
+  const port = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.055, 0.22, 10), portMat);
+  port.rotation.z = Math.PI / 2;
+  port.position.set(Math.cos(rad) * 0.68, (i % 2 === 0 ? 0.4 : -0.4), Math.sin(rad) * 0.68);
+  port.rotation.y = -rad;
+  port.rotation.z = Math.PI / 2;
+  grpOuter.add(port);
+});
+
+// ── Assembled positions ────────────────────────────────────────────────────
+const assembled = {
+  rod:    new THREE.Vector3(0, 0.1, 0),
+  sleeve: new THREE.Vector3(0, -0.4, 0),
+  filter: new THREE.Vector3(0, 0, 0),
+  outer:  new THREE.Vector3(0, 0, 0),
+};
+
+// ── Exploded positions ─────────────────────────────────────────────────────
+const exploded = {
+  rod:    new THREE.Vector3(0,    3.8,  0),
+  sleeve: new THREE.Vector3(2.6, -0.5,  1.2),
+  filter: new THREE.Vector3(-2.4, 0.2, -0.8),
+  outer:  new THREE.Vector3(0,  -3.8,   0),
+};
+
+const groups = { rod: grpRod, sleeve: grpSleeve, filter: grpFilter, outer: grpOuter };
+
+// Set initial assembled positions
+Object.entries(assembled).forEach(([k, v]) => groups[k].position.copy(v));
+
+// ── Easing ─────────────────────────────────────────────────────────────────
+function easeInOutCubic(t) {
+  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+}
+
+// ── Animation state ────────────────────────────────────────────────────────
+let progress = 0;       // 0 = assembled, 1 = exploded
+let targetProgress = 0;
+let autoPlay = false;
+let autoDir = 1;
+let autoSpeed = 0.004;
+
+const slider = document.getElementById('slider');
+const btnToggle = document.getElementById('btn-toggle');
+const btnAuto = document.getElementById('btn-auto');
+
+function setProgress(p) {
+  progress = Math.max(0, Math.min(1, p));
+  slider.value = Math.round(progress * 100);
+  btnToggle.textContent = progress > 0.5 ? 'Assemble' : 'Explode';
+
+  const e = easeInOutCubic(progress);
+  Object.entries(groups).forEach(([k, grp]) => {
+    grp.position.lerpVectors(assembled[k], exploded[k], e);
+  });
+}
+
+slider.addEventListener('input', () => {
+  autoPlay = false;
+  btnAuto.textContent = 'Auto Play';
+  targetProgress = slider.value / 100;
+  setProgress(targetProgress);
+});
+
+btnToggle.addEventListener('click', () => {
+  autoPlay = false;
+  btnAuto.textContent = 'Auto Play';
+  targetProgress = progress < 0.5 ? 1 : 0;
+});
+
+btnAuto.addEventListener('click', () => {
+  autoPlay = !autoPlay;
+  btnAuto.textContent = autoPlay ? 'Pause' : 'Auto Play';
+  if (autoPlay) autoDir = progress < 0.5 ? 1 : -1;
+});
+
+// ── Render loop ────────────────────────────────────────────────────────────
+let prevTime = performance.now();
+
+function animate() {
+  requestAnimationFrame(animate);
+  const now = performance.now();
+  const dt = Math.min((now - prevTime) / 1000, 0.05);
+  prevTime = now;
+
+  if (autoPlay) {
+    targetProgress = progress + autoDir * autoSpeed * 60 * dt;
+    if (targetProgress >= 1) { targetProgress = 1; autoDir = -1; }
+    if (targetProgress <= 0) { targetProgress = 0; autoDir = 1; }
+    setProgress(targetProgress);
+  } else {
+    // Smooth toward target
+    const diff = targetProgress - progress;
+    if (Math.abs(diff) > 0.001) {
+      setProgress(progress + diff * 0.1);
+    }
+  }
+
+  // Slow auto-rotate when not interacting
+  if (!controls.isDragging) {
+    scene.rotation.y += 0.0015;
+  }
+
+  controls.update();
+  renderer.render(scene, camera);
+}
+
+animate();
+
+// ── Resize ─────────────────────────────────────────────────────────────────
+window.addEventListener('resize', () => {
+  camera.aspect = innerWidth / innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
+</script>
+</body>
+</html>
