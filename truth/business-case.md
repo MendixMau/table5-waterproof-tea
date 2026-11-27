@@ -1,8 +1,8 @@
-# OSME business case v2 (business-lead, 27 Nov 2026, 10:45)
-Status: v2 for the business validator. USD throughout (£1 = $1.27, €1 = $1.08: ASSUMPTION rates). Every number is SOURCED (URL opened 27 Nov 2026 unless dated) or labelled ASSUMPTION. Model: deck/model_business.py (run it to recompute everything below). Slides: deck/business.html.
+# OSME business case v2 (business-lead, 27 Nov 2026, 10:50)
+Status: v2, validated (judge/business-validation.md) and judged 4.5/5 (slides 5, 4, 4, 5). USD throughout (£1 = $1.27, €1 = $1.08: ASSUMPTION rates). Every number is SOURCED (URL opened 27 Nov 2026 unless dated) or labelled ASSUMPTION. Model: deck/model_business.py (run it to recompute everything below). Slides: deck/business.html.
 
 ## What changed since v1
-- **Price is $1.50 a bag everywhere** (facts.md, team 10:23). v1 used $2.00 singles, so its blended $1.38 a bag and $9.0 m year 3 are stale. **Year 3 is now $8.5 m** (1.3% of the $640 m SAM).
+- **Price is $1.50 a bag everywhere** (facts.md, team 10:23). v1 used $2.00 singles, so its blended $1.38 a bag and $9.0 m year 3 are stale. **Year 3 is now $8.3 m** (1.3% of the $640 m SAM), matching facts.md.
 - **New: per-cup price ladder** with 9 opened prices (§2). OSME at $0.50 a cup is half a Sips By cup and under half a Tea Forte pyramid.
 - **New: cost stack per bag, year 1 vs year 3** (§3): $1.27 pilot, $0.42 at scale (v1: $0.36 to $0.85 range, midpoint $0.605). Membrane material is sourced at under 1 cent a bag; the rest of the membrane line is an ASSUMPTION for coating and yield.
 - **Gross margin a bag at scale: $1.08 (72%) direct, $0.33 (44%) retail** (v1 said 62%, validator 59.7%).
@@ -74,12 +74,12 @@ One-off costs (inside the $2.5 m ask):
 Bottom-up (all volumes ASSUMPTION):
 | Stream | Working | Revenue |
 |---|---|---|
-| Ritual subscription | 13,000 average subscribers (6 k start, 20 k end of year 3) x $24 x 12 | $3.74 m |
-| Tins and gifts, D2C | 180,000 tins x $18 (12 bags) | $3.24 m |
+| Ritual subscription | 12,000 average subscribers (4 k end of year 2, 20 k end of year 3, linear) x $24 x 12 | $3.46 m |
+| Tins and gifts, D2C | 185,000 tins x $18 (12 bags) | $3.33 m |
 | Premium retail | 2,000,000 bags x $0.75 (50% of $1.50 shelf) | $1.50 m |
-| **Year 3** | 6.66 m bags | **$8.48 m ≈ $8.5 m** |
-Top-down check: $8.48 m / $640 m SAM = **1.3%** (v1: 1.4%).
-Funding check (ASSUMPTION): Ritual grows from 4 k subscribers (end of year 2) to 20 k (end of year 3). Gross adds in year 3 = 16 k net + churn 7% x 13 k average x 12 = ~10.9 k, so ~26.9 k adds x $75 = **~$2.0 m CAC in year 3**. Year-3 contribution before marketing covers it: Ritual 13 k x 12 x $9.78 = $1.53 m + tins 180 k x ($18 − 12 x $0.42) = $2.33 m (before post) + retail 2 m x $0.33 = $0.66 m = ~$4.5 m. The $2.5 m ask funds R&D, certification, pilot line and launch, not year-3 acquisition; the Series A trigger (20 k subscribers) covers the rest.
+| **Year 3** | 6.52 m bags | **$8.29 m ≈ $8.3 m** |
+Top-down check: $8.29 m / $640 m SAM = **1.3%** (v1: 1.4%).
+Funding check (ASSUMPTION): Ritual grows from 4 k subscribers (end of year 2) to 20 k (end of year 3). Gross adds in year 3 = 16 k net + churn 7% x 12 k average x 12 = ~10.1 k, so ~26.1 k adds x $75 = **~$2.0 m CAC in year 3**. Year-3 contribution before marketing covers it: Ritual 12 k x 12 x $9.78 = $1.41 m + tins 185 k x ($18 − 12 x $0.42) = $2.40 m (before post) + retail 2 m x $0.33 = $0.66 m = ~$4.5 m. The $2.5 m ask funds R&D, certification, pilot line and launch, not year-3 acquisition; the Series A trigger (20 k subscribers) covers the rest.
 
 Plausibility, public subscription counts:
 | Company | Count | Source |
@@ -100,14 +100,25 @@ Churn reality check: tea subscriptions range from 5-month lives (Simple Loose Le
 | Contribution a month | $9.78 | **$17.55** | $25.32 |
 | CAC payback | 7.7 months | **4.3 months** | 3.0 months |
 | LTV : CAC | 1.9x | **3.3x** | 4.8x |
-| Year 3 at the same volumes (ASSUMPTION) | $8.5 m | $11.3 m | $14.1 m |
+| Year 3 at the same volumes (ASSUMPTION) | $8.3 m | $11.0 m | $13.8 m |
 Ladder check: $0.67 a cup is still below Sips By ($1.00) and half of Tea Forte ($1.30); $0.83 a cup nears Sips By and the Ritual box hits $40 a month, above Sips By's $15.
-**Recommendation: $2.00 a bag** (tin $24, Ritual $32 a month). It clears the 3x LTV:CAC investors expect, halves payback, and keeps the cup under every premium rival on the ladder. At $2.00 the same $8.5 m year 3 needs 25% fewer bags. The team decides; until then every slide says $1.50.
+**Recommendation: $2.00 a bag** (tin $24, Ritual $32 a month). It clears the 3x LTV:CAC investors expect, halves payback, and keeps the cup under every premium rival on the ladder. At $2.00 the same $8.3 m year 3 needs 25% fewer bags. At $1.50, 3x LTV:CAC needs CAC near $47 ($140 / 3): gifting and the waitlist must do the work. The team decides; until then every slide says $1.50.
 
-## 7. The raise (unchanged from v1, see v1 working in git history)
+## 7. The raise
 $2.5 m on a SAFE at a $10 m pre-money valuation ($12.5 m post-money cap, 20% dilution, 24 months runway). Use of funds: membrane R&D and IP 35%, certification 15%, brand and launch 30%, origin partnerships and first inventory 15%, ops 5%. Series A trigger: 20 k subscribers or $5 m revenue run-rate.
+Valuation check: "The median pre-money valuation on new primary seed rounds on Carta rose to a new high of $16 million in Q3, an increase of 14% from the same period last year." (Crowdfund Insider on Carta's Q3 2025 report, 2 Dec 2025, opened 27 Nov 2026) https://www.crowdfundinsider.com/2025/12/256059-early-stage-valuations-keep-rising-down-rounds-growing-less-frequent-carta-private-markets-insights/ . The carta.com report URL returns 403 to our fetcher, so it is replaced by this one. A pre-revenue consumer brand with material R&D risk prices below that median: $10 m pre (ASSUMPTION).
+
+## How v2 settles the v1 validation FAILs (judge/business-validation.md v1, 10:24)
+| v1 FAIL | v1 fix | v2 answer |
+|---|---|---|
+| Single bag $1.50 vs $2.00 | lock one | $1.50 everywhere (facts.md); $2.00 kept only as a recommendation in §6 |
+| Year-3 average price $1.38, SOM $9 m | $1.275, $8.3 m | v2 bottom-up by stream: **$8.3 m** (§5) |
+| Gross margin 62% (COGS midpoint $0.57 vs $0.605) | about 60% | v2 replaces the v1 range with a line-by-line stack: year-3 COGS **$0.42**, gross margin **$1.08 a bag, 72%** direct (§3, §4). "About 60%" was the v1 range midpoint and is retired |
+| LTV $213 | $205 | v2 counts post and card fees: contribution $9.78 a month / 7% = **$140** (on v1's gross-margin basis it would be $24 / 7% x 72% = $247) |
+| LTV:CAC 2.8x | 2.7x | **1.9x** on contribution at $1.50 (3.3x at $2.00, §6) |
+| Carta citation 403 | other source | Crowdfund Insider, same figure (above) |
 
 ## Questions for the team (also in ops/questions.md)
 1. Price: stay at $1.50 or move to $2.00 a bag (§6)? Everything shows $1.50 until the team decides.
-2. facts.md Market: year-3 SOM $9 m (gate1.html shows $8.3 m, validator v1 mix) → **$8.5 m** at $1.50 from the v2 bottom-up. The lead locks one figure.
+2. facts.md Market: year-3 SOM $9 m (gate1.html shows $8.3 m, validator v1 mix) → **$8.3 m** at $1.50 (locked by the lead, 10:49; v2 bottom-up gives $8.29 m).
 3. Is 3 infusions a bag the locked claim? The per-cup ladder depends on it.

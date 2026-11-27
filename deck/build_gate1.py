@@ -5,10 +5,13 @@ Same engine, CSS and JS as deck/pitch.html (imported from build_pitch.py).
 Every build pulls the latest logo files from brand/identity/, brand assets from
 brand/assets/ and the logo options board from gallery/brand-v04-logo-options.png.
 
+Slides 6 to 9 are the business case, merged from build_business.py (deck/business.html).
+
 Run: python3 deck/build_gate1.py
 """
-import pathlib, subprocess, tempfile
+import pathlib, re, subprocess, tempfile
 import build_pitch as bp
+import build_business as bb
 
 R, D = bp.R, bp.D
 A = R / "brand" / "assets"
@@ -176,19 +179,19 @@ SLIDES = r"""
 <div class="slide bg-grid top" id="s5" data-steps="0" data-title="Market and money">
   <div class="g1chip">Decision 2 · price · Decision 3 · ask</div>
   <div class="head a"><div class="label">Gate 1 · market, price, ask <span class="prov">provisional</span></div>
-    <div class="h1">Tea bags are a <em>$7.1 billion</em> market; premium bags in four countries are $640 million; year 3 $8.3 million.</div></div>
+    <div class="h1">Tea bags are a <em>$7.1 billion</em> market; premium bags in four countries are $640 million; year 3 __Y3__ million.</div></div>
   <div class="body">
     <div class="mbar"><div class="k">TAM · the world's tea bags</div><div><div class="tr"><div class="fl" style="width:100%;background:rgba(243,238,230,.18)"></div><div class="v" style="left:0">$7.1 bn</div></div><div class="w">$18.8 bn tea (Fortune BI 2025) × 38% sold in bags · sourced</div></div></div>
     <div class="mbar"><div class="k">SAM · premium, JP CN UK US</div><div><div class="tr"><div class="fl" style="width:9%;background:var(--jade)"></div><div class="v jade" style="left:9%">$640 m</div></div><div class="w">× 45% four markets × 20% premium · our assumptions</div></div></div>
-    <div class="mbar"><div class="k">SOM · OSME year 3</div><div><div class="tr"><div class="fl" style="width:.5%;background:var(--amber);min-width:8px"></div><div class="v amber" style="left:.5%">$8.3 m</div></div><div class="w">6.5 m bags × $1.28 avg (70% direct at $1.50, 30% retail at $0.75) · assumption · validator</div></div></div>
+    <div class="mbar"><div class="k">SOM · OSME year 3</div><div><div class="tr"><div class="fl" style="width:.5%;background:var(--amber);min-width:8px"></div><div class="v amber" style="left:.5%">__Y3__ m</div></div><div class="w">bottom-up: Ritual __RIT__ + tins __TINS__ + retail __RET__ = __SHARE__ of SAM · assumption · business case v2</div></div></div>
     <div class="tiles"><span class="prov" style="position:absolute;margin:-34px 0 0 0">provisional: tin, Ritual, ask</span>
       <div class="tile" style="border-color:rgba(242,163,58,.45)"><div class="k">Every bag · locked</div><div class="v">$1.50</div><div class="w">single, tin and Ritual · team 10:23</div></div>
       <div class="tile"><div class="k">12-bag tin</div><div class="v">$18</div><div class="w">3 cups a bag (assumption) · $0.50 a cup</div></div>
-      <div class="tile"><div class="k">Ritual</div><div class="v">$24<span class="muted" style="font-size:.5em"> / month</span></div><div class="w">16 bags · ~60% gross margin</div></div>
+      <div class="tile"><div class="k">Ritual</div><div class="v">$24<span class="muted" style="font-size:.5em"> / month</span></div><div class="w">16 bags · $1.08 a bag gross margin (72%)</div></div>
       <div class="tile" style="border-color:rgba(242,163,58,.45)"><div class="k">The ask</div><div class="v amber">$2.5 m</div><div class="w">SAFE · $10 m pre ($12.5 m post cap) · 20% dilution · 24 months runway</div></div>
     </div>
   </div>
-  <aside class="notes"><p>Sources: facts.md (Price, Market, The ask, all provisional 10:05); truth/business-case.md §1 to §5. Validation: judge/business-validation.md (17 PASS, 5 FAIL, 1 ASK at 10:2x): single bag $1.50 vs $2.00; margin 59.7% at COGS midpoint $0.605; LTV $205, LTV:CAC 2.7x; year-3 average price $1.275 gives SOM $8.3 m (facts.md still says $9 m, which needs $2.00 singles; flagged to the lead); price locked at $1.50 everywhere by the team at 10:23 (facts.md Price); 20 k Keepers x $288 is an end-of-year run-rate.</p></aside>
+  <aside class="notes"><p>Business case v2 (business-lead DONE 10:48): year 3 __Y3__ m bottom-up, __SHARE__ of SAM (§5, from deck/model_business.py at build time); gross margin $1.08 a bag, 72% direct at year-3 cost $0.42 (§4); $2.00 option: payback 4.3 vs 7.7 months, LTV:CAC 3.3x vs 1.9x (§6). Sources: facts.md (Price, Market, The ask, all provisional 10:05); truth/business-case.md §1 to §6. Superseded v1 notes: Validation: judge/business-validation.md (17 PASS, 5 FAIL, 1 ASK at 10:2x): single bag $1.50 vs $2.00; margin 59.7% at COGS midpoint $0.605; LTV $205, LTV:CAC 2.7x; year-3 average price $1.275 gives SOM $8.3 m (facts.md still says $9 m, which needs $2.00 singles; flagged to the lead); price locked at $1.50 everywhere by the team at 10:23 (facts.md Price); 20 k Keepers x $288 is an end-of-year run-rate.</p></aside>
 </div>
 
 <!-- 6 · DECISIONS -->
@@ -198,7 +201,7 @@ SLIDES = r"""
   <div class="body">
     <div class="dec"><div class="card conf" style="grid-column:span 2;min-height:0;padding:2vh 2.4vw;flex-direction:row;align-items:center;gap:2vw"><div class="q1">Confirm together</div><div class="rec" style="font-size:clamp(22px,1.6vw,30px)">Name OSME · Midnight Brew · lead customer A</div></div>
       <div class="card" style="flex-direction:row;align-items:center;gap:2vw"><img src="__SYM__" alt="" style="height:12vh"/><div style="display:flex;flex-direction:column;gap:12px"><div class="q1">1 · Logo</div><div class="rec">B, Scent S</div><div class="alt">21 / 25 · A Three Bubbles 18 · C Monoline 12</div></div></div>
-      <div class="card"><div class="q1">2 · Price · locked 10:23 · confirm</div><div class="rec">$1.50 a bag everywhere</div><div class="alt" style="color:var(--text)">year 3 $8.3 m · tin $18 · Ritual $24 a month</div><div class="alt">Reopen? $2.00 singles: year 3 $9 m, tin saves 25%</div></div>
+      <div class="card"><div class="q1">2 · Price · locked 10:23 · confirm</div><div class="rec">$1.50 a bag everywhere</div><div class="alt" style="color:var(--text)">year 3 __Y3__ m · tin $18 · Ritual $24 a month</div><div class="alt">Reopen at $2.00? CAC payback 4.3 vs 7.7 months · LTV:CAC 3.3x vs 1.9x</div></div>
       <div class="card"><div class="q1">3 · The ask <span class="prov">provisional</span></div><div class="rec">$2.5 m SAFE at <span style="white-space:nowrap">$10 m pre-money</span></div><div class="alt">$12.5 m post cap · 20% dilution · 24 months runway · funds the food-safe membrane and the first Ritual boxes</div></div>
       <div class="card"><div class="q1">4 · Kling film credits</div><div class="rec">No for now <span class="muted" style="font-size:.6em">(user, 10:25)</span></div><div class="alt">confirm, or reopen: 3 film inserts ~150 + 3 stills ~50 = ~200 of 322 credits · nothing spent</div></div>
     </div>
@@ -207,15 +210,27 @@ SLIDES = r"""
 </div>
 """
 
+BIZ = bb.build().replace("__BENCH__", "".join(
+    f'<div class="bi{" os" if k.startswith("OSME") else ""}"><span>{k}</span><span>{v}</span></div>' for k, v in bb.BENCH))
+BIZ = BIZ.replace('<div class="slide ', '<div class="slide bcase ')
+BIZ = re.sub(r'id="s([1-4])"', r'id="b\1"', BIZ)
+BIZ_CSS = (bb.CSS[len(bp.CSS):].replace("body.s0 #brandmark{opacity:.55}\n", "")
+           .replace("\n.src{", "\n.bcase .src{").replace("\n.h1{", "\n.bcase .h1{").replace("\n.label{", "\n.bcase .label{"))
+SLIDES = SLIDES.replace("<!-- 6 · DECISIONS -->", "<!-- 6 to 9 · BUSINESS CASE (build_business.py) -->\n" + BIZ + "\n<!-- 10 · DECISIONS -->")
+CSS = CSS + BIZ_CSS
+W3 = bb.m.walk(bb.m.PRICE)
+SLIDES = (SLIDES.replace("__Y3__", f"${W3['total'] / 1e6:.1f}").replace("__SHARE__", f"{W3['share']:.1%}")
+          .replace("__RIT__", bb.mn(W3["rev_ritual"])).replace("__TINS__", bb.mn(W3["rev_tins"])).replace("__RET__", bb.mn(W3["rev_retail"])))
+
 JS = (bp.JS.replace("document.getElementById('demo').addEventListener", "document.getElementById('demo')&&document.getElementById('demo').addEventListener")
       .replace("else if(k==='d'||k==='D'){if(cur!==2)goto(2,0);demo(!document.body.classList.contains('demo'));}", "")
       .replace("if(cur===2)fitDemo();", "").replace("if(n===2)setTimeout(fitDemo,50);", "")
-      .replace("/^[1-8]$/", "/^[1-6]$/"))
+      .replace("/^[1-8]$/", "/^[1-9]$/"))
 
 page = (bp.PAGE.replace("__CSS__", CSS).replace("__SLIDES__", SLIDES).replace("__JS__", JS)
         .replace("<title>OSME · a tea bag that opens only at its perfect temperature</title>", "<title>OSME · Gate 1 decisions</title>")
         .replace(" · D live demo full screen · Space pours", "").replace(" · D live demo", "").replace(" · Esc leave demo", "")
-        .replace("1 to 8 jump", "1 to 6 jump")
+        .replace("1 to 8 jump", "1 to 9 jump")
         .replace("__FONTX__", FONTX).replace("__FONT__", bp.FONT).replace("__LOCKUP__", LOCK).replace("__LOCK__", LOCK).replace("__SYM__", SYM)
         .replace("__OPT_A__", OPT_A).replace("__OPT_C__", OPT_C).replace("__HERO__", HERO).replace("__TIN__", TIN)
         .replace("__BAG__", BAG).replace("__SOCIAL__", SOCIAL)

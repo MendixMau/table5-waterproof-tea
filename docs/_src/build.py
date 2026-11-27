@@ -292,7 +292,7 @@ def home(vbs):
 </div></header>
 
 <section class="band" aria-label="Lu Yu's three bubbles">
-  <video autoplay muted loop playsinline preload="auto" src="../video/osme-loop.mp4"></video>
+  <video autoplay muted loop playsinline preload="auto" src="_src/loop-web.mp4"></video>
   <div class="wrap band-in">
     <div class="eyebrow">Since the eighth century</div>
     <p class="band-h">Lu Yu read water by its bubbles.<br><span class="arc-text">OSME reads it for you.</span></p>
@@ -523,7 +523,14 @@ def keepers(vbs):
     return page("keepers.html", "Keepers · OSME", "Join the OSME movement: art, love, scent. #ThreeBubbles, one cup a day. Become a Keeper.", "keepers.html", body, vbs)
 
 # ---------------------------------------------------------------- main
+def web_loop():
+    """Light copy of the film loop for the page band, made fresh from video/osme-loop.mp4 every build."""
+    subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", os.path.join(ROOT, "video/osme-loop.mp4"), "-an", "-vf", "scale=1280:-2",
+                    "-c:v", "libx264", "-crf", "30", "-preset", "slow", "-pix_fmt", "yuv420p", "-movflags", "+faststart",
+                    os.path.join(SRC, "loop-web.mp4")], check=True)
+
 if __name__ == "__main__":
+    web_loop()
     LOGO_DEFS, VBS = logo_symbols()
     out = [home(VBS), shop(VBS), ritual(VBS), story(VBS), keepers(VBS)] + [tea_page(t, VBS) for t in TEAS]
     # live demo: the product thread's page, copied as is

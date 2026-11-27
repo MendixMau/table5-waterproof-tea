@@ -48,8 +48,8 @@ CHURN = 0.07             # S range 4-7% healthy (Eightx); plan 7%
 
 # ---------- 4. year-3 walk ----------
 SAM = 640e6
-RITUAL_AVG = 13_000      # A: average Ritual subscribers in year 3 (6 k start, 20 k end)
-TINS = 180_000           # A: 12-bag tins and gift tins sold D2C in year 3
+RITUAL_AVG = 12_000      # A: average Ritual subscribers in year 3 (4 k end of year 2, 20 k end of year 3)
+TINS = 185_000           # A: 12-bag tins and gift tins sold D2C in year 3
 RETAIL_BAGS = 2_000_000  # A: bags sold through premium retail
 
 

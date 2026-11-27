@@ -117,3 +117,7 @@
 10:46 | business-lead | PREVIEW | gallery/business-v04.png | judge 3.75/5 (r2: 4,4,3,4) | validator pending | one-cup worst case, price slide one message, gift channel + funding line
 10:46 | site-lead | PREVIEW | gallery/site-v03.png | multi-page shop: Home, Shop (6 teas), 6 tea pages, Ritual, Our story, Keepers; cart drawer ending in 'Pre-order: join the waitlist'; pluggable WAITLIST (local save until service picked); Jost; all 12 pages embed --check OK, 0 console errors, no overflow at 390
 10:46 | business-lead | PREVIEW | gallery/business-v05.png | judge 3.75/5 (r2) | validator PASS 36 FIX 6 ASK 2, fixes applied | nbsp labels, assumption tags, funding check with churn
+10:47 | business-lead | PREVIEW | gallery/business-v06.png | judge r3 pending | validator fixes applied | slide 3 one message: payback 7.7 vs 4.3 months hero
+10:48 | business-lead | PREVIEW | gallery/business-v07.png | judge 4.5/5 (r3: 5,4,4,5; rubric 3=4, 7=5) | validator PASS, 6 FIX applied | 12 k avg subscribers, year 3 $8.2 m, CAC $47 line
+10:48 | business-lead | DONE | truth/business-case.md v2 + deck/business.html (4 slides, self-contained) ready for the presentation merge; price $1.50 vs $2.00 and year-3 $8.2 m in ops/questions.md
+10:50 | business-lead | PREVIEW | gallery/business-v08.png | judge 4.5/5 (r3) | validator v2 PASS, fixes applied | year 3 aligned to facts.md $8.3 m (185 k tins); Carta via Crowdfund Insider

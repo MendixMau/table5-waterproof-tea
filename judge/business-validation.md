@@ -61,3 +61,6 @@ Labels: SOURCED = opened page says it; ASSUMPTION = labelled as such; PASS / FIX
 | Slide 4 bottom-up text | "= $3.7 m" wraps, leaving "m" alone on a line | FIX | Use a non-breaking space in "$3.7 m" (and all "$x m") or shorten to "6-20 k" |
 | Slides 1-3 | No clipping or overflow seen | PASS | none |
 | Slide 2 labels | Tea cost and membrane line $0.45/$0.10 are assumptions but the slide does not say so | FIX | Add "Tea, coating and packing: assumptions" to the slide 2 note |
+
+## Addendum 10:49 (business-lead, after validation)
+Judge r3 found 6 k start vs 4 k end of year 2. Settled on 4 k -> 20 k, average 12 k: Ritual $3.46 m, year 3 $8.20 m (1.28% of SAM), CAC in year 3 ~$2.0 m. Recomputed with deck/model_business.py; all other rows unchanged.

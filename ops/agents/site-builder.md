@@ -13,3 +13,9 @@ Tools: /tmp/site-shots/snap.js (playwright shots + console errors), /tmp/site-sh
 1. Hero "who": chip -> "For curious tea drinkers who pay for good leaf and hate a bitter cup. And anyone who would love to be one." Phone (<600px): display:contents reorder so the bag dial sits right under the one-liner, hide the 4-line paragraph, buttons side by side.
 2. Break the card rhythm: full-width band between hero and How with video/renders/osme-loop_v01.mp4 (muted, autoplay, loop, playsinline, poster; embedded by embed-html), text "Lu Yu read water by its bubbles. OSME reads it for you." Price block -> one wide Ritual card ($24/month) + single bag and tin as two small cards beside it.
 3. Small fixes: footer "760s CE", font stacks in tokens.css order (Jost first), who-card stats pinned to the bottom, small grey text >= 14px; then refresh demo.html copy, embed + check, gallery/site-v03.png, fresh validator + judge.
+
+## State 10:48 (multi-page shop, v03)
+Generator: `python3 docs/_src/build.py` builds index, shop, tea-<id> x6, ritual, story, keepers + copies product/index.html to demo.html, embeds and checks every page. Inputs re-read every build: brand/identity/logo-*.svg (inline symbols + favicon), brand/assets/*.svg, video/osme-loop.mp4 (transcoded to docs/_src/loop-web.mp4, ~90 KB). Copy and data live in build.py; CSS in _src/base.css + shop.css; JS in _src/site.js (cart, WAITLIST constant), hero.js, slider.js.
+Waitlist: set WAITLIST in docs/_src/site.js (kind formspree|formsubmit|google, endpoint, emailField/cartField for google, countUrl for a published-sheet Keeper count), rebuild.
+Tests: /tmp/site-shots/multi.js (shots, overflow, console errors), cart.js (cart + pre-order + menu), msheet.js (gallery sheet).
+Preview: gallery/site-v03.png. Fresh validator + judge (v2 briefs) running.

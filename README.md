@@ -4,7 +4,7 @@
 Everyone drives at least once.
 
 <!-- LIVE:START -->
-## Live status · 10:46 · 2 h 43 to hand-in
+## Live status · 10:51 · 2 h 38 to hand-in
 
 **Now:** Gate 1 deck is open: name, logo, logo in use, customer, market, decisions. Logo routes and business v2 land by 11:05.
 
@@ -12,7 +12,7 @@ Everyone drives at least once.
 |---|---|---|---|
 | 🎨 | Brand & logo | 🟡 working · judge 21/25 · 10:37 | <img src="gallery/brand-v09-options.png" width="260"> |
 | 🚦 | Gate 1 deck | 🟡 working · judge 4/5 · 10:38 | <img src="gallery/gate1-v07.png" width="260"> |
-| 📈 | Business case | 🟡 working · judge 3.0/5 · 10:46 | <img src="gallery/business-v05.png" width="260"> |
+| 📈 | Business case | 🟡 working · judge 4.5/5 · 10:50 | <img src="gallery/business-v08.png" width="260"> |
 | 🍵 | Product demo | 🟡 working · judge 4/5 · 10:42 | <img src="gallery/product-v05.png" width="260"> |
 | 🎤 | Pitch deck | ⚪ on hold · 10:18 | <img src="gallery/deck-v03.png" width="260"> |
 | 🌐 | Site | 🟡 working · 10:46 | <img src="gallery/site-v03.png" width="260"> |

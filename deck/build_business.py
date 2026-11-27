@@ -177,9 +177,9 @@ def build():
     <div class="h1">Every price earns over 70% a bag at scale; only <span class="jade">$2.00</span> repays a subscriber's acquisition in <em>{m.econ(2.0)['payback']:.0f} months</em> instead of {e['payback']:.0f}.</div></div>
   <div class="body"><div class="mg a2">
     <div class="mgb"><div class="cap" style="letter-spacing:.16em;text-transform:uppercase">Months to repay a $75 subscriber</div>
-      <div class="row" style="gap:22px;align-items:baseline"><div class="big" style="font-size:clamp(76px,6.4vw,128px);color:var(--amber)">{e['payback']:.1f}</div><div class="sm">at $1.50 · LTV:CAC {e['ltv_cac']:.1f}x</div></div>
-      <div class="row" style="gap:22px;align-items:baseline"><div class="big" style="font-size:clamp(76px,6.4vw,128px);color:var(--jade)">{m.econ(2.0)['payback']:.1f}</div><div class="sm">at $2.00 · LTV:CAC {m.econ(2.0)['ltv_cac']:.1f}x</div></div>
-      <div class="sm">Investors expect 3x. A Ritual box at $1.50: $24 minus bags {usd(e['box_cogs'])}, post {usd(m.FULFIL)}, card fee {usd(e['fee'])} = {usd(e['contrib'])} a month.</div></div>
+      <div style="display:flex;flex-direction:column;gap:4px"><div class="big" style="font-size:clamp(76px,6.4vw,128px);color:var(--amber)">{e['payback']:.1f}</div><div class="sm" style="white-space:nowrap">at $1.50 a bag · LTV:CAC {e['ltv_cac']:.1f}x</div></div>
+      <div style="display:flex;flex-direction:column;gap:4px"><div class="big" style="font-size:clamp(76px,6.4vw,128px);color:var(--jade)">{m.econ(2.0)['payback']:.1f}</div><div class="sm" style="white-space:nowrap">at $2.00 a bag · LTV:CAC {m.econ(2.0)['ltv_cac']:.1f}x</div></div>
+      <div class="sm">Investors expect 3x; at $1.50 that needs CAC near $47. A Ritual box at $1.50: $24 minus bags {usd(e['box_cogs'])}, post {usd(m.FULFIL)}, card fee {usd(e['fee'])} = {usd(e['contrib'])} a month.</div></div>
     {price_table()}
   </div></div>
   <aside class="notes"><p>Working in truth/business-case.md §4 and §6.</p></aside>
