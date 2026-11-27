@@ -277,6 +277,7 @@ PAGE = """<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>OSME · every tea has its temperature</title>
 <style>__CSS__</style>
+<script>window.ENTER={};window.LEAVE={};window.STEP={};</script>
 </head>
 <body class="s0">
 <div id="ambient"><div class="tex"></div><div class="st a"></div><div class="st b"></div><div class="st c"></div></div>

@@ -1,5 +1,5 @@
 <style>
-#s5 .s5-tex{position:absolute;inset:0;z-index:0;pointer-events:none;background:url(__ASSET:brand/assets/pattern-bubbles.svg__) center/560px repeat;mix-blend-mode:screen;opacity:.55;
+#s5 .s5-tex{position:absolute;inset:0;z-index:0;pointer-events:none;background:url(__ASSET:brand/assets/pattern-bubbles.svg__) center/560px repeat;mix-blend-mode:screen;opacity:1;
   -webkit-mask-image:radial-gradient(circle at 67% 57%,#000 0%,rgba(0,0,0,.55) 30%,transparent 62%);mask-image:radial-gradient(circle at 67% 57%,#000 0%,rgba(0,0,0,.55) 30%,transparent 62%)}
 #s5.play .s5-tex{animation:s5-drift 30s linear both}
 @keyframes s5-drift{from{background-position:0 0}to{background-position:-140px -260px}}
@@ -37,11 +37,11 @@
       <filter id="s5f" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
     </defs>
     <!-- leaders from each number to its ring -->
-    <path class="s5-lead draw" pathLength="1" d="M 770 300 H 958" style="--dl:.5s;--d:.6s"/>
+    <path class="s5-lead draw" pathLength="1" d="M 600 300 H 958" style="--dl:.5s;--d:.6s"/>
     <circle class="s5-dot" cx="958" cy="300" r="6" fill="#F2A33A" style="--dl:1s"/>
-    <path class="s5-lead draw" pathLength="1" d="M 770 570 H 1014" style="--dl:1.2s;--d:.6s"/>
+    <path class="s5-lead draw" pathLength="1" d="M 650 570 H 1014" style="--dl:1.2s;--d:.6s"/>
     <circle class="s5-dot" cx="1014" cy="570" r="6" fill="#D9C46B" style="--dl:1.7s"/>
-    <path class="s5-lead draw" pathLength="1" d="M 770 836 C 960 836 1060 760 1186 715" style="--dl:1.9s;--d:.7s"/>
+    <path class="s5-lead draw" pathLength="1" d="M 600 836 C 900 836 1040 770 1186 715" style="--dl:1.9s;--d:.7s"/>
     <circle class="s5-dot" cx="1191" cy="709" r="6" fill="#3DBA9B" style="--dl:2.5s"/>
     <!-- the jade core: year 3 -->
     <circle class="s5-core" cx="1290" cy="610" r="190" fill="url(#s5core)"/>
