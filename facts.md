@@ -18,4 +18,5 @@ Locked at the 10:40 gate. Change here first; every slide, site and product reads
 | Visual direction | C "Midnight Brew": dark matte black, a glowing temperature arc from amber to jade, Lu Yu's bubble stages (fish eyes, string of pearls, rolling waves) as a 3-dot mark |
 | Colours | _TBD_ (set by the identity tokens) |
 | Font | _TBD_ |
+| Movement belief | In a world of AI and craziness, we go back to what life is about: art, love, scent. We are the new tea-tech disruptor. |
 | Tone | Tradition meets the future: back to the roots, embracing technology. Patience, ritual. Futuristic and premium, never the default app look. |
