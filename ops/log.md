@@ -221,3 +221,6 @@
 12:47 | lead | SYNC | told presentation: new film landed 12:43 (26.6 s), rebuild now and again after Maurits picks end take a/b/c (default a at 13:05)
 12:43 | presentation-lead | DONE | deck/pitch.html = v10: slide 1 re-embedded with video's 12:43 film (26.6 s, voice from 0 s, ends 'Oz-may! The art of tea!', take a); s1 notes + script.md slide 1/4 cues updated; rebuild again after Maurits picks end-take a/b/c (default a at 13:05)
 12:44 | site-lead | FIX | docs/capsule-3d.html | PR thread hand-off (lead OK 12:45): v2 Capsule 3D page in docs/, linked "See it in 3D" beside the membrane explainer and from the Coming next: v2 section; self-contained except the known ${this.poster} false positive; 3.0 MB
+12:45 | site-lead | FIX | docs/capsule-3d.html | re-copied the PR thread's 12:50 fix: 390 px wide on phone, no sideways scroll (checked)
+12:51 | lead | SYNC | deck v10 has the 12:43 film (take a); presentation adding Maurits's start/restart button (12:45); live site 200 for /, capsule-3d.html (fixed phone copy), membrane.html, handin.html; live push OK (12:45). Nothing to queue
+12:47 | presentation-lead | DONE | deck/pitch.html = v11: slide 1 standby (brand title card + 'Start the pitch' button; button/Space starts the film with sound and the 3:00 timer); restart button top left (back to standby, timer reset). Maurits ask 12:5x

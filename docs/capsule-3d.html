@@ -76,7 +76,22 @@ footer q { color: var(--text); quotes: "\201C" "\201D"; }
 .dev { display: none; }
 body.dev .dev { display: inline-block; }
 body.present footer .credit, body.present .controls .k { display: none; }
-@media (max-width: 900px) { body { overflow: auto; padding: 18px; } main { grid-template-columns: 1fr; } .stage { height: 60vh; } }
+@media (max-width: 900px) { body { overflow: auto; padding: 18px; } main { grid-template-columns: minmax(0, 1fr); } .stage { height: 60vh; } }
+@media (max-width: 600px) {
+  body { padding: 14px; gap: 14px; }
+  header { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .tag { white-space: normal; font-size: 11px; }
+  h1 { font-size: 26px; }
+  .stage { height: 52vh; }
+  .temp { gap: 14px; } .temp .num { font-size: 52px; } .temp .why { font-size: 15px; }
+  .scale { font-size: 11px; letter-spacing: .04em; }
+  .states { grid-template-columns: minmax(0, 1fr); }
+  footer { flex-direction: column; gap: 6px; font-size: 13px; }
+  html, body { height: auto; }
+  body { display: block; }
+  body > * + * { margin-top: 16px; }
+  .scale .long { display: none; }
+}
 </style>
 </head>
 <body>
@@ -112,7 +127,7 @@ body.present footer .credit, body.present .controls .k { display: none; }
         <div class="knob" id="knob"></div>
         <input type="range" id="range" min="60" max="100" step="0.5" value="100" aria-label="Water temperature">
       </div>
-      <div class="scale"><span style="left:0">100 °C · just poured</span><span style="left:50%">80</span><span style="left:75%">70</span><span style="left:100%">60 °C · cooled</span></div>
+      <div class="scale"><span style="left:0">100 °C<i class="long" style="font-style:normal"> · just poured</i></span><span style="left:50%">80</span><span style="left:75%">70</span><span style="left:100%">60 °C<i class="long" style="font-style:normal"> · cooled</i></span></div>
     </div>
 
     <div class="states">

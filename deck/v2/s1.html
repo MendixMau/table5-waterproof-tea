@@ -1,54 +1,73 @@
 <div class="slide full" id="s1" data-title="Company: the film">
   <video class="s1-film" playsinline preload="auto" poster="__ASSET:deck/v2/s1-start.jpg__" src="__ASSET:video/osme-film-v04-vo.mp4__"></video>
   <img class="s1-end" src="__ASSET:deck/v2/s1-end.jpg__" alt=""/>
-  <div class="s1-hint" aria-hidden="true"><span class="s1-dot"></span>Press Space to play the film</div>
+  <img class="s1-still" src="__ASSET:brand/assets/title-1200-years-static.png__" alt=""/>
+  <button class="s1-start" type="button" aria-label="Start the pitch"><span class="s1-tri"></span>Start the pitch</button>
   <aside class="notes"><ul>
     <li>Film with voice: video/osme-film-v04-vo.mp4 (video thread, 12:43 calm cut, 26.6 s, full screen). Nobody speaks. Voice from 0 s: the 1908 hook, China, Japan, the tea bag, OSME opens and seals, ending "Oz-may! The art of tea!" over the lockup and "Every tea has its temperature." (truth/storyline.md).</li>
-    <li>Sound: the film plays with its voice-over. If the browser blocks sound before the first key press, the slide shows "Press Space to play the film": the first Space, click or PageDown starts the film instead of moving on. Check the room volume in the run-through.</li>
-    <li>When the film ends it holds on its last frame. A clicks to slide 2.</li>
+    <li>Standby: slide 1 opens still, on the brand title card (brand/assets/title-1200-years-static.png), with a "Start the pitch" button. Keep it on screen while the jury settles. The button, Space, Enter or PageDown starts the film with sound and starts the 3:00 timer. A clicks to slide 2 when the film ends on the logo.</li>
+    <li>Restart: the round button bottom left (or Home) goes back to this standby screen and resets the timer, for a second run.</li>
     <li>Sources for the film's history: truth/history-cultures.md §1 to §4; facts.md "Lu Yu's stages", tea windows, 96%.</li>
   </ul></aside>
   <style>
     #s1{background:#0B0B0D}
-    #s1 .s1-film,#s1 .s1-end{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+    #s1 .s1-film,#s1 .s1-end,#s1 .s1-still{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
     #s1 .s1-end{opacity:0;transition:opacity .6s var(--ease)}
     #s1.ended .s1-end,html.still #s1 .s1-end{opacity:1}
-    #s1 .s1-hint{position:absolute;left:50%;bottom:9vh;transform:translateX(-50%);z-index:3;display:none;align-items:center;gap:16px;padding:14px 30px;border-radius:40px;
-      background:rgba(11,11,13,.85);border:1px solid var(--line);font-size:28px;color:var(--text)}
-    #s1.blocked .s1-hint{display:flex}
-    #s1 .s1-dot{width:12px;height:12px;border-radius:50%;background:var(--amber);box-shadow:0 0 12px var(--amber);animation:s1-blink 1s ease-in-out infinite}
-    @keyframes s1-blink{50%{opacity:.3}}
-    html.still #s1 .s1-hint{display:none}html.still #s1 .s1-end{transition:none}
+    #s1 .s1-still{z-index:1;opacity:0;pointer-events:none}#s1.ready .s1-still{opacity:1}
+    #s1 .s1-start{position:absolute;right:56px;top:44px;z-index:3;display:none;align-items:center;gap:18px;padding:18px 40px 18px 30px;border-radius:48px;cursor:pointer;
+      font:500 32px/1 Jost,sans-serif;letter-spacing:.02em;color:var(--text);background:rgba(11,11,13,.82);border:1.5px solid rgba(242,163,58,.75);box-shadow:0 0 36px rgba(242,163,58,.28);
+      transition:background .3s,box-shadow .3s}
+    #s1 .s1-start:hover{background:rgba(242,163,58,.16);box-shadow:0 0 50px rgba(242,163,58,.45)}
+    #s1 .s1-tri{width:0;height:0;border-left:22px solid var(--amber);border-top:14px solid transparent;border-bottom:14px solid transparent}
+    #s1.ready .s1-start{display:flex;animation:s1-breathe 2.6s ease-in-out infinite}
+    @keyframes s1-breathe{50%{box-shadow:0 0 56px rgba(242,163,58,.5)}}
+    html.still #s1 .s1-start{display:none}html.still #s1 .s1-end{transition:none}
     body.s0 #snum,body.s0 #dots{opacity:0}
+    #restart{position:fixed;left:22px;top:22px;z-index:60;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:rgba(11,11,13,.6);color:rgba(243,238,230,.55);
+      font-size:24px;line-height:44px;text-align:center;cursor:pointer;opacity:.35;transition:opacity .3s,color .3s}
+    #restart:hover{opacity:1;color:var(--amber)}
+    html.still #restart{display:none}
   </style>
   <script>
   (function(){
     let started=false;
-    function play(el){
+    const S1=()=>document.getElementById('s1');
+    function ready(el){
       const v=el.querySelector('.s1-film');
+      try{v.pause();v.currentTime=0;}catch(e){}
+      el.classList.remove('ended');el.classList.add('ready');started=false;
+    }
+    function start(el){
+      const v=el.querySelector('.s1-film');
+      started=true;el.classList.remove('ready','ended');
+      try{v.currentTime=0;}catch(e){}
       v.muted=false;
       const p=v.play();
-      if(p&&p.then)p.then(()=>{started=true;el.classList.remove('blocked');},()=>{started=false;el.classList.add('blocked');});
-      else started=true;
+      if(p&&p.catch)p.catch(()=>{started=false;el.classList.add('ready');});
+      DECK.toggleTimer(true);DECK.toggleTimer();
     }
-    // the first key or click on slide 1 starts the film when the browser blocked sound
+    // standby: on slide 1 the first Space, Enter, PageDown, Right or click starts the film instead of moving on
     function gate(e){
       if(!window.DECK||DECK.cur!==0||started)return;
+      if(e.type==='click'&&e.target.closest('#restart,#prev,.dot'))return;
       if(e.type==='keydown'&&![' ','Enter','PageDown','ArrowRight'].includes(e.key))return;
-      e.preventDefault();e.stopImmediatePropagation();
-      const el=document.getElementById('s1');el.querySelector('.s1-film').currentTime=0;play(el);
+      e.preventDefault();e.stopImmediatePropagation();start(S1());
     }
     window.addEventListener('keydown',gate,true);
     window.addEventListener('click',gate,true);
+    // restart button: back to the standby screen, timer reset
+    const rb=document.createElement('button');rb.id='restart';rb.type='button';rb.title='Restart the pitch (Home)';rb.setAttribute('aria-label','Restart the pitch');rb.innerHTML='&#8634;';
+    rb.addEventListener('click',e=>{e.stopPropagation();DECK.toggleTimer(true);if(DECK.cur===0)ready(S1());else DECK.goto(0,0);});
+    document.addEventListener('DOMContentLoaded',()=>document.body.appendChild(rb));
+    if(document.body)document.body.appendChild(rb);
     window.ENTER[1]=el=>{
       const v=el.querySelector('.s1-film');
-      el.classList.remove('ended','blocked');
       v.onended=()=>el.classList.add('ended');
       if(document.documentElement.classList.contains('still')){el.classList.add('ended');started=true;return;}
-      try{v.currentTime=0;}catch(e){}
-      play(el);
+      ready(el);
     };
-    window.LEAVE[1]=el=>{const v=el.querySelector('.s1-film');try{v.pause()}catch(e){}el.classList.remove('ended','blocked');started=true;};
+    window.LEAVE[1]=el=>{const v=el.querySelector('.s1-film');try{v.pause()}catch(e){}el.classList.remove('ended','ready');started=true;};
   })();
   </script>
 </div>
