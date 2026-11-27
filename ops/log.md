@@ -176,3 +176,6 @@
 11:50 | video-lead | PREVIEW | gallery/video-fv2-v01.png | people + voice version video/renders/osme-film-fv2_v01.mp4 (29.4 s): v08 with Firefly Japan + Britain (4.8-11.4) and the Love shot (21.5-24.5) before the lockup; Firefly clips are 540p upscaled, waiting for 1080p downloads; Maurits' call per lead 11:30
 11:57 | video-lead | PREVIEW | gallery/video-v09.png | v09: judge r4 fixes (1908 storyline caption + VO 'traded art for ease', SENCHA 100° too hot for Sencha, no stray dots, tagline 60 px); now video/osme-film-v04(-vo).mp4. v10 (critic r4 FAILs) rendering
 11:57 | video-lead | PREVIEW | gallery/video-fv2-v02.png | people version v02 (29.4 s, -16.4 LUFS) on film v09: Firefly Japan/Britain/share, VO 'traded art for ease', 'Everyone can be a tea person.' over the share shot; video/renders/osme-film-fv2_v02.mp4
+12:00 | video-lead | PREVIEW | gallery/video-v10.png | v10: critic r4 FAILs fixed (card full from frame 0, kettle 40 px lower clear of caption, sub-label 'open 80 to 70 °C' clear of the arc, NOW caption 40 px up); now video/osme-film-v04(-vo).mp4; critic + judge running
+12:00 | video-lead | PREVIEW | gallery/video-fv2-v02.png | people version v03 rebuilt on film v10 (same cut as fv2-v02, critic fixes inside): video/renders/osme-film-fv2_v03.mp4
+12:01 | video-lead | critic r5 on v10: PASS, every scene (7.8). Waiting for judge r5

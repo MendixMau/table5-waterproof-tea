@@ -4,7 +4,7 @@
 Everyone drives at least once.
 
 <!-- LIVE:START -->
-## Live status · 11:59 · 1 h 30 to hand-in
+## Live status · 12:04 · 1 h 25 to hand-in
 
 **Now:** Pitch prep: pitch v1 by 11:45 for the first read-through. Judge passes at 12:00 and 12:45; freeze at 13:15.
 
@@ -16,7 +16,7 @@ Everyone drives at least once.
 | 🍵 | Product demo | 🟡 working · judge 4/5 · 11:34 | <img src="gallery/product-exploded-v05.png" width="260"> |
 | 🎤 | Pitch deck | 🟢 done · judge 3/5 · 11:40 | <img src="gallery/deck-v07-close.png" width="260"> |
 | 🌐 | Site | 🟡 working · 11:22 | <img src="gallery/site-v04.png" width="260"> |
-| 🎬 | Video | 🟡 working · 11:57 | <img src="gallery/pr1-review.png" width="260"> |
+| 🎬 | Video | 🟡 working · 12:00 | <img src="gallery/pr1-review.png" width="260"> |
 
 **Waiting on the team:** Price: $1.50 (LTV:CAC 1.9x) or $2.00 (3.3x, $0.67 a cup)? · Ask of the room: join the waitlist? · Dwi's PR: take plume, 3-state strip, exploded view? · Speakers A-D? · Waitlist: service + inbox?
 <!-- LIVE:END -->

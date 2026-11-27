@@ -31,3 +31,4 @@
 | 4 | S6 FAIL | dial arc runs through "°C" of sub-label | sub-label "open 80 to 70 °C" (ends x ~465, arc tail at x ~496) | v10 |
 | 4 | S6 WARN | NOW caption 30 px from bottom | dy 845 -> 805 | v10 |
 | 4 | WARNs left | S2/S4 figures 34-40 % width; S5/S7 left-heavy; S6 steam crosses tag; S8 tag grey till 24 s | not done (time), listed for handover | - |
+| 5 | ALL PASS | critic r5 on v10: 7.8, every scene passes; S1/S3/S6 claims verified on frames (S3 caption gap 41-49 px, S6 arc gap 38 px, NOW caption 70 px from bottom) | WARNs: S1 bottom row lopsided 0-0.5 s; S3 stand 15 px above timeline | v10 |
