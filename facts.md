@@ -5,7 +5,7 @@ Locked at the 10:40 gate. Change here first; every slide, site and product reads
 | Field | Value |
 |---|---|
 | Angle | The Art of Tea: each bag is waterproof until the water reaches its tea's ideal temperature, opens to brew, and closes again as the water cools. Self-stopping steep, reusable for several infusions, aroma sealed in between cups. |
-| Name | _TBD_ |
+| Name | _TBD_ (shortlist: Thea, Hora) |
 | One-liner | _TBD_ |
 | Primary customer | We are a global tea brand and tea-tech disruptor: a movement, not a tea lounge or an app. Primary audience: people worldwide who love tea and its rituals. |
 | Second customer | _TBD_ |
@@ -15,6 +15,7 @@ Locked at the 10:40 gate. Change here first; every slide, site and product reads
 | Top 3 competitors | _TBD_ |
 | The ask | _TBD_ |
 | Teas | The great teas of the world and their history: Japan, China, Britain first |
-| Colours | _TBD_ |
+| Visual direction | C "Midnight Brew": dark matte black, a glowing temperature arc from amber to jade, Lu Yu's bubble stages (fish eyes, string of pearls, rolling waves) as a 3-dot mark |
+| Colours | _TBD_ (set by the identity tokens) |
 | Font | _TBD_ |
 | Tone | Tradition meets the future: back to the roots, embracing technology. Patience, ritual. Futuristic and premium, never the default app look. |
