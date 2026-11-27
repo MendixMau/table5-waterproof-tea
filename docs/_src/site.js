@@ -25,7 +25,6 @@ function addToCart(id, kind, qty) {
   c.forEach(function (it) { if (it.id === id && it.kind === kind) hit = it; });
   if (hit) { hit.qty = kind === "ritual" ? 1 : hit.qty + qty; } else { c.push({ id: id, kind: kind, qty: kind === "ritual" ? 1 : qty }); }
   saveCart(c);
-  toast((TEA_NAMES[id] || id) + (kind === "ritual" ? " added" : " · " + KIND_LABEL[kind].toLowerCase() + " added"));
   openCart();
 }
 
@@ -59,7 +58,7 @@ var toastT;
 function toast(msg) { var el = document.querySelector("[data-toast]"); if (!el) return; el.textContent = msg; el.classList.add("on"); clearTimeout(toastT); toastT = setTimeout(function () { el.classList.remove("on"); }, 2200); }
 
 document.addEventListener("click", function (e) {
-  var t = e.target.closest("[data-add],[data-add-opt],[data-open-cart],[data-close-cart],[data-rm],[data-ci],[data-q],[data-menu],[data-filter]");
+  var t = e.target.closest("[data-add],[data-add-opt],[data-open-cart],[data-close-cart],[data-rm],[data-ci],[data-q],[data-menu],[data-filter],[data-view-btn]");
   if (!t) return;
   if (t.hasAttribute("data-add")) { var a = t.getAttribute("data-add").split(":"); addToCart(a[0], a[1], 1); }
   else if (t.hasAttribute("data-add-opt")) {
@@ -72,6 +71,11 @@ document.addEventListener("click", function (e) {
   else if (t.hasAttribute("data-rm")) { var c = cart(); c.splice(+t.getAttribute("data-rm"), 1); saveCart(c); }
   else if (t.hasAttribute("data-ci")) { var c2 = cart(), it = c2[+t.getAttribute("data-ci")]; it.qty = Math.max(1, it.qty + +t.getAttribute("data-d")); saveCart(c2); }
   else if (t.hasAttribute("data-q")) { var qv = document.querySelector("[data-qv]"); qv.textContent = Math.max(1, Math.min(24, +qv.textContent + +t.getAttribute("data-q"))); }
+  else if (t.hasAttribute("data-view-btn")) {
+    var v = t.getAttribute("data-view-btn"), art = document.querySelector("[data-view]");
+    if (art) art.setAttribute("data-view", v);
+    document.querySelectorAll("[data-view-btn]").forEach(function (b) { b.classList.toggle("on", b === t); });
+  }
   else if (t.hasAttribute("data-menu")) document.body.classList.toggle("menu-open");
   else if (t.hasAttribute("data-filter")) {
     var f = t.getAttribute("data-filter");

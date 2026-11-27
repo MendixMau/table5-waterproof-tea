@@ -40,12 +40,15 @@ body.s0 #brandmark{opacity:.55}
 .lr.os .fl{background:var(--arc);box-shadow:0 0 28px rgba(242,163,58,.35)}
 .lr.os .vl{color:var(--amber)}
 /* cost stack */
-.cs{display:grid;grid-template-columns:1.25fr 1fr;gap:4vw;align-items:end}
-.stk{display:flex;gap:5vw;align-items:flex-end;justify-content:center;height:58vh}
-.col{display:flex;flex-direction:column;align-items:center;gap:12px;width:15vw}
+.cs{display:grid;grid-template-columns:1.25fr 1fr;gap:6vw;align-items:end}
+.stk{display:flex;gap:7vw;align-items:flex-end;justify-content:center;height:58vh}
+.col{display:flex;flex-direction:column;align-items:center;gap:12px;width:12vw}
 .col .tot{font-size:clamp(44px,3.6vw,72px);font-weight:500;line-height:1}
 .col .yr{font-size:clamp(16px,1.05vw,20px);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-.col .pile{width:100%;display:flex;flex-direction:column-reverse;border-radius:10px;overflow:hidden}
+.col .pile{width:100%;display:flex;flex-direction:column-reverse}
+.col .pile>div:first-child{border-radius:0 0 10px 10px}.col .pile>div:last-child{border-radius:10px 10px 0 0}
+.col .pile .out.lft{left:auto;right:calc(100% + 10px)}
+.col .pile .out{position:absolute;left:calc(100% + 10px);top:50%;transform:translateY(-50%);white-space:nowrap;font-size:clamp(14px,.9vw,17px);font-weight:500;color:rgba(243,238,230,.85)}
 .col .pile div{display:flex;align-items:center;justify-content:center;font-size:clamp(15px,1vw,19px);font-weight:600;color:#0B0B0D}
 .leg{display:flex;flex-direction:column;gap:12px}
 .leg .li{display:grid;grid-template-columns:18px 1fr auto auto;gap:14px;align-items:center;font-size:clamp(17px,1.1vw,21px);color:rgba(243,238,230,.82);padding:6px 0;border-bottom:1px solid var(--line)}
@@ -107,7 +110,10 @@ def stack():
     H = 46  # vh for the year-1 pile
     def pile(i):
         tot = y1 if i == 0 else y3
-        segs = "".join(f'<div style="height:{v[i] / y1 * H:.2f}vh;background:{c}">{usd(v[i]) if v[i] / y1 * H > 3.2 else ""}</div>'
+        short = {"Tag and string": "tag", "Packing (hand / co-pack)": "packing"}
+        segs = "".join(f'<div style="position:relative;height:{v[i] / y1 * H:.2f}vh;background:{c}">'
+                       + (usd(v[i]) if v[i] / y1 * H > 3.2 else f'<span class="out{" lft" if i == 1 and k.startswith("Packing") else ""}">{short.get(k, k.split(",")[0].lower())} {usd(v[i])}</span>')
+                       + '</div>'
                        for (k, v), c in zip(m.COST.items(), COLS))
         return segs, tot
     p1, _ = pile(0)
@@ -174,7 +180,7 @@ def build():
 <!-- 3 · MARGIN AND PRICE -->
 <div class="slide bg-mesh" id="s3" data-steps="0" data-title="Margin and price">
   <div class="head a"><div class="label">Business · margin per bag · price recommendation, the team decides</div>
-    <div class="h1">Every price earns over 70% a bag at scale; only <span class="jade">$2.00</span> repays a subscriber's acquisition in <em>{m.econ(2.0)['payback']:.0f} months</em> instead of {e['payback']:.0f}.</div></div>
+    <div class="h1">Over 70% a bag direct at any price; <span class="jade">$2.00</span> repays a subscriber in <em>{m.econ(2.0)['payback']:.0f} months</em>, not {e['payback']:.0f}, and clears 3x LTV:CAC.</div></div>
   <div class="body"><div class="mg a2">
     <div class="mgb"><div class="cap" style="letter-spacing:.16em;text-transform:uppercase">Months to repay a $75 subscriber</div>
       <div style="display:flex;flex-direction:column;gap:4px"><div class="big" style="font-size:clamp(76px,6.4vw,128px);color:var(--amber)">{e['payback']:.1f}</div><div class="sm" style="white-space:nowrap">at $1.50 a bag · LTV:CAC {e['ltv_cac']:.1f}x</div></div>

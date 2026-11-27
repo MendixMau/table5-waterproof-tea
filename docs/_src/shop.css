@@ -114,6 +114,25 @@ nav .mobile-menu ul{display:flex;flex-direction:column;gap:0;padding:6px 20px 18
 .p-info>.btn{margin-top:10px}
 .p-cols{display:grid;grid-template-columns:1fr 1fr;gap:56px}
 
+.p-gal{position:sticky;top:92px}
+.p-gal .p-art{position:relative;top:auto}
+.p-bag{display:none;width:100%;height:auto;margin-bottom:26px;border-radius:16px}
+.p-art[data-view="bag"] .tin{display:none}
+.p-art[data-view="bag"] .p-bag{display:block}
+.thumbs{display:flex;gap:10px;justify-content:center;margin-top:14px}
+.thumbs button{font-family:var(--font-display);letter-spacing:.16em;text-transform:uppercase;font-size:11.5px;color:var(--brand-muted);background:transparent;border:1px solid var(--brand-line);border-radius:var(--radius-pill);padding:8px 16px;cursor:pointer}
+.thumbs button.on{color:var(--brand-text);border-color:var(--brand-primary)}
+.notes{margin-top:14px;font-size:16px;color:#CFC9BF}
+.notes .k{font-family:var(--font-display);letter-spacing:.18em;text-transform:uppercase;font-size:10.5px;color:var(--brand-muted);margin-right:12px}
+.faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px}
+.faq details{border-top:1px solid var(--brand-line);padding:18px 0}
+.faq details:last-child{border-bottom:1px solid var(--brand-line)}
+.faq summary{cursor:pointer;font-family:var(--font-display);font-weight:500;letter-spacing:.03em;font-size:18px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--brand-primary);font-size:22px;line-height:1}
+.faq details[open] summary::after{content:"−"}
+.faq details p{color:#BDB7AD;margin-top:10px;max-width:620px}
+
 /* ritual page */
 .rgrid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
 .ticks{list-style:none;display:grid;gap:10px;margin-top:8px}
@@ -185,7 +204,9 @@ footer.site .top{display:flex;justify-content:space-between;gap:40px;flex-wrap:w
   .menu-open .mobile-menu{display:block;border-top:1px solid var(--brand-line)}
   nav .nav-r>.btn{display:none}
   .tea-grid,.benefits{grid-template-columns:1fr 1fr}
-  .pgrid,.p-cols,.rgrid,.k-grid,.rt{grid-template-columns:1fr}
+  .pgrid,.p-cols,.rgrid,.k-grid,.rt,.faq{grid-template-columns:1fr}
+  .faq{gap:10px}
+  .p-gal{position:static}
   .p-art{position:static;max-width:480px;margin:0 auto;padding:24px 60px 6px}
   .r-steps{grid-template-columns:1fr 1fr}
   .rt{padding:36px 32px;gap:28px}
@@ -201,6 +222,7 @@ footer.site .top{display:flex;justify-content:space-between;gap:40px;flex-wrap:w
   .hero .cta-row{order:6}
   .hero .sub{display:none}
   .hero .chip{display:block;line-height:1.5}
+  .hero .chip .k{display:inline}
   .hero .chip .k{margin-right:6px}
   .cta-row{display:flex;gap:10px;flex-wrap:nowrap}
   .cta-row .btn{flex:1;justify-content:center;padding:14px 12px;font-size:11.5px;letter-spacing:.12em}

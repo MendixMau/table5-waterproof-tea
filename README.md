@@ -4,21 +4,21 @@
 Everyone drives at least once.
 
 <!-- LIVE:START -->
-## Live status · 10:51 · 2 h 38 to hand-in
+## Live status · 10:57 · 2 h 32 to hand-in
 
-**Now:** Gate 1 deck is open: name, logo, logo in use, customer, market, decisions. Logo routes and business v2 land by 11:05.
+**Now:** Pitch prep: pitch v1 by 11:45 for the first read-through. Judge passes at 12:00 and 12:45; freeze at 13:15.
 
 | | Topic | Status | Latest preview |
 |---|---|---|---|
-| 🎨 | Brand & logo | 🟡 working · judge 21/25 · 10:37 | <img src="gallery/brand-v09-options.png" width="260"> |
-| 🚦 | Gate 1 deck | 🟡 working · judge 4/5 · 10:38 | <img src="gallery/gate1-v07.png" width="260"> |
-| 📈 | Business case | 🟡 working · judge 4.5/5 · 10:50 | <img src="gallery/business-v08.png" width="260"> |
+| 🎨 | Brand & logo | 🟡 working · judge 22/30 · 10:56 | <img src="gallery/brand-v10-logo-final.png" width="260"> |
+| 🚦 | Gate 1 deck | 🟡 working · judge 4/5 · 10:53 | <img src="gallery/gate1-v09.png" width="260"> |
+| 📈 | Business case | 🟡 working · judge 4.5/5 · 10:56 | <img src="gallery/business-v09.png" width="260"> |
 | 🍵 | Product demo | 🟡 working · judge 4/5 · 10:42 | <img src="gallery/product-v05.png" width="260"> |
-| 🎤 | Pitch deck | ⚪ on hold · 10:18 | <img src="gallery/deck-v03.png" width="260"> |
+| 🎤 | Pitch deck | 🟡 working · 10:18 | <img src="gallery/deck-v03.png" width="260"> |
 | 🌐 | Site | 🟡 working · 10:46 | <img src="gallery/site-v03.png" width="260"> |
-| 🎬 | Video | 🟡 working · 10:41 | <img src="gallery/video-v03.png" width="260"> |
+| 🎬 | Video | 🟡 working · 10:56 | <img src="gallery/video-v04.png" width="260"> |
 
-**Waiting on the team:** Logo: B finer, or A's bag + S? · Bubbles: logo only, or everywhere? · Waitlist: Google Form, Formspree or FormSubmit? · Price: stay $1.50 or go premium?
+**Waiting on the team:** Speakers for parts A-D? · Price: $1.50 or $2.00? · Logo: route 1 unless you say 2 · Waitlist: Google Form, Formspree or FormSubmit?
 <!-- LIVE:END -->
 
 ## Five things to hand in by 13:30
@@ -44,6 +44,7 @@ Lead thread → 5 topic threads → each runs **build → validate → judge** �
 | 🎤 Presentation: Gate 1 deck, then the pitch | `deck/gate1.html`, `deck/pitch.html` |
 | 🌐 Site | `docs/index.html` → GitHub Pages |
 | 🎬 Video | `video/` |
+| 📈 Business case | `truth/business-case.md`, `deck/business.html` |
 
 **Alignment:** every thread reads `facts.md` (names, numbers), `brand/identity/tokens.css` (colours, type) and the logo files under fixed names, so one change there reaches deck, site, product and video. Every judge checks against `facts.md`.
 
@@ -58,8 +59,8 @@ Lead thread → 5 topic threads → each runs **build → validate → judge** �
 
 | Time | Gate |
 |---|---|
-| 10:40 | **Gate 1 · brand, logo, market.** The team reviews `deck/gate1.html`. Site, video and pitch wait for it. |
-| 11:00 | Build on the approved brand: product, site, video, pitch |
+| 10:40 | ✅ **Gate 1 · brand, logo, market.** Reviewed in `deck/gate1.html`. |
+| 11:45 | First pitch read-through with the team (4 speakers, product running) |
 | 12:00 | Judge pass 1 |
 | 12:45 | Judge pass 2 and full run-through |
 | 13:15 | Freeze, rehearse twice |

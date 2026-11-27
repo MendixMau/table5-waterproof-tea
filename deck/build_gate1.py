@@ -167,7 +167,7 @@ SLIDES = r"""
       <div class="card q"><img src="__IC2__" alt="" style="height:52px;align-self:flex-start"/><div class="qt">“…my leaves start not tasting as fresh when I reuse them from the day before.”</div><div class="src">silversun · TeaChat</div></div>
     </div>
     <div class="tiles" style="grid-template-columns:1.4fr 1fr 1fr;margin-top:4vh">
-      <div class="tile" style="border-color:rgba(61,186,155,.45)"><div class="k">Route in: tea subscriptions</div><div class="v jade">$530 m <span style="font-size:.5em">+9.1% a year</span></div><div class="w">“preference for premium tea experiences” · Fact.MR 2025</div></div>
+      <div class="tile" style="border-color:rgba(61,186,155,.45)"><div class="k">Route in: tea subscriptions · not our SAM</div><div class="v jade">$530 m <span style="font-size:.5em">+9.1% a year</span></div><div class="w">“preference for premium tea experiences” · Fact.MR 2025</div></div>
       <div class="tile"><div class="k">Segment A · lead</div><div class="v" style="font-size:clamp(20px,1.4vw,26px)">Curious specialty drinker</div><div class="w">32% of UK Gen Z daily tea drinkers choose green tea (YouGov)</div></div>
       <div class="tile"><div class="k">Segment B · or lead with</div><div class="v" style="font-size:clamp(20px,1.4vw,26px)">Gift and Ritual buyer</div><div class="w">7 in 10 would welcome a premium tea gift box (Mintel)</div></div>
     </div>
@@ -177,7 +177,7 @@ SLIDES = r"""
 
 <!-- 5 · MARKET AND MONEY -->
 <div class="slide bg-grid top" id="s5" data-steps="0" data-title="Market and money">
-  <div class="g1chip">Decision 2 · price · Decision 3 · ask</div>
+  <div class="g1chip">Decision 2 · price (see slide 8) · Decision 3 · ask</div>
   <div class="head a"><div class="label">Gate 1 · market, price, ask <span class="prov">provisional</span></div>
     <div class="h1">Tea bags are a <em>$7.1 billion</em> market; premium bags in four countries are $640 million; year 3 __Y3__ million.</div></div>
   <div class="body">
@@ -187,7 +187,7 @@ SLIDES = r"""
     <div class="tiles"><span class="prov" style="position:absolute;margin:-34px 0 0 0">provisional: tin, Ritual, ask</span>
       <div class="tile" style="border-color:rgba(242,163,58,.45)"><div class="k">Every bag · locked</div><div class="v">$1.50</div><div class="w">single, tin and Ritual · team 10:23</div></div>
       <div class="tile"><div class="k">12-bag tin</div><div class="v">$18</div><div class="w">3 cups a bag (assumption) · $0.50 a cup</div></div>
-      <div class="tile"><div class="k">Ritual</div><div class="v">$24<span class="muted" style="font-size:.5em"> / month</span></div><div class="w">16 bags · $1.08 a bag gross margin (72%)</div></div>
+      <div class="tile"><div class="k">Ritual</div><div class="v">$24<span class="muted" style="font-size:.5em"> / month</span></div><div class="w">16 bags · $1.08 a bag gross margin (72%) at year-3 scale</div></div>
       <div class="tile" style="border-color:rgba(242,163,58,.45)"><div class="k">The ask</div><div class="v amber">$2.5 m</div><div class="w">SAFE · $10 m pre ($12.5 m post cap) · 20% dilution · 24 months runway</div></div>
     </div>
   </div>
@@ -197,13 +197,13 @@ SLIDES = r"""
 <!-- 6 · DECISIONS -->
 <div class="slide bg-mesh" id="s6" data-steps="0" data-title="Decisions">
   <div class="head a"><div class="label">Gate 1 · decide now</div>
-    <div class="h1">Four decisions unlock the pitch, the site and the film: <em>logo, price, ask, Kling</em>.</div></div>
+    <div class="h1">Three decisions unlock the pitch and the site: <em>logo, price, ask</em>.</div></div>
   <div class="body">
     <div class="dec"><div class="card conf" style="grid-column:span 2;min-height:0;padding:2vh 2.4vw;flex-direction:row;align-items:center;gap:2vw"><div class="q1">Confirm together</div><div class="rec" style="font-size:clamp(22px,1.6vw,30px)">Name OSME · Midnight Brew · lead customer A</div></div>
       <div class="card" style="flex-direction:row;align-items:center;gap:2vw"><img src="__SYM__" alt="" style="height:12vh"/><div style="display:flex;flex-direction:column;gap:12px"><div class="q1">1 · Logo</div><div class="rec">B, Scent S</div><div class="alt">21 / 25 · A Three Bubbles 18 · C Monoline 12</div></div></div>
       <div class="card"><div class="q1">2 · Price · locked 10:23 · confirm</div><div class="rec">$1.50 a bag everywhere</div><div class="alt" style="color:var(--text)">year 3 __Y3__ m · tin $18 · Ritual $24 a month</div><div class="alt">Reopen at $2.00? CAC payback 4.3 vs 7.7 months · LTV:CAC 3.3x vs 1.9x</div></div>
       <div class="card"><div class="q1">3 · The ask <span class="prov">provisional</span></div><div class="rec">$2.5 m SAFE at <span style="white-space:nowrap">$10 m pre-money</span></div><div class="alt">$12.5 m post cap · 20% dilution · 24 months runway · funds the food-safe membrane and the first Ritual boxes</div></div>
-      <div class="card"><div class="q1">4 · Kling film credits</div><div class="rec">No for now <span class="muted" style="font-size:.6em">(user, 10:25)</span></div><div class="alt">confirm, or reopen: 3 film inserts ~150 + 3 stills ~50 = ~200 of 322 credits · nothing spent</div></div>
+      <div class="card" style="opacity:.75"><div class="q1">Decided 10:25 · Kling</div><div class="rec">No Kling</div><div class="alt">user: go, no Kling · 0 of 322 credits spent · a later yes costs ~200 (3 film inserts + 3 stills)</div></div>
     </div>
   </div>
   <aside class="notes"><p>Kling: ops/log.md 10:25 video-lead "user: go, no Kling", shown as the current answer to confirm. Balance 322 credits, Standard; film inserts ~50 credits each (video, ops/questions.md 10:11), stills ~8 to 16 each, ~50 for 3 (brand, 10:11). Questions logged in ops/questions.md. Recommendations from facts.md (provisional) and brand judge scores.</p></aside>

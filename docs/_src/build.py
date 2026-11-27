@@ -19,22 +19,22 @@ def rd(*p):
 # ---------------------------------------------------------------- facts (facts.md)
 PRICE_BAG, PRICE_TIN, PRICE_RITUAL = 1.50, 18, 24
 TEAS = [
-    dict(id="gyokuro", name="Gyokuro", country="Japan", origin="Uji", kind="Shade-grown green", open=60, seal=50, liquor="#B8C86A",
+    dict(id="gyokuro", notes="Sweet · deep · umami", name="Gyokuro", country="Japan", origin="Uji", kind="Shade-grown green", open=60, seal=50, liquor="#B8C86A",
          line="Shade-grown and sweet. Cool water, small cup, slow sip.",
          about="Gyokuro is shaded for weeks before picking, which makes it sweet and deep. Hot water ruins it, so it needs the lowest window of all: the bag waits until the water has cooled to 60 °C."),
-    dict(id="sencha", name="Sencha", country="Japan", origin="Shizuoka", kind="Everyday green", open=80, seal=70, liquor="#C9C25E",
+    dict(id="sencha", notes="Bright · grassy · a little sweet", name="Sencha", country="Japan", origin="Shizuoka", kind="Everyday green", open=80, seal=70, liquor="#C9C25E",
          line="Japan's everyday green. Pour to the last drop; it carries the best of the cup.",
          about="Sencha is the cup Japan drinks every day: bright, grassy, a little sweet. Boiling water makes it bitter. The bag stays sealed until the water cools to 80 °C, brews, and seals again below 70 °C. This is the tea in our live demo."),
-    dict(id="longjing", name="Longjing", country="China", origin="Hangzhou", kind="Dragon Well green", open=85, seal=75, liquor="#D6C77A",
+    dict(id="longjing", notes="Roasted chestnut · smooth · fresh", name="Longjing", country="China", origin="Hangzhou", kind="Dragon Well green", open=85, seal=75, liquor="#D6C77A",
          line="Dragon Well. Watch the flat leaves stand up and dance.",
          about="Longjing, Dragon Well, comes from the hills around Hangzhou's West Lake. Its pan-fired, flat leaves taste of roasted chestnut. It opens at 85 °C and seals again below 75 °C."),
-    dict(id="tieguanyin", name="Tieguanyin", country="China", origin="Fujian", kind="Oolong", open=95, seal=85, liquor="#D9A845",
+    dict(id="tieguanyin", notes="Orchid · honey · creamy", name="Tieguanyin", country="China", origin="Fujian", kind="Oolong", open=95, seal=85, liquor="#D9A845",
          line="The Iron Goddess. Many short cups; each one opens the leaf a little more.",
          about="Tieguanyin, the Iron Goddess of Mercy, is an oolong from Fujian, made for gongfu cha: many short steeps from one leaf. It opens at 95 °C and seals again below 85 °C."),
-    dict(id="puerh", name="Pu-erh", country="China", origin="Yunnan", kind="Aged dark tea", open=100, seal=95, liquor="#6B2E12",
+    dict(id="puerh", notes="Earthy · deep · smooth", name="Pu-erh", country="China", origin="Yunnan", kind="Aged dark tea", open=100, seal=95, liquor="#6B2E12",
          line="Aged leaf, deep and earthy. Short, hot, again and again.",
          about="Pu-erh is aged leaf from Yunnan, deep and earthy. It wants the water at the boil and a short steep, again and again: it opens at 100 °C and seals below 95 °C."),
-    dict(id="english-breakfast", name="English Breakfast", country="Britain", origin="Blend", kind="Black tea", open=100, seal=90, liquor="#93441A",
+    dict(id="english-breakfast", notes="Malty · strong · good with milk", name="English Breakfast", country="Britain", origin="Blend", kind="Black tea", open=100, seal=90, liquor="#93441A",
          line="Britain's morning cup. Freshly boiled, a splash of milk if you like.",
          about="Britain's morning cup, strong enough for milk. It opens at the boil, so it never waits; it seals again below 90 °C, so the cup never stews."),
 ]
@@ -59,7 +59,7 @@ SOURCES = [
     ("Gongfu cha.", "https://en.wikipedia.org/wiki/Gongfu_tea_ceremony", "wikipedia.org"),
     ("Afternoon tea, about 1840.", "https://en.wikipedia.org/wiki/Tea_in_the_United_Kingdom", "wikipedia.org"),
     ("Temperature-gated membranes (PNIPAm) open and close with heat over repeated cycles.", "https://pmc.ncbi.nlm.nih.gov/articles/PMC9920928/", "pmc.ncbi.nlm.nih.gov"),
-    ("32% of UK Gen Z drink green tea. YouGov.", "https://yougov.com/en-gb/articles/52458-is-britain-still-a-tea-drinking-nation", "yougov.com"),
+    ("32% of Gen Z daily tea drinkers choose green tea. YouGov.", "https://yougov.com/en-gb/articles/52458-is-britain-still-a-tea-drinking-nation", "yougov.com"),
     ("7 in 10 would welcome a premium tea gift box. Mintel UK.", "https://www.mintel.com/insights/food-and-drink/flavoured-teas-could-brew-success-for-brands-this-festive-season/", "mintel.com"),
     ("Tea drinkers’ own words: TeaChat and Straight Dope.", "https://www.teachat.com/viewtopic.php?p=212298", "teachat.com"),
     ("Tea windows per tea: OSME brewing profiles (design targets), the same as the live demo.", None, None),
@@ -104,6 +104,7 @@ def tin_svg(t, w="100%"):
 <ellipse cx="200" cy="440" rx="170" ry="26" fill="url(#tg-{tid})"/>
 <rect x="88" y="70" width="224" height="370" rx="18" fill="url(#tb-{tid})" stroke="#2E2E35"/>
 <rect x="82" y="58" width="236" height="62" rx="14" fill="url(#tb-{tid})" stroke="#34343B"/>
+<rect x="88" y="404" width="224" height="22" fill="{t['liquor']}" opacity=".85"/><rect x="82" y="112" width="236" height="3" fill="{t['liquor']}" opacity=".9"/>
 <use href="#osme-symbol" x="178" y="142" width="44" height="44"/>
 <text x="200" y="222" text-anchor="middle" font-family="Jost, Futura, sans-serif" font-weight="500" font-size="22" letter-spacing="7" fill="#F3EEE6">OSME</text>
 <text x="200" y="272" text-anchor="middle" font-family="Jost, Futura, sans-serif" font-weight="500" font-size="{20 if len(t['name']) < 12 else 15}" letter-spacing="5" fill="{t['liquor'] if t['id'] not in ('puerh','english-breakfast') else '#E0A167'}">{html.escape(t['name'].upper())}</text>
@@ -262,6 +263,17 @@ def three_steps():
 def honest():
     return '<p class="honest"><span class="tag">Honest</span><span><b>The principle exists:</b> lab membranes already open and close with temperature. Our R&amp;D makes it food-safe at 70–90&nbsp;°C. Up to 3 infusions per bag.</span></p>'
 
+FAQ = [
+    ("How does the bag know the temperature?", "The principle exists: lab membranes already open and close with temperature. Our R&amp;D makes it food-safe at 70–90&nbsp;°C. Each tea’s bag is tuned to its own window."),
+    ("Do I need a special kettle or mug?", "No. Pour from any kettle into any mug. The bag waits for its window, brews, and seals again as the water cools. No thermometer, no timer."),
+    ("How many cups from one bag?", "Up to 3 infusions, about $0.50 a cup. Between cups the bag stays sealed, so the leaf keeps its scent."),
+    ("When does it ship?", "Pre-orders ship after our food-safe proof. Joining the waitlist costs nothing today; we write before your first box is ready. The Ritual ships free, and you can skip or pause any month."),
+]
+
+def faq():
+    items = "".join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q, a in FAQ)
+    return f'<div class="faq"><div><div class="eyebrow">Questions</div><h2>Good to know.</h2></div><div class="faq-list">{items}</div></div>'
+
 def benefits():
     icons = [("icon-self-stopping.svg", "Stops itself", "Opens in its window, closes as the water cools. Never stewed, never bitter."),
              ("icon-scent-sealed.svg", "Scent kept", "Sealed between cups, so the leaf keeps its scent for the next infusion."),
@@ -280,7 +292,7 @@ def home(vbs):
     <p class="oneliner">A tea bag that <em>opens only at its perfect temperature.</em></p>
     <p class="sub">It stays sealed while the water is too hot, opens to brew, and closes again as the water cools. The steep stops itself, the scent stays in, and the same bag brews again.</p>
     <div class="facts-row">
-      <span class="chip"><span class="k">For</span> curious tea drinkers who pay for good leaf and hate a bitter cup, and anyone who would love to be one</span>
+      <span class="chip"><span class="k">For</span> curious tea drinkers who pay for good leaf and hate a bitter cup</span>
       <span class="chip"><span class="k">Price</span> <b>$1.50</b> a bag · about <b>$0.50</b> a cup · Ritual <b>$24</b>/month</span>
     </div>
     <div class="cta-row"><a class="btn primary" href="shop.html">Shop the teas</a><a class="btn" href="#how">See how it opens</a></div>
@@ -348,9 +360,9 @@ def home(vbs):
 <section id="who"><div class="wrap">
   <div class="eyebrow">Who it’s for</div>
   <h2>Everyone can be a tea person.</h2>
-  <p class="lead">OSME is for people worldwide who love tea and its rituals. And for anyone who would love to, without a thermometer, a timer or a lesson.</p>
+  <p class="lead">First for the curious cup: people who love tea and its rituals, pay for good leaf and hate a bitter cup. And for anyone who would love to be one, without a thermometer, a timer or a lesson.</p>
   <div class="who-grid">
-    <article class="who"><h3>The curious cup</h3><p>You love a good cup and you are exploring: Sencha, oolong, matcha. You pay for good leaf and hate scorching it or throwing it away after one steep.</p><div class="stat"><b>32%</b>of UK Gen Z drink green tea (YouGov)</div></article>
+    <article class="who"><h3>The curious cup</h3><p>You love a good cup and you are exploring: Sencha, oolong, matcha. You pay for good leaf and hate scorching it or throwing it away after one steep.</p><div class="stat"><b>32%</b>of Gen Z daily tea drinkers choose green tea (YouGov)</div></article>
     <article class="who"><h3>The giver</h3><p>You want a present that shows itself: a tin of twelve, the bag opening in the cup. Then the Ritual box every month.</p><div class="stat"><b>7 in 10</b>would welcome a premium tea gift box (Mintel)</div></article>
     <article class="who"><h3>The everyday cup</h3><p>A mug in the morning, no ceremony. You just want it right every time, even when you forget the bag in the cup.</p><div class="stat"><b>96%</b>of UK tea is brewed from a bag (QMUL)</div></article>
   </div>
@@ -380,16 +392,23 @@ def shop(vbs):
 
 def tea_page(t, vbs):
     others = "".join(tea_card(o) for o in TEAS if o["id"] != t["id"])[:]
+    # the single-bag art is labelled Sencha, so only the Sencha page gets the second view
+    bag_img = '<img class="p-bag" src="../brand/assets/pack-single-bag.svg" alt="A single OSME Sencha bag">' if t["id"] == "sencha" else ""
+    thumbs = '<div class="thumbs" role="group" aria-label="Views"><button type="button" class="on" data-view-btn="tin">The tin</button><button type="button" data-view-btn="bag">The bag</button></div>' if t["id"] == "sencha" else ""
     sencha_note = '<a class="btn" href="demo.html">See Sencha open in the live demo</a>' if t["id"] == "sencha" else ""
     body = f'''
 <section class="product"><div class="wrap">
   <div class="crumbs"><a href="shop.html">Shop</a> / <a href="shop.html#{t['country']}">{t['country']}</a> / {t['name']}</div>
   <div class="pgrid">
-    <div class="p-art">{tin_svg(t)}</div>
+    <div class="p-gal">
+      <div class="p-art" data-view="tin">{tin_svg(t)}{bag_img}</div>
+      {thumbs}
+    </div>
     <div class="p-info">
       <div class="eyebrow">{t['country']} · {t['origin']} · {t['kind']}</div>
       <h1 class="h1">{t['name']}</h1>
       <p class="p-line">{html.escape(t['line'])}</p>
+      <div class="notes"><span class="k">Tasting notes</span>{t['notes']}</div>
       <div class="p-window"><div><span class="k">Opens at</span><b>{deg(t['open'])}</b></div><div><span class="k">Seals below</span><b>{deg(t['seal'])}</b></div><div><span class="k">Infusions</span><b>up to 3</b></div></div>
       {window_gauge(t)}
       <div class="options" role="radiogroup" aria-label="Choose">
@@ -411,6 +430,7 @@ def tea_page(t, vbs):
   </div>
   {benefits()}
 </div></section>
+<section class="tight"><div class="wrap">{faq()}</div></section>
 <section class="tight"><div class="wrap"><div class="sec-head"><div><div class="eyebrow">More teas</div><h2>Each with its own window.</h2></div><a class="btn" href="shop.html">All teas</a></div>
 <div class="tea-grid scroll">{others}</div></div></section>
 '''
@@ -447,6 +467,7 @@ def ritual(vbs):
   </div>
   {benefits()}
 </div></section>
+<section class="tight"><div class="wrap">{faq()}</div></section>
 <section class="movement"><div class="wrap">{waitlist_block('The first boxes go to<br><span class="arc-text">the waitlist first.</span>', 'Join now and we write when your first Ritual box is ready.')}</div></section>
 '''
     return page("ritual.html", "The Ritual · OSME", "The OSME Ritual: $24 a month for 16 bags from 3-4 origins, free shipping, skip or pause any month.", "ritual.html", body, vbs)
