@@ -158,6 +158,7 @@ em{font-style:normal;color:var(--amber)}
 #snum{position:fixed;right:28px;bottom:18px;font-size:14px;color:rgba(243,238,230,.32);z-index:20;letter-spacing:.06em}
 #brandmark{position:fixed;left:26px;bottom:16px;height:30px;opacity:.55;z-index:20}
 body.s0 #brandmark,body.s2 #brandmark{opacity:0}
+body.s2 #snum{opacity:0}
 #timer{position:fixed;right:28px;top:20px;font-size:28px;font-variant-numeric:tabular-nums;padding:6px 16px;border-radius:12px;background:rgba(11,11,13,.7);border:1px solid var(--line);z-index:30;display:none}
 #timer.on{display:block}#timer.low{color:var(--amber)}#timer.over{color:#ff6b5b}
 #timer small{display:block;font-size:13px;color:var(--muted);letter-spacing:.08em}
@@ -265,7 +266,7 @@ if(STILL)document.documentElement.classList.add('still');
 (function(){
   const m=location.hash.match(/^#(\d+)(?:\.(\d+))?/);
   const n=m?Math.min(N,Math.max(1,+m[1]))-1:0,s=m&&m[2]?+m[2]:0;
-  cur=n;SLIDES.forEach((x,i)=>{if(i!==n)x.classList.remove('active')});goto(n,s);
+  cur=n;SLIDES.forEach((x,i)=>{if(i!==n){x.style.transition='none';x.classList.remove('active');void x.offsetWidth;x.style.transition='';}});goto(n,s);
   if(!SLIDES[n].classList.contains('play')){play(SLIDES[n]);const f=ENTER[n+1];if(f)f(SLIDES[n]);}
 })();
 """

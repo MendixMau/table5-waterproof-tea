@@ -4,19 +4,19 @@
 Everyone drives at least once.
 
 <!-- LIVE:START -->
-## Live status · 11:12 · 2 h 17 to hand-in
+## Live status · 11:18 · 2 h 11 to hand-in
 
 **Now:** Pitch prep: pitch v1 by 11:45 for the first read-through. Judge passes at 12:00 and 12:45; freeze at 13:15.
 
 | | Topic | Status | Latest preview |
 |---|---|---|---|
-| 🎨 | Brand & logo | 🟡 working · judge 4/5 · 11:05 | <img src="gallery/brand-v11-assets.png" width="260"> |
+| 🎨 | Brand & logo | 🟡 working · judge 4/5 · 11:05 | <img src="gallery/brand-v12-motion.png" width="260"> |
 | 🚦 | Gate 1 deck | 🟡 working · judge 4/5 · 10:53 | <img src="gallery/gate1-v09.png" width="260"> |
 | 📈 | Business case | 🟡 working · judge 4.5/5 · 11:06 | <img src="gallery/business-v10.png" width="260"> |
-| 🍵 | Product demo | 🟡 working · judge 4/5 · 10:42 | <img src="gallery/product-v05.png" width="260"> |
-| 🎤 | Pitch deck | 🟡 working · 11:11 | <img src="gallery/deck-v03-strips.png" width="260"> |
+| 🍵 | Product demo | 🟡 working · judge 4/5 · 11:17 | <img src="gallery/product-v05.png" width="260"> |
+| 🎤 | Pitch deck | 🟡 working · judge 3/5 · 11:18 | <img src="gallery/deck-v04-strips.png" width="260"> |
 | 🌐 | Site | 🟡 working · 10:46 | <img src="gallery/site-v03.png" width="260"> |
-| 🎬 | Video | 🟡 working · 10:56 | <img src="gallery/pr1-review.png" width="260"> |
+| 🎬 | Video | 🟡 working · 11:17 | <img src="gallery/pr1-review.png" width="260"> |
 
 **Waiting on the team:** Price: $1.50 (LTV:CAC 1.9x) or $2.00 (3.3x, $0.67 a cup)? · Ask of the room: join the waitlist? · Dwi's PR: take plume, 3-state strip, exploded view? · Speakers A-D? · Waitlist: service + inbox?
 <!-- LIVE:END -->

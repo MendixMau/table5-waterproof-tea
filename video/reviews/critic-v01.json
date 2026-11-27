@@ -1,0 +1,54 @@
+{"round": 1, "pass": false, "film_score": 6.0,
+ "scenes": [
+  {"scene": "S1", "pass": false, "score": 5, "one_line": "first 3.2 s are a 36 px line pinned at 27 % height and one 40 px dot: the glow sits empty in the middle, the lower half is nothing",
+   "issues": [
+    {"t": 1.6, "check": "V3", "sev": "FAIL", "what": "Lu Yu line is 40 px ink height (about 36 px font) at 1920, about 24 px at the 1280 phone cut, light weight, wide tracking: thin on a phone", "fix": "caption font 36 -> 52 px, weight light -> regular, warm white #F4EDE0 at 100 % opacity (now about 90 %)"},
+    {"t": 1.6, "check": "V11", "sev": "FAIL", "what": "caption pinned at y 269-309 (25-29 % of height) while the only content, the fish-eye dot, appears at y 560 and the glow centre is at y 540; nothing fills y 700-1080", "fix": "keep caption at y 269 but enlarge the fish-eye bubble 41 -> 110 px and move it to the glow centre (960, 600); or centre the caption at y 540 for S1 and slide it up to 269 at 4.8 s"},
+    {"t": 2.4, "check": "V8", "sev": "FAIL", "what": "at 2.4 s the dot is 41 px (2 % of width) with no label, so nothing says it is a bubble", "fix": "fish-eye dot 41 -> 110 px with a slow 1.0 -> 1.15 scale pulse and the label FISH EYES in at 2.6 s, not 3.6 s"},
+    {"t": 0.5, "check": "V6", "sev": "WARN", "what": "0.0-1.0 s is near black (max luma 41, average 22): a long empty open", "fix": "start the caption fade at 0.3 s, finish at 0.9 s (now 1.0 -> 1.6 s)"}]},
+  {"scene": "S2", "pass": false, "score": 5.5, "one_line": "left-heavy build, tiny label, pearl trail runs to 80 px above the frame bottom",
+   "issues": [
+    {"t": 4.0, "check": "V3", "sev": "FAIL", "what": "FISH EYES label: caps about 20 px at 1920, 13 px at 1280, grey #8A8478 at low contrast, tracking 0.25 em", "fix": "label font 28 -> 40 px, colour grey -> #D8D0C2, tracking 0.25 -> 0.16 em"},
+    {"t": 4.0, "check": "V8", "sev": "FAIL", "what": "two bubbles at 4.0 s (fish eyes at x 520, pearls at x 960) plus a trail: the pearl is brighter and bigger but the label belongs to the other bubble, so the eye jumps", "fix": "dim fish eyes to 45 % opacity from 3.2 s and light only the pearl; label STRING OF PEARLS in at 3.5 s"},
+    {"t": 4.4, "check": "V5", "sev": "WARN", "what": "pearl trail dots reach y 1000 of 1080", "fix": "trail length 5 dots -> 3 dots, last dot at y 880"}]},
+  {"scene": "S3", "pass": false, "score": 5.5, "one_line": "three tiny bubbles in a 450 px band; the pearl trail runs through the label text",
+   "issues": [
+    {"t": 6.8, "check": "V7", "sev": "FAIL", "what": "pearl trail dots (x 960, y 640-780) run through the O and F of 'STRING OF PEARLS' (label y 657-681)", "fix": "label baseline y 669 -> 830, or end the trail at y 620 by 6.0 s and fade it out; best: hold the label row at y 860 for all three labels"},
+    {"t": 6.8, "check": "V3", "sev": "FAIL", "what": "all three labels about 20 px caps at 1920, 13 px at 1280, grey", "fix": "labels 28 -> 40 px, colour -> #D8D0C2 at 90 % opacity (rolling waves is now 55 %)"},
+    {"t": 6.8, "check": "V2", "sev": "FAIL", "what": "spirit of V2: the subject is three bubbles of 41, 55 and 75 px (2-4 % of width) spread over 1100 px; bubble-reading is the whole point of Lu Yu line", "fix": "bubble diameters 41/55/75 -> 90/120/170 px, row spacing 480 -> 560 px, row centre y 560 -> 600"},
+    {"t": 6.8, "check": "V11", "sev": "WARN", "what": "content block y 520-830 under a caption at y 290 leaves y 830-1080 empty", "fix": "move row centre to y 620 once the labels are at y 860"}]},
+  {"scene": "S4", "pass": false, "score": 6, "one_line": "the key transformation (bubbles into the logo) happens in a 250 px patch of a black frame",
+   "issues": [
+    {"t": 8.6, "check": "V2", "sev": "FAIL", "what": "spirit of V2/V4: the cluster of 5 dots (3 bubbles plus 2 ghost dots) is 90 px wide, 5 % of width, 95 % of frame is dark gradient", "fix": "scale the merge cluster 1.0 -> 2.0 around (960, 540) from 7.5 s; end at the logo size of S5 (ring 235 px -> 360 px)"},
+    {"t": 8.6, "check": "V8", "sev": "WARN", "what": "five dots visible (olive and teal ghosts next to three bubbles) while the story says three bubbles", "fix": "remove the two trail ghosts at 8.4 s, keep only the three bubble dots"},
+    {"t": 9.9, "check": "V6", "sev": "WARN", "what": "9.6-10.1 s: ring alone plus a 12 px orange fleck at (590, 750), looks like a stray speck", "fix": "start the arc draw with its glow head at 80 px bloom or begin the draw directly from the ring base (960, 640)"}]},
+  {"scene": "S5", "pass": true, "score": 7, "one_line": "clean and centred; logo and arc are modest but the number reads",
+   "issues": [
+    {"t": 10.8, "check": "V2", "sev": "WARN", "what": "ring 235 px (12 % of width), arc 690 px, at 1280 the ring is 157 px", "fix": "scale the ring/arc/number group 1.0 -> 1.35 about (960, 560) from 9.6 s, keep the 80 deg C number at 64 -> 86 px"},
+    {"t": 10.2, "check": "V6", "sev": "WARN", "what": "100 deg C is at about 12 % opacity at 10.1 s, the countdown starts invisible", "fix": "number fade-in 10.0 -> 9.7 s, full opacity by 10.2 s"}]},
+  {"scene": "S6", "pass": false, "score": 5, "one_line": "the line says the bag opens, but the logo is pixel-identical before and after 12.0 s; the key caption is 33 px",
+   "issues": [
+    {"t": 13.6, "check": "V8", "sev": "FAIL", "what": "no opening is visible: ring at 11.7 s and at 14.0 s is the same (only a wisp appears); the film promises 'opens' and shows a static logo", "fix": "at 12.0 s open the ring: rotate the gap 0 deg -> 40 deg and the orange dot translates 20 px up-right (ease 0.6 s), then close again 13.8 -> 14.2 s as the number drops 80 -> 76 deg C"},
+    {"t": 13.6, "check": "V3", "sev": "FAIL", "what": "caption 'Sencha opens at 80 deg C. And closes as the cup cools.' is 33 px ink height at 1920, 21 px at 1280, light weight and 80 % grey: the story payload is the smallest text of the film", "fix": "caption font 34 -> 56 px, weight light -> regular, colour -> #F4EDE0 at 100 %, y 904 -> 930; split into two lines at the full stop, line 2 in jade #3DBA9B"},
+    {"t": 14.0, "check": "V5", "sev": "FAIL", "what": "wisp tip reaches y 10 of 1080 (about 0.9 % from the top edge) at 14.0 s and is cut by the frame at 14.1 s", "fix": "wisp height 330 -> 230 px, fade out the top 80 px, wisp peak y >= 90"},
+    {"t": 13.6, "check": "V11", "sev": "WARN", "what": "number 80 deg C (y 820-870) and caption (y 904-937) are 34 px apart, crowded against the lower 15 %", "fix": "move the whole group up 40 px (ring y 340 -> 300) and add 20 px between number and caption"}]},
+  {"scene": "S7", "pass": true, "score": 7.5, "one_line": "best scene: centred lockup, strong tagline, calm fade; wordmark spacing is uneven",
+   "issues": [
+    {"t": 16.6, "check": "V12", "sev": "WARN", "what": "wordmark gaps at 1920: O-S 52 px, S-M 37 px, M-E 39 px, reads as 'O SME'", "fix": "O-S kerning -14 px so all three gaps are about 38 px"},
+    {"t": 16.6, "check": "V11", "sev": "WARN", "what": "stack y 217-857: logo, wordmark, arc, tagline; gap wordmark-arc 90 px, arc-tagline 40 px", "fix": "tagline y 809 -> 790 or wordmark y 466 -> 490 so the gaps match at 65 px"},
+    {"t": 18.0, "check": "V6", "sev": "WARN", "what": "fade 18.0 -> 19.0 ends at max luma 15 (deliberate); hold on the full lockup is 2.3 s (15.7-18.0)", "fix": "keep; consider lockup hold 15.7 -> 18.3 and fade 0.7 s so the tagline gets a full 2 s"}]},
+  {"scene": "L", "pass": true, "score": 7, "one_line": "calm, seamless (first and last frame differ by under 1 level), left half clean for text",
+   "issues": [
+    {"t": 3.5, "check": "V5", "sev": "WARN", "what": "bubbles exit through the bottom edge (about 3.5 s and 6.5 s) and the top edge, a half bubble is cut at y 1080", "fix": "wrap bubbles at y 40 and y 1040 with a 0.6 s fade, or let them pass behind the arc"},
+    {"t": 4.5, "check": "V8", "sev": "WARN", "what": "orange bubble (68 px, brightest object) crosses the arc and wisp at x 1500, pulling the eye off the headline on the left", "fix": "orange bubble opacity 100 -> 70 %, size 68 -> 52 px; keep all bubbles at x > 880"},
+    {"t": 4.5, "check": "V4", "sev": "WARN", "what": "left 45 % is deliberately empty and about #0E0E10, good for headline; right cluster (wisp 20 px wide, arc y 880-960) is faint", "fix": "add 20 % more jade glow at (1650, 540) so the right side balances the text, no change to the left half"}]}
+ ],
+ "sync": [],
+ "weakest_passing": [
+  "S5 at 10.8 s: ring is 235 px (12 % of width) and the group is small in a dark frame; survives because the number and arc read clearly and the group is optically centred",
+  "S7 at 16.6 s: O-S-M-E gaps 52/37/39 px; survives because the lockup is large and centred",
+  "L at 4.5 s: orange bubble competes with the wisp, survives because text sits on the left half and the loop is calm"],
+ "global": [
+  "Film fails on text size: every on-screen text except the tagline is under 24 px at the 1280 phone cut. Set minimum 32 px at 1280 (48 px at 1920) for caption/labels and 40 px at 1280 for the Sencha line.",
+  "Pacing: S1-S3 spend 7.5 s on three dots at 2-4 % of frame width; scale bubbles 2x and cut S1 text-only phase from 3.2 s to 2.4 s so the bubble appears at 1.8 s.",
+  "Story beat missing: nothing shows the bag opening or closing (S6), and the cooling is never shown (number stays at 80 deg C)."]}

@@ -40,3 +40,4 @@
 11:06 | business (investor review) | Market in people: "over 159 million Americans drink tea on any given day" (Tea Association via US Census, Jan 2024); year 3 needs ~205 k buyers = 0.13% of US daily drinkers. Add to facts.md proof points? | on business slide 4 and business-case.md §1
 11:11 | presentation | Slide 8 use of funds shows 4 parts as asked: origin and first inventory 15% plus ops 5% are drawn as one 20% segment ("Origin, stock and ops"). OK, or show 5 parts? | 4 parts; full split in the notes
 11:11 | presentation | Slide 2: QMUL 2016's 96% counts tea made with a bag, not over-steeping. Slide reads "More than 96% of Britain's tea now comes from a bag". OK? | that wording
+11:14 | video | Length: the brief says 15-20 s, the dated history makes v04 ~26 s. OK as the voice/standalone film, with v03 (18.4 s) kept for slide 1? | building v04 at ~26 s; v03 stays video/osme-film.mp4 for slide 1

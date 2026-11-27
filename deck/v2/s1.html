@@ -10,6 +10,7 @@
     <defs><linearGradient id="s1g" x1="0" x2="1"><stop offset="0" stop-color="#F2A33A"/><stop offset=".48" stop-color="#D9C46B"/><stop offset="1" stop-color="#3DBA9B"/></linearGradient></defs>
     <path class="s1-arc" d="M 120 1080 A 840 840 0 0 1 1800 1080" pathLength="1" fill="none" stroke="url(#s1g)" stroke-width="3" stroke-linecap="round"/>
   </svg>
+  <div class="s1-noun">A tea bag that opens only at its perfect temperature.</div>
   <div class="s1-team">Table 5 · Sell the unsellable</div>
   <aside class="notes"><ul>
     <li>Film: video/osme-film.mp4 (video thread, v03, 18.4 s, silent). It carries Lu Yu's three boils, the 1908 bag and the lockup; the year marker bottom right is synced to it.</li>
@@ -34,6 +35,8 @@
     #s1 .s1-arc{stroke-dasharray:1;stroke-dashoffset:1;filter:drop-shadow(0 0 14px rgba(242,163,58,.6))}
     #s1.ended .s1-arc{animation:drawin 1.8s var(--ease) both}
     html.still #s1 .s1-arc{stroke-dashoffset:0}
+    #s1 .s1-noun{position:absolute;left:0;right:0;bottom:14vh;z-index:3;text-align:center;font-size:32px;color:rgba(243,238,230,.78);letter-spacing:.02em;opacity:0;filter:blur(10px) sepia(1);transition:opacity .9s var(--ease) .9s,filter 1s var(--ease) .9s}
+    #s1.ended .s1-noun,html.still #s1 .s1-noun{opacity:1;filter:none}
     #s1 .s1-team{position:absolute;right:72px;top:7vh;z-index:3;font-size:20px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(243,238,230,.45)}
   </style>
   <script>

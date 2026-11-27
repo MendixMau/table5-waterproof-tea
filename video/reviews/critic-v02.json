@@ -1,0 +1,60 @@
+{"round": 2, "pass": false, "film_score": 6.6,
+ "round1_check": {
+  "text_too_small": "FIXED. Measured at 1920: S1 caption 53 px tall incl. descender (about 44 px font), S1 labels 26 px caps, panel SENCHA 27 px caps, digits 104 px, status 28 px caps, one-liner about 40 px font and 1130 px wide, end-card tagline 49 px incl. descender. All readable at the 1280 cut, but see S4/S5 WARNs for the grey sub-line.",
+  "small_bubbles": "NOT FIXED. Bubble diameters measure about 68 / 90 / 124 px (3.5 / 4.7 / 6.5 % of frame width). Still small.",
+  "empty_lower_half_S1": "PARTLY FIXED. Content now spans y 210-705; bottom 375 px (35 %) is still empty with no depth cue.",
+  "bag_never_opens": "PARTLY FIXED. At 9.3-11.6 the bag shows an amber seam with a 10-12 px gap between halves on a bag only about 105 px wide. At the 1280 cut it reads as an orange line, not an opening. This is the film's key event and it is too small.",
+  "wisp_clipped": "FIXED. Wisps at 10.5-13.7 end well inside the frame (top y about 280).",
+  "end_card_gaps": "FIXED. Symbol to wordmark about 57 px, wordmark to tagline about 61 px."},
+ "scenes": [
+  {"scene": "S1", "pass": false, "score": 6, "one_line": "calm and premium, but three small beads in a dark field; the hero of the opening is 70-120 px",
+   "issues": [
+    {"t": 3.4, "check": "V2", "sev": "FAIL", "what": "bubbles 68/90/124 px diameter (3.5-6.5 % of width); they are the only subject and read as dots at 1280 (45/60/83 px)",
+     "fix": "scale bubbles x2.2: diameters 68/90/124 -> 150/200/280 px; keep centres at x 480/960/1440 (current 485/960/1440), y 470 -> 520; labels stay 26 -> 30 px caps and move to y 700 -> 790 (bubble bottom + 60 px)"},
+    {"t": 3.4, "check": "V11", "sev": "FAIL", "what": "content block y 210-705 leaves the bottom 35 % (375 px) empty, caption pinned at y 210",
+     "fix": "after the bubble scale-up the block is y 210-830; move caption y 210 -> 250 so block is 250-830, centre y 540 -> 520 (slightly above middle); bottom empty space drops to 250 px (23 %)"},
+    {"t": 0.0, "check": "V8", "sev": "WARN", "what": "0.0-1.0 s is one 25 px green dot and a faded caption, correct restraint but 1 s of near nothing",
+     "fix": "start the first bubble at 0.0 with scale 0.5 -> 1.0 over 0.0-0.6 and the caption at opacity 0 -> 1 in 0.0-0.5 (currently caption is already present but dim at 0.5)"}]},
+  {"scene": "S2", "pass": false, "score": 6, "one_line": "the drop into the glass works but the frame is lopsided and the tag-line labels ghost during the cross-fade",
+   "issues": [
+    {"t": 4.9, "check": "V7", "sev": "WARN", "what": "at 4.7-5.0 the faded S1 labels and caption still show as ghost text under the falling bubbles",
+     "fix": "fade S1 caption and labels out by 4.55 (now still visible at 4.9): duration 0.5 s -> 0.3 s, ending at 4.6"},
+    {"t": 5.3, "check": "V4", "sev": "FAIL", "what": "glass (about 330 px wide, x 960-1290) hangs in the lower right; the left 50 % and top 45 % of the frame are empty while the glass is the subject; glass jumps from the right to the S3 position with the panel",
+     "fix": "build S2 in the S3 layout so nothing slides: glass centre x 1120 stays, but scale glass 1.0 -> 1.35 (width 330 -> 445 px) and start the arc and panel ghosted at opacity 0.15 from 4.6 so the left half is not a void"},
+    {"t": 6.5, "check": "V8", "sev": "WARN", "what": "the amber bubble sits on the rim at 6.1 over the bag for about 0.4 s, competing with the bag arrival",
+     "fix": "sink the amber bubble into the water 6.0 -> 6.3 (y 560 -> 640, opacity 1 -> 0) before the bag fades in at 6.3"}]},
+  {"scene": "S3", "pass": true, "score": 7.3, "one_line": "clear: panel left, arc, glass; the temperature falls and SEALED/too hot reads at once",
+   "issues": [
+    {"t": 8.6, "check": "V2", "sev": "WARN", "what": "glass about 330 px wide (17 % of frame), bag about 105 px; subject small next to the 800 px tall arc",
+     "fix": "scale the glass group 1.0 -> 1.3 about its base (centre 1125, 905), arc radius 520 -> 600 px so it still frames the glass"},
+    {"t": 8.6, "check": "V3", "sev": "WARN", "what": "sub-line 'too hot for Sencha' about 30 px incl. descender in mid grey; at 1280 about 20 px, borderline",
+     "fix": "sub-line font 28 -> 36 px, colour #A8A39A -> #E8E2D6"}]},
+  {"scene": "S4", "pass": false, "score": 5.8, "one_line": "the key event is a 12 px seam on a 105 px bag; the colour bleed and wisps read, the opening does not",
+   "issues": [
+    {"t": 9.3, "check": "V8", "sev": "FAIL", "what": "at 9.0-9.6 nothing moves in the first 0.3 s except the status word; the opening is not visibly the focus. At 9.6 the halves are 12 px apart on a 105 px bag; the viewer cannot tell where to look",
+     "fix": "camera push-in on the glass 9.0 -> 9.8: scale 1.0 -> 1.5 about (1125, 700) with ease-out; bag halves part 6 -> 22 px each (gap 12 -> 44 px) and rotate 0 -> +/-7 deg at the top edge, seam colour #F2A33A glow radius 6 -> 20 px; hold until 11.6, then ease back to 1.0 over 11.6-12.0"},
+    {"t": 9.6, "check": "V8", "sev": "FAIL", "what": "tea colour starts at the glass bottom at 9.6 and spreads only after 10.0; the cause (opening) and effect (colour) are not linked",
+     "fix": "emit the first tea-colour plume from the seam at 9.4 (alpha 0 -> 0.5 in 0.3 s) rather than from the glass bottom, then fill upwards 9.6 -> 11.0"},
+    {"t": 10.5, "check": "V3", "sev": "WARN", "what": "'OPEN' and 'brewing at 80 C' appear 0.3 s after the number and the status line is amber on dark, small (28 px caps)",
+     "fix": "show OPEN at 9.0 together with the cross to 80 (offset 0.3 -> 0 s); status caps 28 -> 36 px"}]},
+  {"scene": "S5", "pass": false, "score": 6.2, "one_line": "the seal is nearly invisible; the one-liner is readable but sits 69 px from the bottom edge",
+   "issues": [
+    {"t": 11.8, "check": "V8", "sev": "FAIL", "what": "the seal reads only through the word SEALED and the seam disappearing; at 11.6-12.2 the jade pulse is not visible on the 105 px bag (frames 11.6, 11.8, 12.2 are almost identical). Seam gap 12 px -> 0 px is under 1 % of frame width",
+     "fix": "11.6-12.2 push-in on the bag (scale 1.5 at 11.6); halves close 22 -> 0 px over 11.7-12.0 with a 0.15 s overshoot (-3 px), then a jade ring pulse centred on the bag: radius 40 -> 260 px, stroke 6 px #3DBA9B, opacity 0.9 -> 0 over 11.9-12.5; arc dot flashes jade at 11.9"},
+    {"t": 13.7, "check": "V5", "sev": "WARN", "what": "one-liner baseline at y about 1000 (descender 1011): 69 px from the bottom edge, outside the 5 % title-safe margin of 54 px by only 15 px, and on a phone UI overlay it will collide",
+     "fix": "move the one-liner y 985 -> 930 and font 40 -> 46 px; shrink the glass group by 40 px or shift it up 30 px so the gap to the glass bottom (905) stays at least 60 px"},
+    {"t": 12.5, "check": "V3", "sev": "WARN", "what": "'below 70 C, scent kept' about 30 px incl. descender in grey, at 1280 about 20 px",
+     "fix": "font 28 -> 36 px, colour to #E8E2D6"},
+    {"t": 14.6, "check": "V6", "sev": "FAIL", "what": "transition S5 -> S6: S5 UI is fully faded by 14.75 and the symbol appears only at 15.2; frames 14.8-15.15 hold only a brown glow and a 3 px dot (max luminance 55-66 of 255, mean 23): about 0.4 s of a dead frame",
+     "fix": "overlap instead of gap: start the S6 symbol fade-in at 14.45 (now about 15.2) with scale 0.9 -> 1.0, and delay the S5 UI fade-out end from 14.75 to 14.9 so the two cross-dissolve; no frame under max luminance 120 between 14.3 and 16.0"}]},
+  {"scene": "S6", "pass": true, "score": 7.6, "one_line": "clean, centred end card; gaps equal; the fade to black is deliberate",
+   "issues": [
+    {"t": 17.1, "check": "V2", "sev": "WARN", "what": "symbol 140 x 250 px and wordmark 440 px wide (23 % of width); a restrained but small end card for a jury room",
+     "fix": "scale the lockup 1.0 -> 1.25 about (960, 506); keep gaps 57 / 61 px scaled to 71 / 76 px; tagline 40 -> 48 px"},
+    {"t": 15.7, "check": "V8", "sev": "WARN", "what": "wordmark appears dimmed (grey) at 15.8 before the tagline at about 16.3; the wordmark is at 40 % opacity for about 0.6 s and looks like a loading state",
+     "fix": "wordmark opacity ramp 0 -> 1 in 0.3 s starting 15.5 (now about 0.9 s)"}]}],
+ "weakest_passing": [
+  "S3 at 8.6 s: the glass and bag are small relative to the 800 px arc, but the left panel carries the scene",
+  "S6 at 17.1 s: lockup is only 23 % of width; passes because gaps are equal and the block is centred",
+  "S3 at 8.6 s: 'too hot for Sencha' is about 30 px grey and only just readable at the 1280 cut"]
+}

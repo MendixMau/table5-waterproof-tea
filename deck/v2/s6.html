@@ -6,7 +6,7 @@
 #s6 .lrow{display:grid;grid-template-columns:420px 1fr;align-items:center;height:112px;opacity:0;transform:translateX(-18px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
 #s6 .lrow.in{opacity:1;transform:none}
 #s6 .lname{font-size:30px;line-height:1.15;color:rgba(243,238,230,.86);padding-right:28px;text-align:right}
-#s6 .lname small{display:block;font-size:24px;color:var(--muted)}
+#s6 .lname small{display:block;font-size:26px;color:var(--muted)}
 #s6 .track{position:relative;height:56px;display:flex;align-items:center}
 #s6 .bar{height:56px;width:0;border-radius:6px;background:#3A3A42;transition:width .9s var(--ease);position:relative;flex:0 0 auto}
 #s6 .lprice{font-size:34px;font-weight:500;margin-left:20px;font-variant-numeric:tabular-nums;opacity:0;transition:opacity .4s ease .5s;white-space:nowrap}
@@ -24,25 +24,25 @@
 #s6 .packs .t1{left:-50px;width:210px}
 #s6 .packs .t2{left:88px;width:262px;bottom:10px;z-index:2}
 #s6 .packs .t3{left:260px;width:210px}
-#s6 .packs .bag{position:absolute;right:-86px;bottom:-24px;width:300px;height:437px;z-index:3;mix-blend-mode:lighten}
+#s6 .packs .bag{position:absolute;right:-92px;bottom:-34px;width:316px;height:474px;z-index:3;mix-blend-mode:lighten;-webkit-mask:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent),linear-gradient(180deg,transparent,#000 7%,#000 95%,transparent);-webkit-mask-composite:source-in;mask:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent),linear-gradient(180deg,transparent,#000 7%,#000 95%,transparent);mask-composite:intersect}
 #s6 .packs .parc{position:absolute;left:-60px;top:30px;width:540px;height:200px;overflow:visible;z-index:0}
 #s6 .margin{text-align:center;margin-top:18px}
 #s6 .margin .big{font-size:150px;background:linear-gradient(90deg,#F2A33A,#D9C46B 50%,#3DBA9B);-webkit-background-clip:text;background-clip:text;color:transparent}
 #s6 .margin .lead{font-size:30px;margin-top:6px}
 #s6 .margin .lead b{font-weight:500;color:var(--text)}
-#s6 .margin .tag{display:inline-block;margin-top:12px;font-size:24px;letter-spacing:.14em;text-transform:uppercase;color:var(--jade);border:1px solid rgba(61,186,155,.45);border-radius:40px;padding:6px 20px}
+#s6 .margin .tag{display:inline-block;margin-top:12px;font-size:26px;letter-spacing:.14em;text-transform:uppercase;color:var(--jade);border:1px solid rgba(61,186,155,.45);border-radius:40px;padding:6px 20px}
 </style>
 <div class="slide" id="s6" data-title="Business">
   <div class="head steep">
     <div class="label">Business · the price of a cup</div>
-    <div class="h1">One $__NUM:price__ bag brews __NUM:infusions__ cups: <em>$__NUM:cup__ a cup</em>, half a Sips By cup and under half a Tea Forte pyramid.</div>
+    <div class="h1">One $__NUM:price__ bag brews up to __NUM:infusions__ cups: <em>$__NUM:cup__ a cup</em>, half a Sips By cup and under half a Tea Forte pyramid.</div>
   </div>
   <div class="body">
     <div class="ladder" id="s6-ladder" aria-label="Price per cup ladder"></div>
     <div class="side">
-      <div class="packs steep" style="--dl:.3s">
+      <div class="packs steep" style="--dl:.1s">
         <svg class="parc" viewBox="0 0 600 220" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="s6-arcg" x1="0" x2="1"><stop offset="0" stop-color="#F2A33A"/><stop offset=".48" stop-color="#D9C46B"/><stop offset="1" stop-color="#3DBA9B"/></linearGradient></defs>
-          <path class="draw" pathLength="1" d="M 20 210 A 300 250 0 0 1 580 210" fill="none" stroke="url(#s6-arcg)" stroke-width="4" stroke-linecap="round" style="--d:1.8s;--dl:.6s;filter:drop-shadow(0 0 12px rgba(242,163,58,.6))"/></svg>
+          <path class="draw" pathLength="1" d="M 20 210 A 300 250 0 0 1 580 210" fill="none" stroke="url(#s6-arcg)" stroke-width="4" stroke-linecap="round" style="--d:1.6s;--dl:.4s;filter:drop-shadow(0 0 12px rgba(242,163,58,.6))"/></svg>
         <svg class="tin t1" viewBox="0 0 400 480" aria-label="OSME English Breakfast tin"><defs><linearGradient id="s6-tb1" x1="0" x2="1"><stop offset="0" stop-color="#08080A"/><stop offset=".3" stop-color="#25252B"/><stop offset=".45" stop-color="#1B1B20"/><stop offset="1" stop-color="#0A0A0C"/></linearGradient></defs>
           <rect x="88" y="70" width="224" height="370" rx="18" fill="url(#s6-tb1)" stroke="#2E2E35"/><rect x="82" y="58" width="236" height="62" rx="14" fill="url(#s6-tb1)" stroke="#34343B"/>
           <rect x="88" y="404" width="224" height="22" fill="#93441A" opacity=".9"/><rect x="82" y="112" width="236" height="4" fill="#93441A"/>
@@ -68,10 +68,10 @@
           <text x="200" y="306" text-anchor="middle" font-family="Jost, sans-serif" font-size="12" letter-spacing="2.6" fill="#8E8A83">JAPAN · OPENS AT 80 °C</text>
           <rect x="98" y="324" width="204" height="3" rx="1.5" fill="url(#s6-arcg)"/>
           <text x="200" y="364" text-anchor="middle" font-family="Jost, sans-serif" font-size="12" letter-spacing="2.4" fill="#BDB7AD">12 TEA BAGS · UP TO 3 INFUSIONS EACH</text></svg>
-        <svg class="bag" viewBox="420 220 700 1020" role="img" aria-label="A single OSME Sencha bag"><image href="__ASSET:brand/assets/pack-single-bag.svg__" x="0" y="0" width="1200" height="1400"/></svg>
+        <svg class="bag" viewBox="400 150 740 1110" role="img" aria-label="A single OSME Sencha bag"><image href="__ASSET:brand/assets/pack-single-bag.svg__" x="0" y="0" width="1200" height="1400"/></svg>
       </div>
       <div class="margin">
-        <div class="big" data-count="__NUM:margin_pct__" data-suffix="%" data-dl="2.2" data-dur="1.6">__NUM:margin_pct__%</div>
+        <div class="big" data-count="__NUM:margin_pct__" data-suffix="%" data-dl=".6" data-dur="2">__NUM:margin_pct__%</div>
         <div class="lead">gross margin, <b>$__NUM:margin__ a bag</b></div>
         <div class="tag">at year-3 scale</div>
       </div>
@@ -84,6 +84,7 @@
       <li>OSME $__NUM:cup__ a cup = $__NUM:price__ a bag (facts.md) / __NUM:infusions__ infusions (ASSUMPTION, lab target). Worst case one cup: $__NUM:price__, the price of a Tea Forte pyramid.</li>
       <li>The cafe bar is cut (break marks): the scale is linear up to $1.40 so the rest stay readable.</li>
       <li>Margin __NUM:margin_pct__% = $__NUM:margin__ a bag = $__NUM:price__ minus $__NUM:cost3__ cost per bag at year-3 scale (truth/business-case.md §3 and §4; deck/model_business.py). Year 1 pilot cost $__NUM:cost1__ a bag.</li>
+      <li>Sencha tin "opens at 80 °C": facts.md, tea windows (Sencha opens 80 °C, seals 70 °C).</li>
       <li>Tins: Sencha, Tieguanyin and English Breakfast, tinted as on the shop (docs/_src/build.py). Tin of 12 $__NUM:tin__, Ritual $__NUM:ritual__ a month.</li>
     </ul>
   </aside>
@@ -104,7 +105,7 @@
       const osme=r.name.startsWith('OSME'), clip=r.cup>MAX;
       const row=document.createElement('div');row.className='lrow'+(osme?' osme':'')+(clip?' clip':'');
       const nm=document.createElement('div');nm.className='lname';
-      if(osme){nm.textContent='OSME';const s=document.createElement('small');s.textContent=who;nm.appendChild(s);}
+      if(osme){nm.textContent='OSME';const s=document.createElement('small');s.textContent='up to __NUM:infusions__ cups a bag';nm.appendChild(s);}
       else{nm.textContent=who;const s=document.createElement('small');s.textContent=kind;nm.appendChild(s);}
       const tr=document.createElement('div');tr.className='track';
       const bar=document.createElement('div');bar.className='bar';
@@ -112,7 +113,7 @@
       tr.appendChild(bar);tr.appendChild(pr);row.appendChild(nm);row.appendChild(tr);box.appendChild(row);
       const w=clip?CLIPW*0.82:Math.max(1.2,r.cup/MAX*64);
       const go=()=>{row.classList.add('in');bar.style.width=w+'%';if(osme)row.classList.add('glow');};
-      if(still)go();else timers.push(setTimeout(go,250+i*380+(osme?0:0)));
+      if(still)go();else timers.push(setTimeout(go,80+i*260));
     });
     const cap=document.createElement('div');cap.className='lcap';cap.textContent='USD per cup. OSME counts __NUM:infusions__ infusions a bag (lab target).';box.appendChild(cap);
   }

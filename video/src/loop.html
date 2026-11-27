@@ -1,0 +1,92 @@
+<!doctype html>
+<!-- OSME site hero loop. Seamless: every motion is a function of t/P (P = 9 s), so frame P == frame 0.
+     Weight sits right of centre; the left half stays calm for the site's headline. -->
+<html><head><meta charset="utf-8">
+<style>html,body{margin:0;width:1920px;height:1080px;background:#0B0B0D;overflow:hidden} svg{display:block}</style></head>
+<body>
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="68%" cy="55%" r="70%">
+      <stop offset="0" stop-color="#17151A"/><stop offset=".5" stop-color="#0F0E11"/><stop offset="1" stop-color="#0B0B0D"/>
+    </radialGradient>
+    <radialGradient id="warm" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#F2A33A" stop-opacity=".20"/><stop offset=".55" stop-color="#D9C46B" stop-opacity=".05"/><stop offset="1" stop-color="#3DBA9B" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="cool" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#3DBA9B" stop-opacity=".24"/><stop offset="1" stop-color="#3DBA9B" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="arcG" gradientUnits="userSpaceOnUse" x1="980" y1="0" x2="1780" y2="0">
+      <stop offset="0" stop-color="#F2A33A"/><stop offset=".48" stop-color="#D9C46B"/><stop offset="1" stop-color="#3DBA9B"/>
+    </linearGradient>
+    <linearGradient id="wispG" gradientUnits="userSpaceOnUse" x1="0" y1="820" x2="0" y2="200">
+      <stop offset="0" stop-color="#F3EEE6" stop-opacity="0"/><stop offset=".25" stop-color="#F3EEE6" stop-opacity=".7"/><stop offset=".65" stop-color="#D9C46B" stop-opacity=".35"/><stop offset="1" stop-color="#3DBA9B" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="smoke" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8"/></filter>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <ellipse id="warm" cx="1380" cy="620" rx="760" ry="520" fill="url(#warm)"/>
+  <ellipse id="cool" cx="1660" cy="760" rx="520" ry="360" fill="url(#cool)"/>
+  <g id="wisp" filter="url(#smoke)"></g>
+  <g id="wispCore"></g>
+  <g id="pearls"></g>
+  <g id="bubbles" filter="url(#glow)"></g>
+  <path id="arc" d="M980 900 Q1380 780 1780 900" fill="none" stroke="url(#arcG)" stroke-width="6" stroke-linecap="round" filter="url(#glow)"/>
+</svg>
+<script>
+const NS = 'http://www.w3.org/2000/svg', $ = id => document.getElementById(id);
+const P = 9, TAU = Math.PI * 2;
+const fr = x => x - Math.floor(x);
+const mk = (host, tag, attrs) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); $(host).appendChild(e); return e; };
+
+// Lu Yu's three bubbles: jade (fish eyes), gold (string of pearls), amber (rolling waves). One rise per loop each, a third apart.
+const B = [{ r: 20, c: '#3DBA9B', x: 1300, ph: 0 }, { r: 26, c: '#D9C46B', x: 1400, ph: 1 / 3 }, { r: 30, c: '#F2A33A', x: 1500, ph: 2 / 3 }]
+  .map(b => ({ ...b, el: mk('bubbles', 'circle', { r: b.r, fill: b.c }) }));
+// pearls: small dots, 1 or 2 rises per loop (integer, so it stays seamless)
+const PE = Array.from({ length: 16 }, (_, i) => ({ x: 1040 + ((i * 197) % 700), ph: fr(i * 0.618), n: 1 + (i % 2), r: 2 + (i % 3) * 1.2,
+  c: ['#F2A33A', '#D9C46B', '#3DBA9B'][i % 3], el: mk('pearls', 'circle', { r: 2 }) }));
+const W = [0, 1, 2].map(k => ({ k, a: mk('wisp', 'path', { fill: 'none', stroke: 'url(#wispG)', 'stroke-width': 12 - k * 3, 'stroke-linecap': 'round' }),
+  b: mk('wispCore', 'path', { fill: 'none', stroke: 'url(#wispG)', 'stroke-width': 2, 'stroke-linecap': 'round' }) }));
+
+function wisp(x0, y0, len, t, k) {
+  let d = '';
+  for (let i = 0; i <= 30; i++) {
+    const s = i / 30, y = y0 - s * len, amp = 8 + 70 * s * s;
+    const x = x0 + Math.sin(s * 4.6 + TAU * t / P + k * 2.2) * amp * (k % 2 ? -1 : 1) + Math.sin(TAU * 2 * t / P + s * 3 + k) * 10 * s;
+    d += (i ? ' L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1);
+  }
+  return d;
+}
+window.setT = t => {
+  const u = t / P;
+  for (const b of B) {
+    const q = fr(u + b.ph);                         // 0..1 through one rise
+    const y = 1160 - q * 1320;                       // bottom (off-frame) to top (off-frame)
+    const x = b.x + Math.sin(TAU * (q * 2 + b.ph)) * 26;
+    const op = 0.85 * Math.min(1, Math.sin(Math.PI * q) * 1.6);
+    b.el.setAttribute('cx', x.toFixed(1)); b.el.setAttribute('cy', y.toFixed(1)); b.el.setAttribute('opacity', op.toFixed(3));
+  }
+  for (const p of PE) {
+    const q = fr(u * p.n + p.ph), y = 1120 - q * 1200;
+    p.el.setAttribute('cx', (p.x + Math.sin(TAU * (q + p.ph)) * 14).toFixed(1)); p.el.setAttribute('cy', y.toFixed(1));
+    p.el.setAttribute('r', p.r.toFixed(1)); p.el.setAttribute('fill', p.c);
+    p.el.setAttribute('opacity', (Math.sin(Math.PI * q) * 0.55).toFixed(3));
+  }
+  for (const w of W) {
+    const d = wisp(1400 + (w.k - 1) * 14, 840, 560 + w.k * 50, t, w.k);
+    w.a.setAttribute('d', d); w.b.setAttribute('d', d);
+    const o = 0.55 + 0.25 * Math.sin(TAU * u + w.k * 2.1);
+    w.a.setAttribute('opacity', (o * 0.5).toFixed(3)); w.b.setAttribute('opacity', (o * 0.6).toFixed(3));
+  }
+  // the arc breathes: warm and cool glows trade places once per loop
+  const br = 0.5 + 0.5 * Math.sin(TAU * u);
+  $('warm').setAttribute('opacity', (0.65 + 0.35 * br).toFixed(3));
+  $('cool').setAttribute('opacity', (0.5 + 0.5 * (1 - br)).toFixed(3));
+  $('arc').setAttribute('opacity', (0.75 + 0.25 * br).toFixed(3));
+};
+window.DUR = P;
+window.setT(0);
+</script>
+</body></html>

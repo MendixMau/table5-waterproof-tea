@@ -1,0 +1,425 @@
+<!doctype html>
+<!-- OSME brand film v03. Driven by window.setT(t) (seconds); render.mjs injects the current logo files
+     (brand/identity/logo-symbol.svg, logo-wordmark.svg) via window.loadLogos() at render time.
+     Beats: Lu Yu's bubbles (0-3.4) -> 1908 bag at a boil (3.4-6.3) -> OSME bag: Sencha 100 -> 80 opens, 70 seals (6-13.8)
+     -> the bag flies into the end card (13.5-18.4). Cup geometry follows brand/assets/hero.svg, scaled 1.35. -->
+<html><head><meta charset="utf-8">
+<style>
+  @font-face { font-family:"Jost"; src:url(jost-latin.woff2) format("woff2"); font-weight:300 700; font-display:block; }
+  html,body { margin:0; width:1920px; height:1080px; background:#0B0B0D; overflow:hidden; }
+  svg { display:block; }
+  .disp { font-family: Jost, Futura, "Century Gothic", sans-serif; font-weight:500; }
+  .body { font-family: "Avenir Next", Avenir, "Helvetica Neue", Arial, sans-serif; }
+</style></head>
+<body>
+<svg id="stage" width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="55%" r="65%">
+      <stop offset="0" stop-color="#1A181D"/><stop offset=".55" stop-color="#0F0E11"/><stop offset="1" stop-color="#0B0B0D"/>
+    </radialGradient>
+    <radialGradient id="warm" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#F2A33A" stop-opacity=".22"/><stop offset=".5" stop-color="#D9C46B" stop-opacity=".06"/><stop offset="1" stop-color="#3DBA9B" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="arcG" gradientUnits="userSpaceOnUse" x1="640" y1="0" x2="1600" y2="0">
+      <stop offset="0" stop-color="#F2A33A"/><stop offset=".48" stop-color="#D9C46B"/><stop offset="1" stop-color="#3DBA9B"/>
+    </linearGradient>
+    <linearGradient id="teaL" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#D9C46B" stop-opacity=".62"/><stop offset="1" stop-color="#7C7A2C" stop-opacity=".92"/>
+    </linearGradient>
+    <linearGradient id="darkL" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9A5A1E" stop-opacity=".80"/><stop offset="1" stop-color="#4A2508" stop-opacity=".95"/>
+    </linearGradient>
+    <linearGradient id="glassH" x1="0" x2="1">
+      <stop offset="0" stop-color="#F3EEE6" stop-opacity=".10"/><stop offset=".18" stop-color="#F3EEE6" stop-opacity=".02"/><stop offset=".8" stop-color="#F3EEE6" stop-opacity="0"/><stop offset=".93" stop-color="#F3EEE6" stop-opacity=".08"/><stop offset="1" stop-color="#F3EEE6" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="shadow"><stop offset="0" stop-color="#000" stop-opacity=".8"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+    <radialGradient id="bleed" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#fff"/><stop offset=".7" stop-color="#fff" stop-opacity=".85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <mask id="bleedMask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+      <circle id="bleedC" cx="1120" cy="760" r="0" fill="url(#bleed)"/>
+    </mask>
+    <mask id="darkMask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+      <circle id="darkC" cx="1120" cy="760" r="0" fill="url(#bleed)"/>
+    </mask>
+    <clipPath id="liquidClip"><path d="M959.8 612 L985 883 Q989 905 1017 905 H1223 Q1251 905 1255 883 L1280.2 612 A160.2 14 0 0 1 959.8 612 Z"/></clipPath>
+    <linearGradient id="wispG" gradientUnits="userSpaceOnUse" x1="0" y1="620" x2="0" y2="300">
+      <stop offset="0" stop-color="#F3EEE6" stop-opacity=".8"/><stop offset=".6" stop-color="#D9C46B" stop-opacity=".4"/><stop offset="1" stop-color="#3DBA9B" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="bigGlow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="22"/></filter>
+    <filter id="smoke" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="7"/></filter>
+    <filter id="plumeBlur" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="6"/></filter>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7"/>
+      <feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .045 0"/>
+    </filter>
+    <radialGradient id="bub1" cx="38%" cy="34%" r="70%"><stop offset="0" stop-color="#C9F2E6"/><stop offset=".45" stop-color="#3DBA9B"/><stop offset="1" stop-color="#1F7A64"/></radialGradient>
+    <radialGradient id="bub2" cx="38%" cy="34%" r="70%"><stop offset="0" stop-color="#FFF6D2"/><stop offset=".45" stop-color="#D9C46B"/><stop offset="1" stop-color="#8F7F3A"/></radialGradient>
+    <radialGradient id="bub3" cx="38%" cy="34%" r="70%"><stop offset="0" stop-color="#FFE2B8"/><stop offset=".45" stop-color="#F2A33A"/><stop offset="1" stop-color="#9C5E17"/></radialGradient>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#bgGlow)"/>
+  <ellipse id="warmGlow" cx="960" cy="540" rx="900" ry="520" fill="url(#warm)"/>
+
+  <!-- Beat 1: Lu Yu's bubbles -->
+  <text id="cap1" class="body" x="960" y="250" text-anchor="middle" font-size="52" fill="#F3EEE6">In the eighth century, Lu Yu read water by its bubbles.</text>
+  <g id="pearls"></g>
+  <g id="ripples"></g>
+  <g class="disp" font-size="38" letter-spacing="5" fill="#F3EEE6" fill-opacity=".86" text-anchor="middle">
+    <text id="l1" x="480" y="800">FISH EYES</text>
+    <text id="l2" x="960" y="800">STRING OF PEARLS</text>
+    <text id="l3" x="1440" y="800">ROLLING WAVES</text>
+  </g>
+
+  <!-- Beat 2: 1908 -->
+  <text id="cap2" class="body" x="960" y="160" text-anchor="middle" font-size="48" fill="#F3EEE6">Around 1908 came the tea bag: easy, and every tea at a boil.</text>
+
+  <!-- the cup; #cam pushes in for the opening -->
+  <g id="cam">
+    <g id="arcGroup">
+      <path id="arcHalo" d="M640 660 A480 480 0 0 1 1600 660" fill="none" stroke="url(#arcG)" stroke-width="22" opacity=".45" filter="url(#bigGlow)" pathLength="1"/>
+      <path id="arcPath" d="M640 660 A480 480 0 0 1 1600 660" fill="none" stroke="url(#arcG)" stroke-width="5" stroke-linecap="round"/>
+      <circle id="marker" r="13" fill="#F3EEE6" filter="url(#glow)"/>
+    </g>
+    <g id="cupG" transform="translate(1120 905) scale(1.35) translate(-1120 -905)">
+      <ellipse id="cupShadow" cx="1120" cy="911" rx="250" ry="26" fill="url(#shadow)"/>
+      <path id="water" d="M959.8 612 L985 883 Q989 905 1017 905 H1223 Q1251 905 1255 883 L1280.2 612 A160.2 14 0 0 1 959.8 612 Z" fill="#9FB7C0" fill-opacity=".07"/>
+      <g clip-path="url(#liquidClip)">
+        <rect id="dark" x="940" y="590" width="360" height="330" fill="url(#darkL)" mask="url(#darkMask)"/>
+        <rect id="tea" x="940" y="590" width="360" height="330" fill="url(#teaL)" mask="url(#bleedMask)"/>
+      </g>
+      <!-- the 1908 bag: plain paper, string over the rim to a paper tag -->
+      <g id="oldBag">
+        <path d="M1120 690 Q1150 590 1262 556 L1282 552" fill="none" stroke="#D8CFBF" stroke-width="2"/>
+        <rect x="1278" y="550" width="40" height="48" rx="3" fill="#E9E3D8"/>
+        <rect x="1068" y="684" width="104" height="122" rx="7" fill="#CFC5B3"/>
+        <path d="M1068 700 H1172" stroke="#B3A994" stroke-width="2"/>
+      </g>
+      <g id="plumes" clip-path="url(#liquidClip)" filter="url(#plumeBlur)"></g>
+      <g id="cupSymHost"></g>
+      <ellipse id="surface" cx="1120" cy="612" rx="160.2" ry="14" fill="#E3D58A"/>
+      <path id="glass" d="M955 560 L985 883 Q989 905 1017 905 H1223 Q1251 905 1255 883 L1285 560" fill="url(#glassH)" stroke="#F3EEE6" stroke-opacity=".30" stroke-width="2.5" pathLength="1"/>
+      <ellipse id="rim" cx="1120" cy="560" rx="165" ry="20" fill="none" stroke="#F3EEE6" stroke-opacity=".38" stroke-width="2.5" pathLength="1"/>
+      <path id="glint" d="M981 600 L1027 855" stroke="#F3EEE6" stroke-opacity=".12" stroke-width="10" stroke-linecap="round"/>
+      <circle id="ring" cx="1120" cy="721" r="24" fill="none" stroke="#5FD9B8" stroke-width="6" filter="url(#glow)" opacity="0"/>
+      <g id="wisp" filter="url(#smoke)"></g>
+      <g id="wispCore"></g>
+    </g>
+  </g>
+  <!-- temperature panel (outside the push, so the type keeps its size) -->
+  <g id="panel" text-anchor="middle">
+    <text id="pHead" class="disp" x="300" y="400" font-size="38" letter-spacing="8" fill="#F3EEE6" fill-opacity=".85">ANY TEA</text>
+    <text id="temp" class="disp" x="300" y="545" font-size="150" fill="#F2A33A">100°</text>
+    <text id="state" class="disp" x="300" y="625" font-size="46" letter-spacing="5" fill="#F3EEE6">SEALED</text>
+    <text id="state2" class="body" x="300" y="680" font-size="36" fill="#E8E2D6">too hot for Sencha</text>
+  </g>
+  <text id="oneLiner" class="body" x="960" y="110" text-anchor="middle" font-size="46" fill="#F3EEE6">A tea bag that opens only at its perfect temperature.</text>
+
+  <g id="bubbles" filter="url(#glow)">
+    <circle id="b1" r="75" fill="url(#bub1)"/>
+    <circle id="b2" r="100" fill="url(#bub2)"/>
+    <circle id="b3" r="140" fill="url(#bub3)"/>
+  </g>
+
+  <!-- Beat 3: OSME -->
+  <g id="endSymHost"></g>
+  <g id="wordHost"></g>
+  <text id="tag" class="disp" x="960" y="790" text-anchor="middle" font-size="48" letter-spacing="6" fill="#F3EEE6">Every tea has its temperature.</text>
+
+  <rect width="1920" height="1080" filter="url(#grain)"/>
+  <rect id="fade" width="1920" height="1080" fill="#0B0B0D" opacity="0"/>
+</svg>
+
+<script>
+const $ = id => document.getElementById(id);
+const NS = 'http://www.w3.org/2000/svg';
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+const lerp = (a, b, p) => a + (b - a) * p;
+const eio = p => p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
+const eo = p => 1 - Math.pow(1 - p, 4);
+const back = p => { const c1 = 1.9, c3 = c1 + 1; return 1 + c3 * Math.pow(p - 1, 3) + c1 * Math.pow(p - 1, 2); };
+const seg = (t, a, b, f = eio) => f(clamp((t - a) / (b - a)));
+const win = (t, a, b, c, d) => Math.min(seg(t, a, b), 1 - seg(t, c, d));
+const set = (el, o) => { for (const k in o) el.setAttribute(k, typeof o[k] === 'number' ? +o[k].toFixed(3) : o[k]); };
+
+// Timeline (s). Total 18.4.
+const T = {
+  cap1: [-1, 0, 2.9, 3.4],                      // on screen at frame 0
+  b: [[-0.6, 0.6], [0.0, 1.2], [0.6, 1.8]],     // bubble rises, 0.6 s apart
+  lab: [0.3, 0.9, 1.5], labOut: [2.9, 3.4],
+  wait: [3.0, 3.8],                             // bubbles shrink and wait above the glass
+  glass: [3.1, 3.9],
+  cap2: [3.4, 3.8, 5.9, 6.3],
+  oldIn: [3.7, 4.3], dark: [4.2, 5.4], oldOut: [5.4, 6.0], clear: [5.6, 6.3],
+  temp: [4.0, 4.5],
+  gather: [6.0, 6.9],                           // bubbles drop into the cup (stagger .18) and become the bag
+  body: [6.6, 7.2], string: [6.9, 7.6], tagIn: [7.4, 7.8],
+  head: 6.4, stateIn: [6.6, 7.1], arc: [6.4, 7.4],
+  cool1: [7.5, 8.7],                            // 100 -> 80
+  push: [7.9, 8.9], pushOut: [11.1, 11.9],
+  open: [8.7, 9.1], plume: 8.8, bleed: [9.0, 10.6],
+  cool2: [9.3, 10.7],                           // 80 -> 70
+  seal: [10.7, 11.05], ring: [10.9, 11.6],
+  arcOut: [11.6, 12.0],
+  one: [11.9, 12.4, 13.3, 13.8], panelOut: [13.3, 13.8],
+  morph: [13.5, 14.6], sceneOut: [13.5, 14.1],
+  word: [14.4, 14.7], tag: [14.7, 15.3],
+  end: [17.6, 18.4],
+};
+const DUR = 18.4;
+const HOME = [[480, 520], [960, 520], [1440, 520]];
+const R0 = [75, 100, 140], RW = [20, 24, 28];
+const WAIT = [[1046, 300], [1120, 286], [1194, 300]];
+const BODY = { x: 1054, y: 650, w: 132 };          // bag body in cup coordinates (hero.svg geometry)
+const CUP = { s: 1.35, ox: 1120, oy: 905 };         // cupG scale
+const toScreen = (x, y) => [CUP.ox + (x - CUP.ox) * CUP.s, CUP.oy + (y - CUP.oy) * CUP.s];
+const BAG_S = toScreen(1120, 721);                 // bag centre on screen (cam at 1)
+const CAM = { cx: 1120, cy: 660, k: 1.25 };
+const END = { cx: 960, top: 196, h: 300 };          // end card symbol
+const WORD = { cx: 960, gap: 44, w: 540 };
+
+let cup = null, endS = null, word = null, W = null;
+function place(o, x, y, w) { set(o.el, { x, y, width: w, height: w * o.vb[3] / o.vb[2] }); }
+function embed(svgText, host) {
+  const doc = new DOMParser().parseFromString(svgText, 'image/svg+xml');
+  const vb = (doc.documentElement.getAttribute('viewBox') || '0 0 64 64').split(/[\s,]+/).map(Number);
+  // make ids unique per instance (gradients, masks)
+  let txt = new XMLSerializer().serializeToString(doc.documentElement);
+  for (const id of [...txt.matchAll(/id="([^"]+)"/g)].map(m => m[1]))
+    txt = txt.replaceAll(`id="${id}"`, `id="${host}-${id}"`).replaceAll(`url(#${id})`, `url(#${host}-${id})`).replaceAll(`href="#${id}"`, `href="#${host}-${id}"`);
+  const src = new DOMParser().parseFromString(txt, 'image/svg+xml').documentElement;
+  $(host).innerHTML = '';
+  const el = document.createElementNS(NS, 'svg');
+  el.setAttribute('viewBox', vb.join(' ')); el.setAttribute('overflow', 'visible');
+  for (const n of [...src.childNodes]) el.appendChild(document.importNode(n, true));
+  $(host).appendChild(el);
+  const o = { el, vb, draw: [], fills: [], body: null, accents: [] };
+  for (const e of el.querySelectorAll('path,circle,ellipse,line,polyline,polygon,rect')) {
+    if (e.closest('defs,mask,clipPath')) continue;
+    const cs = getComputedStyle(e);
+    if (cs.stroke && cs.stroke !== 'none') { e.setAttribute('pathLength', '1'); e.style.strokeDasharray = '1 1'; o.draw.push(e); }
+    else if (cs.fill && cs.fill !== 'none') o.fills.push(e);
+  }
+  const area = e => { const b = e.getBBox(); return b.width * b.height; };
+  o.fills.sort((a, b) => area(b) - area(a));
+  o.body = o.fills[0] || null; o.accents = o.fills.slice(1);
+  place(o, 0, 0, vb[2]);                                   // measure at scale 1
+  // body box in viewBox units (through any transforms inside the logo file)
+  const m = el.getScreenCTM().inverse().multiply(o.body.getScreenCTM()), bb = o.body.getBBox(), s0 = el.getBBox();
+  const p0 = new DOMPoint(bb.x, bb.y).matrixTransform(m), p1 = new DOMPoint(bb.x + bb.width, bb.y + bb.height).matrixTransform(m);
+  o.bodyAt1 = { x: p0.x, y: p0.y, w: p1.x - p0.x, h: p1.y - p0.y };
+  o.contentAt1 = { x: s0.x, y: s0.y, w: s0.width, h: s0.height };
+  return o;
+}
+// split the bag body into two halves that can part (the bag opens) with a glowing seam between them
+function makeHalves(o) {
+  const b = o.body, bb = b.getBBox(), mid = bb.x + bb.width / 2, par = b.parentNode;
+  const defs = document.createElementNS(NS, 'defs'); par.appendChild(defs);
+  const mk = (id, x, w) => { const c = document.createElementNS(NS, 'clipPath'); c.id = id; const r = document.createElementNS(NS, 'rect');
+    set(r, { x, y: bb.y - 1, width: w, height: bb.height + 2 }); c.appendChild(r); defs.appendChild(c); };
+  mk('halfL', bb.x - 1, mid - bb.x + 1); mk('halfR', mid, bb.x + bb.width - mid + 1);
+  const seam = document.createElementNS(NS, 'rect');
+  set(seam, { x: mid - 0.4, y: bb.y + 1.5, width: 0.8, height: bb.height - 3, rx: 0.4, fill: '#F2A33A' });
+  seam.style.filter = 'drop-shadow(0 0 2.5px #F2A33A) drop-shadow(0 0 5px #F2A33A)';
+  par.insertBefore(seam, b);
+  const L = b.cloneNode(), R = b.cloneNode();
+  L.setAttribute('clip-path', 'url(#halfL)'); R.setAttribute('clip-path', 'url(#halfR)');
+  par.insertBefore(L, b); par.insertBefore(R, b); b.style.display = 'none';
+  Object.assign(o, { L, R, seam, mid, bot: bb.y + bb.height, top: bb.y, bh: bb.height });
+}
+window.loadLogos = (symbolSvg, wordSvg) => {
+  cup = embed(symbolSvg, 'cupSymHost'); makeHalves(cup);
+  endS = embed(symbolSvg, 'endSymHost');
+  const doc = new DOMParser().parseFromString(wordSvg, 'image/svg+xml');
+  const wv = doc.documentElement.getAttribute('viewBox').split(/[\s,]+/).map(Number);
+  $('wordHost').innerHTML = ''; const w = document.createElementNS(NS, 'svg'); w.setAttribute('viewBox', wv.join(' '));
+  for (const n of [...doc.documentElement.childNodes]) w.appendChild(document.importNode(n, true));
+  $('wordHost').appendChild(w); word = { el: w, vb: wv };
+  const k = BODY.w / cup.bodyAt1.w;
+  place(cup, BODY.x - cup.bodyAt1.x * k, BODY.y - cup.bodyAt1.y * k, cup.vb[2] * k);
+  const ke = END.h / endS.contentAt1.h;
+  place(endS, END.cx - (endS.contentAt1.x + endS.contentAt1.w / 2) * ke, END.top - endS.contentAt1.y * ke, endS.vb[2] * ke);
+  const hw = WORD.w * wv[3] / wv[2], wTop = END.top + END.h + WORD.gap;
+  set(w, { x: WORD.cx - WORD.w / 2, y: wTop, width: WORD.w, height: hw });
+  $('tag').setAttribute('y', Math.round(wTop + hw + 100));
+  // the end symbol starts exactly where the cup's bag sits (cam at 1), then flies to its place
+  $('cam').removeAttribute('transform'); $('endSymHost').removeAttribute('transform');
+  W = cup.el.getScreenCTM().multiply(endS.el.getScreenCTM().inverse());
+  return { bodyAt1: Object.values(cup.bodyAt1).map(v => +v.toFixed(1)), k: +k.toFixed(2), wordH: Math.round(hw), tagY: Math.round(wTop + hw + 100),
+    W: [W.a, W.b, W.c, W.d, W.e, W.f].map(v => +v.toFixed(3)), draws: cup.draw.length, accents: cup.accents.length };
+};
+
+function wispPath(x0, y0, t, k, len) {
+  let d = '';
+  for (let i = 0; i <= 24; i++) {
+    const s = i / 24, y = y0 - s * len, amp = 6 + 40 * s * s;
+    const x = x0 + Math.sin(s * 5 + t * 1.3 + k * 2.1) * amp * (k % 2 ? -1 : 1);
+    d += (i ? ' L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1);
+  }
+  return d;
+}
+const wisps = [0, 1, 2].map(k => {
+  const a = document.createElementNS(NS, 'path'), c = document.createElementNS(NS, 'path');
+  for (const e of [a, c]) { set(e, { fill: 'none', stroke: 'url(#wispG)', 'stroke-linecap': 'round', pathLength: 1 }); e.style.strokeDasharray = '1 1'; }
+  a.setAttribute('stroke-width', 12 - 3 * k); c.setAttribute('stroke-width', 2);
+  $('wisp').appendChild(a); $('wispCore').appendChild(c); return [a, c];
+});
+const pearls = Array.from({ length: 6 }, () => { const c = document.createElementNS(NS, 'circle'); c.setAttribute('fill', '#E8DB98'); $('pearls').appendChild(c); return c; });
+const ripples = Array.from({ length: 2 }, () => { const c = document.createElementNS(NS, 'circle'); set(c, { fill: 'none', stroke: '#F2A33A', 'stroke-width': 3 }); $('ripples').appendChild(c); return c; });
+// tea plumes out of the seam: each blob leaves the seam, curls outward and up, then settles into the brew
+const PL = Array.from({ length: 9 }, (_, k) => {
+  const side = k % 2 ? 1 : -1, y0 = 676 + (k * 37) % 100;
+  const c = document.createElementNS(NS, 'circle'); c.setAttribute('fill', k % 3 ? '#D2BC55' : '#E2C66A'); $('plumes').appendChild(c);
+  return { c, side, y0, dx: side * (70 + (k * 53) % 70), dy: -(30 + (k * 41) % 80), t0: T.plume + 0.09 * k, r1: 30 + (k * 17) % 26 };
+});
+
+const hex = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+const mix = (a, b, p) => { const A = hex(a), B = hex(b); return `rgb(${A.map((v, i) => Math.round(lerp(v, B[i], p))).join(',')})`; };
+const arcCol = p => p < .48 ? mix('#F2A33A', '#D9C46B', p / .48) : mix('#D9C46B', '#3DBA9B', (p - .48) / .52);
+
+window.setT = t => {
+  $('warmGlow').setAttribute('opacity', (0.55 + 0.25 * seg(t, 0, 2) + 0.2 * seg(t, 9, 11) - 0.3 * seg(t, 13.5, 14.6)).toFixed(3));
+
+  // Beat 1: three bubbles, 0.6 s apart; the first is nearly up at frame 0
+  $('cap1').setAttribute('opacity', win(t, ...T.cap1).toFixed(3));
+  ['b1', 'b2', 'b3'].forEach((id, i) => {
+    const [a, b] = T.b[i], p = seg(t, a, b, eo), [hx, hy] = HOME[i];
+    const wv = seg(t, T.wait[0] + 0.12 * i, T.wait[1] + 0.12 * i);
+    const ga = T.gather[0] + 0.18 * i, gb = ga + 0.9, g = clamp((t - ga) / (gb - ga));
+    let x = hx + Math.sin(t * 1.6 + i * 1.3) * 8 * p;
+    let y = lerp(1240, hy, p) + Math.sin(t * 2.0 + i * 2) * 8 * p;
+    x = lerp(x, WAIT[i][0] + Math.sin(t * 2.2 + i * 2.1) * 5, wv);
+    y = lerp(y, WAIT[i][1] + Math.sin(t * 1.7 + i) * 7, wv);
+    x = lerp(x, BAG_S[0], eo(g));                                   // drop into the cup over the rim
+    y = lerp(y, BAG_S[1], eio(g)) - Math.sin(Math.PI * g) * 50;
+    const rr = lerp(R0[i], RW[i], wv) * (1 + 0.03 * Math.sin(t * 3.1 + i)) * (1 - 0.7 * seg(t, ga + 0.4, gb));
+    const op = (t < a ? 0 : 1) * (1 - 0.2 * wv * (1 - g)) * (1 - seg(t, gb - 0.3, gb + 0.1));
+    set($(id), { cx: x, cy: y, r: Math.max(0.1, rr), opacity: op });
+  });
+  pearls.forEach((c, j) => {
+    const a = T.b[1][0] + 0.1 * (j + 1), p = seg(t, a, T.b[1][1] + 0.25 + 0.08 * j, eo);
+    set(c, { cx: 960 + Math.sin(t * 2 + j) * 4, cy: lerp(1200, 648 + j * 24, p), r: 10 - j * 1.2,
+      opacity: (t < a ? 0 : 0.9 - j * 0.1) * (1 - seg(t, T.labOut[0], T.labOut[1])) });
+  });
+  ripples.forEach((c, j) => {
+    const a = T.b[2][1] - 0.4 + j * 0.6, p = seg(t, a, a + 1.6, eo);
+    set(c, { cx: 1440, cy: 520, r: 140 + p * 110, opacity: (t < a ? 0 : 1) * (1 - p) * 0.75 * (1 - seg(t, T.labOut[0], T.labOut[1])) });
+  });
+  ['l1', 'l2', 'l3'].forEach((id, i) => {
+    const q = seg(t, T.lab[i], T.lab[i] + 0.6);
+    set($(id), { opacity: Math.min(q, 1 - seg(t, ...T.labOut)), transform: `translate(0 ${((1 - q) * 10).toFixed(1)})` });
+  });
+
+  // Beat 2: 1908, an ordinary bag at a boil
+  const c2 = win(t, ...T.cap2);
+  set($('cap2'), { opacity: c2, transform: `translate(0 ${((1 - seg(t, T.cap2[0], T.cap2[1])) * 10).toFixed(1)})` });
+  const oIn = seg(t, ...T.oldIn, eo), oOut = seg(t, ...T.oldOut);
+  set($('oldBag'), { opacity: (t < T.oldIn[0] ? 0 : 1) * (1 - seg(t, T.oldOut[0], T.oldOut[0] + 0.35)),
+    transform: `translate(0 ${(-520 * (1 - oIn) - 90 * oOut).toFixed(1)})` });
+  const dk = seg(t, ...T.dark, p => 1 - Math.pow(1 - p, 2));
+  set($('darkC'), { r: 30 + 340 * dk });
+  $('dark').setAttribute('opacity', (t < T.dark[0] ? 0 : (0.25 + 0.75 * dk) * (1 - seg(t, ...T.clear))).toFixed(3));
+
+  // the camera: push in for the opening, back out after the seal
+  const k = lerp(1, CAM.k, seg(t, ...T.push)) - (CAM.k - 1) * seg(t, ...T.pushOut);
+  $('cam').setAttribute('transform', k === 1 ? '' : `translate(${CAM.cx} ${CAM.cy}) scale(${k.toFixed(4)}) translate(${-CAM.cx} ${-CAM.cy})`);
+  $('cam').setAttribute('opacity', (1 - seg(t, ...T.sceneOut)).toFixed(3));
+
+  const gl = seg(t, ...T.glass);
+  for (const id of ['glass', 'rim']) { $(id).style.strokeDasharray = '1 1'; $(id).style.strokeDashoffset = (1 - gl).toFixed(4); }
+  $('glass').setAttribute('fill-opacity', gl.toFixed(3));
+  const gIn = seg(t, T.glass[0] + 0.4, T.glass[1] + 0.2);
+  for (const id of ['water', 'glint', 'cupShadow']) $(id).setAttribute('opacity', gIn.toFixed(3));
+  $('surface').setAttribute('opacity', (gIn * (0.12 + 0.25 * seg(t, ...T.bleed) + 0.12 * dk * (1 - seg(t, ...T.clear)))).toFixed(3));
+
+  // Beat 3: the OSME bag
+  const op = seg(t, ...T.open) * (1 - back(clamp((t - T.seal[0]) / (T.seal[1] - T.seal[0]))));   // 0 sealed, 1 open (overshoots on the seal)
+  if (cup) {
+    cup.el.style.opacity = t < T.body[0] || t >= T.morph[0] ? 0 : 1;
+    const bIn = seg(t, ...T.body);
+    for (const e of [cup.L, cup.R]) e.style.opacity = bIn.toFixed(3);
+    cup.draw.forEach(e => e.style.strokeDashoffset = (1 - seg(t, ...T.string)).toFixed(4));
+    cup.accents.forEach(e => e.style.opacity = seg(t, ...T.tagIn, eo).toFixed(3));
+    const gap = 2.2 * op, rot = 6 * Math.max(0, op);                // ~36 px apart on screen at the push, halves tilt 6°
+    cup.L.setAttribute('transform', `translate(${(-gap).toFixed(3)} 0) rotate(${(-rot).toFixed(2)} ${cup.mid} ${cup.bot})`);
+    cup.R.setAttribute('transform', `translate(${gap.toFixed(3)} 0) rotate(${rot.toFixed(2)} ${cup.mid} ${cup.bot})`);
+    const sop = clamp(op);
+    cup.seam.style.opacity = (sop * (0.85 + 0.15 * Math.sin(t * 9))).toFixed(3);
+    set(cup.seam, { x: cup.mid - 0.4 - Math.max(0, gap) * 1.3, width: 0.8 + 2.6 * Math.max(0, gap) });
+    const sealPulse = Math.exp(-Math.pow((t - T.seal[1] - 0.1) / 0.3, 2));
+    cup.el.style.filter = sealPulse > 0.02 ? `drop-shadow(0 0 ${(22 * sealPulse).toFixed(1)}px rgba(61,186,155,${(0.9 * sealPulse).toFixed(2)}))` : 'none';
+  }
+  // the seal ring
+  const rg = seg(t, ...T.ring, eo);
+  set($('ring'), { r: 24 + 126 * rg, opacity: t < T.ring[0] ? 0 : 0.95 * (1 - rg), 'stroke-width': 6 * (1 - 0.5 * rg) });
+  // plumes from the seam, then the tea fills up from the bag
+  PL.forEach(q => {
+    const p = clamp((t - q.t0) / 1.6), e = eo(p);
+    set(q.c, { cx: 1120 + q.dx * e + q.side * 18 * Math.sin(Math.PI * p), cy: q.y0 + q.dy * e - 30 * Math.sin(Math.PI * p * 0.8),
+      r: 6 + q.r1 * e, opacity: t < q.t0 ? 0 : (0.85 * Math.min(1, p * 5) * (1 - 0.65 * p)) * (1 - seg(t, ...T.sceneOut)) });
+  });
+  const bl = seg(t, ...T.bleed, p => 1 - Math.pow(1 - p, 2));
+  set($('bleedC'), { r: 40 + 330 * bl, cy: 780 - 70 * bl });
+  $('tea').setAttribute('opacity', t < T.bleed[0] ? 0 : (0.2 + 0.8 * bl).toFixed(3));
+  // scent wisps rise while open; sink back when it seals
+  const wUp = seg(t, T.open[0] + 0.2, T.seal[0], eo), wDown = seg(t, T.seal[0], T.seal[0] + 1.0);
+  wisps.forEach(([a, c], k) => {
+    const d = wispPath(1090 + k * 30, 600, t, k, 230 + 30 * k);
+    const reach = clamp(wUp * 1.15 - 0.1 * k) * (1 - 0.9 * wDown);
+    for (const e of [a, c]) { e.setAttribute('d', d); e.style.strokeDashoffset = (1 - reach).toFixed(4); }
+    a.setAttribute('opacity', (0.42 * (1 - 0.6 * wDown)).toFixed(3)); c.setAttribute('opacity', (0.5 * (1 - 0.6 * wDown)).toFixed(3));
+  });
+
+  // arc gauge + panel: 100 C at the hot end, 60 C at the cool end
+  const ar = seg(t, ...T.arc);
+  for (const id of ['arcHalo', 'arcPath']) { $(id).setAttribute('pathLength', 1); $(id).style.strokeDasharray = '1 1'; $(id).style.strokeDashoffset = (1 - ar).toFixed(4); }
+  $('arcGroup').setAttribute('opacity', (1 - seg(t, ...T.arcOut)).toFixed(3));
+  const k1 = seg(t, ...T.cool1), k2 = seg(t, ...T.cool2);
+  const temp = t >= T.cool2[0] ? lerp(80, 70, k2) : lerp(100, 80, k1);
+  const pos = (100 - temp) / 40;
+  const arcEl = $('arcPath'); arcEl.removeAttribute('pathLength');
+  const L = arcEl.getTotalLength(), pt = arcEl.getPointAtLength(L * pos);
+  arcEl.setAttribute('pathLength', 1);
+  const flash = Math.exp(-Math.pow((t - T.seal[1] - 0.1) / 0.3, 2));
+  set($('marker'), { cx: pt.x, cy: pt.y, r: 13 + 10 * flash, fill: flash > 0.3 ? '#6FE3C4' : arcCol(pos),
+    opacity: seg(t, T.arc[0] + 0.6, T.arc[1]) });
+  $('temp').textContent = `${Math.round(temp)}°`;
+  $('temp').setAttribute('fill', arcCol(pos));
+  const pOut = 1 - seg(t, ...T.panelOut);
+  const hd = Math.min(1, Math.abs(t - T.head) / 0.2);
+  $('pHead').textContent = t < T.head ? 'ANY TEA' : 'SENCHA';
+  $('pHead').setAttribute('opacity', (seg(t, ...T.temp) * hd * pOut).toFixed(3));
+  $('temp').setAttribute('opacity', (seg(t, ...T.temp) * pOut).toFixed(3));
+  const isOpen = t >= T.open[0] && t < T.seal[0];
+  $('state').textContent = t < T.open[0] ? 'SEALED' : isOpen ? 'OPEN' : 'SEALED';
+  $('state').setAttribute('fill', t < T.open[0] ? '#F3EEE6' : isOpen ? '#F2A33A' : '#3DBA9B');
+  $('state2').textContent = t < T.open[0] ? 'too hot for Sencha' : isOpen ? 'brewing below 80 °C' : 'scent kept inside';
+  const dip = Math.min(1, Math.abs(t - T.open[0]) / 0.15, Math.abs(t - T.seal[0]) / 0.15);
+  for (const id of ['state', 'state2']) $(id).setAttribute('opacity', (seg(t, ...T.stateIn) * dip * pOut).toFixed(3));
+
+  $('oneLiner').setAttribute('opacity', win(t, ...T.one).toFixed(3));
+  $('oneLiner').setAttribute('transform', `translate(0 ${((1 - seg(t, T.one[0], T.one[1])) * 10).toFixed(1)})`);
+
+  // End card: the bag from the cup flies to the lockup
+  if (endS) {
+    const show = t >= T.morph[0];
+    endS.el.style.opacity = show ? 1 : 0;
+    endS.draw.forEach(d => d.style.strokeDashoffset = 0);
+    const m = seg(t, ...T.morph);
+    const f = v => v.toFixed(4);
+    $('endSymHost').setAttribute('transform', `matrix(${f(lerp(W.a, 1, m))} ${f(lerp(W.b, 0, m))} ${f(lerp(W.c, 0, m))} ${f(lerp(W.d, 1, m))} ${f(lerp(W.e, 0, m))} ${f(lerp(W.f, 0, m))})`);
+    const w = seg(t, ...T.word);
+    word.el.style.opacity = w.toFixed(3); word.el.style.transform = `translateY(${((1 - w) * 10).toFixed(1)}px)`;
+  }
+  const tg = seg(t, ...T.tag);
+  set($('tag'), { opacity: tg, transform: `translate(0 ${((1 - tg) * 12).toFixed(1)})` });
+  $('fade').setAttribute('opacity', seg(t, ...T.end).toFixed(3));
+};
+window.DUR = DUR;
+window.setT(0);
+</script>
+</body></html>
