@@ -4,7 +4,7 @@
 Everyone drives at least once.
 
 <!-- LIVE:START -->
-## Live status · 12:17 · 1 h 12 to hand-in
+## Live status · 12:23 · 1 h 06 to hand-in
 
 **Now:** "Handed in: the live site is verified at 13:18. Start at handin.html: all five hand-ins on one page."
 
